@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1976242AD3EE0058593F /* AppDelegate.swift */; };
+		7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1978242AD3EE0058593F /* SceneDelegate.swift */; };
+		7D0B197B242AD3EE0058593F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B197A242AD3EE0058593F /* ViewController.swift */; };
+		7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B197C242AD3EE0058593F /* Main.storyboard */; };
+		7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */; };
+		7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B1982242AD3F10058593F /* Assets.xcassets */; };
+		7D0B1986242AD3F10058593F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B1984242AD3F10058593F /* LaunchScreen.storyboard */; };
+		7D0B198E242AD6F10058593F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B198D242AD6F10058593F /* AuthViewController.swift */; };
+		7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B198F242AD8440058593F /* GoogleService-Info.plist */; };
+		ADE262166133FF45076A455C /* Pods_appPhoRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.debug.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.debug.xcconfig"; sourceTree = "<group>"; };
+		7209B28DAFED4280297EAAEC /* Pods-appPhoRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.release.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.release.xcconfig"; sourceTree = "<group>"; };
+		7D0B1973242AD3EE0058593F /* appPhoRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appPhoRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D0B1976242AD3EE0058593F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D0B1978242AD3EE0058593F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7D0B197A242AD3EE0058593F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D0B197D242AD3EE0058593F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7D0B1980242AD3EE0058593F /* appPhoRent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appPhoRent.xcdatamodel; sourceTree = "<group>"; };
+		7D0B1982242AD3F10058593F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7D0B1985242AD3F10058593F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7D0B1987242AD3F10058593F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D0B198D242AD6F10058593F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		7D0B198F242AD8440058593F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appPhoRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D0B1970242AD3EE0058593F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE262166133FF45076A455C /* Pods_appPhoRent.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		155257761F3EDFCCC591030C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C431A1AA50190332932471A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */,
+				7209B28DAFED4280297EAAEC /* Pods-appPhoRent.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7D0B196A242AD3EE0058593F = {
+			isa = PBXGroup;
+			children = (
+				7D0B1975242AD3EE0058593F /* appPhoRent */,
+				7D0B1974242AD3EE0058593F /* Products */,
+				7C431A1AA50190332932471A /* Pods */,
+				155257761F3EDFCCC591030C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7D0B1974242AD3EE0058593F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D0B1973242AD3EE0058593F /* appPhoRent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D0B1975242AD3EE0058593F /* appPhoRent */ = {
+			isa = PBXGroup;
+			children = (
+				7D0B1976242AD3EE0058593F /* AppDelegate.swift */,
+				7D0B1978242AD3EE0058593F /* SceneDelegate.swift */,
+				7D0B197A242AD3EE0058593F /* ViewController.swift */,
+				7D0B197C242AD3EE0058593F /* Main.storyboard */,
+				7D0B1982242AD3F10058593F /* Assets.xcassets */,
+				7D0B1984242AD3F10058593F /* LaunchScreen.storyboard */,
+				7D0B1987242AD3F10058593F /* Info.plist */,
+				7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */,
+				7D0B198D242AD6F10058593F /* AuthViewController.swift */,
+				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
+			);
+			path = appPhoRent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7D0B1972242AD3EE0058593F /* appPhoRent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D0B198A242AD3F10058593F /* Build configuration list for PBXNativeTarget "appPhoRent" */;
+			buildPhases = (
+				10A2E9CE2A3BF148C378BD0A /* [CP] Check Pods Manifest.lock */,
+				7D0B196F242AD3EE0058593F /* Sources */,
+				7D0B1970242AD3EE0058593F /* Frameworks */,
+				7D0B1971242AD3EE0058593F /* Resources */,
+				6AF3ABA9848FDACC49E9F0E6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = appPhoRent;
+			productName = appPhoRent;
+			productReference = 7D0B1973242AD3EE0058593F /* appPhoRent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D0B196B242AD3EE0058593F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Александр Сетров";
+				TargetAttributes = {
+					7D0B1972242AD3EE0058593F = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7D0B196E242AD3EE0058593F /* Build configuration list for PBXProject "appPhoRent" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7D0B196A242AD3EE0058593F;
+			productRefGroup = 7D0B1974242AD3EE0058593F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7D0B1972242AD3EE0058593F /* appPhoRent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D0B1971242AD3EE0058593F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D0B1986242AD3F10058593F /* LaunchScreen.storyboard in Resources */,
+				7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */,
+				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
+				7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10A2E9CE2A3BF148C378BD0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-appPhoRent-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AF3ABA9848FDACC49E9F0E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appPhoRent/Pods-appPhoRent-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appPhoRent/Pods-appPhoRent-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appPhoRent/Pods-appPhoRent-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D0B196F242AD3EE0058593F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
+				7D0B197B242AD3EE0058593F /* ViewController.swift in Sources */,
+				7D0B198E242AD6F10058593F /* AuthViewController.swift in Sources */,
+				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
+				7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7D0B197C242AD3EE0058593F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D0B197D242AD3EE0058593F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7D0B1984242AD3F10058593F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D0B1985242AD3F10058593F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7D0B1988242AD3F10058593F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7D0B1989242AD3F10058593F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7D0B198B242AD3F10058593F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = appPhoRent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7D0B198C242AD3F10058593F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7209B28DAFED4280297EAAEC /* Pods-appPhoRent.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = appPhoRent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D0B196E242AD3EE0058593F /* Build configuration list for PBXProject "appPhoRent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D0B1988242AD3F10058593F /* Debug */,
+				7D0B1989242AD3F10058593F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D0B198A242AD3F10058593F /* Build configuration list for PBXNativeTarget "appPhoRent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D0B198B242AD3F10058593F /* Debug */,
+				7D0B198C242AD3F10058593F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D0B1980242AD3EE0058593F /* appPhoRent.xcdatamodel */,
+			);
+			currentVersion = 7D0B1980242AD3EE0058593F /* appPhoRent.xcdatamodel */;
+			path = appPhoRent.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7D0B196B242AD3EE0058593F /* Project object */;
+}

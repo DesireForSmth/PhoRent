@@ -1,0 +1,6 @@
+framework module Pods_appPhoRent {
+  umbrella header "Pods-appPhoRent-umbrella.h"
+
+  export *
+  module * { export * }
+}
