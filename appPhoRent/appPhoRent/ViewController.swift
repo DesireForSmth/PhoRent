@@ -34,7 +34,14 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newvc = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
         print(newvc)
-        self.present(newvc, animated: true, completion: nil)
+        //show(newvc, sender: self)
+        
+        newvc.modalPresentationStyle = .fullScreen
+        newvc.modalTransitionStyle = .crossDissolve
+        
+        present(newvc, animated: true, completion: nil)
+        //newvc.dismiss(animated: true, completion: nil)
+        //self.present(newvc, animated: true, completion: nil)
     }
 
 }
