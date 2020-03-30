@@ -57,6 +57,11 @@ class AuthViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    func showAuthError(){
+        let alert = UIAlertController(title: "Ошибка", message: "Неверный email или пароль", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать ещё раз", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension AuthViewController:UITextFieldDelegate{
@@ -98,6 +103,8 @@ extension AuthViewController:UITextFieldDelegate{
                     Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                         if error == nil{
                             self.dismiss(animated: true, completion: nil)
+                        }else{
+                            self.showAuthError()
                         }
                     }
                 }else{
