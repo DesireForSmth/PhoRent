@@ -25,9 +25,24 @@ class ViewController: UIViewController {
            Auth.auth().addStateDidChangeListener { (auth, user) in
                if user == nil{
                    self.showModalAuth()
-               }
+               }else{
+                self.showModalApp()
+            }
            }
        }
+    
+    func showModalApp(){
+        print("hello from showModalApp")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newvc = storyboard.instantiateViewController(withIdentifier: "AppViewController") as! AppViewController
+        print(newvc)
+        //show(newvc, sender: self)
+        
+        newvc.modalPresentationStyle = .fullScreen
+        newvc.modalTransitionStyle = .crossDissolve
+        
+        present(newvc, animated: true, completion: nil)
+    }
     
     func showModalAuth(){
         print("hello from showModalAuth")
