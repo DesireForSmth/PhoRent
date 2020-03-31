@@ -17,6 +17,7 @@
 		7D0B198E242AD6F10058593F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B198D242AD6F10058593F /* AuthViewController.swift */; };
 		7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B198F242AD8440058593F /* GoogleService-Info.plist */; };
 		7DF003DC2431DBF300BB58A3 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF003DB2431DBF300BB58A3 /* AppViewController.swift */; };
+		7DF003DE243231E400BB58A3 /* AppTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF003DD243231E400BB58A3 /* AppTabController.swift */; };
 		ADE262166133FF45076A455C /* Pods_appPhoRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		7D0B198F242AD8440058593F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appPhoRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF003DB2431DBF300BB58A3 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		7DF003DD243231E400BB58A3 /* AppTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				7D0B197A242AD3EE0058593F /* ViewController.swift */,
 				7D0B198D242AD6F10058593F /* AuthViewController.swift */,
 				7DF003DB2431DBF300BB58A3 /* AppViewController.swift */,
+				7DF003DD243231E400BB58A3 /* AppTabController.swift */,
 				7D0B197C242AD3EE0058593F /* Main.storyboard */,
 				7D0B1982242AD3F10058593F /* Assets.xcassets */,
 				7D0B1984242AD3F10058593F /* LaunchScreen.storyboard */,
@@ -223,6 +226,7 @@
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
 				7D0B197B242AD3EE0058593F /* ViewController.swift in Sources */,
 				7D0B198E242AD6F10058593F /* AuthViewController.swift in Sources */,
+				7DF003DE243231E400BB58A3 /* AppTabController.swift in Sources */,
 				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
 				7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */,
 			);

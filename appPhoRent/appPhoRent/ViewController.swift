@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     func showModalApp(){
         print("hello from showModalApp")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newvc = storyboard.instantiateViewController(withIdentifier: "AppViewController") as! AppViewController
+        let newvc = storyboard.instantiateViewController(withIdentifier: "AppTabController") as! AppTabController
         print(newvc)
         //show(newvc, sender: self)
         
