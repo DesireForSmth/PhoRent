@@ -17,7 +17,6 @@
 		7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECB2243A4D4D004EA0EB /* SignUpPresenter.swift */; };
 		7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1976242AD3EE0058593F /* AppDelegate.swift */; };
 		7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1978242AD3EE0058593F /* SceneDelegate.swift */; };
-		7D0B197B242AD3EE0058593F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B197A242AD3EE0058593F /* ViewController.swift */; };
 		7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B197C242AD3EE0058593F /* Main.storyboard */; };
 		7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */; };
 		7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0B1982242AD3F10058593F /* Assets.xcassets */; };
@@ -47,7 +46,6 @@
 		7D0B1973242AD3EE0058593F /* appPhoRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appPhoRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D0B1976242AD3EE0058593F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D0B1978242AD3EE0058593F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7D0B197A242AD3EE0058593F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7D0B197D242AD3EE0058593F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D0B1980242AD3EE0058593F /* appPhoRent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appPhoRent.xcdatamodel; sourceTree = "<group>"; };
 		7D0B1982242AD3F10058593F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			children = (
 				7D0B1976242AD3EE0058593F /* AppDelegate.swift */,
 				7D0B1978242AD3EE0058593F /* SceneDelegate.swift */,
-				7D0B197A242AD3EE0058593F /* ViewController.swift */,
 				7D0B197C242AD3EE0058593F /* Main.storyboard */,
 				7D0B1982242AD3F10058593F /* Assets.xcassets */,
 				7D0B1984242AD3F10058593F /* LaunchScreen.storyboard */,
@@ -364,7 +361,6 @@
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
-				7D0B197B242AD3EE0058593F /* ViewController.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
