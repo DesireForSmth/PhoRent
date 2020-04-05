@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     func showModalAuth(){
         print("hello from showModalAuth")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newvc = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+        let newvc = storyboard.instantiateViewController(withIdentifier: "NewAuthViewController") as! NewAuthViewController
         print(newvc)
         //show(newvc, sender: self)
         
