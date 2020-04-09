@@ -44,6 +44,8 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
            view.presenter = presenter
            return view
     }
+    
+    
     /*
      func createAuthModule(router: RouterProtocol) -> UIViewController {
      let view = NewAuthViewController()
