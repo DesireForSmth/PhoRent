@@ -19,6 +19,7 @@ protocol RouterProtocol: RouterMain {
     func showSignUp()
     func popToRoot()
     func showContent()
+    func showAboutUs()
 }
 
 class Router: RouterProtocol {
@@ -56,6 +57,13 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let contentViewController = assemblyBuilder?.createContentModule(router: self) else { return }
             navigationController.pushViewController(contentViewController, animated: true)
+        }
+    }
+    
+    func showAboutUs() {
+        if let navigationController = navigationController {
+            guard let aboutUsViewController = assemblyBuilder?.createAboutUsModule(router: self) else { return }
+            navigationController.present(aboutUsViewController, animated: true, completion: nil)
         }
     }
     

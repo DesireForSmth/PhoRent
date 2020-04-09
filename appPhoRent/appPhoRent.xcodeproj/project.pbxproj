@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28B1B92A243F9732002732A5 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B929243F9732002732A5 /* Constraints.swift */; };
+		28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */; };
+		28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92E243F9767002732A5 /* AboutUsViewController.swift */; };
+		28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B933243F97B6002732A5 /* PersonalData.swift */; };
+		28B1B936243F97C3002732A5 /* PersonalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B935243F97C3002732A5 /* PersonalPresenter.swift */; };
+		28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B937243F97D0002732A5 /* PersonalViewController.swift */; };
+		28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93D243F9877002732A5 /* TabBarPresenter.swift */; };
+		28B1B940243F9881002732A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93F243F9881002732A5 /* TabBarController.swift */; };
 		7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA0243A18E6004EA0EB /* Router.swift */; };
 		7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */; };
 		7D09ECAA243A40BE004EA0EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA8243A40BE004EA0EB /* IntroViewController.swift */; };
@@ -33,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28B1B929243F9732002732A5 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsPresenter.swift; sourceTree = "<group>"; };
+		28B1B92E243F9767002732A5 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		28B1B933243F97B6002732A5 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
+		28B1B935243F97C3002732A5 /* PersonalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPresenter.swift; sourceTree = "<group>"; };
+		28B1B937243F97D0002732A5 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		28B1B93D243F9877002732A5 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		28B1B93F243F9881002732A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.debug.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.debug.xcconfig"; sourceTree = "<group>"; };
 		7209B28DAFED4280297EAAEC /* Pods-appPhoRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.release.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.release.xcconfig"; sourceTree = "<group>"; };
 		7D09ECA0243A18E6004EA0EB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -82,6 +98,98 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		28B1B92B243F973C002732A5 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B929243F9732002732A5 /* Constraints.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		28B1B930243F976B002732A5 /* AboutUsModule */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B931243F9779002732A5 /* Presenter */,
+				28B1B932243F9780002732A5 /* View */,
+			);
+			path = AboutUsModule;
+			sourceTree = "<group>";
+		};
+		28B1B931243F9779002732A5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		28B1B932243F9780002732A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B92E243F9767002732A5 /* AboutUsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28B1B939243F97F8002732A5 /* PersonalModule */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B93A243F9802002732A5 /* Model */,
+				28B1B93B243F9807002732A5 /* Presenter */,
+				28B1B93C243F9810002732A5 /* View */,
+			);
+			path = PersonalModule;
+			sourceTree = "<group>";
+		};
+		28B1B93A243F9802002732A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B933243F97B6002732A5 /* PersonalData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28B1B93B243F9807002732A5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B935243F97C3002732A5 /* PersonalPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		28B1B93C243F9810002732A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B937243F97D0002732A5 /* PersonalViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28B1B941243F9888002732A5 /* TabBarModule */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B942243F9893002732A5 /* Presenter */,
+				28B1B943243F989C002732A5 /* View */,
+			);
+			path = TabBarModule;
+			sourceTree = "<group>";
+		};
+		28B1B942243F9893002732A5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B93D243F9877002732A5 /* TabBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		28B1B943243F989C002732A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28B1B93F243F9881002732A5 /* TabBarController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7C431A1AA50190332932471A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +230,10 @@
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				28B1B941243F9888002732A5 /* TabBarModule */,
+				28B1B939243F97F8002732A5 /* PersonalModule */,
+				28B1B930243F976B002732A5 /* AboutUsModule */,
+				28B1B92B243F973C002732A5 /* Structs */,
 				7D5BAAEB2433D29A003F3D41 /* AuthModule */,
 				7D87C1FD2434CE8A0060C670 /* IntroModule */,
 				7D87C1F92434CCA30060C670 /* ContentModule */,
@@ -360,14 +472,22 @@
 				7D09ECAE243A457C004EA0EB /* ContentViewController.swift in Sources */,
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
+				28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */,
+				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
+				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
+				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
+				28B1B940243F9881002732A5 /* TabBarController.swift in Sources */,
 				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
 				7D09ECB1243A45B5004EA0EB /* ContentPresenter.swift in Sources */,
+				28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */,
+				28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */,
 				7D87C1F72434C9CA0060C670 /* SignUpViewController.swift in Sources */,
 				7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */,
+				28B1B936243F97C3002732A5 /* PersonalPresenter.swift in Sources */,
 				7D09ECAA243A40BE004EA0EB /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
