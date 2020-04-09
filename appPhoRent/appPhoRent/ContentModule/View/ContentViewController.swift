@@ -14,7 +14,6 @@ class ContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
 
