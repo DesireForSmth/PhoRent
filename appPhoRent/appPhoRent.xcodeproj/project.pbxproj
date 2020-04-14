@@ -19,9 +19,6 @@
 		7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */; };
 		7D09ECAA243A40BE004EA0EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA8243A40BE004EA0EB /* IntroViewController.swift */; };
 		7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D09ECA9243A40BE004EA0EB /* IntroViewController.xib */; };
-		7D09ECAE243A457C004EA0EB /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECAC243A457C004EA0EB /* ContentViewController.swift */; };
-		7D09ECAF243A457C004EA0EB /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D09ECAD243A457C004EA0EB /* ContentViewController.xib */; };
-		7D09ECB1243A45B5004EA0EB /* ContentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECB0243A45B5004EA0EB /* ContentPresenter.swift */; };
 		7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECB2243A4D4D004EA0EB /* SignUpPresenter.swift */; };
 		7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1976242AD3EE0058593F /* AppDelegate.swift */; };
 		7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0B1978242AD3EE0058593F /* SceneDelegate.swift */; };
@@ -55,9 +52,6 @@
 		7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7D09ECA8243A40BE004EA0EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		7D09ECA9243A40BE004EA0EB /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
-		7D09ECAC243A457C004EA0EB /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
-		7D09ECAD243A457C004EA0EB /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
-		7D09ECB0243A45B5004EA0EB /* ContentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPresenter.swift; sourceTree = "<group>"; };
 		7D09ECB2243A4D4D004EA0EB /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		7D0B1973242AD3EE0058593F /* appPhoRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appPhoRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D0B1976242AD3EE0058593F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,7 +230,6 @@
 				28B1B92B243F973C002732A5 /* Structs */,
 				7D5BAAEB2433D29A003F3D41 /* AuthModule */,
 				7D87C1FD2434CE8A0060C670 /* IntroModule */,
-				7D87C1F92434CCA30060C670 /* ContentModule */,
 			);
 			path = appPhoRent;
 			sourceTree = "<group>";
@@ -275,40 +268,6 @@
 			children = (
 				7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */,
 				7D09ECB2243A4D4D004EA0EB /* SignUpPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		7D87C1F92434CCA30060C670 /* ContentModule */ = {
-			isa = PBXGroup;
-			children = (
-				7D87C1FC2434CCC00060C670 /* Presenter */,
-				7D87C1FB2434CCBB0060C670 /* View */,
-				7D87C1FA2434CCB40060C670 /* Model */,
-			);
-			path = ContentModule;
-			sourceTree = "<group>";
-		};
-		7D87C1FA2434CCB40060C670 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7D87C1FB2434CCBB0060C670 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7D09ECAC243A457C004EA0EB /* ContentViewController.swift */,
-				7D09ECAD243A457C004EA0EB /* ContentViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7D87C1FC2434CCC00060C670 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				7D09ECB0243A45B5004EA0EB /* ContentPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -408,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D0B1986242AD3F10058593F /* LaunchScreen.storyboard in Resources */,
-				7D09ECAF243A457C004EA0EB /* ContentViewController.xib in Resources */,
 				7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */,
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
@@ -469,7 +427,6 @@
 			files = (
 				7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */,
 				7D87C1F32434C9B40060C670 /* LoginViewController.swift in Sources */,
-				7D09ECAE243A457C004EA0EB /* ContentViewController.swift in Sources */,
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
 				28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */,
@@ -482,7 +439,6 @@
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
 				28B1B940243F9881002732A5 /* TabBarController.swift in Sources */,
 				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
-				7D09ECB1243A45B5004EA0EB /* ContentPresenter.swift in Sources */,
 				28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */,
 				28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */,
 				7D87C1F72434C9CA0060C670 /* SignUpViewController.swift in Sources */,
