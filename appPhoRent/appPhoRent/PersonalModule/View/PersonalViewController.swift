@@ -9,7 +9,7 @@
 import UIKit
 
 class PersonalViewController: UIViewController {
-    var presenter: PersonalViewPresenterProtocol!
+    var presenter: PersonalPresenterProtocol!
     
     var secondView = UIView()
     var avatarImageView: UIImageView!

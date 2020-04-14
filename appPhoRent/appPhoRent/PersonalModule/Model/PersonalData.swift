@@ -12,3 +12,11 @@ struct PersonalData {
     var phone: String?
 //    var imageUrl: String?
 }
+
+class UserManager {
+    static let shared = UserManager()
+    var currentUser: PersonalData?
+    private init() {}
+    
+    
+}

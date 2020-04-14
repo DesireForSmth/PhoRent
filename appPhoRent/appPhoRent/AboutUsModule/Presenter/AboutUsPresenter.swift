@@ -11,12 +11,12 @@ protocol AboutUsViewProtocol: class {
 }
 
 
-protocol AboutUsViewPresenterProtocol: class {
+protocol AboutUsPresenterProtocol: class {
     init(view: AboutUsViewProtocol, router: RouterProtocol)
 }
 
 
-class AboutUsPresenter: AboutUsViewPresenterProtocol {
+class AboutUsPresenter: AboutUsPresenterProtocol {
     
     weak var view: AboutUsViewProtocol?
     var router: RouterProtocol?

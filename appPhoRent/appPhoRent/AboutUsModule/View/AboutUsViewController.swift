@@ -10,7 +10,7 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
     
-    var presenter: AboutUsViewPresenterProtocol!
+    var presenter: AboutUsPresenterProtocol!
     
     var firstLabel: UILabel!
     var secondLabel: UILabel!

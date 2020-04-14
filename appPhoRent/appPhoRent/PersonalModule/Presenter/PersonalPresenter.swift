@@ -16,10 +16,8 @@ protocol PersonalViewProtocol: class {
     func showErrorAlert()
 }
 
-protocol PersonalViewPresenterProtocol: class {
+protocol PersonalPresenterProtocol: class {
     init(view: PersonalViewProtocol, router: RouterProtocol)
-    
-    var data: PersonalData? {get set}
     
     func setPhone(phone: String)
     func needDownload() -> Bool
@@ -28,10 +26,9 @@ protocol PersonalViewPresenterProtocol: class {
     func logOut()
 }
 
-class PersonalPresenter: PersonalViewPresenterProtocol {
+class PersonalPresenter: PersonalPresenterProtocol {
     weak var view: PersonalViewProtocol?
     var router: RouterProtocol?
-    var data: PersonalData?
     var ref: DatabaseReference?
     var userID: String?
     
@@ -48,10 +45,11 @@ class PersonalPresenter: PersonalViewPresenterProtocol {
             let name = value?["name"] as? String ?? ""
             let email = value?["email"] as? String ?? ""
             let phone = value?["phone"] as? String
-            self.data = PersonalData(name: name, email: email, phone: phone)
+            
+            UserManager.shared.currentUser = PersonalData(name: name, email: email, phone: phone)
             
             DispatchQueue.main.async {
-                if let data = self.data {
+                if let data = UserManager.shared.currentUser  {
                     var titleChangePhone = "добавить номер"
                     var phone = ""
                     if let _ = data.phone {
@@ -73,11 +71,12 @@ class PersonalPresenter: PersonalViewPresenterProtocol {
     
     func setPhone(phone: String) {
         ref?.child("users/\(userID!)/phone").setValue(phone)
+        UserManager.shared.currentUser?.phone = phone
         view?.updatePhoneLabel(phone: phone)
     }
     
     func needDownload() -> Bool {
-        return data == nil
+        return UserManager.shared.currentUser == nil
     }
     
     func checkPhone(phone: String?){
