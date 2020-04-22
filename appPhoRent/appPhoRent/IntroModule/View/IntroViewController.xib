@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,10 +24,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-nt-RXj">
-                    <rect key="frame" x="147" y="670" width="120" height="100"/>
+                    <rect key="frame" x="100" y="670" width="214" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAV-sv-HLi">
-                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="214" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="LIe-SN-rbb"/>
                             </constraints>
@@ -37,7 +37,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smD-Oj-WRx">
-                            <rect key="frame" x="0.0" y="60" width="120" height="40"/>
+                            <rect key="frame" x="0.0" y="60" width="214" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="di8-fR-IjZ"/>
                             </constraints>
@@ -52,10 +52,10 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="mrk-Gv-rsH" firstAttribute="centerY" secondItem="pF5-vS-vAc" secondAttribute="centerY" id="0bJ-Ey-Esz"/>
+                <constraint firstItem="qEH-nt-RXj" firstAttribute="leading" secondItem="xOH-9E-mPt" secondAttribute="leading" constant="100" id="7I1-bk-dNN"/>
+                <constraint firstItem="xOH-9E-mPt" firstAttribute="trailing" secondItem="qEH-nt-RXj" secondAttribute="trailing" constant="100" id="BYZ-9H-YNH"/>
                 <constraint firstItem="mrk-Gv-rsH" firstAttribute="centerX" secondItem="pF5-vS-vAc" secondAttribute="centerX" id="NZA-Xg-jap"/>
                 <constraint firstItem="xOH-9E-mPt" firstAttribute="bottom" secondItem="qEH-nt-RXj" secondAttribute="bottom" constant="92" id="Qwn-vr-RR9"/>
-                <constraint firstItem="xOH-9E-mPt" firstAttribute="trailing" secondItem="qEH-nt-RXj" secondAttribute="trailing" constant="147" id="ugf-dD-Ywe"/>
-                <constraint firstItem="qEH-nt-RXj" firstAttribute="leading" secondItem="xOH-9E-mPt" secondAttribute="leading" constant="147" id="vrC-JF-T3L"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="xOH-9E-mPt"/>
             <point key="canvasLocation" x="-8074" y="-342"/>

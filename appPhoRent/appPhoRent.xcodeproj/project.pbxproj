@@ -15,6 +15,17 @@
 		28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B937243F97D0002732A5 /* PersonalViewController.swift */; };
 		28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93D243F9877002732A5 /* TabBarPresenter.swift */; };
 		28B1B940243F9881002732A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93F243F9881002732A5 /* TabBarController.swift */; };
+		6C719B36244C72CC00EB5B41 /* RangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B35244C72CC00EB5B41 /* RangePresenter.swift */; };
+		6C719B39244CA25300EB5B41 /* RangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B37244CA25200EB5B41 /* RangeViewController.swift */; };
+		6C719B3A244CA25300EB5B41 /* RangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C719B38244CA25300EB5B41 /* RangeViewController.xib */; };
+		6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */; };
+		6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC52C824507E3200D769A3 /* MainSearchTableViewCell.swift */; };
+		6CCC52CB24507E3200D769A3 /* MainSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCC52C924507E3200D769A3 /* MainSearchTableViewCell.xib */; };
+		6CCC52CE2450B62100D769A3 /* NetWorkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC52CD2450B62100D769A3 /* NetWorkService.swift */; };
+		6CD29CF5244F244E00770217 /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD29CF3244F244E00770217 /* MainSearchViewController.swift */; };
+		6CD29CF6244F244E00770217 /* MainSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD29CF4244F244E00770217 /* MainSearchViewController.xib */; };
+		6CD29CF8244F25B300770217 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD29CF7244F25B300770217 /* Category.swift */; };
+		6CD29CFE244F2C1800770217 /* MainSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD29CFD244F2C1800770217 /* MainSearchPresenter.swift */; };
 		7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA0243A18E6004EA0EB /* Router.swift */; };
 		7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */; };
 		7D09ECAA243A40BE004EA0EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09ECA8243A40BE004EA0EB /* IntroViewController.swift */; };
@@ -47,6 +58,17 @@
 		28B1B93D243F9877002732A5 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		28B1B93F243F9881002732A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.debug.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.debug.xcconfig"; sourceTree = "<group>"; };
+		6C719B35244C72CC00EB5B41 /* RangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangePresenter.swift; sourceTree = "<group>"; };
+		6C719B37244CA25200EB5B41 /* RangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewController.swift; sourceTree = "<group>"; };
+		6C719B38244CA25300EB5B41 /* RangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeViewController.xib; sourceTree = "<group>"; };
+		6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6CCC52C824507E3200D769A3 /* MainSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchTableViewCell.swift; sourceTree = "<group>"; };
+		6CCC52C924507E3200D769A3 /* MainSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchTableViewCell.xib; sourceTree = "<group>"; };
+		6CCC52CD2450B62100D769A3 /* NetWorkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkService.swift; sourceTree = "<group>"; };
+		6CD29CF3244F244E00770217 /* MainSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
+		6CD29CF4244F244E00770217 /* MainSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchViewController.xib; sourceTree = "<group>"; };
+		6CD29CF7244F25B300770217 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		6CD29CFD244F2C1800770217 /* MainSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchPresenter.swift; sourceTree = "<group>"; };
 		7209B28DAFED4280297EAAEC /* Pods-appPhoRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.release.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.release.xcconfig"; sourceTree = "<group>"; };
 		7D09ECA0243A18E6004EA0EB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7D09ECA6243A364B004EA0EB /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -103,8 +125,8 @@
 		28B1B930243F976B002732A5 /* AboutUsModule */ = {
 			isa = PBXGroup;
 			children = (
-				28B1B931243F9779002732A5 /* Presenter */,
 				28B1B932243F9780002732A5 /* View */,
+				28B1B931243F9779002732A5 /* Presenter */,
 			);
 			path = AboutUsModule;
 			sourceTree = "<group>";
@@ -129,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				28B1B93A243F9802002732A5 /* Model */,
-				28B1B93B243F9807002732A5 /* Presenter */,
 				28B1B93C243F9810002732A5 /* View */,
+				28B1B93B243F9807002732A5 /* Presenter */,
 			);
 			path = PersonalModule;
 			sourceTree = "<group>";
@@ -162,8 +184,8 @@
 		28B1B941243F9888002732A5 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
-				28B1B942243F9893002732A5 /* Presenter */,
 				28B1B943243F989C002732A5 /* View */,
+				28B1B942243F9893002732A5 /* Presenter */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -182,6 +204,109 @@
 				28B1B93F243F9881002732A5 /* TabBarController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6C719B2E244C605000EB5B41 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				6C719B30244C60B400EB5B41 /* View */,
+				6C719B2F244C60AB00EB5B41 /* Presenter */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		6C719B2F244C60AB00EB5B41 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6C719B30244C60B400EB5B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C719B31244C60BF00EB5B41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C719B32244C71C900EB5B41 /* RangeModule */ = {
+			isa = PBXGroup;
+			children = (
+				6C719B31244C60BF00EB5B41 /* Model */,
+				6C719B33244C722700EB5B41 /* View */,
+				6C719B34244C723100EB5B41 /* Presenter */,
+			);
+			path = RangeModule;
+			sourceTree = "<group>";
+		};
+		6C719B33244C722700EB5B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */,
+				6C719B37244CA25200EB5B41 /* RangeViewController.swift */,
+				6C719B38244CA25300EB5B41 /* RangeViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C719B34244C723100EB5B41 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6C719B35244C72CC00EB5B41 /* RangePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6CCC52CC2450B60900D769A3 /* NetWorkService */ = {
+			isa = PBXGroup;
+			children = (
+				6CCC52CD2450B62100D769A3 /* NetWorkService.swift */,
+			);
+			path = NetWorkService;
+			sourceTree = "<group>";
+		};
+		6CD29CE7244F230500770217 /* MainSearchModule */ = {
+			isa = PBXGroup;
+			children = (
+				6CD29CE8244F232C00770217 /* Model */,
+				6CD29CE9244F233B00770217 /* View */,
+				6CD29CEA244F234700770217 /* Presenter */,
+			);
+			path = MainSearchModule;
+			sourceTree = "<group>";
+		};
+		6CD29CE8244F232C00770217 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6CD29CF7244F25B300770217 /* Category.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6CD29CE9244F233B00770217 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6CD29CF3244F244E00770217 /* MainSearchViewController.swift */,
+				6CD29CF4244F244E00770217 /* MainSearchViewController.xib */,
+				6CCC52C824507E3200D769A3 /* MainSearchTableViewCell.swift */,
+				6CCC52C924507E3200D769A3 /* MainSearchTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6CD29CEA244F234700770217 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6CD29CFD244F2C1800770217 /* MainSearchPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		7C431A1AA50190332932471A /* Pods */ = {
@@ -224,6 +349,10 @@
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				6CCC52CC2450B60900D769A3 /* NetWorkService */,
+				6CD29CE7244F230500770217 /* MainSearchModule */,
+				6C719B32244C71C900EB5B41 /* RangeModule */,
+				6C719B2E244C605000EB5B41 /* DetailModule */,
 				28B1B941243F9888002732A5 /* TabBarModule */,
 				28B1B939243F97F8002732A5 /* PersonalModule */,
 				28B1B930243F976B002732A5 /* AboutUsModule */,
@@ -238,8 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				7D5BAAF02433D370003F3D41 /* Model */,
-				7D5BAAF12433D378003F3D41 /* Presenter */,
 				7D5BAAEF2433D369003F3D41 /* View */,
+				7D5BAAF12433D378003F3D41 /* Presenter */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
@@ -275,9 +404,9 @@
 		7D87C1FD2434CE8A0060C670 /* IntroModule */ = {
 			isa = PBXGroup;
 			children = (
-				7D87C2002434CEB60060C670 /* Presenter */,
 				7D87C1FF2434CEAE0060C670 /* Model */,
 				7D87C1FE2434CEA70060C670 /* View */,
+				7D87C2002434CEB60060C670 /* Presenter */,
 			);
 			path = IntroModule;
 			sourceTree = "<group>";
@@ -370,8 +499,11 @@
 				7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */,
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
+				6C719B3A244CA25300EB5B41 /* RangeViewController.xib in Resources */,
 				7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */,
 				7D87C1F42434C9B40060C670 /* LoginViewController.xib in Resources */,
+				6CD29CF6244F244E00770217 /* MainSearchViewController.xib in Resources */,
+				6CCC52CB24507E3200D769A3 /* MainSearchTableViewCell.xib in Resources */,
 				7D87C1F82434C9CA0060C670 /* SignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,16 +559,24 @@
 			files = (
 				7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */,
 				7D87C1F32434C9B40060C670 /* LoginViewController.swift in Sources */,
+				6C719B39244CA25300EB5B41 /* RangeViewController.swift in Sources */,
+				6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */,
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
+				6C719B36244C72CC00EB5B41 /* RangePresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
+				6CD29CFE244F2C1800770217 /* MainSearchPresenter.swift in Sources */,
 				28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */,
 				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
 				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
+				6CD29CF5244F244E00770217 /* MainSearchViewController.swift in Sources */,
+				6CCC52CE2450B62100D769A3 /* NetWorkService.swift in Sources */,
 				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
+				6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
+				6CD29CF8244F25B300770217 /* Category.swift in Sources */,
 				28B1B940243F9881002732A5 /* TabBarController.swift in Sources */,
 				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
 				28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */,

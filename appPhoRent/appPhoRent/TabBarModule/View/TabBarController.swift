@@ -11,15 +11,20 @@ import UIKit
 class TabBarController: UITabBarController {
     
     var presenter: TabBarPresenterProtocol!
+    let networkSevice = NetworkService()
     
     override func viewWillAppear(_ animated: Bool) {
         
         let firstViewController = PersonalViewController()
-        let presenterVC = PersonalPresenter(view: firstViewController, router: self.presenter.router!)
-        firstViewController.presenter = presenterVC
+        let firstPresenterVC = PersonalPresenter(view: firstViewController, router: self.presenter.router!)
+        firstViewController.presenter = firstPresenterVC
         firstViewController.view.backgroundColor = .white
         
-        let secondViewController = UIViewController()
+        let secondViewController = MainSearchViewController()
+        let secondPresenterVC = MainSearchPresenter(view: secondViewController, router: self.presenter.router!, networkService: networkSevice)
+        secondViewController.presenter = secondPresenterVC
+        secondViewController.view.backgroundColor = .blue
+        
         let thirdViewController = UIViewController()
         
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)

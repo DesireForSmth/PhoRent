@@ -20,6 +20,7 @@ protocol AssemblyBuilderProtocol {
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
+ 
     func createSignUpModule(router: RouterProtocol) -> UIViewController {
         let view = SignUpViewController()
         let presenter = SignUpPresenter(view: view, router: router)
@@ -53,14 +54,13 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createAboutUsModule(router: RouterProtocol) -> UIViewController {
-        
         let view = AboutUsViewController()
         let presenter = AboutUsPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }
     
-    
+
     /*
      func createAuthModule(router: RouterProtocol) -> UIViewController {
      let view = NewAuthViewController()
