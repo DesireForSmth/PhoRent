@@ -41,11 +41,17 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createContentModule(router: RouterProtocol) -> UIViewController {
+        
+        
+        
 
         let view = TabBarController()
         let presenter = TabBarPresenter(view: view, router: router)
         view.presenter = presenter
         return view
+        
+        
+        
         //           let view = ContentViewController()
         //           let presenter = ContentPresenter(view: view, router: router)
         //           view.presenter = presenter

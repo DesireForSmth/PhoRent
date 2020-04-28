@@ -14,13 +14,28 @@ class TabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
+//        let centerNavigationController = UINavigationController(rootViewController: centerViewController)
+//        view.addSubview(centerNavigationController.view)
+//        addChild(centerNavigationController)
+//
+//        centerNavigationController.didMove(toParent: self)
+        
+        
+        
+        
         let firstViewController = PersonalViewController()
         let presenterVC = PersonalPresenter(view: firstViewController, router: self.presenter.router!)
         firstViewController.presenter = presenterVC
         firstViewController.view.backgroundColor = .white
         
         let secondViewController = UIViewController()
-        let thirdViewController = UIViewController()
+        
+        let thirdViewController = BasketViewController()
+        thirdViewController.navigationController?.setNavigationBarHidden(false, animated: true)
+        let presenterThird = BasketPresenter(view: thirdViewController, router: self.presenter.router!)
+        thirdViewController.presenter = presenterThird
+        thirdViewController.view.backgroundColor = .lightGray
         
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)

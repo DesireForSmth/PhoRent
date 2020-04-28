@@ -17,6 +17,4 @@ class UserManager {
     static let shared = UserManager()
     var currentUser: PersonalData?
     private init() {}
-    
-    
 }

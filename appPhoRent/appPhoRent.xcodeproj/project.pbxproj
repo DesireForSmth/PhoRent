@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28093A742450CBFF00460037 /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28093A732450CBFF00460037 /* BasketPresenter.swift */; };
+		28093A7A2450CC9100460037 /* BacketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28093A792450CC9100460037 /* BacketViewController.swift */; };
+		2812A97824534E6000DAF4F5 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812A97624534E6000DAF4F5 /* BasketTableViewCell.swift */; };
+		2812A97924534E6000DAF4F5 /* BasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2812A97724534E6000DAF4F5 /* BasketTableViewCell.xib */; };
+		2812A97B24561FEF00DAF4F5 /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812A97A24561FEF00DAF4F5 /* BasketItem.swift */; };
 		28B1B92A243F9732002732A5 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B929243F9732002732A5 /* Constraints.swift */; };
 		28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */; };
 		28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92E243F9767002732A5 /* AboutUsViewController.swift */; };
@@ -38,6 +43,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28093A732450CBFF00460037 /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
+		28093A792450CC9100460037 /* BacketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacketViewController.swift; sourceTree = "<group>"; };
+		2812A97624534E6000DAF4F5 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		2812A97724534E6000DAF4F5 /* BasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketTableViewCell.xib; sourceTree = "<group>"; };
+		2812A97A24561FEF00DAF4F5 /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
 		28B1B929243F9732002732A5 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsPresenter.swift; sourceTree = "<group>"; };
 		28B1B92E243F9767002732A5 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +100,42 @@
 				7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28093A762450CC1300460037 /* BasketModule */ = {
+			isa = PBXGroup;
+			children = (
+				2812A97C24561FF700DAF4F5 /* Model */,
+				28093A772450CC3000460037 /* Presenter */,
+				28093A782450CC4000460037 /* View */,
+			);
+			path = BasketModule;
+			sourceTree = "<group>";
+		};
+		28093A772450CC3000460037 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				28093A732450CBFF00460037 /* BasketPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		28093A782450CC4000460037 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28093A792450CC9100460037 /* BacketViewController.swift */,
+				2812A97624534E6000DAF4F5 /* BasketTableViewCell.swift */,
+				2812A97724534E6000DAF4F5 /* BasketTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2812A97C24561FF700DAF4F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2812A97A24561FEF00DAF4F5 /* BasketItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		28B1B92B243F973C002732A5 /* Structs */ = {
@@ -224,6 +270,7 @@
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				28093A762450CC1300460037 /* BasketModule */,
 				28B1B941243F9888002732A5 /* TabBarModule */,
 				28B1B939243F97F8002732A5 /* PersonalModule */,
 				28B1B930243F976B002732A5 /* AboutUsModule */,
@@ -371,6 +418,7 @@
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
 				7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */,
+				2812A97924534E6000DAF4F5 /* BasketTableViewCell.xib in Resources */,
 				7D87C1F42434C9B40060C670 /* LoginViewController.xib in Resources */,
 				7D87C1F82434C9CA0060C670 /* SignUpViewController.xib in Resources */,
 			);
@@ -434,14 +482,18 @@
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
 				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
+				28093A742450CBFF00460037 /* BasketPresenter.swift in Sources */,
 				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
 				28B1B940243F9881002732A5 /* TabBarController.swift in Sources */,
 				7D0B1977242AD3EE0058593F /* AppDelegate.swift in Sources */,
 				28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */,
+				28093A7A2450CC9100460037 /* BacketViewController.swift in Sources */,
+				2812A97824534E6000DAF4F5 /* BasketTableViewCell.swift in Sources */,
 				28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */,
 				7D87C1F72434C9CA0060C670 /* SignUpViewController.swift in Sources */,
+				2812A97B24561FEF00DAF4F5 /* BasketItem.swift in Sources */,
 				7D0B1979242AD3EE0058593F /* SceneDelegate.swift in Sources */,
 				28B1B936243F97C3002732A5 /* PersonalPresenter.swift in Sources */,
 				7D09ECAA243A40BE004EA0EB /* IntroViewController.swift in Sources */,
