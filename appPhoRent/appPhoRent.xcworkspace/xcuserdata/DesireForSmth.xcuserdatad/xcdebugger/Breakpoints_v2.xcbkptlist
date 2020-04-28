@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "sceneDidDisconnect(_:)"
+            landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "sceneDidBecomeActive(_:)"
+            landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -48,70 +48,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "AssemblyModuleBuilder"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "41142DC3-568D-40C1-9EB3-A6AB184E35D1 - a5e8358635cd2dc6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.AssemblyModuleBuilder.__allocating_init() -&gt; appPhoRent.AssemblyModuleBuilder"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ModuleBuilder.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "14">
-               </Location>
-               <Location
-                  uuid = "41142DC3-568D-40C1-9EB3-A6AB184E35D1 - 419e8d60da736a0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.AssemblyModuleBuilder.init() -&gt; appPhoRent.AssemblyModuleBuilder"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ModuleBuilder.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "41142DC3-568D-40C1-9EB3-A6AB184E35D1 - 9a90ea22b6d56d01"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.AssemblyModuleBuilder.deinit"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ModuleBuilder.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "41142DC3-568D-40C1-9EB3-A6AB184E35D1 - 3cce2db10b872dee"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.AssemblyModuleBuilder.__deallocating_deinit"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ModuleBuilder.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            landmarkName = "AssemblyBuilderProtocol"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "createIntroModule(router:)"
+            landmarkName = "createSignUpModule(router:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "createIntroModule(router:)"
+            landmarkName = "createSignUpModule(router:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "createIntroModule(router:)"
-            landmarkType = "7">
+            landmarkName = "AssemblyModuleBuilder"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -272,38 +210,6 @@
             endingLineNumber = "35"
             landmarkName = "logOut()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FAB27A35-B215-49F2-A3D5-010CD803D574 - 83888cd0162743e3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.ContentPresenter.logOut() -&gt; ()"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ContentModule/Presenter/ContentPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "490">
-               </Location>
-               <Location
-                  uuid = "FAB27A35-B215-49F2-A3D5-010CD803D574 - 83888cd0162743e3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "appPhoRent.ContentPresenter.logOut() -&gt; ()"
-                  moduleName = "appPhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/ContentModule/Presenter/ContentPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "866">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -318,7 +224,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "success()"
+            landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -334,8 +240,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "openPasswordDrop()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -350,7 +256,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "popToRoot()"
+            landmarkName = "showContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -366,7 +272,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "popToRoot()"
+            landmarkName = "showAboutUs()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -450,14 +356,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9F1E13C6-B4BC-4597-835B-549396064FE6 - c7eb8ad42cb1f009"
+                  uuid = "9F1E13C6-B4BC-4597-835B-549396064FE6 - 2f6d33a30a8ba306"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "appPhoRent.IntroPresenter.checkSignedIn() -&gt; ()"
                   moduleName = "appPhoRent"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/IntroModule/Presenter/IntroPresenter.swift"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/IntroModule/Presenter/IntroPresenter.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -465,14 +371,14 @@
                   offsetFromSymbolStart = "20">
                </Location>
                <Location
-                  uuid = "9F1E13C6-B4BC-4597-835B-549396064FE6 - 90fa13c7eafb1071"
+                  uuid = "9F1E13C6-B4BC-4597-835B-549396064FE6 - 787caab0ccc1437e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (__C.FIRAuth, Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in appPhoRent.IntroPresenter.checkSignedIn() -&gt; ()"
                   moduleName = "appPhoRent"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/PhoRentMy/appPhoRent/appPhoRent/IntroModule/Presenter/IntroPresenter.swift"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/IntroModule/Presenter/IntroPresenter.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -623,6 +529,150 @@
             startingLineNumber = "38"
             endingLineNumber = "38"
             landmarkName = "logOut()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85B6A51D-89D2-41E2-BA1C-1CC0583420BA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "passwordDrop(email:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F797917C-CFA2-4373-80AC-383B857CBAB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "passwordDrop(email:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9460D227-2D93-4995-993B-1AE1D7DBE668"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "passwordDrop(email:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D77CAB4-C0D1-4722-BA6F-1751F6A79E2A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "passwordDrop(email:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2D77CAB4-C0D1-4722-BA6F-1751F6A79E2A - 4faf74e8b75c8243"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "appPhoRent.PasswordDropPresenter.passwordDrop(email: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "appPhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "225">
+               </Location>
+               <Location
+                  uuid = "2D77CAB4-C0D1-4722-BA6F-1751F6A79E2A - 441fc95a86e549c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in appPhoRent.PasswordDropPresenter.passwordDrop(email: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "appPhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7B8B6EC-D31F-47FF-8FCC-4A00D8F41BDA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "showAuthError()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6526170-DDC5-4311-86D8-BA48E583220C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "failure(error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "053E6D01-0E10-41BA-80DB-C5C69D27E123"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "failure(error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

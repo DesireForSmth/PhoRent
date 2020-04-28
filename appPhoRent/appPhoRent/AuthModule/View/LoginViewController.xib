@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fI9-0c-qUc">
-                    <rect key="frame" x="40" y="144" width="334" height="200.5"/>
+                    <rect key="frame" x="40" y="144" width="334" height="250.5"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfl-Qm-yya">
                             <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -55,17 +55,41 @@
                             <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4S-tk-WXY">
+                            <rect key="frame" x="0.0" y="220.5" width="334" height="30"/>
+                            <state key="normal" title="Забыли пароль?"/>
+                            <connections>
+                                <action selector="passwordDropAction:" destination="-1" eventType="touchUpInside" id="kyN-rs-sIm"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Shx-Az-bEl" firstAttribute="height" secondItem="zfl-Qm-yya" secondAttribute="height" id="bKo-Qg-f6Z"/>
                     </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOI-4t-eOh">
+                    <rect key="frame" x="182" y="81" width="50" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkl-8z-0of">
+                    <rect key="frame" x="20" y="64" width="45" height="30"/>
+                    <state key="normal" title="Назад"/>
+                    <connections>
+                        <action selector="nextAction:" destination="-1" eventType="touchUpInside" id="zEA-Wr-0dx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="NOI-4t-eOh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="0HQ-su-OXc"/>
                 <constraint firstItem="fI9-0c-qUc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="631-qq-lNk"/>
                 <constraint firstItem="fI9-0c-qUc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="HTz-6T-WQI"/>
+                <constraint firstItem="NOI-4t-eOh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PnU-dJ-lQs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fI9-0c-qUc" secondAttribute="trailing" constant="40" id="gR2-q4-NPk"/>
+                <constraint firstItem="Gkl-8z-0of" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="qxn-ar-jLu"/>
+                <constraint firstItem="Gkl-8z-0of" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="teP-PU-3fv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="106"/>
