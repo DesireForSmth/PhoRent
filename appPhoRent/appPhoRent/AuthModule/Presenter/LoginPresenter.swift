@@ -27,6 +27,7 @@ protocol LoginViewPreseneterProtocol: class {
     init (view: LoginViewProtocol, router: RouterProtocol)
     func signIn(email: String, password: String)
     func pop()
+    func openPasswordDrop()
 }
 
 class LoginPresenter: LoginViewPreseneterProtocol {
@@ -48,7 +49,9 @@ class LoginPresenter: LoginViewPreseneterProtocol {
             }
         }
     }
-    
+    func openPasswordDrop() {
+        router?.showPasswordDrop()
+    }
     func pop(){
         router?.popToRoot()
     }

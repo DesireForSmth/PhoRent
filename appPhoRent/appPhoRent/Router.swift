@@ -20,6 +20,7 @@ protocol RouterProtocol: RouterMain {
     func popToRoot()
     func showContent()
     func showAboutUs()
+    func showPasswordDrop()
 }
 
 class Router: RouterProtocol {
@@ -64,6 +65,13 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let aboutUsViewController = assemblyBuilder?.createAboutUsModule(router: self) else { return }
             navigationController.present(aboutUsViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func showPasswordDrop() {
+        if let navigationController = navigationController {
+            guard let passwordDropViewController = assemblyBuilder?.createPasswordDropModule(router: self) else { return }
+            navigationController.pushViewController(passwordDropViewController, animated: true)
         }
     }
     

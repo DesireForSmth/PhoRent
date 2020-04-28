@@ -62,11 +62,28 @@
                         <constraint firstItem="AD1-gj-uUf" firstAttribute="height" secondItem="KIk-oh-A1j" secondAttribute="height" id="yVA-Rb-Xpy"/>
                     </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создать учетную запись" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-oe-lua">
+                    <rect key="frame" x="84" y="81" width="246.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J2-Xk-RgB">
+                    <rect key="frame" x="20" y="64" width="45" height="30"/>
+                    <state key="normal" title="Назад"/>
+                    <connections>
+                        <action selector="exitAction:" destination="-1" eventType="touchUpInside" id="13z-r0-GNZ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="g9g-oe-lua" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="7kR-sN-Jaj"/>
+                <constraint firstItem="g9g-oe-lua" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aTU-2n-WYP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iJU-ag-xCc" secondAttribute="trailing" constant="40" id="cgS-O9-Ukx"/>
+                <constraint firstItem="5J2-Xk-RgB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="nx4-6Y-yte"/>
                 <constraint firstItem="iJU-ag-xCc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="tOq-Kx-zIv"/>
+                <constraint firstItem="5J2-Xk-RgB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tkT-Vb-roy"/>
                 <constraint firstItem="iJU-ag-xCc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="xEV-1g-rFo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -19,6 +19,14 @@ class LoginViewController: UIViewController {
     var email: String = ""
     var password: String = ""
     
+    @IBAction func nextAction(_ sender: Any) {
+        presenter.pop()
+    }
+    
+    @IBAction func passwordDropAction(_ sender: Any) {
+        presenter.openPasswordDrop()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0

@@ -21,6 +21,9 @@ class SignUpViewController: UIViewController {
     var email: String = ""
     var password: String = ""
     
+    @IBAction func exitAction(_ sender: Any) {
+        presenter.pop()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
