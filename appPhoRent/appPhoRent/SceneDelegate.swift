@@ -9,6 +9,12 @@
 import UIKit
 import FirebaseAuth
 
+protocol SceneDelegateProtocol: class {
+    func changeRootViewController(controller: UIViewController)
+    func openAuth()
+    func openContent()
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -26,9 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
+        //let tabBarController = TabBarController()
         let navigationController = UINavigationController()
         let assemblyBuilder = AssemblyModuleBuilder()
-        let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
+        let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder, sceneDelegate: self)
         router.initialViewController()
         
         window?.rootViewController = navigationController
@@ -69,3 +76,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate: SceneDelegateProtocol {
+    func changeRootViewController(controller: UIViewController) {
+        self.window?.rootViewController = nil
+        self.window?.rootViewController = controller
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func openAuth() {
+        let navigationController = UINavigationController()
+        let assemblyBuilder = AssemblyModuleBuilder()
+        let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder, sceneDelegate: self)
+        router.initialViewController()
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+    func openContent() {
+        let tabBarController = TabBarController()
+        let tabBarPresenter = TabBarPresenter(view: tabBarController, scene: self)
+        tabBarController.presenter = tabBarPresenter
+        //let assemblyBuilder = AssemblyModuleBuilder()
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+    }
+}

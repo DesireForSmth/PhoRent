@@ -9,10 +9,13 @@
 import Foundation
 
 struct Category {
-    init(name: String, imageName: String) {
+    init(name: String, imageName: String, ID: String) {
         self.name = name
         self.imageName = imageName
+        self.ID = ID
     }
     var name: String
     var imageName: String
+    var ID: String
 }
+
