@@ -7,20 +7,41 @@
 //
 
 protocol TabBarViewProtocol: class {
+    
 }
 
 protocol TabBarPresenterProtocol: class {
-    init(view: TabBarViewProtocol, router: RouterProtocol)
-    var router: RouterProtocol? {get set}
+    init(view: TabBarViewProtocol, scene: SceneDelegateProtocol/*, router: RouterProtocol*/)
+    func getScene() -> SceneDelegateProtocol
+    //var router1: RouterProtocol? {get set}
+    //var router2: RouterProtocol? {get set}
+    //var router3: RouterProtocol? {get set}
+    //var router: RouterProtocol? {get set}
 }
 
 
 class TabBarPresenter: TabBarPresenterProtocol {
+    
+    weak var scene: SceneDelegateProtocol?
+    
+    //var router1: RouterProtocol?
+    
+    //var router2: RouterProtocol?
+    
+    //var router3: RouterProtocol?
+    
+    //var router: RouterProtocol?
+    
     weak var view: TabBarViewProtocol?
-    var router: RouterProtocol?
 
-    required init(view: TabBarViewProtocol, router: RouterProtocol) {
+    func getScene() -> SceneDelegateProtocol {
+        return self.scene as! SceneDelegateProtocol
+    }
+    
+    required init(view: TabBarViewProtocol, scene: SceneDelegateProtocol/*, router: RouterProtocol*/) {
+        print(scene)
         self.view = view
-        self.router = router
+        self.scene = scene
+        //self.router = router
     }
 }

@@ -100,6 +100,6 @@ class PersonalPresenter: PersonalPresenterProtocol {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        router?.popToRoot()
+        router?.logOut()
     }
 }

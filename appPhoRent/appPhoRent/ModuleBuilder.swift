@@ -16,11 +16,19 @@ protocol AssemblyBuilderProtocol {
     func createSignUpModule(router: RouterProtocol) -> UIViewController
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
+    func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController
     //func createAuthModule(router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
- 
+    
+    func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController {
+        let view = CategoryViewController()
+        let presenter = CategoryPresenter(view: view, router: router, categoryName: categoryName)
+        view.presenter = presenter
+        return view
+    }
+    
     func createSignUpModule(router: RouterProtocol) -> UIViewController {
         let view = SignUpViewController()
         let presenter = SignUpPresenter(view: view, router: router)
@@ -42,10 +50,10 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createContentModule(router: RouterProtocol) -> UIViewController {
-
+        
         let view = TabBarController()
-        let presenter = TabBarPresenter(view: view, router: router)
-        view.presenter = presenter
+        //let presenter = TabBarPresenter(view: view, router: router)
+        //view.presenter = presenter
         return view
         //           let view = ContentViewController()
         //           let presenter = ContentPresenter(view: view, router: router)

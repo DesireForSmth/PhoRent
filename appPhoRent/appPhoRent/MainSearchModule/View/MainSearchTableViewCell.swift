@@ -15,6 +15,7 @@ class MainSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryName: UILabel!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,8 +23,8 @@ class MainSearchTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        //print(self.categoryName.text ?? "Error")
+        
         // Configure the view for the selected state
     }
-    
 }

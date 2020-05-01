@@ -24,14 +24,26 @@ class NetworkService: NetWorkServiceProtocol {
             do {
                 var obj = [Category]()
             for document in querySnapshot!.documents {
-                let category = Category(name: document.get("categoryName") as! String, imageName: (document.get("imageURL") as? String)!)
+                let category = Category(name: document.get("categoryName") as! String, imageName: (document.get("imageURL") as? String)!, ID: document.documentID )
                 obj.append(category)
                              }
                 completion(.success(obj))
             } catch {
                 completion(.failure(error))
-    }
+            }
     
-}
-}
+        }
+    }
+    /*
+    func getCategory(completion: @escaping (Result<[Item]?, Error>) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("categories").getDocu { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+        }
+    }
+    */
 }
