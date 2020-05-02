@@ -25,6 +25,8 @@ class CategoryView: CategoryViewProtocol {
 protocol CategoryViewPresenterProtocol: class {
     init (view: CategoryViewProtocol, router: RouterProtocol, categoryName: String)
     func getCategory() -> String
+    func filtersPicked()
+    func pop()
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
@@ -40,7 +42,17 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     }
     
     func getCategory() -> String{
-        return categoryName!
+        guard let categoryName = self.categoryName else { return "" }
+        return categoryName
+    }
+    
+    func filtersPicked() {
+        print("I'm in")
+        self.router?.showFilters()
+    }
+    
+    func pop() {
+        self.router?.popToRoot()
     }
     
 }
