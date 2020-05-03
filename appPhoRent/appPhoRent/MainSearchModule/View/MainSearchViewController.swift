@@ -18,10 +18,9 @@ class MainSearchViewController: UIViewController {
     var presenter: MainSearchPresenterProtocol!
     
     override func viewDidLoad() {
-        print("loaded")
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 100
+        tableView.rowHeight = 60
         navBar.topItem?.title = "Search"
     }
     /*
@@ -37,6 +36,7 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainSearchTableViewCell
         
         let categoryName = presenter.categories?[indexPath.item].name

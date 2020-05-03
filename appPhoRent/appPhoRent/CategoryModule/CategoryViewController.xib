@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryViewController" customModule="appPhoRent" customModuleProvider="target">
             <connections>
                 <outlet property="navigationBar" destination="bcF-ol-SPT" id="zwU-cr-okJ"/>
+                <outlet property="tableView" destination="szq-h8-giV" id="s5b-tF-hLO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +23,12 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <items>
                         <navigationItem title="Title" id="nFh-wK-WTZ">
-                            <barButtonItem key="rightBarButtonItem" title="Фильтры" id="rvz-4u-MDQ">
+                            <barButtonItem key="leftBarButtonItem" title="Назад" image="arrow.left" catalog="system" id="wdv-tN-SsB">
+                                <connections>
+                                    <action selector="backTapped:" destination="-1" id="LKL-ig-yeQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Фильтры" image="line.horizontal.3" catalog="system" landscapeImage="line.horizontal.3" largeContentSizeImage="line.horizontal.3" id="rvz-4u-MDQ">
                                 <connections>
                                     <action selector="filtersTapped:" destination="-1" id="gU5-aP-T9e"/>
                                 </connections>
@@ -51,4 +57,8 @@
             <point key="canvasLocation" x="139" y="108"/>
         </view>
     </objects>
+    <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+    </resources>
 </document>
