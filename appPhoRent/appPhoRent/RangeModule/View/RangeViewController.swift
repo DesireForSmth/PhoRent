@@ -9,28 +9,30 @@
 import UIKit
 
 class RangeViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
+    var presenter: RangePresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        presenter.getCategory()
+}
+    @IBAction func tapBackButton(_ sender: Any) {
+        presenter.tapBack()
     }
-
     
-   
-
 }
 
-
-//extension RangeViewController: UICollectionViewDataSource{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 2
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-//        
-//    }
-//    
-//    
-//}
+extension RangeViewController: RangeViewProtocol{
+    func success() {
+        <#code#>
+    }
+    
+    func failure(error: Error) {
+        <#code#>
+    }
+    
+    
+}

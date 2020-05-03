@@ -7,23 +7,21 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 protocol MainSearchViewProtocol: class {
     func success()
     func failure(error: Error)
-    //func dismissTable()
 }
 
 protocol MainSearchPresenterProtocol: class {
     init(view: MainSearchViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     func getCategories()
+    func tapOnCategory(category: Category?)
     var categories: [Category]? {get}
-    func cellPicked(categoryName: String)
 }
 
 class MainSearchPresenter: MainSearchPresenterProtocol {
-
+    
     var categories: [Category]?
     weak var view: MainSearchViewProtocol?
     var router: RouterProtocol?
@@ -44,21 +42,18 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
                 case .success(let categories):
                     self.categories = categories
                 case .failure(let error):
-                    self.view?.failure(error: error )
+                    self.view?.failure(error: error)
                 }
             }
         }
     }
-    
-    func cellPicked(categoryName: String) {
-        self.router?.showCategoryPage(categoryName: categoryName)
-        //self.view?.dismissTable()
+    func tapOnCategory(category: Category?) {
+        guard let category = category else {
+            assertionFailure("Ошибка доступа к категории")
+            return
+        }
+        router?.showCategory(category: category)
     }
-    /*
-    func filtersTapped() {
-        
-    }
-    */
 }
        
 

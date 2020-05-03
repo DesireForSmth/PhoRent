@@ -17,6 +17,8 @@ protocol AssemblyBuilderProtocol {
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
     func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController
+    func createRangeModule(router: RouterProtocol, category: Category?) -> UIViewController
+    func createMainSearchModule(router: RouterProtocol) -> UIViewController
     //func createAuthModule(router: RouterProtocol) -> UIViewController
 }
 
@@ -71,6 +73,26 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController {
         let view = PasswordDropViewController()
         let presenter = PasswordDropPresenter(view: view, router: router)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createMainSearchModule(router: RouterProtocol) -> UIViewController {
+        let networkSevice = NetworkService()
+        let view = MainSearchViewController()
+        let presenter = MainSearchPresenter(view: view, router: router, networkService: networkSevice)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createRangeModule(router: RouterProtocol, category: Category?) -> UIViewController {
+        let networkSevice = NetworkService()
+        let view = RangeViewController()
+        guard let category = category else {
+            assertionFailure("Невозможно достать категорию")
+            return createMainSearchModule(router: router)
+        }
+        let presenter = RangePresenter(view: view, router: router, networkService: networkSevice, category: category)
         view.presenter = presenter
         return view
     }

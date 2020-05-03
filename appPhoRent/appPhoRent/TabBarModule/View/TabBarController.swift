@@ -56,6 +56,7 @@ class TabBarController: UITabBarController {
         let secondRouter = Router(navigationController: secondNavigationController, assemblyBuilder: secondAssemblyBuilder, sceneDelegate: self.presenter.getScene())
         let secondPresenterVC = MainSearchPresenter(view: secondViewController, router: secondRouter, networkService: networkSevice)
         secondViewController.presenter = secondPresenterVC
+        navigationController?.viewControllers = [secondViewController]
         
         let thirdViewController = UIViewController()
         let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)

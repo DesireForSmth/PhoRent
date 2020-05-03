@@ -23,6 +23,7 @@ protocol RouterProtocol: RouterMain {
     func showPasswordDrop()
     func showCategoryPage(categoryName: String)
     func logOut()
+    func showCategory(category: Category)
 }
 
 class Router: RouterProtocol {
@@ -55,6 +56,13 @@ class Router: RouterProtocol {
             guard let loginViewController = assemblyBuilder?.createLoginModule(router: self) else { return }
             navigationController.pushViewController(loginViewController, animated: true)
         }
+    }
+    
+    func showCategory(category: Category) {
+        if let navigationController = navigationController {
+            guard let RangeViewController = assemblyBuilder?.createRangeModule(router: self, category: category ) else { return }
+            navigationController.pushViewController(RangeViewController, animated: true)
+        } 
     }
     
     func showSignUp() {

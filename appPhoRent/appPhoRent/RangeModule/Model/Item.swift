@@ -10,13 +10,16 @@ import Foundation
 
 struct Item {
     var name: String
-    var cost: UInt
+    var cost: String
     var manufacturer: String
     var imageURL: String
-    init (name: String, cost: UInt, manufacturer: String, imageURL: String) {
+    var count: UInt
+    
+    init (name: String, cost: String, manufacturer: String, imageURL: String, count: UInt) {
         self.name = name
         self.cost = cost
         self.manufacturer = manufacturer
         self.imageURL = imageURL
+        self.count = count
     }
 }
