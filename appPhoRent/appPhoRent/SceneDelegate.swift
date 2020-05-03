@@ -92,6 +92,7 @@ extension SceneDelegate: SceneDelegateProtocol {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+    
     func openContent() {
         let tabBarController = TabBarController()
         let tabBarPresenter = TabBarPresenter(view: tabBarController, scene: self)

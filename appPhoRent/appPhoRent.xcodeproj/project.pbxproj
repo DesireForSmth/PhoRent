@@ -49,6 +49,8 @@
 		7D87C1F72434C9CA0060C670 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D87C1F52434C9CA0060C670 /* SignUpViewController.swift */; };
 		7D87C1F82434C9CA0060C670 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D87C1F62434C9CA0060C670 /* SignUpViewController.xib */; };
 		7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D87C2012434CF9E0060C670 /* IntroPresenter.swift */; };
+		7D9E8B26245F1A4B006B57C1 /* ItemCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E8B24245F1A4B006B57C1 /* ItemCellViewController.swift */; };
+		7D9E8B27245F1A4B006B57C1 /* ItemCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9E8B25245F1A4B006B57C1 /* ItemCellViewController.xib */; };
 		7DB291E4245C62DC009732A8 /* TabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DB291E3245C62DC009732A8 /* TabBarController.xib */; };
 		7DD3DE3F24581464009A99E7 /* PasswordDropPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3DE3E24581464009A99E7 /* PasswordDropPresenter.swift */; };
 		7DD3DE4224581607009A99E7 /* PasswordDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3DE4024581607009A99E7 /* PasswordDropViewController.swift */; };
@@ -103,6 +105,8 @@
 		7D87C1F52434C9CA0060C670 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7D87C1F62434C9CA0060C670 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		7D87C2012434CF9E0060C670 /* IntroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenter.swift; sourceTree = "<group>"; };
+		7D9E8B24245F1A4B006B57C1 /* ItemCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewController.swift; sourceTree = "<group>"; };
+		7D9E8B25245F1A4B006B57C1 /* ItemCellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCellViewController.xib; sourceTree = "<group>"; };
 		7DB291E3245C62DC009732A8 /* TabBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarController.xib; sourceTree = "<group>"; };
 		7DD3DE3E24581464009A99E7 /* PasswordDropPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDropPresenter.swift; sourceTree = "<group>"; };
 		7DD3DE4024581607009A99E7 /* PasswordDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDropViewController.swift; sourceTree = "<group>"; };
@@ -365,8 +369,8 @@
 				7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */,
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
-				7DB291E2245C57FF009732A8 /* CategoryModule */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				7DB291E2245C57FF009732A8 /* CategoryModule */,
 				6CCC52CC2450B60900D769A3 /* NetWorkService */,
 				6CD29CE7244F230500770217 /* MainSearchModule */,
 				6C719B32244C71C900EB5B41 /* RangeModule */,
@@ -377,7 +381,6 @@
 				28B1B92B243F973C002732A5 /* Structs */,
 				7D5BAAEB2433D29A003F3D41 /* AuthModule */,
 				7D87C1FD2434CE8A0060C670 /* IntroModule */,
-				7D454136245B621000A7F4A0 /* Item.swift */,
 			);
 			path = appPhoRent;
 			sourceTree = "<group>";
@@ -460,8 +463,11 @@
 		7DB291E2245C57FF009732A8 /* CategoryModule */ = {
 			isa = PBXGroup;
 			children = (
+				7D454136245B621000A7F4A0 /* Item.swift */,
 				7D454138245B6D6600A7F4A0 /* CategoryViewController.swift */,
 				7D454139245B6D6600A7F4A0 /* CategoryViewController.xib */,
+				7D9E8B24245F1A4B006B57C1 /* ItemCellViewController.swift */,
+				7D9E8B25245F1A4B006B57C1 /* ItemCellViewController.xib */,
 				7D45413C245B6D9000A7F4A0 /* CategoryPresenter.swift */,
 			);
 			path = CategoryModule;
@@ -528,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D0B1986242AD3F10058593F /* LaunchScreen.storyboard in Resources */,
+				7D9E8B27245F1A4B006B57C1 /* ItemCellViewController.xib in Resources */,
 				7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */,
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
@@ -603,6 +610,7 @@
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
 				6CD29CFE244F2C1800770217 /* MainSearchPresenter.swift in Sources */,
 				28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */,
+				7D9E8B26245F1A4B006B57C1 /* ItemCellViewController.swift in Sources */,
 				7DD3DE3F24581464009A99E7 /* PasswordDropPresenter.swift in Sources */,
 				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D45413D245B6D9000A7F4A0 /* CategoryPresenter.swift in Sources */,

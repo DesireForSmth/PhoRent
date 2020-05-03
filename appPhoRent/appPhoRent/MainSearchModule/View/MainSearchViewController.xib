@@ -23,19 +23,7 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-8L-NvN">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <items>
-                        <navigationItem title="Title" id="2ec-j9-cpr">
-                            <barButtonItem key="rightBarButtonItem" title="Фильтры" style="plain" id="w2i-Zi-cSC">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ef3-gn-cEs">
-                                    <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <connections>
-                                    <action selector="filtersTapAction:" destination="-1" id="tNW-ju-g4W"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
+                        <navigationItem title="Title" id="2ec-j9-cpr"/>
                     </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gq7-Nm-poJ">

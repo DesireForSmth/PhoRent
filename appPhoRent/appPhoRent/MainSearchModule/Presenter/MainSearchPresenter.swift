@@ -20,6 +20,7 @@ protocol MainSearchPresenterProtocol: class {
     func getCategories()
     var categories: [Category]? {get}
     func cellPicked(categoryName: String)
+    
 }
 
 class MainSearchPresenter: MainSearchPresenterProtocol {
@@ -54,6 +55,8 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
         self.router?.showCategoryPage(categoryName: categoryName)
         //self.view?.dismissTable()
     }
+    
+    
     /*
     func filtersTapped() {
         

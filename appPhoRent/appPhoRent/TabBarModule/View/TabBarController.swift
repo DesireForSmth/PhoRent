@@ -49,6 +49,7 @@ class TabBarController: UITabBarController {
         let firstRouter = Router(navigationController: firstNavigationController, assemblyBuilder: firstAssemblyBuilder, sceneDelegate: self.presenter.getScene())
         let firstPresenterVC = PersonalPresenter(view: firstViewController, router: firstRouter)
         firstViewController.presenter = firstPresenterVC
+        firstViewController.view.backgroundColor = .white
         
         let secondViewController = MainSearchViewController()
         let secondNavigationController = UINavigationController(rootViewController: secondViewController)
