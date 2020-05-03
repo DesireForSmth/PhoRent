@@ -23,7 +23,11 @@ protocol RouterProtocol: RouterMain {
     func showPasswordDrop()
     func showCategoryPage(categoryName: String)
     func logOut()
+<<<<<<< HEAD
     func showCategory(category: Category)
+=======
+    func showFilters()
+>>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
 }
 
 class Router: RouterProtocol {
@@ -48,6 +52,14 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let introViewController = assemblyBuilder?.createIntroModule(router: self) else { return }
             navigationController.viewControllers = [introViewController]
+        }
+    }
+    
+    func showFilters() {
+        if let navigationController = navigationController {
+            let filtersViewController = AboutUsViewController()
+            filtersViewController.presenter = nil
+            navigationController.present(filtersViewController, animated: true, completion: nil)
         }
     }
     
@@ -113,7 +125,7 @@ class Router: RouterProtocol {
     func showCategoryPage(categoryName: String) {
         if let navigationController = navigationController {
             guard let categoryViewController = assemblyBuilder?.createCategoryModule(router: self, categoryName: categoryName) else { return }
-            navigationController.pushViewController(categoryViewController, animated: false)
+            navigationController.pushViewController(categoryViewController, animated: true)
         }
     }
     

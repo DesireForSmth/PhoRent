@@ -25,8 +25,10 @@ protocol AssemblyBuilderProtocol {
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     
     func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController {
+        let networkService = NetworkService()
         let view = CategoryViewController()
-        let presenter = CategoryPresenter(view: view, router: router, categoryName: categoryName)
+        let presenter = CategoryPresenter(view: view, router: router, categoryName: categoryName, networkService: networkService)
+        presenter.getItems()
         view.presenter = presenter
         return view
     }
