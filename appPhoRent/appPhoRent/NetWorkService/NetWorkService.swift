@@ -12,7 +12,11 @@ import FirebaseFirestore
 protocol NetWorkServiceProtocol {
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void)
 <<<<<<< HEAD
+<<<<<<< HEAD
     func getCategory(categoryID: String, completion: @escaping (Result<[Item]?, Error>) -> Void)
+=======
+    func getItems(category: String, completion: @escaping (Result<[Item]?, Error>) -> Void)
+>>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
 =======
     func getItems(category: String, completion: @escaping (Result<[Item]?, Error>) -> Void)
 >>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1

@@ -22,6 +22,9 @@ protocol MainSearchPresenterProtocol: class {
 =======
     func cellPicked(categoryName: String)
     
+<<<<<<< HEAD
+>>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
+=======
 >>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
 }
 

@@ -24,7 +24,11 @@ protocol RouterProtocol: RouterMain {
     func showCategoryPage(categoryName: String)
     func logOut()
 <<<<<<< HEAD
+<<<<<<< HEAD
     func showCategory(category: Category)
+=======
+    func showFilters()
+>>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
 =======
     func showFilters()
 >>>>>>> f0b0d0299be63dfa6ef382d61b877c5378e180c1
