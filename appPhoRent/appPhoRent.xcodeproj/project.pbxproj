@@ -285,6 +285,33 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		6C7B3BE2246038D3002F86B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D454136245B621000A7F4A0 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C7B3BE3246038EE002F86B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D454138245B6D6600A7F4A0 /* CategoryViewController.swift */,
+				7D454139245B6D6600A7F4A0 /* CategoryViewController.xib */,
+				7D9E8B24245F1A4B006B57C1 /* ItemCellViewController.swift */,
+				7D9E8B25245F1A4B006B57C1 /* ItemCellViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C7B3BE4246038FB002F86B7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7D45413C245B6D9000A7F4A0 /* CategoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		6CCC52CC2450B60900D769A3 /* NetWorkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,12 +490,9 @@
 		7DB291E2245C57FF009732A8 /* CategoryModule */ = {
 			isa = PBXGroup;
 			children = (
-				7D454136245B621000A7F4A0 /* Item.swift */,
-				7D454138245B6D6600A7F4A0 /* CategoryViewController.swift */,
-				7D454139245B6D6600A7F4A0 /* CategoryViewController.xib */,
-				7D9E8B24245F1A4B006B57C1 /* ItemCellViewController.swift */,
-				7D9E8B25245F1A4B006B57C1 /* ItemCellViewController.xib */,
-				7D45413C245B6D9000A7F4A0 /* CategoryPresenter.swift */,
+				6C7B3BE2246038D3002F86B7 /* Model */,
+				6C7B3BE3246038EE002F86B7 /* View */,
+				6C7B3BE4246038FB002F86B7 /* Presenter */,
 			);
 			path = CategoryModule;
 			sourceTree = "<group>";

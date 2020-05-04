@@ -28,7 +28,7 @@ class CategoryViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
-        self.navigationBar.topItem?.title = presenter.getCategory()
+        self.navigationBar.topItem?.title = presenter.getCategoryName()
         
         self.navigationController?.isNavigationBarHidden = true
         print("hallo")

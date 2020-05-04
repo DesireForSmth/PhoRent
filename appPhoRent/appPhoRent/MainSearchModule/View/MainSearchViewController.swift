@@ -49,11 +49,11 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell: MainSearchTableViewCell = tableView.cellForRow(at: indexPath) as? MainSearchTableViewCell {
-            if let categoryName = cell.categoryName.text {
-                self.presenter.cellPicked(categoryName: categoryName)
+            guard let category = presenter.categories?[indexPath.row] else {
+                assertionFailure("Категория не найдена!")
+                return
             }
-        }
+            self.presenter.cellPicked(category: category)
     }
 }
 

@@ -16,16 +16,16 @@ protocol AssemblyBuilderProtocol {
     func createSignUpModule(router: RouterProtocol) -> UIViewController
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
-    func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController
+    func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController
     //func createAuthModule(router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     
-    func createCategoryModule(router: RouterProtocol, categoryName: String) -> UIViewController {
+    func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController {
         let networkService = NetworkService()
         let view = CategoryViewController()
-        let presenter = CategoryPresenter(view: view, router: router, categoryName: categoryName, networkService: networkService)
+        let presenter = CategoryPresenter(view: view, router: router, category: category, networkService: networkService)
         presenter.getItems()
         view.presenter = presenter
         return view

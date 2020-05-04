@@ -21,7 +21,7 @@ protocol RouterProtocol: RouterMain {
     func showContent()
     func showAboutUs()
     func showPasswordDrop()
-    func showCategoryPage(categoryName: String)
+    func showCategoryPage(category: Category)
     func logOut()
     func showFilters()
 }
@@ -111,9 +111,9 @@ class Router: RouterProtocol {
         }
     }
     
-    func showCategoryPage(categoryName: String) {
+    func showCategoryPage(category: Category) {
         if let navigationController = navigationController {
-            guard let categoryViewController = assemblyBuilder?.createCategoryModule(router: self, categoryName: categoryName) else { return }
+            guard let categoryViewController = assemblyBuilder?.createCategoryModule(router: self, category: category) else { return }
             navigationController.pushViewController(categoryViewController, animated: true)
         }
     }

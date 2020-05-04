@@ -23,11 +23,10 @@ class CategoryView: CategoryViewProtocol {
 }
 
 protocol CategoryViewPresenterProtocol: class {
-    init (view: CategoryViewProtocol, router: RouterProtocol, categoryName: String, networkService: NetWorkServiceProtocol)
-    func getCategory() -> String
+    init (view: CategoryViewProtocol, router: RouterProtocol, category: Category, networkService: NetWorkServiceProtocol)
     func filtersPicked()
     func pop()
-    //func getItems() ->
+    func getCategoryName() -> String
     func getItems()
     var items: [Item]? {get}
 }
@@ -37,22 +36,18 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     
     let view: CategoryViewProtocol?
     var router: RouterProtocol?
-    var categoryName: String?
+    var category: Category?
     var items: [Item]?
     let networkService: NetWorkServiceProtocol!
     
-    required init(view: CategoryViewProtocol, router: RouterProtocol, categoryName: String, networkService: NetWorkServiceProtocol) {
-        self.categoryName = categoryName
+    required init(view: CategoryViewProtocol, router: RouterProtocol, category: Category, networkService: NetWorkServiceProtocol) {
+        self.category = category
         self.networkService = networkService
         self.view = view
         self.router = router
         getItems()
     }
     
-    func getCategory() -> String{
-        guard let categoryName = self.categoryName else { return "" }
-        return categoryName
-    }
     
     func filtersPicked() {
         print("I'm in")
@@ -64,19 +59,28 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         self.router?.popToRoot()
     }
     
+    func getCategoryName() -> String {
+        guard let name = self.category?.name else {
+            return ""
+        }
+        return name
+    }
+    
     func getItems() {
-        networkService.getItems(category: categoryName ?? "") { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let items):
-                    self.items = items
-                    self.view?.success()
-                case .failure(let error):
-                    self.view?.failure(error: error )
+        guard let categoryID = self.category?.ID else {
+            assertionFailure("Проблема с доступом к категории")
+            return
+        }
+        networkService.getItems(categoryID: categoryID) { [weak self] result in
+        guard let self = self else { return }
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let items):
+                self.items = items
+            case .failure(let error):
+                self.view?.failure(error: error)
                 }
             }
         }
     }
-    
 }
