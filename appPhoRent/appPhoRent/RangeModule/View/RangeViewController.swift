@@ -18,20 +18,33 @@ class RangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.getCategory()
+        tableView.register(UINib(nibName: "RangeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        navBar.topItem?.title
 }
     @IBAction func tapBackButton(_ sender: Any) {
         presenter.tapBack()
     }
+}
+
+extension RangeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.items?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RangeTableViewCell
+    }
+    
     
 }
 
 extension RangeViewController: RangeViewProtocol{
     func success() {
-        <#code#>
+        tableView.reloadData()
     }
     
     func failure(error: Error) {
-        <#code#>
+        print(error.localizedDescription)
     }
     
     

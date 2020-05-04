@@ -10,6 +10,7 @@ import UIKit
 
 class RangeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var itemImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
