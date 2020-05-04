@@ -19,7 +19,7 @@ protocol MainSearchPresenterProtocol: class {
     init(view: MainSearchViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     func getCategories()
     var categories: [Category]? {get}
-    func cellPicked(categoryName: String)
+    func cellPicked(category: Category)
     
 }
 
@@ -51,8 +51,8 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
         }
     }
     
-    func cellPicked(categoryName: String) {
-        self.router?.showCategoryPage(categoryName: categoryName)
+    func cellPicked(category: Category) {
+        self.router?.showCategoryPage(category: category)
         //self.view?.dismissTable()
     }
     
