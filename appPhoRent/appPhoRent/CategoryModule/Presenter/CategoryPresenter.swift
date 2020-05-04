@@ -7,19 +7,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 protocol CategoryViewProtocol: class {
     func success()
     func failure(error: Error)
-}
-
-class CategoryView: CategoryViewProtocol {
-    func success() {
-        
-    }
-    func failure(error: Error) {
-        
-    }
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -27,12 +19,12 @@ protocol CategoryViewPresenterProtocol: class {
     func filtersPicked()
     func pop()
     func getCategoryName() -> String
-    func getItems()
+    func setItems()
+    func needDownload() -> Bool
     var items: [Item]? {get}
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
-
     
     let view: CategoryViewProtocol?
     var router: RouterProtocol?
@@ -45,7 +37,6 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         self.networkService = networkService
         self.view = view
         self.router = router
-        getItems()
     }
     
     
@@ -66,7 +57,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         return name
     }
     
-    func getItems() {
+    public func setItems() {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
             return
@@ -83,4 +74,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             }
         }
     }
+    func needDownload() -> Bool {
+        <#code#>
+    }
+   
 }

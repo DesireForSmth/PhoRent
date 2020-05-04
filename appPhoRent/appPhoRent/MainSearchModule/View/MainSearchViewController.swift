@@ -12,7 +12,6 @@ import Kingfisher
 class MainSearchViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
-
     @IBOutlet weak var tableView: UITableView!
     
     var presenter: MainSearchPresenterProtocol!
@@ -22,12 +21,8 @@ class MainSearchViewController: UIViewController {
         tableView.register(UINib(nibName: "MainSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 60
         navBar.topItem?.title = "Search"
+        navigationController?.isNavigationBarHidden = true
     }
-    /*
-    @IBAction func filtersTapAction(_ sender: Any) {
-        self.presenter.filtersTapped
-    }
-    */
 }
 
 extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -36,9 +31,7 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainSearchTableViewCell
-        
         let categoryName = presenter.categories?[indexPath.item].name
         let categoryImage = presenter.categories?[indexPath.item].imageName
         cell.categoryName.text = categoryName
@@ -65,10 +58,4 @@ extension MainSearchViewController: MainSearchViewProtocol{
     func failure(error: Error) {
         print(error.localizedDescription)
     }
-    /*
-    func dismissTable() {
-        self.tableView.isHidden = true;
-    }
-    */
-    
 }

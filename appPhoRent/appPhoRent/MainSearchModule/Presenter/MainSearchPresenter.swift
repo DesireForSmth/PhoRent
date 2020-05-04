@@ -45,7 +45,7 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
                 case .success(let categories):
                     self.categories = categories
                 case .failure(let error):
-                    self.view?.failure(error: error )
+                    self.view?.failure(error: error)
                 }
             }
         }
@@ -53,15 +53,9 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
     
     func cellPicked(category: Category) {
         self.router?.showCategoryPage(category: category)
-        //self.view?.dismissTable()
     }
     
     
-    /*
-    func filtersTapped() {
-        
-    }
-    */
 }
        
 

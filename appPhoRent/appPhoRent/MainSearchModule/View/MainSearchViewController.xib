@@ -36,11 +36,19 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="LsW-8L-NvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0aM-Nq-97L"/>
                 <constraint firstItem="LsW-8L-NvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8f9-g2-uFR"/>
                 <constraint firstItem="LsW-8L-NvN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9yS-Hn-6TY"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="U9A-MR-wnx"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="UgB-vc-jj7"/>
+                <constraint firstItem="LsW-8L-NvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XzG-eI-8BX"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gA8-uX-bOF"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="lAF-B7-j65"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mOD-6W-Pfh"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="oTv-b7-0kV"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qhl-aA-rHc"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="t8v-sn-YP9"/>
+                <constraint firstItem="LsW-8L-NvN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="thJ-fd-aDb"/>
                 <constraint firstItem="LsW-8L-NvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wfD-Mf-Scl"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="yNo-xY-xpj"/>
             </constraints>

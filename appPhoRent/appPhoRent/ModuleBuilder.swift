@@ -26,7 +26,6 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
         let networkService = NetworkService()
         let view = CategoryViewController()
         let presenter = CategoryPresenter(view: view, router: router, category: category, networkService: networkService)
-        presenter.getItems()
         view.presenter = presenter
         return view
     }
