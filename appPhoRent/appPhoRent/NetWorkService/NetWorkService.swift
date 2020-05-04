@@ -25,11 +25,11 @@ class NetworkService: NetWorkServiceProtocol {
             }
             var obj = [Category]()
             for document in querySnapshot!.documents {
-                guard let categoryName = document.get("CategoryName") as? String else {
+                guard let categoryName = document.get("categoryName") as? String else {
                     assertionFailure("Ошибка доступа к имени категории")
                     return
                 }
-                guard let categoryImage = document.get("ImageURL") as? String else {
+                guard let categoryImage = document.get("imageURL") as? String else {
                     assertionFailure("Ошибка доступа к изображению категории")
                     return
                 }
