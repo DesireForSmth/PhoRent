@@ -18,6 +18,10 @@ class CategoryViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        presenter.setItems()
+        if presenter.needDownload(){
+            showAlert()
+        }
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -25,7 +29,6 @@ class CategoryViewController: UIViewController {
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 80
-        presenter.setItems()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -90,6 +93,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CategoryViewController: CategoryViewProtocol {
+    
     func success() {
         print("success")
         tableView.reloadData()
@@ -99,7 +103,17 @@ extension CategoryViewController: CategoryViewProtocol {
         print(error.localizedDescription)
     }
     
-    
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 

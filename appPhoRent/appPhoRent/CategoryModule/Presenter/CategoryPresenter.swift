@@ -12,6 +12,7 @@ import FirebaseFirestore
 protocol CategoryViewProtocol: class {
     func success()
     func failure(error: Error)
+    func showAlert()
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -75,7 +76,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         }
     }
     func needDownload() -> Bool {
-        <#code#>
+        return self.items == nil
     }
    
 }
