@@ -37,20 +37,6 @@ class PasswordDropPresenter: PasswordDropViewPresenterProtocol {
         self.router = router
         self.networkService = networkService
     }
-  
-//    func passwordDrop(email: String?) {
-//        if let email = email {
-//            if !email.isEmpty {
-//                Auth.auth().sendPasswordReset(withEmail: email) { error in
-//                    if error != nil {
-//                        self.view?.failure(error: error!)
-//                    } else {
-//                        self.view?.success()
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     func passwordDrop(email: String?) {
         networkService.passwordDrop(email: email) { [weak self] result in

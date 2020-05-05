@@ -14,12 +14,10 @@ protocol LoginViewProtocol: class {
 }
 
 class LoginView: LoginViewProtocol {
-    
     func success() {
     }
     func failure(error: Error) {
     }
-    
 }
 
 protocol LoginViewPreseneterProtocol: class {
@@ -41,15 +39,6 @@ class LoginPresenter: LoginViewPreseneterProtocol {
         self.networkService = networkService
     }
     
-//    func signIn(email: String, password: String) {
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//            if error == nil{
-//                self.view?.success()
-//            }else{
-//                self.view?.failure(error: error!)
-//            }
-//        }
-//    }
     func signIn(email: String, password: String) {
         networkService.signIn(email: email, password: password) { [weak self] result in
         guard let self = self else { return }

@@ -37,35 +37,6 @@ class PersonalPresenter: PersonalPresenterProtocol {
         self.router = router
         self.networkService = networkService
         setInfo()
-//        ref = Database.database().reference()
-//        userID = Auth.auth().currentUser?.uid
-//        
-//        ref?.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-//            
-//            let value = snapshot.value as? NSDictionary
-//            let name = value?["name"] as? String ?? ""
-//            let email = value?["email"] as? String ?? ""
-//            let phone = value?["phone"] as? String
-//            
-//            UserManager.shared.currentUser = PersonalData(name: name, email: email, phone: phone)
-//            
-//            DispatchQueue.main.async {
-//                if let data = UserManager.shared.currentUser  {
-//                    var titleChangePhone = "добавить номер"
-//                    var phone = ""
-//                    if let _ = data.phone {
-//                        titleChangePhone = "изменить номер"
-//                        phone = data.phone!
-//                    }
-//                    view.updateFields(name: data.name, email: data.email, phone: phone, titleChangePhone: titleChangePhone)
-//                    view.closeAlert()
-//                }
-//            }
-//            
-//        }) { (error) in
-//            print("Error: ")
-//            print(error.localizedDescription)
-//        }
     }
     
     func setInfo() {

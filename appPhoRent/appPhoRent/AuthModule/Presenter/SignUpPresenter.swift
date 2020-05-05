@@ -40,22 +40,6 @@ class SignUpPresenter: SignUpViewPreseneterProtocol {
         self.networkService = networkService
     }
     
-//    func signUp(username: String, email: String, password: String) {
-//        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-//            if error == nil{
-//                if let result = result{
-//                    print(result.user.uid)
-//                    let ref = Database.database().reference().child("users")
-//                    ref.child(result.user.uid).updateChildValues(["name" : username, "email": email])
-//                }
-//                self.view?.success()
-//            }
-//            else{
-//                self.view?.failure(error: error!)
-//            }
-//        }
-//    }
-    
     func signUp(username: String, email: String, password: String) {
         networkService.signUp(username: username, email: email, password: password) { [weak self] result in
         guard let self = self else { return }
