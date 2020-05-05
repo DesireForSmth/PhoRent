@@ -45,7 +45,7 @@ class NetworkService: NetWorkServiceProtocol {
                 assertionFailure("Ошибка доступа к пользователю")
                 return
             }
-            db.collection("users").document(userID).setData(["username" : username, "email" : email]) { error in
+            db.collection("users").document(userID).setData(["username" : username, "email" : email, "ID" : userID]) { error in
                 if let error = error{
                     completion(.failure(error))
                     return
@@ -157,7 +157,7 @@ class NetworkService: NetWorkServiceProtocol {
             let name = document?.get("username") as? String ?? ""
             let email = document?.get("email") as? String ?? ""
             let phone = document?.get("phone") as? String
-            let obj = PersonalData(name: name, email: email, phone: phone)
+            let obj = PersonalData(name: name, email: email, phone: phone, userID: userID)
             completion(.success(obj))
         }
     }
