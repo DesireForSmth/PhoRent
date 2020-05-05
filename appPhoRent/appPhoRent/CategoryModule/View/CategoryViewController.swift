@@ -21,9 +21,9 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        if presenter.needDownload(){
-            showAlert()
-        }
+//        if presenter.needDownload(){
+//            showAlert()
+//        }
         presenter.getItems()
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -61,7 +61,7 @@ class CategoryViewController: UIViewController {
         }
     }
     /*
-    // MARK: - Navigation
+    //MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

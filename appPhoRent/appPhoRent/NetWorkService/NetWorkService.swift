@@ -168,7 +168,7 @@ class NetworkService: NetWorkServiceProtocol {
             assertionFailure("Ошибка доступа к пользователю")
             return
         }
-        db.collection("users").document(userID).setData(["phone": phone]) { error in
+        db.collection("users").document(userID).updateData(["phone": phone]) { error in
              if let error = error{
                  completion(.failure(error))
                  return
