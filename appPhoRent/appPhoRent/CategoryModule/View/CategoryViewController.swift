@@ -12,13 +12,12 @@ import Kingfisher
 class CategoryViewController: UIViewController {
 
     var presenter: CategoryViewPresenterProtocol!
-    
+    var items: [Item]?
     
     @IBOutlet weak var tableView: UITableView!
 
     
     override func viewDidLoad() {
-        presenter.setItems()
         if presenter.needDownload(){
             showAlert()
         }
@@ -79,7 +78,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCellViewController
-        let item = presenter.items?[indexPath.item]
+        let item = items?[indexPath.item]
         let itemImage = item?.imageURL
         cell.itemName.text = item?.name
         cell.itemCost.text = item?.cost
@@ -113,6 +112,13 @@ extension CategoryViewController: CategoryViewProtocol {
         alert.view.addSubview(loadingIndicator)
         
         present(alert, animated: true, completion: nil)
+    }
+    func closeAlert() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func setItems(items: [Item]?) {
+        self.items = items 
     }
 }
 

@@ -227,29 +227,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6C719B2E244C605000EB5B41 /* DetailModule */ = {
-			isa = PBXGroup;
-			children = (
-				6C719B30244C60B400EB5B41 /* View */,
-				6C719B2F244C60AB00EB5B41 /* Presenter */,
-			);
-			path = DetailModule;
-			sourceTree = "<group>";
-		};
-		6C719B2F244C60AB00EB5B41 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		6C719B30244C60B400EB5B41 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		6C719B31244C60BF00EB5B41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,7 +378,6 @@
 				6CCC52CC2450B60900D769A3 /* NetWorkService */,
 				6CD29CE7244F230500770217 /* MainSearchModule */,
 				6C719B32244C71C900EB5B41 /* RangeModule */,
-				6C719B2E244C605000EB5B41 /* DetailModule */,
 				28B1B941243F9888002732A5 /* TabBarModule */,
 				28B1B939243F97F8002732A5 /* PersonalModule */,
 				28B1B930243F976B002732A5 /* AboutUsModule */,

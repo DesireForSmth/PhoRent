@@ -12,7 +12,9 @@ import FirebaseFirestore
 protocol CategoryViewProtocol: class {
     func success()
     func failure(error: Error)
+    func setItems(items: [Item]?)
     func showAlert()
+    func closeAlert()
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -20,7 +22,7 @@ protocol CategoryViewPresenterProtocol: class {
     func filtersPicked()
     func pop()
     func getCategoryName() -> String
-    func setItems()
+    func getItems()
     func needDownload() -> Bool
     var items: [Item]? {get}
 }
@@ -58,7 +60,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         return name
     }
     
-    public func setItems() {
+    public func getItems() {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
             return
@@ -69,6 +71,9 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             switch result {
             case .success(let items):
                 self.items = items
+                self.view?.closeAlert()
+                self.view?.setItems(items: self.items)
+                self.view?.success()
             case .failure(let error):
                 self.view?.failure(error: error)
                 }
