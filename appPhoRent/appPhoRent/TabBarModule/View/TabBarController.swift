@@ -47,7 +47,7 @@ class TabBarController: UITabBarController {
         print(firstViewController)
         print(self.presenter.getScene())
         let firstRouter = Router(navigationController: firstNavigationController, assemblyBuilder: firstAssemblyBuilder, sceneDelegate: self.presenter.getScene())
-        let firstPresenterVC = PersonalPresenter(view: firstViewController, router: firstRouter)
+        let firstPresenterVC = PersonalPresenter(view: firstViewController, router: firstRouter, networkService: networkSevice)
         firstViewController.presenter = firstPresenterVC
         firstViewController.view.backgroundColor = .white
         

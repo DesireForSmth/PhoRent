@@ -8,14 +8,81 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 protocol NetWorkServiceProtocol {
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void)
     func getItems(categoryID: String, completion: @escaping (Result<[Item]?, Error>) -> Void)
+    func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void)
+    func signUp(username: String, email: String, password: String, completion: @escaping (Result<String, Error>) -> Void)
+    func signOut(completion: @escaping (Result<String, Error>) -> Void)
+    func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void)
+    func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
+    func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
 }
 
 class NetworkService: NetWorkServiceProtocol {
     
+    func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+                let helloString = "access is success"
+                completion(.success(helloString))
+        }
+    }
+    
+    func signUp(username: String, email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let db = Firestore.firestore()
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            guard let userID = Auth.auth().currentUser?.uid else {
+                assertionFailure("Ошибка доступа к пользователю")
+                return
+            }
+            db.collection("users").document(userID).setData(["username" : username, "email" : email]) { error in
+                if let error = error{
+                    completion(.failure(error))
+                    return
+                }
+                let helloString = "access is success"
+                completion(.success(helloString))
+            }
+            
+        }
+    }
+    
+    func signOut(completion: @escaping (Result<String, Error>) -> Void) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            completion(.failure(signOutError))
+            return
+        }
+        completion(.success("SignOut"))
+    }
+    
+    func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void) {
+        if let email = email {
+            if !email.isEmpty {
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    let helloString = "access is success"
+                    completion(.success(helloString))
+                }
+            }
+        }
+    }
+
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void) {
         let db = Firestore.firestore()
         db.collection("categories").getDocuments() { (querySnapshot, error) in
@@ -75,4 +142,39 @@ class NetworkService: NetWorkServiceProtocol {
                     completion(.success(obj))
             }
         }
+    
+    func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).getDocument() { (document, error) in
+        if let error = error{
+        completion(.failure(error))
+            return
+        }
+            let name = document?.get("username") as? String ?? ""
+            let email = document?.get("email") as? String ?? ""
+            let phone = document?.get("phone") as? String
+            let obj = PersonalData(name: name, email: email, phone: phone)
+            completion(.success(obj))
+        }
+    }
+    
+    func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).setData(["phone": phone]) { error in
+             if let error = error{
+                 completion(.failure(error))
+                 return
+             }
+             completion(.success("Phone number has been seted"))
+         }
+  
+    }
 }
