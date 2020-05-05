@@ -18,12 +18,13 @@ class CategoryViewController: UIViewController {
 
     
     override func viewDidLoad() {
-        if presenter.needDownload(){
-            showAlert()
-        }
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        if presenter.needDownload(){
+            showAlert()
+        }
+        presenter.getItems()
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
