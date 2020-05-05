@@ -15,7 +15,7 @@ protocol IntroViewProtocol: class {
 }
 
 protocol IntroViewPresenterProtocol: class {
-    init (view: IntroViewProtocol, router: RouterProtocol)
+    init (view: IntroViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     func checkSignedIn()
     func openSignUp()
     func openSignIn()
@@ -24,14 +24,14 @@ protocol IntroViewPresenterProtocol: class {
 
 class IntroPresenter: IntroViewPresenterProtocol {
     
-    
-    
     weak var view: IntroViewProtocol?
     var router: RouterProtocol?
+    let networkService: NetWorkServiceProtocol!
     
-    required init(view: IntroViewProtocol, router: RouterProtocol) {
+    required init(view: IntroViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
         self.view = view
         self.router = router
+        self.networkService = networkService
     }
     
     func checkSignedIn() {

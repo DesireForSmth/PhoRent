@@ -71,9 +71,9 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             switch result {
             case .success(let items):
                 self.items = items
-                self.view?.closeAlert()
                 self.view?.setItems(items: self.items)
                 self.view?.success()
+                self.view?.closeAlert()
             case .failure(let error):
                 self.view?.failure(error: error)
                 }

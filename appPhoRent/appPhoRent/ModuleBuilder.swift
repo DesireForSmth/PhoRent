@@ -31,21 +31,24 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createSignUpModule(router: RouterProtocol) -> UIViewController {
+        let networkService = NetworkService()
         let view = SignUpViewController()
-        let presenter = SignUpPresenter(view: view, router: router)
+        let presenter = SignUpPresenter(view: view, router: router, networkService: networkService)
         view.presenter = presenter
         return view
     }
     
     func createIntroModule(router: RouterProtocol) -> UIViewController {
         let view = IntroViewController()
-        let presenter = IntroPresenter(view: view, router: router)
+        let networkService = NetworkService()
+        let presenter = IntroPresenter(view: view, router: router, networkService: networkService)
         view.presenter = presenter
         return view
     }
     func createLoginModule(router: RouterProtocol) -> UIViewController {
+        let networkService = NetworkService()
         let view = LoginViewController()
-        let presenter = LoginPresenter(view: view, router: router)
+        let presenter = LoginPresenter(view: view, router: router, networkService: networkService)
         view.presenter = presenter
         return view
     }
@@ -70,8 +73,9 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController {
+        let networkService = NetworkService()
         let view = PasswordDropViewController()
-        let presenter = PasswordDropPresenter(view: view, router: router)
+        let presenter = PasswordDropPresenter(view: view, router: router, networkService: networkService)
         view.presenter = presenter
         return view
     }

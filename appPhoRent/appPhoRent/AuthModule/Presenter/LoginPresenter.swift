@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol LoginViewProtocol: class {
     func success()
@@ -15,16 +14,14 @@ protocol LoginViewProtocol: class {
 }
 
 class LoginView: LoginViewProtocol {
-    
     func success() {
     }
     func failure(error: Error) {
     }
-    
 }
 
 protocol LoginViewPreseneterProtocol: class {
-    init (view: LoginViewProtocol, router: RouterProtocol)
+    init (view: LoginViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     func signIn(email: String, password: String)
     func pop()
     func openPasswordDrop()
@@ -34,21 +31,27 @@ class LoginPresenter: LoginViewPreseneterProtocol {
     
     let view: LoginViewProtocol?
     var router: RouterProtocol?
+    let networkService: NetWorkServiceProtocol!
     
-    required init(view: LoginViewProtocol, router: RouterProtocol) {
+    required init(view: LoginViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
         self.view = view
         self.router = router
+        self.networkService = networkService
     }
     
     func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if error == nil{
+        networkService.signIn(email: email, password: password) { [weak self] result in
+        guard let self = self else { return }
+            switch result {
+            case .success(let helloString):
                 self.view?.success()
-            }else{
-                self.view?.failure(error: error!)
-            }
+                print(helloString)
+            case .failure(let error):
+                self.view?.failure(error: error)
+                }
         }
     }
+    
     func openPasswordDrop() {
         router?.showPasswordDrop()
     }

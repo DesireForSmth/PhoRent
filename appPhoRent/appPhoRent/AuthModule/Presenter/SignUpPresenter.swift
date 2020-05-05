@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol SignUpViewProtocol: class {
     func success()
@@ -24,7 +23,7 @@ class SignUpView: SignUpViewProtocol {
 }
 
 protocol SignUpViewPreseneterProtocol: class {
-    init (view: SignUpViewProtocol, router: RouterProtocol)
+    init (view: SignUpViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     func signUp(username: String, email: String, password: String)
     func pop()
 }
@@ -33,27 +32,27 @@ class SignUpPresenter: SignUpViewPreseneterProtocol {
     
     let view: SignUpViewProtocol?
     var router: RouterProtocol?
+    let networkService: NetWorkServiceProtocol!
+    
+    required init(view: SignUpViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
+        self.view = view
+        self.router = router
+        self.networkService = networkService
+    }
     
     func signUp(username: String, email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil{
-                if let result = result{
-                    print(result.user.uid)
-                    let ref = Database.database().reference().child("users")
-                    ref.child(result.user.uid).updateChildValues(["name" : username, "email": email])
-                }
+        networkService.signUp(username: username, email: email, password: password) { [weak self] result in
+        guard let self = self else { return }
+            switch result {
+            case .success(let helloString):
                 self.view?.success()
-            }
-            else{
-                self.view?.failure(error: error!)
-            }
+                print(helloString)
+            case .failure(let error):
+                self.view?.failure(error: error)
+                }
         }
     }
     
-    required init(view: SignUpViewProtocol, router: RouterProtocol) {
-        self.view = view
-        self.router = router
-    }
     
     func pop() {
         router?.popToRoot()

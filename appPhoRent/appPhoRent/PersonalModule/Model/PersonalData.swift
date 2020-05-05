@@ -10,6 +10,7 @@ struct PersonalData {
     var name: String
     var email: String
     var phone: String?
+    var userID: String
 //    var imageUrl: String?
 }
 
