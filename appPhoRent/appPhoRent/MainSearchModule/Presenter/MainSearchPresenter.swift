@@ -12,7 +12,9 @@ import FirebaseFirestore
 protocol MainSearchViewProtocol: class {
     func success()
     func failure(error: Error)
-    //func dismissTable()
+    func setCategories(categories: [Category]?)
+    func showAlert()
+    func closeAlert()
 }
 
 protocol MainSearchPresenterProtocol: class {
@@ -20,6 +22,7 @@ protocol MainSearchPresenterProtocol: class {
     func getCategories()
     var categories: [Category]? {get}
     func cellPicked(category: Category)
+    func needDownload() -> Bool
     
 }
 
@@ -34,7 +37,6 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
         self.view = view
         self.router = router
         self.networkService = networkService
-        getCategories()
     }
     
     func getCategories() {
@@ -44,6 +46,9 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
                 switch result {
                 case .success(let categories):
                     self.categories = categories
+                    self.view?.closeAlert()
+                    self.view?.setCategories(categories: self.categories)
+                    self.view?.success()
                 case .failure(let error):
                     self.view?.failure(error: error)
                 }
@@ -55,7 +60,9 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
         self.router?.showCategoryPage(category: category)
     }
     
-    
+    func needDownload() -> Bool {
+        return self.categories == nil
+    }
 }
        
 
