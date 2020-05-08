@@ -22,6 +22,8 @@ class PersonalViewController: UIViewController {
     var logOutButton: UIButton!
     var aboutUsButton: UIButton!
     
+    var imagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +60,10 @@ class PersonalViewController: UIViewController {
             self?.presenter.checkPhone(phone: alert?.textFields![0].text)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -112,6 +118,25 @@ extension PersonalViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate
+
+extension PersonalViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+    
+    func didSelectImage(image: UIImage?) {
+        avatarImageView.image = image
+        guard let data = image?.jpegData(compressionQuality: 1) else { return }
+        presenter.saveImage(dataImage: data)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        let image = info[.editedImage] as? UIImage
+        didSelectImage(image: image)
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK: - Create UI
 
 extension PersonalViewController {
@@ -119,10 +144,28 @@ extension PersonalViewController {
     private func setupUI() {
         secondView.backgroundColor = .white
         
-        avatarImageView = UIImageView(image: UIImage(named: "cat.jpeg"))
+        avatarImageView = UIImageView(image: UIImage(named: "photo"))
+        
+        if let imageUrl = presenter.getImageUrl() {
+            if let image = UIImage(contentsOfFile: imageUrl.path) {
+                avatarImageView.image = image
+            }
+        }
+        
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.cornerRadius = 70
         avatarImageView.layer.masksToBounds = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
