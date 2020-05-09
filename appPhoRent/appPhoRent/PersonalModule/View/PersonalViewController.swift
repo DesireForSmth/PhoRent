@@ -11,6 +11,8 @@ import UIKit
 class PersonalViewController: UIViewController {
     var presenter: PersonalPresenterProtocol!
     
+//    var navBar: UINavigationBar!
+    
     var secondView = UIView()
     var avatarImageView: UIImageView!
     var nameLabel: UILabel!
@@ -19,14 +21,15 @@ class PersonalViewController: UIViewController {
     var phoneLabel: UILabel!
     var phoneValueLabel: UILabel!
     var changePhoneButton: UIButton!
-    var logOutButton: UIButton!
+//    var logOutButton: UIButton!
     var aboutUsButton: UIButton!
     
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.topItem?.title = "Personal"
+
         setupUI()
         createConstraints()
     }
@@ -44,9 +47,9 @@ class PersonalViewController: UIViewController {
         presenter.showAboutUs()
     }
     
-    @objc func logOutAction(_ sender: UIButton) {
-        presenter.logOut()
-    }
+//    @objc func logOutAction(_ sender: UIButton) {
+//        presenter.logOut()
+//    }
     
     @objc func changePhoneAction(_ sender: UIButton) {
         let alert = UIAlertController(title: "Изменение номера", message: "Введите номер:", preferredStyle: .alert)
@@ -142,7 +145,7 @@ extension PersonalViewController: UIImagePickerControllerDelegate & UINavigation
 extension PersonalViewController {
     
     private func setupUI() {
-        secondView.backgroundColor = .white
+        secondView.backgroundColor = CustomColors.background
         
         avatarImageView = UIImageView(image: UIImage(named: "photo"))
         
@@ -188,30 +191,43 @@ extension PersonalViewController {
         phoneValueLabel.numberOfLines = 0
         phoneValueLabel.font = phoneValueLabel.font.withSize(20)
         
+        [nameLabel,
+         emailLabel,
+         emailValueLabel,
+         phoneLabel,
+         phoneValueLabel].forEach {
+            $0?.textColor = CustomColors.textLabel
+        }
+        
         changePhoneButton = UIButton(type: .system)
         changePhoneButton.backgroundColor = .white
         changePhoneButton.setTitleColor(.systemBlue, for: .normal)
+        changePhoneButton.backgroundColor = CustomColors.background
         
         changePhoneButton.addTarget(self, action: #selector(changePhoneAction), for: .touchUpInside)
         
         
-        logOutButton = UIButton(type: .system)
-        logOutButton.setTitle("Выйти из аккаунта", for: .normal)
-        logOutButton.setTitleColor(.red, for: .normal)
-        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
-        logOutButton.layer.borderWidth = 0.5
-        
-        logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
-        
+//        logOutButton = UIButton(type: .system)
+//        logOutButton.setTitle("Выйти из аккаунта", for: .normal)
+//        logOutButton.setTitleColor(.red, for: .normal)
+//        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
+//        logOutButton.layer.borderWidth = 0.5
+//        
+//        logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
+//        
         aboutUsButton = UIButton(type: .system)
-        aboutUsButton.setTitle("О приложении", for: .normal)
+        aboutUsButton.setTitle("Настройки", for: .normal)
         aboutUsButton.layer.borderColor = UIColor.systemGray.cgColor
         aboutUsButton.layer.borderWidth = 0.5
         aboutUsButton.setTitleColor(.black, for: .normal)
+        aboutUsButton.setTitleColor(CustomColors.textButton, for: .normal)
+        aboutUsButton.backgroundColor = CustomColors.backgroundButton
         
         aboutUsButton.addTarget(self, action: #selector(aboutUsAction), for: .touchUpInside)
         
         secondView.isHidden = true
+        
+//        overrideUserInterfaceStyle = .dark
         
         view.addSubview(secondView)
         
@@ -222,7 +238,7 @@ extension PersonalViewController {
          phoneLabel,
          phoneValueLabel,
          aboutUsButton,
-         logOutButton,
+//         logOutButton,
          changePhoneButton].forEach {
             secondView.addSubview($0)
         }
@@ -236,7 +252,7 @@ extension PersonalViewController {
         phoneLabel.translatesAutoresizingMaskIntoConstraints = false
         phoneValueLabel.translatesAutoresizingMaskIntoConstraints = false
         changePhoneButton.translatesAutoresizingMaskIntoConstraints = false
-        logOutButton.translatesAutoresizingMaskIntoConstraints = false
+//        logOutButton.translatesAutoresizingMaskIntoConstraints = false
         aboutUsButton.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -289,15 +305,15 @@ extension PersonalViewController {
             changePhoneButton.widthAnchor.constraint(equalToConstant: 160)
         ])
         
-        NSLayoutConstraint.activate([
-            logOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            logOutButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
+//        NSLayoutConstraint.activate([
+//            logOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+//            logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//            logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//            logOutButton.heightAnchor.constraint(equalToConstant: 40)
+//        ])
         
         NSLayoutConstraint.activate([
-            aboutUsButton.bottomAnchor.constraint(equalTo: logOutButton.topAnchor),
+            aboutUsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
             aboutUsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             aboutUsButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             aboutUsButton.heightAnchor.constraint(equalToConstant: 40)

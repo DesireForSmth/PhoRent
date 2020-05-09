@@ -40,12 +40,16 @@ class TabBarController: UITabBarController {
         
         let thirdViewController = UIViewController()
         */
+        
+        
         let firstViewController = PersonalViewController()
         let firstNavigationController = UINavigationController(rootViewController: firstViewController)
         let firstAssemblyBuilder = AssemblyModuleBuilder()
         print(firstNavigationController)
         print(firstViewController)
         print(self.presenter.getScene())
+        
+        
         let firstRouter = Router(navigationController: firstNavigationController, assemblyBuilder: firstAssemblyBuilder, sceneDelegate: self.presenter.getScene())
         let firstPresenterVC = PersonalPresenter(view: firstViewController, router: firstRouter, networkService: networkSevice)
         firstViewController.presenter = firstPresenterVC
@@ -61,7 +65,8 @@ class TabBarController: UITabBarController {
         let thirdViewController = UIViewController()
         let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         
-        firstNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+//        firstNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        firstNavigationController.tabBarItem = UITabBarItem(title: "Personal", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
         secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         thirdNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 2)
         

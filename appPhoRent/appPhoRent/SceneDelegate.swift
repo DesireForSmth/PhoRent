@@ -13,6 +13,7 @@ protocol SceneDelegateProtocol: class {
     func changeRootViewController(controller: UIViewController)
     func openAuth()
     func openContent()
+    func changeSchemeColor()
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -101,4 +102,18 @@ extension SceneDelegate: SceneDelegateProtocol {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
+    
+    func changeSchemeColor() {
+        guard let style = window?.overrideUserInterfaceStyle else { return }
+        if style == .dark {
+            window?.overrideUserInterfaceStyle = .light
+        } else {
+            window?.overrideUserInterfaceStyle = .dark
+        }
+        
+        if let root = window?.rootViewController as? TabBarController {
+            root.tabBar.layoutIfNeeded()
+        }
+    }
+    
 }

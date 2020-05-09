@@ -24,6 +24,7 @@ protocol RouterProtocol: RouterMain {
     func showCategoryPage(category: Category)
     func logOut()
     func showFilters()
+    func changeSchemeColor()
 }
 
 class Router: RouterProtocol {
@@ -88,6 +89,7 @@ class Router: RouterProtocol {
     func showContent(){
         destroyInitialModule()
         self.sceneDelegate?.openContent()
+        
         /*
         guard let contenViewController = assemblyBuilder?.createContentModule(router: self) else {
             return
@@ -100,7 +102,7 @@ class Router: RouterProtocol {
     func showAboutUs() {
         if let navigationController = navigationController {
             guard let aboutUsViewController = assemblyBuilder?.createAboutUsModule(router: self) else { return }
-            navigationController.present(aboutUsViewController, animated: true, completion: nil)
+            navigationController.pushViewController(aboutUsViewController, animated: true)
         }
     }
     
@@ -116,6 +118,10 @@ class Router: RouterProtocol {
             guard let categoryViewController = assemblyBuilder?.createCategoryModule(router: self, category: category) else { return }
             navigationController.pushViewController(categoryViewController, animated: true)
         }
+    }
+    
+    func changeSchemeColor() {
+        sceneDelegate?.changeSchemeColor()
     }
     
     func popToRoot() {

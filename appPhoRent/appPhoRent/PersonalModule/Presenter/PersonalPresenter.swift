@@ -25,7 +25,7 @@ protocol PersonalPresenterProtocol: class {
     func needDownload() -> Bool
     func checkPhone(phone: String?)
     func showAboutUs()
-    func logOut()
+//    func logOut()
     
     func saveImage(dataImage: Data)
     func getImageUrl() -> URL?
@@ -110,21 +110,21 @@ class PersonalPresenter: PersonalPresenterProtocol {
         router?.showAboutUs()
     }
     
-    func logOut() {
-        networkService.signOut { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print("Error: ")
-                    print(error.localizedDescription)
-                case .success(let message):
-                    print(message)
-                    self.router?.logOut()
-                }
-            }
-        }
-    }
+//    func logOut() {
+//        networkService.signOut { [weak self] result in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .failure(let error):
+//                    print("Error: ")
+//                    print(error.localizedDescription)
+//                case .success(let message):
+//                    print(message)
+//                    self.router?.logOut()
+//                }
+//            }
+//        }
+//    }
     
     // MARK: - For FileManager
     

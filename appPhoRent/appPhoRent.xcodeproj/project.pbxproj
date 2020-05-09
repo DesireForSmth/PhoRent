@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		286566E52466BD98000071B7 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566E42466BD98000071B7 /* CustomColors.swift */; };
 		28B1B92A243F9732002732A5 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B929243F9732002732A5 /* Constraints.swift */; };
 		28B1B92D243F9757002732A5 /* AboutUsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */; };
 		28B1B92F243F9767002732A5 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B92E243F9767002732A5 /* AboutUsViewController.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		286566E42466BD98000071B7 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		28B1B929243F9732002732A5 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		28B1B92C243F9757002732A5 /* AboutUsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsPresenter.swift; sourceTree = "<group>"; };
 		28B1B92E243F9767002732A5 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				286566E42466BD98000071B7 /* CustomColors.swift */,
 				7DB291E2245C57FF009732A8 /* CategoryModule */,
 				6CCC52CC2450B60900D769A3 /* NetWorkService */,
 				6CD29CE7244F230500770217 /* MainSearchModule */,
@@ -615,6 +618,7 @@
 				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D45413D245B6D9000A7F4A0 /* CategoryPresenter.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
+				286566E52466BD98000071B7 /* CustomColors.swift in Sources */,
 				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
 				6CD29CF5244F244E00770217 /* MainSearchViewController.swift in Sources */,
