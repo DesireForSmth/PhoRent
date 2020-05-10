@@ -33,7 +33,7 @@ protocol PersonalPresenterProtocol: class {
 
 class PersonalPresenter: PersonalPresenterProtocol {
     weak var view: PersonalViewProtocol?
-    var router: RouterProtocol?
+    var router: RouterProtocol!
     let networkService: NetWorkServiceProtocol!
     var userID: String?
     
@@ -107,6 +107,9 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func showAboutUs() {
+        if let n = networkService as? NetworkService {
+            n.setOrder(orderID: "1")
+        }
         router?.showAboutUs()
     }
     

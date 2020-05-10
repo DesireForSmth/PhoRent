@@ -11,8 +11,6 @@ import UIKit
 class PersonalViewController: UIViewController {
     var presenter: PersonalPresenterProtocol!
     
-//    var navBar: UINavigationBar!
-    
     var secondView = UIView()
     var avatarImageView: UIImageView!
     var nameLabel: UILabel!
@@ -226,8 +224,6 @@ extension PersonalViewController {
         aboutUsButton.addTarget(self, action: #selector(aboutUsAction), for: .touchUpInside)
         
         secondView.isHidden = true
-        
-//        overrideUserInterfaceStyle = .dark
         
         view.addSubview(secondView)
         

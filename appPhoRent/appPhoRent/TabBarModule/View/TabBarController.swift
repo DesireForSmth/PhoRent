@@ -62,18 +62,23 @@ class TabBarController: UITabBarController {
         let secondPresenterVC = MainSearchPresenter(view: secondViewController, router: secondRouter, networkService: networkSevice)
         secondViewController.presenter = secondPresenterVC
         
-        let thirdViewController = UIViewController()
-        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
+//        let thirdViewController = UIViewController()
+//        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         
-//        firstNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        let thirdViewController = BasketViewController()
+        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
+        let thirdAssemblyBuilder = AssemblyModuleBuilder()
+        let thirdRouter = Router(navigationController: thirdNavigationController, assemblyBuilder: thirdAssemblyBuilder, sceneDelegate: self.presenter.getScene())
+        let thirdPresenterVC = BasketPresenter(view: thirdViewController, router: thirdRouter, networkService: networkSevice)
+        thirdViewController.presenter = thirdPresenterVC
+        
         firstNavigationController.tabBarItem = UITabBarItem(title: "Personal", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
         secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        thirdNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 2)
+        thirdNavigationController.tabBarItem = UITabBarItem(title: "Basket", image: UIImage(systemName: "cart.fill"), selectedImage: UIImage(systemName: "cart.fill"))
         
         let tabBarList = [firstNavigationController, secondNavigationController, thirdNavigationController]
         
         viewControllers = tabBarList
-        
     }
 }
 
