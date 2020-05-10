@@ -19,6 +19,9 @@ protocol NetWorkServiceProtocol {
     func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void)
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
+    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void)
+    
+    func setNewCount(newCount: Int, itemTitle: String)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -29,8 +32,8 @@ class NetworkService: NetWorkServiceProtocol {
                 completion(.failure(error))
                 return
             }
-                let helloString = "access is success"
-                completion(.success(helloString))
+            let helloString = "access is success"
+            completion(.success(helloString))
         }
     }
     
@@ -82,7 +85,7 @@ class NetworkService: NetWorkServiceProtocol {
             }
         }
     }
-
+    
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void) {
         let db = Firestore.firestore()
         db.collection("categories").getDocuments() { (querySnapshot, error) in
@@ -108,40 +111,40 @@ class NetworkService: NetWorkServiceProtocol {
     }
     
     func getItems(categoryID: String, completion: @escaping (Result<[Item]?, Error>) -> Void) {
-           let db = Firestore.firestore()
-            db.collection("categories").document(categoryID).collection("items").getDocuments() { (querySnapshot, error) in
+        let db = Firestore.firestore()
+        db.collection("categories").document(categoryID).collection("items").getDocuments() { (querySnapshot, error) in
             if let error = error {
-            completion(.failure(error))
+                completion(.failure(error))
                 return
             }
-                    var obj = [Item]()
-                for document in querySnapshot!.documents {
-                    guard let itemName = document.get("name") as? String else {
-                                       assertionFailure("Ошибка доступа к имени товара")
-                                       return
-                                   }
-                    guard let itemImage = document.get("imageURL") as? String else {
-                                       assertionFailure("Ошибка доступа к изображению товара")
-                                       return
-                                   }
-                    guard let itemCost = document.get("cost") as? String else {
-                        assertionFailure("Ошибка доступа к цене товара")
-                        return
-                    }
-                    guard let itemManufacturer = document.get("manufacturer") as? String else {
-                        assertionFailure("Ошибка доступа к производителю товара")
-                        return
-                    }
-                    guard let itemCount = document.get("count") as? Int else {
-                        assertionFailure("Ошибка доступа к количеству товара")
-                        return
-                    }
-                    let item = Item(name: itemName, cost: itemCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount)
-                    obj.append(item)
-                                 }
-                    completion(.success(obj))
+            var obj = [Item]()
+            for document in querySnapshot!.documents {
+                guard let itemName = document.get("name") as? String else {
+                    assertionFailure("Ошибка доступа к имени товара")
+                    return
+                }
+                guard let itemImage = document.get("imageURL") as? String else {
+                    assertionFailure("Ошибка доступа к изображению товара")
+                    return
+                }
+                guard let itemCost = document.get("cost") as? String else {
+                    assertionFailure("Ошибка доступа к цене товара")
+                    return
+                }
+                guard let itemManufacturer = document.get("manufacturer") as? String else {
+                    assertionFailure("Ошибка доступа к производителю товара")
+                    return
+                }
+                guard let itemCount = document.get("count") as? Int else {
+                    assertionFailure("Ошибка доступа к количеству товара")
+                    return
+                }
+                let item = Item(name: itemName, cost: itemCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount)
+                obj.append(item)
             }
+            completion(.success(obj))
         }
+    }
     
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {
         let db = Firestore.firestore()
@@ -150,10 +153,10 @@ class NetworkService: NetWorkServiceProtocol {
             return
         }
         db.collection("users").document(userID).getDocument() { (document, error) in
-        if let error = error{
-        completion(.failure(error))
-            return
-        }
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
             let name = document?.get("username") as? String ?? ""
             let email = document?.get("email") as? String ?? ""
             let phone = document?.get("phone") as? String
@@ -169,12 +172,63 @@ class NetworkService: NetWorkServiceProtocol {
             return
         }
         db.collection("users").document(userID).updateData(["phone": phone]) { error in
-             if let error = error{
-                 completion(.failure(error))
-                 return
-             }
-             completion(.success("Phone number has been seted"))
-         }
-  
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            completion(.success("Phone number has been seted"))
+        }
+    }
+    
+    
+    func setOrder(orderID: String) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        let cost1: Float = 1500
+        let cost2: Float = 1000
+        db.collection("users").document(userID).collection("orders").document(orderID).setData([
+            "date": Date(),
+            "totalCost": 6500,
+            "items":
+            ["goPro": ["price": cost1, "count": 3],
+             "sony": ["price": cost2, "count": 2],
+             ]
+        ])
+    }
+    
+    func setNewCount(newCount: Int, itemTitle: String) {
+    }
+    
+    
+    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        db.collection("users").document(userID).collection("orders").document(orderID).getDocument() { (document, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            var items = [BasketItem]()
+            if let dict = document?.get("items") as? Dictionary<String, Dictionary<String,Any>> {
+                for element in dict {
+                    let item = BasketItem(title: element.key, price: element.value["price"] as? Float ?? 0, count: element.value["count"] as? Int ?? 0)
+                    items.append(item)
+                }
+            }
+            
+            let date = document?.get("date") as? Date ?? Date()
+            let totalCost = document?.get("totalCost") as? Float ?? 0
+            let order = Order(orderID: orderID, date: date, items: items, totalCost: totalCost)
+            completion(.success(order))
+        }
     }
 }
