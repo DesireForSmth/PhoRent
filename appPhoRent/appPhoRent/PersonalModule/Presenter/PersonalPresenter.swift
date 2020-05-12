@@ -19,18 +19,26 @@ protocol PersonalViewProtocol: class {
 protocol PersonalPresenterProtocol: class {
     init(view: PersonalViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     
+    static var imageFileName: String { get }
+    
     func setPhone(phone: String)
     func needDownload() -> Bool
     func checkPhone(phone: String?)
     func showAboutUs()
-    func logOut()
+//    func logOut()
+    
+    func saveImage(dataImage: Data)
+    func getImageUrl() -> URL?
 }
 
 class PersonalPresenter: PersonalPresenterProtocol {
     weak var view: PersonalViewProtocol?
-    var router: RouterProtocol?
+    var router: RouterProtocol!
     let networkService: NetWorkServiceProtocol!
     var userID: String?
+    
+    static var imageFileName = "avatarPhoto"
+    private let fileManager = FileManager.default
     
     required init(view: PersonalViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
         self.view = view
@@ -41,44 +49,44 @@ class PersonalPresenter: PersonalPresenterProtocol {
     
     func setInfo() {
         networkService.getPersonalInfo { [weak self] result in
-        guard let self = self else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
-            switch result {
-            case .failure(let error):
-                print("Error: ")
-                print(error.localizedDescription)
-            case .success(let personData):
-                UserManager.shared.currentUser = personData
-                if let data = UserManager.shared.currentUser  {
-                   var titleChangePhone = "добавить номер"
-                   var phone = ""
-                   if let _ = data.phone {
-                       titleChangePhone = "изменить номер"
-                       phone = data.phone!
-                   }
-                    print(personData)
-                    self.view?.updateFields(name: data.name, email: data.email, phone: phone, titleChangePhone: titleChangePhone)
-                    self.view?.closeAlert()
-                }
+                switch result {
+                case .failure(let error):
+                    print("Error: ")
+                    print(error.localizedDescription)
+                case .success(let personData):
+                    UserManager.shared.currentUser = personData
+                    if let data = UserManager.shared.currentUser  {
+                        var titleChangePhone = "добавить номер"
+                        var phone = ""
+                        if let _ = data.phone {
+                            titleChangePhone = "изменить номер"
+                            phone = data.phone!
+                        }
+                        print(personData)
+                        self.view?.updateFields(name: data.name, email: data.email, phone: phone, titleChangePhone: titleChangePhone)
+                        self.view?.closeAlert()
+                    }
                 }
             }
         }
     }
     
-    //MARK: - PersonalViewPresenterProtocol
+    //MARK: - PersonalPresenterProtocol
     
     func setPhone(phone: String) {
         networkService.setPhone(phone: phone) { [weak self] result in
-        guard let self = self else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
-            switch result {
-            case .failure(let error):
-                print("Error: ")
-                print(error.localizedDescription)
-            case .success(let message):
-                print(message)
-                UserManager.shared.currentUser?.phone = phone
-                self.view?.updatePhoneLabel(phone: phone)
+                switch result {
+                case .failure(let error):
+                    print("Error: ")
+                    print(error.localizedDescription)
+                case .success(let message):
+                    print(message)
+                    UserManager.shared.currentUser?.phone = phone
+                    self.view?.updatePhoneLabel(phone: phone)
                 }
             }
         }
@@ -99,22 +107,50 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func showAboutUs() {
+        if let n = networkService as? NetworkService {
+            n.setOrder(orderID: "1")
+        }
         router?.showAboutUs()
     }
     
-    func logOut() {
-        networkService.signOut { [weak self] result in
-        guard let self = self else { return }
-            DispatchQueue.main.async {
-            switch result {
-            case .failure(let error):
-                print("Error: ")
-                print(error.localizedDescription)
-            case .success(let message):
-                print(message)
-                self.router?.logOut()
-                }
-            }
+//    func logOut() {
+//        networkService.signOut { [weak self] result in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .failure(let error):
+//                    print("Error: ")
+//                    print(error.localizedDescription)
+//                case .success(let message):
+//                    print(message)
+//                    self.router?.logOut()
+//                }
+//            }
+//        }
+//    }
+    
+    // MARK: - For FileManager
+    
+    private func filePath(for key: String) -> URL? {
+        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        return url?.appendingPathComponent(key + ".jpeg")
+    }
+    
+    func saveImage(dataImage: Data) {
+        
+        guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
+        do {
+            try dataImage.write(to: url)
+        } catch {
+            print(error)
         }
+    }
+    
+    func getImageUrl() -> URL? {
+        guard let url = filePath(for: PersonalPresenter.imageFileName) else {
+            return nil
+        }
+        return url
     }
 }
