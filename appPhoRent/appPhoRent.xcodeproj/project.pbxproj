@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285658E1246AFE2A00053F56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E0246AFE2A00053F56 /* DataManager.swift */; };
 		286566E52466BD98000071B7 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566E42466BD98000071B7 /* CustomColors.swift */; };
 		286566E72467201B000071B7 /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566E62467201B000071B7 /* BasketItem.swift */; };
 		286566EB24672212000071B7 /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566EA24672212000071B7 /* BasketPresenter.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		285658E0246AFE2A00053F56 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		286566E42466BD98000071B7 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		286566E62467201B000071B7 /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
 		286566EA24672212000071B7 /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				7D0B1987242AD3F10058593F /* Info.plist */,
 				7D0B197F242AD3EE0058593F /* appPhoRent.xcdatamodeld */,
 				7D0B198F242AD8440058593F /* GoogleService-Info.plist */,
+				285658E0246AFE2A00053F56 /* DataManager.swift */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
 				286566E8246721CD000071B7 /* BasketModule */,
@@ -651,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */,
+				285658E1246AFE2A00053F56 /* DataManager.swift in Sources */,
 				7D87C1F32434C9B40060C670 /* LoginViewController.swift in Sources */,
 				6C719B39244CA25300EB5B41 /* RangeViewController.swift in Sources */,
 				6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */,
@@ -835,7 +839,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48QNPJLFDY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -856,7 +860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48QNPJLFDY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

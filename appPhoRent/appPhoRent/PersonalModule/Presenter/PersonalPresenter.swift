@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PersonalViewProtocol: class {
-    func updateFields(name: String, email: String, phone: String, titleChangePhone: String)
+    func updateFields(name: String, email: String, phone: String)
     func updatePhoneLabel(phone: String)
     func showAlert()
     func closeAlert()
@@ -25,8 +25,6 @@ protocol PersonalPresenterProtocol: class {
     func needDownload() -> Bool
     func checkPhone(phone: String?)
     func showAboutUs()
-//    func logOut()
-    
     func saveImage(dataImage: Data)
     func getImageUrl() -> URL?
 }
@@ -57,15 +55,13 @@ class PersonalPresenter: PersonalPresenterProtocol {
                     print(error.localizedDescription)
                 case .success(let personData):
                     UserManager.shared.currentUser = personData
-                    if let data = UserManager.shared.currentUser  {
-                        var titleChangePhone = "добавить номер"
+                    if let data = UserManager.shared.currentUser {
                         var phone = ""
                         if let _ = data.phone {
-                            titleChangePhone = "изменить номер"
                             phone = data.phone!
                         }
                         print(personData)
-                        self.view?.updateFields(name: data.name, email: data.email, phone: phone, titleChangePhone: titleChangePhone)
+                        self.view?.updateFields(name: data.name, email: data.email, phone: phone)
                         self.view?.closeAlert()
                     }
                 }
@@ -98,7 +94,7 @@ class PersonalPresenter: PersonalPresenterProtocol {
     
     func checkPhone(phone: String?){
         if let phone = phone {
-            if phone.count == 11 {
+            if phone.count == 17 {
                 setPhone(phone: phone)
             } else {
                 view?.showErrorAlert()
@@ -107,27 +103,11 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func showAboutUs() {
-        if let n = networkService as? NetworkService {
-            n.setOrder(orderID: "1")
-        }
+        //        if let n = networkService as? NetworkService {
+        //            n.setOrder(orderID: "1")
+        //        }
         router?.showAboutUs()
     }
-    
-//    func logOut() {
-//        networkService.signOut { [weak self] result in
-//            guard let self = self else { return }
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .failure(let error):
-//                    print("Error: ")
-//                    print(error.localizedDescription)
-//                case .success(let message):
-//                    print(message)
-//                    self.router?.logOut()
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - For FileManager
     

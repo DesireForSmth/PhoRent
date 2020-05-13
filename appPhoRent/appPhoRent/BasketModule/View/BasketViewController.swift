@@ -21,14 +21,13 @@ class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = "Basket"
+        navigationController?.navigationBar.topItem?.title = "Корзина"
         setupUI()
         createConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         presenter.prepareData()
     }
     
@@ -52,6 +51,8 @@ extension BasketViewController {
         view.backgroundColor = CustomColors.background
         
         tableView = UITableView()
+        
+        tableView.tableFooterView = UIView(frame: .zero)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -114,14 +115,6 @@ extension BasketViewController {
 
 extension BasketViewController: BasketViewProtocol {
     
-    func showIndicator() {
-        indicatorView.startAnimating()
-    }
-    
-    func hideIndicator() {
-        indicatorView.stopAnimating()
-    }
-    
     func success(totalCost: Float, date: Date) {
         totalLabel.text = "Итого: " + String(totalCost)
         tableView.reloadData()
@@ -130,6 +123,24 @@ extension BasketViewController: BasketViewProtocol {
     func failure(error: Error) {
         print(error.localizedDescription)
     }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func closeAlert() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
