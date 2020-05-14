@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashScreenViewController" customModule="appPhoRent" customModuleProvider="target">
+            <connections>
+                <outlet property="firstLabel" destination="MXC-Ls-bzs" id="2Yk-Il-78c"/>
+                <outlet property="fourthLabel" destination="KEn-HB-LAr" id="aKu-3M-r07"/>
+                <outlet property="mainLabel" destination="p0z-4X-2QA" id="MJn-zk-fkI"/>
+                <outlet property="secondLabel" destination="mht-oY-O4s" id="HXG-ty-Nur"/>
+                <outlet property="thirdLabel" destination="IYN-sN-fEJ" id="whR-Q0-n7b"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhoRent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0z-4X-2QA">
+                    <rect key="frame" x="149" y="274" width="116.5" height="36"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- это не вьетнамская еда," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXC-Ls-bzs">
+                    <rect key="frame" x="44.5" y="342" width="325" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="а приложение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mht-oY-O4s">
+                    <rect key="frame" x="117" y="392" width="180" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="для аренды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYN-sN-fEJ">
+                    <rect key="frame" x="133" y="442" width="148" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="фототехники" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-HB-LAr">
+                    <rect key="frame" x="125" y="492" width="164" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.90041699139999998" green="0.99256207190000001" blue="0.96262059079999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="mht-oY-O4s" firstAttribute="centerX" secondItem="MXC-Ls-bzs" secondAttribute="centerX" id="4w5-qE-dsy"/>
+                <constraint firstItem="IYN-sN-fEJ" firstAttribute="centerX" secondItem="mht-oY-O4s" secondAttribute="centerX" id="Hry-P9-3wN"/>
+                <constraint firstItem="MXC-Ls-bzs" firstAttribute="top" secondItem="p0z-4X-2QA" secondAttribute="bottom" constant="32" id="JYe-DW-g0K"/>
+                <constraint firstItem="p0z-4X-2QA" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Len-lk-fP5"/>
+                <constraint firstItem="KEn-HB-LAr" firstAttribute="top" secondItem="IYN-sN-fEJ" secondAttribute="bottom" constant="16" id="Wr7-JF-cDV"/>
+                <constraint firstItem="mht-oY-O4s" firstAttribute="top" secondItem="MXC-Ls-bzs" secondAttribute="bottom" constant="16" id="aJa-lb-n3B"/>
+                <constraint firstItem="p0z-4X-2QA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="bhD-vg-tqJ"/>
+                <constraint firstItem="KEn-HB-LAr" firstAttribute="centerX" secondItem="IYN-sN-fEJ" secondAttribute="centerX" id="e5Q-fK-vxV"/>
+                <constraint firstItem="MXC-Ls-bzs" firstAttribute="centerX" secondItem="p0z-4X-2QA" secondAttribute="centerX" id="tGX-9w-Q1u"/>
+                <constraint firstItem="IYN-sN-fEJ" firstAttribute="top" secondItem="mht-oY-O4s" secondAttribute="bottom" constant="16" id="tGp-wC-fK7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
+        </view>
+    </objects>
+</document>

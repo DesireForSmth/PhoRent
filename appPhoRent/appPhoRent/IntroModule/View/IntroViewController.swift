@@ -15,8 +15,7 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        self.presenter.checkSignedIn()
-        // Do any additional setup after loading the view.
+//        self.presenter.checkSignedIn()
     }
 
 
@@ -31,13 +30,13 @@ class IntroViewController: UIViewController {
 }
 
 extension IntroViewController: IntroViewProtocol {
-    
-    func success() {
-        presenter.openContent()
-    }
-    
-    func failure() {
-        
-    }
+//    
+//    func success() {
+//        presenter.openContent()
+//    }
+//    
+//    func failure() {
+//        
+//    }
     
 }

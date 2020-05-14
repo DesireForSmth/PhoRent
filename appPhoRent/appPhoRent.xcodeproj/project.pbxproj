@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		285658E1246AFE2A00053F56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E0246AFE2A00053F56 /* DataManager.swift */; };
+		285658E4246D776600053F56 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E2246D776600053F56 /* SplashScreenViewController.swift */; };
+		285658E5246D776600053F56 /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285658E3246D776600053F56 /* SplashScreenViewController.xib */; };
+		285658E7246D77CE00053F56 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E6246D77CE00053F56 /* SplashScreenPresenter.swift */; };
 		286566E52466BD98000071B7 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566E42466BD98000071B7 /* CustomColors.swift */; };
 		286566E72467201B000071B7 /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566E62467201B000071B7 /* BasketItem.swift */; };
 		286566EB24672212000071B7 /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286566EA24672212000071B7 /* BasketPresenter.swift */; };
@@ -67,6 +70,9 @@
 
 /* Begin PBXFileReference section */
 		285658E0246AFE2A00053F56 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		285658E2246D776600053F56 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		285658E3246D776600053F56 /* SplashScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
+		285658E6246D77CE00053F56 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
 		286566E42466BD98000071B7 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		286566E62467201B000071B7 /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
 		286566EA24672212000071B7 /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
@@ -146,6 +152,32 @@
 				7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		285658EA246DD58700053F56 /* SplashScreenModule */ = {
+			isa = PBXGroup;
+			children = (
+				285658EB246DD5A500053F56 /* View */,
+				285658EC246DD5AB00053F56 /* Presenter */,
+			);
+			path = SplashScreenModule;
+			sourceTree = "<group>";
+		};
+		285658EB246DD5A500053F56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				285658E2246D776600053F56 /* SplashScreenViewController.swift */,
+				285658E3246D776600053F56 /* SplashScreenViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		285658EC246DD5AB00053F56 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				285658E6246D77CE00053F56 /* SplashScreenPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		286566E8246721CD000071B7 /* BasketModule */ = {
@@ -426,6 +458,7 @@
 				285658E0246AFE2A00053F56 /* DataManager.swift */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				285658EA246DD58700053F56 /* SplashScreenModule */,
 				286566E8246721CD000071B7 /* BasketModule */,
 				7DB291E2245C57FF009732A8 /* CategoryModule */,
 				6CCC52CC2450B60900D769A3 /* NetWorkService */,
@@ -595,6 +628,7 @@
 				6C719B3A244CA25300EB5B41 /* RangeViewController.xib in Resources */,
 				7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */,
 				7D87C1F42434C9B40060C670 /* LoginViewController.xib in Resources */,
+				285658E5246D776600053F56 /* SplashScreenViewController.xib in Resources */,
 				286566F224683801000071B7 /* BasketTableViewCell.xib in Resources */,
 				7D45413B245B6D6600A7F4A0 /* CategoryViewController.xib in Resources */,
 				6CD29CF6244F244E00770217 /* MainSearchViewController.xib in Resources */,
@@ -672,6 +706,7 @@
 				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D45413D245B6D9000A7F4A0 /* CategoryPresenter.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
+				285658E4246D776600053F56 /* SplashScreenViewController.swift in Sources */,
 				286566E52466BD98000071B7 /* CustomColors.swift in Sources */,
 				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
 				7D5BAAE82433D056003F3D41 /* ModuleBuilder.swift in Sources */,
@@ -681,6 +716,7 @@
 				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D45413A245B6D6600A7F4A0 /* CategoryViewController.swift in Sources */,
+				285658E7246D77CE00053F56 /* SplashScreenPresenter.swift in Sources */,
 				6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */,
 				286566F524683CED000071B7 /* BasketTableViewCell.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
@@ -839,13 +875,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8B9T24ATN5;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PhoRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -860,13 +896,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8B9T24ATN5;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PhoRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

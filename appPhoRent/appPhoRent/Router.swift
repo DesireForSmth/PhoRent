@@ -25,6 +25,8 @@ protocol RouterProtocol: RouterMain {
     func logOut()
     func showFilters()
     func changeSchemeColor()
+    
+    func showIntro()
 }
 
 class Router: RouterProtocol {
@@ -40,12 +42,21 @@ class Router: RouterProtocol {
         self.assemblyBuilder = assemblyBuilder
         self.sceneDelegate = sceneDelegate
     }
-    
-    
-    
-   
+
     
     func initialViewController() {
+//        if let navigationController = navigationController {
+//            guard let introViewController = assemblyBuilder?.createIntroModule(router: self) else { return }
+//            navigationController.viewControllers = [introViewController]
+//        }
+        
+         if let navigationController = navigationController {
+            guard let splashViewController = assemblyBuilder?.createSplashScreen(router: self) else { return }
+            navigationController.viewControllers = [splashViewController]
+        }
+    }
+    
+    func showIntro() {
         if let navigationController = navigationController {
             guard let introViewController = assemblyBuilder?.createIntroModule(router: self) else { return }
             navigationController.viewControllers = [introViewController]
