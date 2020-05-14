@@ -31,11 +31,13 @@ class PersonalViewController: UIViewController {
         createConstraints()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if presenter.needDownload() {
             showAlert()
+        } else {
+            secondView.isHidden = false
         }
     }
     // MARK: - ButtonActions
@@ -133,7 +135,6 @@ extension PersonalViewController: UITextFieldDelegate {
         return false
     }
 }
-
 
 // MARK: - UIImagePickerControllerDelegate
 

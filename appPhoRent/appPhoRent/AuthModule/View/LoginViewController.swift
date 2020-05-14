@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     var presenter: LoginViewPreseneterProtocol!
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         errorLabel.alpha = 0
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func signInAction(_ sender: UIButton) {
         
         email = emailTextField.text!
@@ -41,32 +41,43 @@ class LoginViewController: UIViewController {
         print(email)
         print(password)
         
-        if(!email.isEmpty && !password.isEmpty){
+        if !email.isEmpty && !password.isEmpty {
             self.signInUser(email: email, password: password)
-        }else{
+        } else {
             showAlert()
         }
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    func showAlertLoading() {
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        present(alert, animated: true, completion: nil)
     }
-    */
-
 }
 
 extension LoginViewController {
-    func showAlert(){
+    func showAlert() {
         let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    func showAuthError(){
+    func showAuthError() {
         let alert = UIAlertController(title: "Ошибка", message: "Неверный email или пароль", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Попробовать ещё раз", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -76,11 +87,12 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     
     func signInUser(email: String, password: String) {
+        showAlertLoading()
         presenter.signIn(email: email, password: password)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField == emailTextField){
+        if (textField == emailTextField) {
             let nextField = passwordTextField!
             nextField.becomeFirstResponder()
         }

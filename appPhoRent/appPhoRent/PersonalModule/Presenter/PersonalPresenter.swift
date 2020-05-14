@@ -56,11 +56,7 @@ class PersonalPresenter: PersonalPresenterProtocol {
                 case .success(let personData):
                     UserManager.shared.currentUser = personData
                     if let data = UserManager.shared.currentUser {
-                        var phone = ""
-                        if let _ = data.phone {
-                            phone = data.phone!
-                        }
-                        print(personData)
+                        let phone = data.phone ?? ""
                         self.view?.updateFields(name: data.name, email: data.email, phone: phone)
                         self.view?.closeAlert()
                     }
@@ -89,7 +85,12 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func needDownload() -> Bool {
-        return UserManager.shared.currentUser == nil
+        guard let data = UserManager.shared.currentUser else { return true}
+        let phone = data.phone ?? ""
+
+        view?.updateFields(name: data.name, email: data.email, phone: phone)
+        return false
+        
     }
     
     func checkPhone(phone: String?){
