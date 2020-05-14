@@ -69,6 +69,10 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    func closeAlertLoading() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension LoginViewController {
@@ -112,6 +116,7 @@ extension LoginViewController: LoginViewProtocol {
     }
     
     func failure(error: Error) {
+        closeAlertLoading()
         showAuthError()
     }
     
