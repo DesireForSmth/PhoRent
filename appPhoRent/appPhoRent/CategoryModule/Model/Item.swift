@@ -9,7 +9,7 @@
 import Foundation
 
 struct Item {
-    init (name: String, cost: String, manufacturer: String, imageURL: String, count: Int) {
+    init (name: String, cost: Int, manufacturer: String, imageURL: String, count: Int) {
         self.name = name
         self.cost = cost
         self.manufacturer = manufacturer
@@ -17,7 +17,7 @@ struct Item {
         self.count = count
     }
     var name: String
-    var cost: String
+    var cost: Int
     var manufacturer: String
     var imageURL: String
     var count: Int
