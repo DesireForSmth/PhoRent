@@ -26,10 +26,13 @@ class SplashScreenViewController: UIViewController {
         secondLabel.layer.opacity = 0
         thirdLabel.layer.opacity = 0
         fourthLabel.layer.opacity = 0
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations:  { [weak self] in
-            self?.mainLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        }, completion: nil)
+
+        mainLabel.font = .systemFont(ofSize: 50, weight: .semibold)
+        mainLabel.transform = mainLabel.transform.scaledBy(x: 0.5, y: 0.5);
+
+        UIView.animate(withDuration: 1, delay: 0, options: .transitionCrossDissolve, animations:  { [weak self] in
+            self?.mainLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: { [weak self] in
             self?.firstLabel.layer.opacity = 1
@@ -49,7 +52,6 @@ class SplashScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
 //        self.presenter.checkSignedIn()
     }
 }

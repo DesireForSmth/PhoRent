@@ -22,32 +22,32 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhoRent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0z-4X-2QA">
-                    <rect key="frame" x="149" y="274" width="116.5" height="36"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhoRent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0z-4X-2QA">
+                    <rect key="frame" x="158.5" y="259" width="97.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- это не вьетнамская еда," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXC-Ls-bzs">
-                    <rect key="frame" x="44.5" y="342" width="325" height="34"/>
+                    <rect key="frame" x="44.5" y="306" width="325" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="а приложение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mht-oY-O4s">
-                    <rect key="frame" x="117" y="392" width="180" height="34"/>
+                    <rect key="frame" x="117" y="356" width="180" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="для аренды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYN-sN-fEJ">
-                    <rect key="frame" x="133" y="442" width="148" height="34"/>
+                    <rect key="frame" x="133" y="406" width="148" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="фототехники" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-HB-LAr">
-                    <rect key="frame" x="125" y="492" width="164" height="34"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="штучек для фоток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-HB-LAr">
+                    <rect key="frame" x="93.5" y="456" width="227" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -57,11 +57,11 @@
             <constraints>
                 <constraint firstItem="mht-oY-O4s" firstAttribute="centerX" secondItem="MXC-Ls-bzs" secondAttribute="centerX" id="4w5-qE-dsy"/>
                 <constraint firstItem="IYN-sN-fEJ" firstAttribute="centerX" secondItem="mht-oY-O4s" secondAttribute="centerX" id="Hry-P9-3wN"/>
-                <constraint firstItem="MXC-Ls-bzs" firstAttribute="top" secondItem="p0z-4X-2QA" secondAttribute="bottom" constant="32" id="JYe-DW-g0K"/>
+                <constraint firstItem="MXC-Ls-bzs" firstAttribute="top" secondItem="p0z-4X-2QA" secondAttribute="bottom" constant="17" id="JYe-DW-g0K"/>
                 <constraint firstItem="p0z-4X-2QA" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Len-lk-fP5"/>
                 <constraint firstItem="KEn-HB-LAr" firstAttribute="top" secondItem="IYN-sN-fEJ" secondAttribute="bottom" constant="16" id="Wr7-JF-cDV"/>
                 <constraint firstItem="mht-oY-O4s" firstAttribute="top" secondItem="MXC-Ls-bzs" secondAttribute="bottom" constant="16" id="aJa-lb-n3B"/>
-                <constraint firstItem="p0z-4X-2QA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="230" id="bhD-vg-tqJ"/>
+                <constraint firstItem="p0z-4X-2QA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="215" id="bhD-vg-tqJ"/>
                 <constraint firstItem="KEn-HB-LAr" firstAttribute="centerX" secondItem="IYN-sN-fEJ" secondAttribute="centerX" id="e5Q-fK-vxV"/>
                 <constraint firstItem="MXC-Ls-bzs" firstAttribute="centerX" secondItem="p0z-4X-2QA" secondAttribute="centerX" id="tGX-9w-Q1u"/>
                 <constraint firstItem="IYN-sN-fEJ" firstAttribute="top" secondItem="mht-oY-O4s" secondAttribute="bottom" constant="16" id="tGp-wC-fK7"/>

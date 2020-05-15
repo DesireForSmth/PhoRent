@@ -12,9 +12,11 @@ class IntroViewController: UIViewController {
 
     var presenter: IntroViewPresenterProtocol!
     
+    @IBOutlet weak var mainLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+    
 //        self.presenter.checkSignedIn()
     }
 
