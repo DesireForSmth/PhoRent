@@ -22,6 +22,13 @@ protocol AssemblyBuilderProtocol {
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
+    /*
+    func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController {
+        let view = FiltersViewController()
+        let presenter = CategoryPresenter(view: view, router: router, category: category, networkService: networkService)
+        
+    }
+    */
     
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController {
         let networkService = NetworkService()

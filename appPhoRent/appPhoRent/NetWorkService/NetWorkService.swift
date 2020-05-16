@@ -127,7 +127,7 @@ class NetworkService: NetWorkServiceProtocol {
                     assertionFailure("Ошибка доступа к изображению товара")
                     return
                 }
-                guard let itemCost = document.get("cost") as? String else {
+                guard let itemCost = document.get("cost") as? String, let itemIntCost = Int(itemCost) else {
                     assertionFailure("Ошибка доступа к цене товара")
                     return
                 }
@@ -139,7 +139,7 @@ class NetworkService: NetWorkServiceProtocol {
                     assertionFailure("Ошибка доступа к количеству товара")
                     return
                 }
-                let item = Item(name: itemName, cost: itemCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount)
+                let item = Item(name: itemName, cost: itemIntCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount)
                 obj.append(item)
             }
             completion(.success(obj))
