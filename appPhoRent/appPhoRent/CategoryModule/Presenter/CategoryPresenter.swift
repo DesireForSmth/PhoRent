@@ -25,28 +25,95 @@ protocol CategoryViewPresenterProtocol: class {
     func getItems()
     func needDownload() -> Bool
     var items: [Item]? {get}
+    var shownItems: [Item]? {get}
+    var manufacturers: Set<String> { get }
+    var checkManufacturers: Set<String> { get }
+    var costRange: Dictionary<String, CGFloat> { get }
+    func getMaxCost() -> Int?
+    func getMinCost() -> Int?
+    func getMinCurCost() -> CGFloat?
+    func getMaxCurCost() -> CGFloat?
+    func getManufacturers()
+    func appendManufacturer(name: String)
+    func reduseManufacturer(name: String)
+    func closeFilters()
+    func containsManufacturer(name: String) -> Bool
+    func setCostRange(minCost: CGFloat, maxCost: CGFloat)
+    func getCostRange()
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
-    
     let view: CategoryViewProtocol?
     var router: RouterProtocol?
     var category: Category?
     var items: [Item]?
+    var shownItems: [Item]?
+    var manufacturers: Set<String>
     let networkService: NetWorkServiceProtocol!
+    var checkManufacturers: Set<String>
+    var costRange: Dictionary<String, CGFloat>
+    
+    func getCostRange() {
+        if let minCost = self.getMinCost(), let maxCost = self.getMaxCost() {
+            self.costRange.updateValue(CGFloat(minCost), forKey: "minCost")
+            self.costRange.updateValue(CGFloat(maxCost), forKey: "maxCost")
+        }
+    }
+    
+    func setCostRange(minCost: CGFloat, maxCost: CGFloat) {
+        self.costRange.updateValue(CGFloat(minCost), forKey: "minCost")
+        self.costRange.updateValue(CGFloat(maxCost), forKey: "maxCost")
+    }
+    
+    func containsManufacturer(name: String) -> Bool {
+        return checkManufacturers.contains(name)
+    }
+    
+    func reduseManufacturer(name: String) {
+        self.checkManufacturers.remove(name)
+    }
+    
+    func appendManufacturer(name: String) {
+        self.checkManufacturers.insert(name)
+    }
+    
+    func closeFilters() {
+        filterItems()
+        view?.setItems(items: self.shownItems)
+        view?.success()
+    }
+    
+    func filterItems() {
+        self.shownItems = []
+        
+        if let items = self.items {
+            for item in items {
+                if self.checkManufacturers.contains(item.manufacturer) && CGFloat(integerLiteral: item.cost) >= self.costRange["minCost"]! && CGFloat(integerLiteral: item.cost) <= self.costRange["maxCost"]! {
+                    self.shownItems?.append(item)
+                }
+            }
+        }
+    }
     
     required init(view: CategoryViewProtocol, router: RouterProtocol, category: Category, networkService: NetWorkServiceProtocol) {
         self.category = category
         self.networkService = networkService
         self.view = view
         self.router = router
+        self.manufacturers = []
+        self.checkManufacturers = []
+        self.costRange = [:]
     }
     
+    func getManufacturers() {
+        if let items = items {
+            self.manufacturers = Set(items.map {$0.manufacturer})
+            self.checkManufacturers = self.manufacturers
+        }
+    }
     
     func filtersPicked() {
-        print("I'm in")
-        //view?.success()
-        self.router?.showFilters()
+        self.router?.showFilters(presenter: self)
     }
     
     func pop() {
@@ -71,15 +138,44 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             switch result {
             case .success(let items):
                 self.items = items
-                self.view?.setItems(items: self.items)
+                self.shownItems = items
+                self.view?.setItems(items: self.shownItems)
                 self.view?.success()
-//                self.view?.closeAlert()
             case .failure(let error):
                 self.view?.failure(error: error)
                 }
             }
         }
     }
+    
+    func getMaxCurCost() -> CGFloat? {
+        let cost = self.costRange["maxCost"]
+        return cost
+    }
+    
+    func getMinCurCost() -> CGFloat? {
+        let cost = self.costRange["minCost"]
+        return cost
+    }
+    
+    func getMaxCost() -> Int? {
+        guard (self.items != nil) else { return nil }
+        if let maxCostItem = self.items?.max(by: {a, b in a.cost < b.cost}) {
+            let maxCost = maxCostItem.cost
+            
+            return (maxCost)
+        } else { return (nil) }
+    }
+    
+    func getMinCost() -> Int? {
+        guard (self.items != nil) else { print ("shit"); return nil }
+        if let minCostItem = self.items?.min(by: {a, b in a.cost < b.cost}) {
+            let minCost = minCostItem.cost
+            
+            return (minCost)
+        } else { print ("shit"); return (nil) }
+    }
+    
     func needDownload() -> Bool {
         return self.items == nil
     }

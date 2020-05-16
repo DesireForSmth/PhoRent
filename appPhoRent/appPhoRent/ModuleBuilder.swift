@@ -17,10 +17,18 @@ protocol AssemblyBuilderProtocol {
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController
+    //func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController
     //func createAuthModule(router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
+    /*
+    func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController {
+        let view = FiltersViewController()
+        let presenter = CategoryPresenter(view: view, router: router, category: category, networkService: networkService)
+        
+    }
+    */
     
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController {
         let networkService = NetworkService()
