@@ -30,14 +30,13 @@ class FiltersViewController: UIViewController {
     
     
     
-    lazy var contentViewSize = CGSize(width: 300, height: 500)
+    lazy var contentViewSize = CGSize(width: 300, height: 400)
     
     
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
-        //view.backgroundColor = .black
-        view.frame = self.view.bounds
+        view.frame = CGRect(x: 0, y: 0, width: self.contentViewSize.width, height: self.view.frame.height)
         view.contentSize = contentViewSize
         view.autoresizingMask = .flexibleHeight
         view.showsHorizontalScrollIndicator = false
@@ -48,7 +47,6 @@ class FiltersViewController: UIViewController {
     
     lazy var containerView: UIView = {
         let view = UIView()
-        //view.backgroundColor = .white
         view.frame.size = contentViewSize
         return view
     }()
@@ -59,9 +57,9 @@ class FiltersViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.frame = CGRect(x: 0, y: 0, width: self.contentViewSize.width, height: self.contentViewSize.height)
         self.setupView()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
         self.manufacturersSet = presenter.manufacturers
         self.manufacturersArray = Array(self.manufacturersSet)
         isModalInPresentation = false
@@ -69,10 +67,6 @@ class FiltersViewController: UIViewController {
         manufacturerTableView.dataSource = self
         manufacturerTableView.register(UINib(nibName: "ManufacturerTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         manufacturerTableView.rowHeight = 64
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-        print(self.presenter.checkManufacturers)
-        print(self.presenter.costRange)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,8 +84,8 @@ class FiltersViewController: UIViewController {
 extension FiltersViewController {
     func setupView() {
         
-        self.view.addSubview(scrollView)
         
+        /*
         self.scrollView.addSubview(containerView)
         
         self.containerView.addSubview(closeBtn)
@@ -114,15 +108,47 @@ extension FiltersViewController {
         self.textLabel.translatesAutoresizingMaskIntoConstraints = false
         self.textLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -15).isActive = true
         self.textLabel.centerYAnchor.constraint(equalTo: self.closeBtn.centerYAnchor, constant: 0).isActive = true
-        
+        */
        
+        self.view.addSubview(self.closeBtn)
+        
+        self.closeBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.closeBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
+        self.closeBtn.addTarget(self, action: #selector(self.closeSelf), for: .touchUpInside)
+        self.closeBtn.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
+        self.closeBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20).isActive = true
+        self.closeBtn.imageView?.contentMode = .scaleToFill
+        self.closeBtn.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        self.closeBtn.imageView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        self.closeBtn.imageView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        self.view.addSubview(textLabel)
+        
+        self.textLabel.text = "Фильтры"
+        self.textLabel.font = UIFont.systemFont(ofSize: 17)
+        
+        self.textLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.textLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15).isActive = true
+        self.textLabel.centerYAnchor.constraint(equalTo: self.closeBtn.centerYAnchor, constant: 0).isActive = true
+        
+        self.view.addSubview(scrollView)
+        
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.topAnchor.constraint(equalTo: self.closeBtn.bottomAnchor, constant: 10).isActive = true
+        self.scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        self.scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        self.scrollView.addSubview(containerView)
+        
+        
         self.containerView.addSubview(costLabel)
         
         self.costLabel.text = "Цена:"
         
         self.costLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.costLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
-        self.costLabel.topAnchor.constraint(equalTo: self.closeBtn.bottomAnchor, constant: 20).isActive = true
+        self.costLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
+        self.costLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 10).isActive = true
         
         self.containerView.addSubview(costRangeSlider)
         
@@ -179,7 +205,8 @@ extension FiltersViewController: UIViewControllerTransitioningDelegate {
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = presenter.manufacturers.count
-        let contentSize = CGSize(width: 300, height: 500 + count * 64)
+        self.manufacturerLabel.isHidden = count == 0
+        let contentSize = CGSize(width: 300, height: 400 + count * 64)
         self.scrollView.contentSize = contentSize
         self.containerView.frame.size = contentSize
         self.manufacturerTableView.heightAnchor.constraint(equalToConstant: CGFloat(count * 64)).isActive = true
