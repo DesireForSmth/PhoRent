@@ -9,21 +9,13 @@ admin.initializeApp();
 //adding new order function
 exports.addItemInBasket = functions.https.onCall((data, context) => {
   const uid = context.auth.uid;
-  console.log("Here data!");
-  console.log(data);
   admin.firestore().collection('categories').doc(data.category)
-  .collection('items').doc(data.id).get().then(item => {
-    console.log("here item");
-    console.log(item);
+  .collection('items').doc(data.id).get().then(snapshot => {
+    let item = snapshot.data();
     admin.firestore().collection('users').doc(uid).collection('basket')
     .add(item).then(() => {
-      if (item.exists){
         console.log('ok');
         return Promise.resolve();
-      }
-      else {
-        throw new Error("Don't exist");
-      }
     }).catch(err => {
         console.error(`Fatal error ${err}`);
     return Promise.reject(err);
@@ -39,21 +31,21 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
 
 // reduce count of items 
 exports.reduceCountofItem = functions.https.onCall(async (data, context) => {
-  const dbElementCount = await admin.firestore().collection('categories').doc(data.category)
+  let snapshot = await admin.firestore().collection('categories').doc(data.category)
     .collection('items').doc(data.id)
-    .get('count');
-  const elementCount = data.count;
-  console.log("Here data!");
-  console.log(data);
-  const newElementCount = dbElementCount - elementCount;
-  if (newElementCount < 0) {
+    .get();
+  let item = snapshot.data();
+  let dbElementCount = item.count;
+  let elementCount = data.count;
+  if (dbElementCount <= 0) {
     throw new functions.https.HttpsError('invalid-argument', `Невозможно добавить ${data.name} в заказ. 
    Попробуйте попытку позднее.`);
   }
   else {
+    let newElementCount = dbElementCount - elementCount;
     await admin.firestore().collection('categories')
       .doc(data.category).collection('items')
-      .doc(data.id).update({ crount: newElementCount });
+      .doc(data.id).update({ count: newElementCount });
     console.log('Change succeeded!');
   }
 });
