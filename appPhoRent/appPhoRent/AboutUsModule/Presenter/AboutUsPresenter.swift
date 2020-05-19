@@ -34,6 +34,7 @@ class AboutUsPresenter: AboutUsPresenterProtocol {
     }
     
     func logOut() {
+        
         networkService.signOut { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -43,6 +44,7 @@ class AboutUsPresenter: AboutUsPresenterProtocol {
                     print(error.localizedDescription)
                 case .success(let message):
                     print(message)
+                    UserManager.shared.currentUser = nil
                     self.router?.logOut()
                 }
             }

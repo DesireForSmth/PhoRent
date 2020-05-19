@@ -53,7 +53,6 @@ class TabBarController: UITabBarController {
         let firstRouter = Router(navigationController: firstNavigationController, assemblyBuilder: firstAssemblyBuilder, sceneDelegate: self.presenter.getScene())
         let firstPresenterVC = PersonalPresenter(view: firstViewController, router: firstRouter, networkService: networkSevice)
         firstViewController.presenter = firstPresenterVC
-        firstViewController.view.backgroundColor = .white
         
         let secondViewController = MainSearchViewController()
         let secondNavigationController = UINavigationController(rootViewController: secondViewController)
@@ -62,9 +61,6 @@ class TabBarController: UITabBarController {
         let secondPresenterVC = MainSearchPresenter(view: secondViewController, router: secondRouter, networkService: networkSevice)
         secondViewController.presenter = secondPresenterVC
         
-//        let thirdViewController = UIViewController()
-//        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
-        
         let thirdViewController = BasketViewController()
         let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         let thirdAssemblyBuilder = AssemblyModuleBuilder()
@@ -72,9 +68,9 @@ class TabBarController: UITabBarController {
         let thirdPresenterVC = BasketPresenter(view: thirdViewController, router: thirdRouter, networkService: networkSevice)
         thirdViewController.presenter = thirdPresenterVC
         
-        firstNavigationController.tabBarItem = UITabBarItem(title: "Personal", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
+        firstNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
         secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        thirdNavigationController.tabBarItem = UITabBarItem(title: "Basket", image: UIImage(systemName: "cart.fill"), selectedImage: UIImage(systemName: "cart.fill"))
+        thirdNavigationController.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart.fill"), selectedImage: UIImage(systemName: "cart.fill"))
         
         let tabBarList = [firstNavigationController, secondNavigationController, thirdNavigationController]
         

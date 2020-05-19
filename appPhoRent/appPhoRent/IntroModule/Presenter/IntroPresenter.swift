@@ -10,16 +10,16 @@ import Foundation
 import Firebase
 
 protocol IntroViewProtocol: class {
-    func success()
-    func failure()
+//    func success()
+//    func failure()
 }
 
 protocol IntroViewPresenterProtocol: class {
     init (view: IntroViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
-    func checkSignedIn()
+//    func checkSignedIn()
     func openSignUp()
     func openSignIn()
-    func openContent()
+//    func openContent()
 }
 
 class IntroPresenter: IntroViewPresenterProtocol {
@@ -34,19 +34,19 @@ class IntroPresenter: IntroViewPresenterProtocol {
         self.networkService = networkService
     }
     
-    func checkSignedIn() {
-            Auth.auth().addStateDidChangeListener { (auth, user) in
-                if user == nil{
-                    self.view?.failure()
-                }else{
-                    self.view?.success()
-             }
-        }
-    }
+//    func checkSignedIn() {
+//            Auth.auth().addStateDidChangeListener { (auth, user) in
+//                if user == nil{
+//                    self.view?.failure()
+//                }else{
+//                    self.view?.success()
+//             }
+//        }
+//    }
     
-    func openContent() {
-        router?.showContent()
-    }
+//    func openContent() {
+//        router?.showContent()
+//    }
 
     func openSignUp() {
         router?.showSignUp()

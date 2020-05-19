@@ -14,16 +14,20 @@ class CategoryViewController: UIViewController {
     var presenter: CategoryViewPresenterProtocol!
     var items: [Item]?
     
+    var updated = false
+    
+    @IBOutlet weak var filtersButton: UIBarButtonItem!
+    
     @IBOutlet weak var tableView: UITableView!
 
+    private var filtersAreAvialable = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        if presenter.needDownload(){
-//            showAlert()
-//        }
         presenter.getItems()
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -34,14 +38,31 @@ class CategoryViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         self.navigationBar.topItem?.title = presenter.getCategoryName()
         self.navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
     }
 
+    func showFiltersPopover() {
+        if filtersAreAvialable {
+            let popVC = FiltersViewController()
+            popVC.modalPresentationStyle = .popover
+            popVC.presenter = self.presenter
+            
+            let popOverVC = popVC.popoverPresentationController
+            popOverVC?.delegate = self
+            
+            popOverVC?.barButtonItem = self.filtersButton
+            popOverVC?.sourceRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+            
+            popVC.preferredContentSize = CGSize(width: 300, height: 500)
+            
+            self.present(popVC, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func backTapped(_ sender: UIBarButtonItem) {
         self.presenter.pop()
     }
     @IBAction func filtersTapped(_ sender: UIBarButtonItem) {
-        self.presenter.filtersPicked()
+        self.showFiltersPopover()
     }
     
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -53,50 +74,78 @@ class CategoryViewController: UIViewController {
 
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
-                print("Swiped right")
+                
                 self.presenter.pop()
                 default:
                     break
             }
         }
     }
-    /*
-    //MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.items?.count ?? 0
+        
+        return self.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCellViewController
-        let item = items?[indexPath.item]
-        let itemImage = item?.imageURL
-        cell.itemName.text = item?.name
-        cell.itemCost.text = item?.cost
-        let url = URL(string: itemImage!)
-        let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
-        cell.itemImage.kf.setImage(with: resource)
+        if let item = items?[indexPath.item] {
+            let itemImage = item.imageURL
+            cell.itemName.text = item.name
+            cell.itemCost.text = "\(item.cost)"
+            let url = URL(string: itemImage)
+            let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
+            cell.itemImage.kf.setImage(with: resource)
+            cell.itemID = item.ID
+            cell.buttonAction = { sender in
+                self.presenter.addItemInBasket(itemID: item.ID)
+            }
+        }
         return cell
     }
+}
+
+extension CategoryViewController {
+    func showSuccessAlert() {
+        let alert = UIAlertController(title: "Выполнено", message: "Вы добавили товар в заказ!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
-    
+    func showFailureAlert() {
+        let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так! Попробуйте повторить заказ.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ну ошибка и ошибка", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension CategoryViewController: CategoryViewProtocol {
+    func successAddingItem(message: String) {
+        showSuccessAlert()
+        print(message)
+    }
+    
+    func failAddingItem(error: Error) {
+        showFailureAlert()
+        print(error.localizedDescription)
+    }
+    
     
     func success() {
-        print("success")
+        
         tableView.reloadData()
+        //tableView.reloadSections(IndexSet(integersIn: 0...0), with: UITableView.RowAnimation.top)
+        if self.items?.count != 0 {
+            if !updated {
+                presenter.getManufacturers()
+                presenter.getCostRange()
+                updated = !updated
+            }
+            self.filtersAreAvialable = true
+        }
     }
     
     func failure(error: Error) {
@@ -123,4 +172,8 @@ extension CategoryViewController: CategoryViewProtocol {
     }
 }
 
-
+extension CategoryViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}

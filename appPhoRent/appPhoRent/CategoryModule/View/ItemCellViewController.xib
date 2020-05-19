@@ -26,14 +26,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCh-jq-diV">
-                        <rect key="frame" x="358" y="56" width="22" height="22"/>
-                        <state key="normal" image="bag.badge.plus" catalog="system"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pa-Git">
                         <rect key="frame" x="256" y="54" width="94" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title="добавить в заказ"/>
+                        <connections>
+                            <action selector="addInBasket:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hdt-OD-9L5"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost per day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9C-DI-D7f">
                         <rect key="frame" x="282" y="33" width="98" height="21"/>
@@ -47,14 +46,14 @@
                     <constraint firstAttribute="trailing" secondItem="ymW-fP-INa" secondAttribute="trailing" constant="20" id="KLu-gA-YwM"/>
                     <constraint firstItem="ymW-fP-INa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Pqc-yV-cSr"/>
                     <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="3" id="YdQ-Pe-9IB"/>
-                    <constraint firstItem="KCh-jq-diV" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" constant="2" id="elC-yE-zHW"/>
-                    <constraint firstItem="KCh-jq-diV" firstAttribute="leading" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="8" id="iXd-7q-qnx"/>
-                    <constraint firstAttribute="trailing" secondItem="KCh-jq-diV" secondAttribute="trailing" constant="20" id="jgB-KR-oga"/>
+                    <constraint firstAttribute="trailing" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="50" id="Z42-K5-waD"/>
+                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="170" id="buc-Uq-gDV"/>
                     <constraint firstItem="AKP-Pa-Git" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" id="qvi-GS-6xc"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addItemInBasket" destination="AKP-Pa-Git" id="Z3w-CB-1fe"/>
                 <outlet property="itemCost" destination="v9C-DI-D7f" id="Rtd-Cb-TLN"/>
                 <outlet property="itemImage" destination="dkd-dg-sgi" id="bJQ-X8-KdB"/>
                 <outlet property="itemName" destination="ymW-fP-INa" id="3s5-tS-osM"/>
@@ -62,7 +61,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="bag.badge.plus" catalog="system" width="128" height="122"/>
-    </resources>
 </document>

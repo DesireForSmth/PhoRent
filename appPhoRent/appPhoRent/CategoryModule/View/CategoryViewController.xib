@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryViewController" customModule="appPhoRent" customModuleProvider="target">
             <connections>
+                <outlet property="filtersButton" destination="rvz-4u-MDQ" id="qYs-ne-n8W"/>
                 <outlet property="navigationBar" destination="bcF-ol-SPT" id="zwU-cr-okJ"/>
                 <outlet property="tableView" destination="szq-h8-giV" id="s5b-tF-hLO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

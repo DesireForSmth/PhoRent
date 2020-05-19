@@ -17,10 +17,20 @@ protocol AssemblyBuilderProtocol {
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController
+    func createSplashScreen(router: RouterProtocol) -> UIViewController
+    //func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController
+
     //func createAuthModule(router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
+    /*
+    func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController {
+        let view = FiltersViewController()
+        let presenter = CategoryPresenter(view: view, router: router, category: category, networkService: networkService)
+        
+    }
+    */
     
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController {
         let networkService = NetworkService()
@@ -34,6 +44,13 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
         let networkService = NetworkService()
         let view = SignUpViewController()
         let presenter = SignUpPresenter(view: view, router: router, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createSplashScreen(router: RouterProtocol) -> UIViewController {
+        let view = SplashScreenViewController()
+        let presenter = SplashScreenPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }
@@ -54,13 +71,8 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     }
     
     func createContentModule(router: RouterProtocol) -> UIViewController {
-        
-        
-        
-        
+
         let view = TabBarController()
-
-
 
         //let presenter = TabBarPresenter(view: view, router: router)
         //view.presenter = presenter

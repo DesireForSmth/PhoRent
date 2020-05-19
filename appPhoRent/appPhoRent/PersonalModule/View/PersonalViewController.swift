@@ -19,24 +19,25 @@ class PersonalViewController: UIViewController {
     var phoneLabel: UILabel!
     var phoneValueLabel: UILabel!
     var changePhoneButton: UIButton!
-//    var logOutButton: UIButton!
     var aboutUsButton: UIButton!
     
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = "Personal"
+        navigationController?.navigationBar.topItem?.title = "Профиль"
 
         setupUI()
         createConstraints()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if presenter.needDownload() {
             showAlert()
+        } else {
+            secondView.isHidden = false
         }
     }
     // MARK: - ButtonActions
@@ -44,10 +45,6 @@ class PersonalViewController: UIViewController {
     @objc func aboutUsAction(_ sender: UIButton) {
         presenter.showAboutUs()
     }
-    
-//    @objc func logOutAction(_ sender: UIButton) {
-//        presenter.logOut()
-//    }
     
     @objc func changePhoneAction(_ sender: UIButton) {
         let alert = UIAlertController(title: "Изменение номера", message: "Введите номер:", preferredStyle: .alert)
@@ -60,6 +57,9 @@ class PersonalViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert, weak self] (_) in
             self?.presenter.checkPhone(phone: alert?.textFields![0].text)
         }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -71,20 +71,18 @@ class PersonalViewController: UIViewController {
 // MARK: - PersonalViewProtocol
 
 extension PersonalViewController: PersonalViewProtocol {
-    func updateFields(name: String, email: String, phone: String, titleChangePhone: String) {
+    func updateFields(name: String, email: String, phone: String) {
         phoneValueLabel.text = phone
-        changePhoneButton.setTitle(titleChangePhone, for: .normal)
         nameLabel.text = name
         emailValueLabel.text = email
     }
     
     func updatePhoneLabel(phone: String) {
-        changePhoneButton.setTitle("изменить номер", for: .normal)
         phoneValueLabel.text = phone
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
@@ -111,11 +109,30 @@ extension PersonalViewController: PersonalViewProtocol {
 // MARK: - UITextFieldDelegate
 
 extension PersonalViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+    
+    func formattedNumber(number: String) -> String {
+        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let mask = "X (XXX) XXX-XX-XX"
+        
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        for ch in mask where index < cleanPhoneNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = formattedNumber(number: newString)
+        return false
     }
 }
 
@@ -143,8 +160,16 @@ extension PersonalViewController: UIImagePickerControllerDelegate & UINavigation
 extension PersonalViewController {
     
     private func setupUI() {
+        view.backgroundColor = CustomColors.background
         secondView.backgroundColor = CustomColors.background
         
+        let button: UIButton = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "gear"), for: .normal)
+        button.addTarget(self, action: #selector(aboutUsAction), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+
+        navigationItem.rightBarButtonItem = barButton
+
         avatarImageView = UIImageView(image: UIImage(named: "photo"))
         
         if let imageUrl = presenter.getImageUrl() {
@@ -198,30 +223,12 @@ extension PersonalViewController {
         }
         
         changePhoneButton = UIButton(type: .system)
-        changePhoneButton.backgroundColor = .white
-        changePhoneButton.setTitleColor(.systemBlue, for: .normal)
+        changePhoneButton.setImage(UIImage(systemName: "pencil"), for: .normal)
+        
+        
         changePhoneButton.backgroundColor = CustomColors.background
         
         changePhoneButton.addTarget(self, action: #selector(changePhoneAction), for: .touchUpInside)
-        
-        
-//        logOutButton = UIButton(type: .system)
-//        logOutButton.setTitle("Выйти из аккаунта", for: .normal)
-//        logOutButton.setTitleColor(.red, for: .normal)
-//        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
-//        logOutButton.layer.borderWidth = 0.5
-//        
-//        logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
-//        
-        aboutUsButton = UIButton(type: .system)
-        aboutUsButton.setTitle("Настройки", for: .normal)
-        aboutUsButton.layer.borderColor = UIColor.systemGray.cgColor
-        aboutUsButton.layer.borderWidth = 0.5
-        aboutUsButton.setTitleColor(.black, for: .normal)
-        aboutUsButton.setTitleColor(CustomColors.textButton, for: .normal)
-        aboutUsButton.backgroundColor = CustomColors.backgroundButton
-        
-        aboutUsButton.addTarget(self, action: #selector(aboutUsAction), for: .touchUpInside)
         
         secondView.isHidden = true
         
@@ -233,8 +240,6 @@ extension PersonalViewController {
          emailValueLabel,
          phoneLabel,
          phoneValueLabel,
-         aboutUsButton,
-//         logOutButton,
          changePhoneButton].forEach {
             secondView.addSubview($0)
         }
@@ -248,8 +253,6 @@ extension PersonalViewController {
         phoneLabel.translatesAutoresizingMaskIntoConstraints = false
         phoneValueLabel.translatesAutoresizingMaskIntoConstraints = false
         changePhoneButton.translatesAutoresizingMaskIntoConstraints = false
-//        logOutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutUsButton.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -290,29 +293,15 @@ extension PersonalViewController {
         NSLayoutConstraint.activate([
             phoneValueLabel.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
             phoneValueLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor),
-            phoneValueLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: Constraints.trailing),
+            phoneValueLabel.widthAnchor.constraint(equalToConstant: 180),
             phoneValueLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            changePhoneButton.topAnchor.constraint(equalTo: phoneValueLabel.bottomAnchor, constant: 0),
-            changePhoneButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: Constraints.trailing),
-            changePhoneButton.heightAnchor.constraint(equalToConstant: 24),
-            changePhoneButton.widthAnchor.constraint(equalToConstant: 160)
-        ])
-        
-//        NSLayoutConstraint.activate([
-//            logOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//            logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            logOutButton.heightAnchor.constraint(equalToConstant: 40)
-//        ])
-        
-        NSLayoutConstraint.activate([
-            aboutUsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
-            aboutUsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            aboutUsButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            aboutUsButton.heightAnchor.constraint(equalToConstant: 40)
+            changePhoneButton.centerYAnchor.constraint(equalTo: phoneValueLabel.centerYAnchor, constant: 0),
+            changePhoneButton.leadingAnchor.constraint(equalTo: phoneValueLabel.trailingAnchor, constant: Constraints.leading),
+            changePhoneButton.heightAnchor.constraint(equalToConstant: 30),
+            changePhoneButton.widthAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([

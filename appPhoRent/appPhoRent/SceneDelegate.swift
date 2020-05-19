@@ -33,11 +33,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        //let tabBarController = TabBarController()
         let navigationController = UINavigationController()
         let assemblyBuilder = AssemblyModuleBuilder()
         let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder, sceneDelegate: self)
         router.initialViewController()
+        
+        if DataManager.shared.loadColorScheme() == "dark" {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .light
+        }
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
@@ -104,13 +109,15 @@ extension SceneDelegate: SceneDelegateProtocol {
     }
     
     func changeSchemeColor() {
-        guard let style = window?.overrideUserInterfaceStyle else { return }
+        guard let style = window?.traitCollection.userInterfaceStyle else { return }
+        var colorScheme = "light"
         if style == .dark {
             window?.overrideUserInterfaceStyle = .light
         } else {
+            colorScheme = "dark"
             window?.overrideUserInterfaceStyle = .dark
         }
-        
+        DataManager.shared.save(colorScheme: colorScheme)
         if let root = window?.rootViewController as? TabBarController {
             root.tabBar.layoutIfNeeded()
         }

@@ -11,6 +11,8 @@ target 'appPhoRent' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Kingfisher'
+  pod 'Firebase/Functions'
+  pod 'RangeSeekSlider'
   # Pods for appPhoRent
 
 end

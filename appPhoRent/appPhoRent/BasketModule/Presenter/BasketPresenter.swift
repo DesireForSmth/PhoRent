@@ -9,8 +9,8 @@
 import Foundation
 
 protocol BasketViewProtocol: class {
-    func showIndicator()
-    func hideIndicator()
+    func showAlert()
+    func closeAlert()
     
     func success(totalCost: Float, date: Date)
     func failure(error: Error)
@@ -28,22 +28,22 @@ protocol BasketPresenterProtocol: class {
 }
 
 class BasketPresenter: BasketPresenterProtocol {
-
+    
     weak var view: BasketViewProtocol?
     var router: RouterProtocol!
     let networkService: NetWorkServiceProtocol!
     
     var currentOrder: Order?
     var orderId: String = "1"
-
+    
     required init(view: BasketViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService
     }
-
+    
     func prepareData() {
-        view?.showIndicator()
+        view?.showAlert()
         networkService.getOrder(orderID: orderId) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -51,7 +51,7 @@ class BasketPresenter: BasketPresenterProtocol {
                 case .success(let order):
                     self.currentOrder = order
                     self.view?.success(totalCost: order.totalCost, date: order.date)
-                    self.view?.hideIndicator()
+                    self.view?.closeAlert()
                 case .failure(let error):
                     self.view?.failure(error: error)
                 }
@@ -61,18 +61,18 @@ class BasketPresenter: BasketPresenterProtocol {
     
     func updateCount(newCount: Int, item: String) {
         networkService.setNewCount(newCount: newCount, itemTitle: item)
-//        prepareData()
+        //        prepareData()
     }
-
+    
     func getNumberOfRow() -> Int {
         return currentOrder?.items.count ?? 0
     }
-
+    
     func getItem(at index: Int) -> (String, String, Int) {
         if let items = currentOrder?.items, index < items.count {
             return (items[index].title,
-            String(format: "%.0f", items[index].price) + " руб./сут.",
-            items[index].count)
+                    String(format: "%.0f", items[index].price) + " руб./сут.",
+                    items[index].count)
         } else {
             return ("error", "error", 0)
         }
