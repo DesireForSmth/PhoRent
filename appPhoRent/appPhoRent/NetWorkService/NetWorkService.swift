@@ -22,7 +22,6 @@ protocol NetWorkServiceProtocol {
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
     func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
-    func reduceCount(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     func setNewCount(newCount: Int, itemTitle: String)
 }
 
@@ -131,7 +130,7 @@ class NetworkService: NetWorkServiceProtocol {
                     assertionFailure("Ошибка доступа к изображению товара")
                     return
                 }
-                guard let itemCost = document.get("cost") as? String, let itemIntCost = Int(itemCost) else {
+                guard let itemCost = document.get("cost") as? Int else {
                     assertionFailure("Ошибка доступа к цене товара")
                     return
                 }
@@ -143,7 +142,7 @@ class NetworkService: NetWorkServiceProtocol {
                     assertionFailure("Ошибка доступа к количеству товара")
                     return
                 }
-                let item = Item(name: itemName, cost: itemIntCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount, ID: document.documentID)
+                let item = Item(name: itemName, cost: itemCost, manufacturer: itemManufacturer, imageURL: itemImage, count: itemCount, ID: document.documentID)
                 obj.append(item)
             }
             completion(.success(obj))
@@ -152,7 +151,7 @@ class NetworkService: NetWorkServiceProtocol {
     
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()
-        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID]) { (result, error) in
+        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": 1]) { (result, error) in
             if let error = error as NSError? {
                if error.domain == FunctionsErrorDomain {
                  let code = FunctionsErrorCode(rawValue: error.code)
@@ -163,36 +162,9 @@ class NetworkService: NetWorkServiceProtocol {
                }
         }
     }
-        functions.httpsCallable("reduceCountofItem").call(["id": itemID, "category": categoryID, "count": 1]) { (result, error) in
-                if let error = error as NSError? {
-                   if error.domain == FunctionsErrorDomain {
-                     let code = FunctionsErrorCode(rawValue: error.code)
-                     let message = error.localizedDescription
-                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                     completion(.failure(error))
-                     return
-                    }
-            }
-        }
         completion(.success("Done"))
     }
     
-    
-    func reduceCount(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let functions = Functions.functions()
-        functions.httpsCallable("reduceCount").call(["ID": itemID, "category": categoryID, "count": 1]) { (result, error) in
-                if let error = error as NSError? {
-                   if error.domain == FunctionsErrorDomain {
-                     let code = FunctionsErrorCode(rawValue: error.code)
-                     let message = error.localizedDescription
-                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                     completion(.failure(error))
-                     return
-                   }
-            }
-        }
-        completion(.success("Done"))
-    }
         
     
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {
