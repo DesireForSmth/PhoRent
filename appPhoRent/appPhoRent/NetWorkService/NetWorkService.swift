@@ -152,28 +152,28 @@ class NetworkService: NetWorkServiceProtocol {
     
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()
-        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID]) { (result, error) in
-            if let error = error as NSError? {
-               if error.domain == FunctionsErrorDomain {
-                 let code = FunctionsErrorCode(rawValue: error.code)
-                 let message = error.localizedDescription
-                 let details = error.userInfo[FunctionsErrorDetailsKey]
-                 completion(.failure(error))
-                 return
-               }
-        }
-    }
-        functions.httpsCallable("reduceCountofItem").call(["id": itemID, "category": categoryID, "count": 1]) { (result, error) in
-                if let error = error as NSError? {
-                   if error.domain == FunctionsErrorDomain {
-                     let code = FunctionsErrorCode(rawValue: error.code)
-                     let message = error.localizedDescription
-                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                     completion(.failure(error))
-                     return
-                    }
+        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": 1]) { (result, error) in
+                    if let error = error as NSError? {
+                       if error.domain == FunctionsErrorDomain {
+                         let code = FunctionsErrorCode(rawValue: error.code)
+                         let message = error.localizedDescription
+                         let details = error.userInfo[FunctionsErrorDetailsKey]
+                         completion(.failure(error))
+                         return
+                        }
+                }
             }
-        }
+//        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID]) { (result, error) in
+//            if let error = error as NSError? {
+//               if error.domain == FunctionsErrorDomain {
+//                 let code = FunctionsErrorCode(rawValue: error.code)
+//                 let message = error.localizedDescription
+//                 let details = error.userInfo[FunctionsErrorDetailsKey]
+//                 completion(.failure(error))
+//                 return
+//               }
+//        }
+//    }
         completion(.success("Done"))
     }
     

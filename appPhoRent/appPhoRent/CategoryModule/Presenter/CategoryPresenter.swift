@@ -163,8 +163,6 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
                 switch result{
                 case .success(let message):
                     self.view?.successAddingItem(message: message)
-                    print(categoryID)
-                    print(itemID)
                 case . failure(let error):
                     self.view?.failAddingItem(error: error)
                 }
