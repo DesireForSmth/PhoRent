@@ -42,7 +42,7 @@ protocol CategoryViewPresenterProtocol: class {
     func containsManufacturer(name: String) -> Bool
     func setCostRange(minCost: CGFloat, maxCost: CGFloat)
     func getCostRange()
-    func addItemInBasket(itemID: String)
+    func addItemInBasket(itemID: String, count: Int)
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
@@ -151,12 +151,12 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         }
     }
     
-    func addItemInBasket(itemID: String) {
+    func addItemInBasket(itemID: String, count: Int) {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
             return
         }
-        networkService.addItemInBasket(itemID: itemID, categoryID: categoryID) { [weak self] result in
+        networkService.addItemInBasket(itemID: itemID, categoryID: categoryID, count: count) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result{

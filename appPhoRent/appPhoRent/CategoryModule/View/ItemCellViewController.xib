@@ -9,25 +9,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ItemCellViewController" customModule="appPhoRent" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="115" id="KGk-i7-Jjw" customClass="ItemCellViewController" customModule="appPhoRent" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="115"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="115"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dkd-dg-sgi">
-                        <rect key="frame" x="16" y="5" width="70" height="70"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymW-fP-INa">
-                        <rect key="frame" x="277" y="3" width="103" height="27"/>
+                        <rect key="frame" x="159" y="0.0" width="221" height="27"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pa-Git">
-                        <rect key="frame" x="226" y="54" width="124" height="26"/>
+                        <rect key="frame" x="284" y="78" width="94" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title="добавить в заказ"/>
                         <connections>
@@ -35,31 +31,57 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost per day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9C-DI-D7f">
-                        <rect key="frame" x="282" y="33" width="98" height="21"/>
+                        <rect key="frame" x="282" y="29" width="98" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="fAw-FO-o49">
+                        <rect key="frame" x="139" y="78" width="94" height="32"/>
+                        <connections>
+                            <action selector="countStepper:" destination="KGk-i7-Jjw" eventType="valueChanged" id="iL5-h6-3HN"/>
+                        </connections>
+                    </stepper>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1R-Aj-W5Z">
+                        <rect key="frame" x="159" y="49" width="47" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dkd-dg-sgi">
+                        <rect key="frame" x="0.0" y="0.0" width="121" height="114"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="v9C-DI-D7f" secondAttribute="trailing" constant="20" id="6Rv-3h-PjC"/>
-                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="140" id="8Rk-qQ-Vo9"/>
-                    <constraint firstAttribute="trailing" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="50" id="G57-K4-Vnt"/>
-                    <constraint firstAttribute="trailing" secondItem="ymW-fP-INa" secondAttribute="trailing" constant="20" id="KLu-gA-YwM"/>
-                    <constraint firstItem="ymW-fP-INa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Pqc-yV-cSr"/>
-                    <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="3" id="YdQ-Pe-9IB"/>
-                    <constraint firstAttribute="trailing" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="50" id="Z42-K5-waD"/>
-                    <constraint firstItem="AKP-Pa-Git" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" id="qvi-GS-6xc"/>
+                    <constraint firstItem="v9C-DI-D7f" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="161" id="6G8-yX-bM9"/>
+                    <constraint firstItem="H1R-Aj-W5Z" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="22" id="I3s-sL-5Sg"/>
+                    <constraint firstItem="AKP-Pa-Git" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" constant="28" id="IJ3-Fg-jHu"/>
+                    <constraint firstItem="ymW-fP-INa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QPC-tD-jcl"/>
+                    <constraint firstItem="fAw-FO-o49" firstAttribute="top" secondItem="H1R-Aj-W5Z" secondAttribute="bottom" constant="8" id="Sa8-8N-cSm"/>
+                    <constraint firstItem="fAw-FO-o49" firstAttribute="top" secondItem="H1R-Aj-W5Z" secondAttribute="bottom" constant="8" id="dDS-wL-NMU"/>
+                    <constraint firstAttribute="bottom" secondItem="fAw-FO-o49" secondAttribute="bottom" constant="5" id="m1S-jc-lzm"/>
+                    <constraint firstItem="fAw-FO-o49" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="18" id="mhe-Hs-wBn"/>
+                    <constraint firstAttribute="trailing" secondItem="v9C-DI-D7f" secondAttribute="trailing" constant="20" id="pe9-FZ-fWL"/>
+                    <constraint firstAttribute="trailing" secondItem="ymW-fP-INa" secondAttribute="trailing" constant="20" id="szb-U1-CqC"/>
+                    <constraint firstAttribute="trailing" secondItem="H1R-Aj-W5Z" secondAttribute="trailing" constant="194" id="tG8-Kb-SNd"/>
+                    <constraint firstItem="ymW-fP-INa" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="38" id="uTG-bT-si4"/>
+                    <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="2" id="vKC-hE-B3U"/>
+                    <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="2" id="x7r-8G-1oc"/>
+                    <constraint firstItem="H1R-Aj-W5Z" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="38" id="xDk-F6-PRE"/>
+                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="fAw-FO-o49" secondAttribute="trailing" constant="51" id="zuG-3H-tUU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addItemInBasket" destination="AKP-Pa-Git" id="Z3w-CB-1fe"/>
+                <outlet property="countLabel" destination="H1R-Aj-W5Z" id="Soi-en-yee"/>
                 <outlet property="itemCost" destination="v9C-DI-D7f" id="Rtd-Cb-TLN"/>
                 <outlet property="itemImage" destination="dkd-dg-sgi" id="bJQ-X8-KdB"/>
                 <outlet property="itemName" destination="ymW-fP-INa" id="3s5-tS-osM"/>
+                <outlet property="stepperCount" destination="fAw-FO-o49" id="edz-RS-Pnk"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
+            <point key="canvasLocation" x="137.68115942028987" y="122.87946428571428"/>
         </tableViewCell>
     </objects>
 </document>

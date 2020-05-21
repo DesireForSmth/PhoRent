@@ -21,7 +21,7 @@ protocol NetWorkServiceProtocol {
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
     func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void)
-    func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
+    func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
     func setNewCount(newCount: Int, itemTitle: String)
 }
 
@@ -149,9 +149,9 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-    func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()
-        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": 1]) { (result, error) in
+        functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": count]) { (result, error) in
             if let error = error as NSError? {
                if error.domain == FunctionsErrorDomain {
                  let code = FunctionsErrorCode(rawValue: error.code)
