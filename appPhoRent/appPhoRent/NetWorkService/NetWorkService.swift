@@ -20,9 +20,10 @@ protocol NetWorkServiceProtocol {
     func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void)
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
-    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void)
+    func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
-    func setNewCount(newCount: Int, itemTitle: String)
+    func setNewCount(newCount: Int, itemID: String)
+    func removeFromBasket(itemID: String)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -221,35 +222,56 @@ class NetworkService: NetWorkServiceProtocol {
         ])
     }
     
-    func setNewCount(newCount: Int, itemTitle: String) {
+    func setNewCount(newCount: Int, itemID: String) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).collection("basket").document(itemID).updateData(["count": newCount]) {
+            error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Document successfully updated!")
+            }
+        }
+    }
+    
+    func removeFromBasket(itemID: String) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).collection("basket").document(itemID).delete { error in
+            if let error = error {
+                print("Failed to delete: \(error)")
+            }
+        }
     }
     
     
-    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void) {
+    func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
             assertionFailure("Ошибка доступа к пользователю")
             return
         }
         
-        db.collection("users").document(userID).collection("orders").document(orderID).getDocument() { (document, error) in
+        db.collection("users").document(userID).collection("basket").getDocuments { (snapshot, error) in
+            
             if let error = error {
                 completion(.failure(error))
                 return
-            }
-            
-            var items = [BasketItem]()
-            if let dict = document?.get("items") as? Dictionary<String, Dictionary<String,Any>> {
-                for element in dict {
-                    let item = BasketItem(title: element.key, price: element.value["price"] as? Float ?? 0, count: element.value["count"] as? Int ?? 0)
-                    items.append(item)
+            } else {
+                
+                let items = snapshot?.documents.map { (document) -> BasketItem in
+                    let item = BasketItem(dictionary: document.data(), itemID: document.documentID)
+                    return item
                 }
+                completion(.success(items ?? []))
             }
-            
-            let date = document?.get("date") as? Date ?? Date()
-            let totalCost = document?.get("totalCost") as? Float ?? 0
-            let order = Order(orderID: orderID, date: date, items: items, totalCost: totalCost)
-            completion(.success(order))
         }
     }
 }

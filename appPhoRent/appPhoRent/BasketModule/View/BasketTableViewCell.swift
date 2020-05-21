@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol BasketTableViewCellDelegate {
     func updateCount(sender: UIStepper)
@@ -31,10 +32,24 @@ class BasketTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func fillCell(title: String, price: String, count: Int) {
-        titleLabel.text = title
-        priceLabel.text = price
-        itemImageView.image = UIImage(systemName: "house")
+    func fillCell(name: String, cost: String, count: Int, imageURL: String) {
+        
+//        let itemImage = item.imageURL
+//        cell.itemName.text = item.name
+//        cell.itemCost.text = "\(item.cost)"
+//        let url = URL(string: itemImage)
+//        let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
+//        cell.itemImage.kf.setImage(with: resource)
+        
+        
+        
+        titleLabel.text = name
+        priceLabel.text = cost
+//        itemImageView.image = UIImage(systemName: "house")
+        
+        itemImageView.image = UIImage()
+        let url = URL(string: imageURL)
+        itemImageView.kf.setImage(with: url)
         stepperOutlet.value = Double(count)
         countLabel.text = "Количество: \(count)"
     }
