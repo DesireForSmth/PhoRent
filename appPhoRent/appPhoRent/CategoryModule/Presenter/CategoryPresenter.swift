@@ -46,7 +46,6 @@ protocol CategoryViewPresenterProtocol: class {
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
-    
     let view: CategoryViewProtocol?
     var router: RouterProtocol?
     var category: Category?
