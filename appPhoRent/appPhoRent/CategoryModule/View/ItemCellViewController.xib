@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pa-Git">
-                        <rect key="frame" x="256" y="54" width="94" height="26"/>
+                        <rect key="frame" x="226" y="54" width="124" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title="добавить в заказ"/>
                         <connections>
@@ -43,11 +43,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="v9C-DI-D7f" secondAttribute="trailing" constant="20" id="6Rv-3h-PjC"/>
+                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="140" id="8Rk-qQ-Vo9"/>
+                    <constraint firstAttribute="trailing" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="50" id="G57-K4-Vnt"/>
                     <constraint firstAttribute="trailing" secondItem="ymW-fP-INa" secondAttribute="trailing" constant="20" id="KLu-gA-YwM"/>
                     <constraint firstItem="ymW-fP-INa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Pqc-yV-cSr"/>
                     <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="3" id="YdQ-Pe-9IB"/>
                     <constraint firstAttribute="trailing" secondItem="AKP-Pa-Git" secondAttribute="trailing" constant="50" id="Z42-K5-waD"/>
-                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="170" id="buc-Uq-gDV"/>
                     <constraint firstItem="AKP-Pa-Git" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" id="qvi-GS-6xc"/>
                 </constraints>
             </tableViewCellContentView>

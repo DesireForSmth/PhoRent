@@ -6,74 +6,50 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 
-//adding new order function
-// exports.addItemInBasket = functions.https.onCall((data, context) => {
-//   const uid = context.auth.uid;
-//   console.log("Here data!");
-//   console.log(data);
-//   admin.firestore().collection('categories').doc(data.category)
-//   .collection('items').doc(data.id).get().then(item => {
-//     console.log("here item");
-//     console.log(item);
-//     admin.firestore().collection('users').doc(uid).collection('basket')
-//     .add(item).then(() => {
-//       if (item.exists){
-//         console.log('ok');
-//         return Promise.resolve();
-//       }
-//       else {
-//         throw new Error("Don't exist");
-//       }
-//     }).catch(err => {
-//         console.error(`Fatal error ${err}`);
-//     return Promise.reject(err);
-//     });
-//     return item
-//   }).catch((err) => {
-
-//       console.error(`Fatal error ${err}`);
-//   return Promise.reject(err);
-//   });
-// });
-
-
-// // reduce count of items 
-// exports.reduceCountofItem = functions.https.onCall((data, context) => {
-//   admin.firestore().collection('categories').doc(data.category)
-//     .collection('items').doc(data.id)
-//     .get().then(snapshot => {
-//       let item = snapshot.data();
-    
-//     });
-//   let elementCount = data.count;
-//   let newElementCount = dbElementCount - elementCount;
-//   if (newElementCount < 0) {
-//     throw new functions.https.HttpsError('invalid-argument', `Невозможно добавить ${data.name} в заказ. 
-//    Попробуйте попытку позднее.`);
-//   }
-//   else {
-//     await admin.firestore().collection('categories')
-//       .doc(data.category).collection('items')
-//       .doc(data.id).update({ crount: newElementCount });
-//     console.log('Change succeeded!');
-//   }
-// });
-
+//add new item
 exports.addItemInBasket = functions.https.onCall((data, context) => {
   admin.firestore().collection('categories').doc(data.category)
   .collection('items').doc(data.id).get().then(snapshot => {
-    let item = snapshot.data();
+    var item = snapshot.data();
+    console.log(item);
     let elementCount = data.count;
     let dbElementCount = item.count;
+    console.log(elementCount, dbElementCount);
+    console.log(data.id, data.category);
     if (dbElementCount >= elementCount) {
       let newElementCount = dbElementCount - elementCount;
       admin.firestore().collection('categories').doc(data.category)
       .collection('items').doc(data.id).update({ count: newElementCount}).then(() => {
         let uid = context.auth.uid;
-        admin.firestore().collection('users').doc(uid).collection('basket')
-        .add(item).then(() => {
-          console.log('ok');
+        admin.firestore().collection('users').doc(uid).collection('basket').where('name', '==', item.name)
+        .get().then(snapshotQuery => { 
+          if (snapshotQuery.empty) {
+            item.count = 1;
+            admin.firestore().collection('users').doc(uid).collection('basket').doc()
+        .set(item).then(() => {
+          console.log(item);
           return Promise.resolve();
+        }).catch(err => {
+          return Promise.reject(err);
+        });
+          }
+          else {
+            snapshotQuery.forEach(doc => {
+              item = doc.data();
+              let docID = doc.id;
+              console.log(docID);
+              item.count += 1;
+              console.log(item);
+              admin.firestore().collection('users').doc(uid).collection('basket').doc(docID)
+        .update({ count: item.count} ).then(() => {
+          console.log(item);
+          return Promise.resolve();
+            }).catch(err => {
+              return Promise.reject(err);
+            });
+          });
+        }
+        return Promise.resolve();
       }).catch(err => {
         return Promise.reject(err);
       });
@@ -83,19 +59,12 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
     });
   }
     else {
-      throw new functions.https.HttpsError('invalid-argument', `Невозможно добавить ${data.name} в заказ. 
+      throw new functions.https.HttpsError('invalid-argument', `Невозможно добавить ${item.name} в заказ. 
     Попробуйте попытку позднее.`);
     }
     return Promise.resolve();
   }).catch(err => {
     return Promise.reject(err);
     });
-    return item
-  }).catch((err) => {
-      eturn Promise.reject(err);
-    }
-    return Promise.resolve();
-  }).catch(err => {
-    return Promise.reject(err);
   });
-});
+
