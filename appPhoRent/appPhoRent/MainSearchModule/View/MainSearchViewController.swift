@@ -27,6 +27,7 @@ class MainSearchViewController: UIViewController {
         tableView.rowHeight = 60
         navBar.topItem?.title = "Search"
         navigationController?.isNavigationBarHidden = true
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 }
 

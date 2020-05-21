@@ -38,6 +38,7 @@ class CategoryViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         self.navigationBar.topItem?.title = presenter.getCategoryName()
         self.navigationController?.isNavigationBarHidden = true
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 
     func showFiltersPopover() {
