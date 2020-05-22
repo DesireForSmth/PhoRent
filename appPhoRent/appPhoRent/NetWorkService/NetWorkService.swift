@@ -25,7 +25,7 @@ protocol NetWorkServiceProtocol {
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
     
     func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
-    func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
+    func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
     //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String)
     func saveImage(dataImage: Data)

@@ -22,8 +22,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pa-Git">
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKP-Pa-Git">
                         <rect key="frame" x="284" y="78" width="94" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title="добавить в заказ"/>
                         <connections>
@@ -56,7 +57,6 @@
                 <constraints>
                     <constraint firstItem="v9C-DI-D7f" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="161" id="6G8-yX-bM9"/>
                     <constraint firstItem="H1R-Aj-W5Z" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="22" id="I3s-sL-5Sg"/>
-                    <constraint firstItem="AKP-Pa-Git" firstAttribute="top" secondItem="v9C-DI-D7f" secondAttribute="bottom" constant="28" id="IJ3-Fg-jHu"/>
                     <constraint firstItem="ymW-fP-INa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QPC-tD-jcl"/>
                     <constraint firstItem="fAw-FO-o49" firstAttribute="top" secondItem="H1R-Aj-W5Z" secondAttribute="bottom" constant="8" id="Sa8-8N-cSm"/>
                     <constraint firstItem="fAw-FO-o49" firstAttribute="top" secondItem="H1R-Aj-W5Z" secondAttribute="bottom" constant="8" id="dDS-wL-NMU"/>
@@ -69,7 +69,6 @@
                     <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="2" id="vKC-hE-B3U"/>
                     <constraint firstItem="v9C-DI-D7f" firstAttribute="top" secondItem="ymW-fP-INa" secondAttribute="bottom" constant="2" id="x7r-8G-1oc"/>
                     <constraint firstItem="H1R-Aj-W5Z" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="38" id="xDk-F6-PRE"/>
-                    <constraint firstItem="AKP-Pa-Git" firstAttribute="leading" secondItem="fAw-FO-o49" secondAttribute="trailing" constant="51" id="zuG-3H-tUU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

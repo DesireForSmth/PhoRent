@@ -29,11 +29,20 @@ class ItemCellViewController: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setUp()
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+}
+
+extension ItemCellViewController {
+    func setUp(){
+        self.addItemInBasket.translatesAutoresizingMaskIntoConstraints = false
+        self.addItemInBasket.topAnchor.constraint(equalTo: self.stepperCount.topAnchor, constant: 0).isActive = true
+        self.addItemInBasket.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true
     }
 }
