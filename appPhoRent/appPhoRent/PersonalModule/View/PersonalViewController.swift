@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PersonalViewController: UIViewController {
     var presenter: PersonalPresenterProtocol!
@@ -14,9 +15,11 @@ class PersonalViewController: UIViewController {
     var secondView = UIView()
     var avatarImageView: UIImageView!
     var nameLabel: UILabel!
-    var emailLabel: UILabel!
+    //    var emailLabel: UILabel!
+    var emailImageView: UIImageView!
     var emailValueLabel: UILabel!
-    var phoneLabel: UILabel!
+    //    var phoneLabel: UILabel!
+    var phoneImageView: UIImageView!
     var phoneValueLabel: UILabel!
     var changePhoneButton: UIButton!
     var aboutUsButton: UIButton!
@@ -26,9 +29,10 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.topItem?.title = "Профиль"
-
+        
         setupUI()
         createConstraints()
+        presenter.setInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +63,7 @@ class PersonalViewController: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -71,10 +75,15 @@ class PersonalViewController: UIViewController {
 // MARK: - PersonalViewProtocol
 
 extension PersonalViewController: PersonalViewProtocol {
-    func updateFields(name: String, email: String, phone: String) {
+    func updateFields(name: String, email: String, phone: String, imageURL: URL?) {
         phoneValueLabel.text = phone
         nameLabel.text = name
         emailValueLabel.text = email
+        
+        if let imageURL = imageURL {
+            avatarImageView.kf.setImage(with: imageURL)
+        }
+        closeAlert()
     }
     
     func updatePhoneLabel(phone: String) {
@@ -167,16 +176,10 @@ extension PersonalViewController {
         button.setImage(UIImage(systemName: "gear"), for: .normal)
         button.addTarget(self, action: #selector(aboutUsAction), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
-
-        navigationItem.rightBarButtonItem = barButton
-
-        avatarImageView = UIImageView(image: UIImage(named: "photo"))
         
-        if let imageUrl = presenter.getImageUrl() {
-            if let image = UIImage(contentsOfFile: imageUrl.path) {
-                avatarImageView.image = image
-            }
-        }
+        navigationItem.rightBarButtonItem = barButton
+        
+        avatarImageView = UIImageView(image: UIImage(named: "photo"))
         
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.cornerRadius = 70
@@ -187,7 +190,6 @@ extension PersonalViewController {
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(tapGestureRecognizer)
         
-        
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
@@ -196,28 +198,34 @@ extension PersonalViewController {
         nameLabel = UILabel()
         nameLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         
-        emailLabel = UILabel()
-        emailLabel.text = "Email"
-        emailLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        emailLabel.textAlignment = .right
+        emailImageView = UIImageView(image: UIImage(systemName: "envelope"))
+        emailImageView.contentMode = .scaleAspectFit
+        emailImageView.tintColor = CustomColors.textLabel
+        
+        //        emailLabel = UILabel()
+        //        emailLabel.text = "Email"
+        //        emailLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        //        emailLabel.textAlignment = .right
         
         emailValueLabel = UILabel()
         emailValueLabel.numberOfLines = 0
         emailValueLabel.font = emailValueLabel.font.withSize(20)
         
-        phoneLabel = UILabel()
-        phoneLabel.text = "Телефон"
-        phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        phoneLabel.textAlignment = .right
+        phoneImageView = UIImageView(image: UIImage(systemName: "phone"))
+        phoneImageView.contentMode = .scaleAspectFit
+        phoneImageView.tintColor = CustomColors.textLabel
+        
+        //        phoneLabel = UILabel()
+        //        phoneLabel.text = "Телефон"
+        //        phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        //        phoneLabel.textAlignment = .right
         
         phoneValueLabel = UILabel()
         phoneValueLabel.numberOfLines = 0
         phoneValueLabel.font = phoneValueLabel.font.withSize(20)
         
         [nameLabel,
-         emailLabel,
          emailValueLabel,
-         phoneLabel,
          phoneValueLabel].forEach {
             $0?.textColor = CustomColors.textLabel
         }
@@ -227,6 +235,7 @@ extension PersonalViewController {
         
         
         changePhoneButton.backgroundColor = CustomColors.background
+        changePhoneButton.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
         changePhoneButton.addTarget(self, action: #selector(changePhoneAction), for: .touchUpInside)
         
@@ -236,9 +245,9 @@ extension PersonalViewController {
         
         [avatarImageView,
          nameLabel,
-         emailLabel,
+         emailImageView,
          emailValueLabel,
-         phoneLabel,
+         phoneImageView,
          phoneValueLabel,
          changePhoneButton].forEach {
             secondView.addSubview($0)
@@ -248,9 +257,9 @@ extension PersonalViewController {
     private func createConstraints() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailImageView.translatesAutoresizingMaskIntoConstraints = false
         emailValueLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
+        phoneImageView.translatesAutoresizingMaskIntoConstraints = false
         phoneValueLabel.translatesAutoresizingMaskIntoConstraints = false
         changePhoneButton.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false
@@ -270,38 +279,38 @@ extension PersonalViewController {
         ])
         
         NSLayoutConstraint.activate([
-            emailLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
-            emailLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constraints.leading),
-            emailLabel.trailingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: -30),
-            emailLabel.heightAnchor.constraint(equalToConstant: 30)
+            emailImageView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
+            emailImageView.widthAnchor.constraint(equalToConstant: 30),
+            emailImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+            emailImageView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             emailValueLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
-            emailValueLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor),
+            emailValueLabel.leadingAnchor.constraint(equalTo: emailImageView.trailingAnchor, constant: Constraints.leading),
             emailValueLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: Constraints.trailing),
             emailValueLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            phoneLabel.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
-            phoneLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constraints.leading),
-            phoneLabel.trailingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: -30),
-            phoneLabel.heightAnchor.constraint(equalToConstant: 30)
+            phoneImageView.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
+            phoneImageView.widthAnchor.constraint(equalToConstant: 30),
+            phoneImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+            phoneImageView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             phoneValueLabel.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
-            phoneValueLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor),
+            phoneValueLabel.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: Constraints.leading),
             phoneValueLabel.widthAnchor.constraint(equalToConstant: 180),
             phoneValueLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            changePhoneButton.centerYAnchor.constraint(equalTo: phoneValueLabel.centerYAnchor, constant: 0),
+            changePhoneButton.centerYAnchor.constraint(equalTo: phoneValueLabel.centerYAnchor),
             changePhoneButton.leadingAnchor.constraint(equalTo: phoneValueLabel.trailingAnchor, constant: Constraints.leading),
-            changePhoneButton.heightAnchor.constraint(equalToConstant: 30),
-            changePhoneButton.widthAnchor.constraint(equalToConstant: 30)
+            changePhoneButton.heightAnchor.constraint(equalToConstant: 62),
+            changePhoneButton.widthAnchor.constraint(equalToConstant: 62)
         ])
         
         NSLayoutConstraint.activate([

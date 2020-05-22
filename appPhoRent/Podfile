@@ -13,6 +13,7 @@ target 'appPhoRent' do
   pod 'Kingfisher'
   pod 'Firebase/Functions'
   pod 'RangeSeekSlider'
+  pod 'Firebase/Storage'
   # Pods for appPhoRent
 
 end

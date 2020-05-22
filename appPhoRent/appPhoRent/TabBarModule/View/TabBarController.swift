@@ -69,12 +69,15 @@ class TabBarController: UITabBarController {
         thirdViewController.presenter = thirdPresenterVC
         
         firstNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
-        secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        secondNavigationController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        
+//        secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         thirdNavigationController.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart.fill"), selectedImage: UIImage(systemName: "cart.fill"))
         
         let tabBarList = [firstNavigationController, secondNavigationController, thirdNavigationController]
         
         viewControllers = tabBarList
+        selectedIndex = 1
     }
 }
 
