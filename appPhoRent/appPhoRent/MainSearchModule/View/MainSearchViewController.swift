@@ -27,6 +27,7 @@ class MainSearchViewController: UIViewController {
         tableView.rowHeight = 60
         navBar.topItem?.title = "Search"
         navigationController?.isNavigationBarHidden = true
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 }
 
@@ -69,7 +70,7 @@ extension MainSearchViewController: MainSearchViewProtocol{
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium

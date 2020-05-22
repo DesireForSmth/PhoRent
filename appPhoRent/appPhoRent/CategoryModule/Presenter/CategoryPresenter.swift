@@ -15,6 +15,8 @@ protocol CategoryViewProtocol: class {
     func setItems(items: [Item]?)
     func showAlert()
     func closeAlert()
+    func successAddingItem(message: String)
+    func failAddingItem(error: Error)
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -40,6 +42,7 @@ protocol CategoryViewPresenterProtocol: class {
     func containsManufacturer(name: String) -> Bool
     func setCostRange(minCost: CGFloat, maxCost: CGFloat)
     func getCostRange()
+    func addItemInBasket(itemID: String, count: Int)
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
@@ -147,6 +150,25 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             }
         }
     }
+    
+    func addItemInBasket(itemID: String, count: Int) {
+        guard let categoryID = self.category?.ID else {
+            assertionFailure("Проблема с доступом к категории")
+            return
+        }
+        networkService.addItemInBasket(itemID: itemID, categoryID: categoryID, count: count) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let message):
+                    self.view?.successAddingItem(message: message)
+                case . failure(let error):
+                    self.view?.failAddingItem(error: error)
+                }
+            }
+        }
+        }
+        
     
     func getMaxCurCost() -> CGFloat? {
         let cost = self.costRange["maxCost"]

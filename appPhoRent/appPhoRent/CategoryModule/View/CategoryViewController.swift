@@ -32,12 +32,13 @@ class CategoryViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 80
+        tableView.rowHeight = 115
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         self.navigationBar.topItem?.title = presenter.getCategoryName()
         self.navigationController?.isNavigationBarHidden = true
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 
     func showFiltersPopover() {
@@ -92,8 +93,6 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCellViewController
-        
-        
         if let item = items?[indexPath.item] {
             let itemImage = item.imageURL
             cell.itemName.text = item.name
@@ -101,14 +100,42 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
+            cell.stepperCount.minimumValue = 1
+            cell.stepperCount.maximumValue = Double(item.count)
+            cell.countLabel.text = String(1)
+            cell.buttonAction = { sender in
+                self.presenter.addItemInBasket(itemID: item.ID, count: Int(cell.stepperCount.value))
+            }
         }
         return cell
     }
+}
+
+extension CategoryViewController {
+    func showSuccessAlert() {
+        let alert = UIAlertController(title: "Выполнено", message: "Вы добавили товар в заказ!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
-    
+    func showFailureAlert() {
+        let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так! Попробуйте повторить заказ.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ну ошибка и ошибка", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension CategoryViewController: CategoryViewProtocol {
+    func successAddingItem(message: String) {
+        showSuccessAlert()
+        print(message)
+    }
+    
+    func failAddingItem(error: Error) {
+        showFailureAlert()
+        print(error.localizedDescription)
+    }
+    
     
     func success() {
         
