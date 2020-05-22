@@ -18,6 +18,7 @@ protocol AboutUsPresenterProtocol: class {
     
     func logOut()
     func changeSchemeColor()
+    func showOrders()
 }
 
 
@@ -53,5 +54,9 @@ class AboutUsPresenter: AboutUsPresenterProtocol {
     
     func changeSchemeColor() {
         router?.changeSchemeColor()
+    }
+    
+    func showOrders() {
+        router?.showOrders()
     }
 }

@@ -17,6 +17,8 @@ class PasswordDropViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
+        
+        emailTextField.keyboardType = .emailAddress
         // Do any additional setup after loading the view.
     }
 

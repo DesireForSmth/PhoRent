@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
+        emailTextField.keyboardType = .emailAddress
         // Do any additional setup after loading the view.
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFunctions
+import FirebaseStorage
 
 protocol NetWorkServiceProtocol {
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void)
@@ -20,9 +21,15 @@ protocol NetWorkServiceProtocol {
     func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void)
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
-    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void)
-    func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
-    func setNewCount(newCount: Int, itemTitle: String)
+
+    func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
+    
+    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
+    func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
+    //    func setNewCount(newCount: Int, itemID: String)
+    func removeFromBasket(itemID: String)
+    func saveImage(dataImage: Data)
+    func putOrder(order: Order)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -153,19 +160,19 @@ class NetworkService: NetWorkServiceProtocol {
         let functions = Functions.functions()
         functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": count]) { (result, error) in
             if let error = error as NSError? {
-               if error.domain == FunctionsErrorDomain {
-                 let code = FunctionsErrorCode(rawValue: error.code)
-                 let message = error.localizedDescription
-                 let details = error.userInfo[FunctionsErrorDetailsKey]
-                 completion(.failure(error))
-                 return
-               }
+                if error.domain == FunctionsErrorDomain {
+                    let code = FunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                    completion(.failure(error))
+                    return
+                }
+            }
         }
-    }
         completion(.success("Done"))
     }
     
-        
+    
     
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {
         let db = Firestore.firestore()
@@ -181,7 +188,8 @@ class NetworkService: NetWorkServiceProtocol {
             let name = document?.get("username") as? String ?? ""
             let email = document?.get("email") as? String ?? ""
             let phone = document?.get("phone") as? String
-            let obj = PersonalData(name: name, email: email, phone: phone, userID: userID)
+            let imageURLString = document?.get("imageURL") as? String
+            let obj = PersonalData(name: name, email: email, phone: phone, userID: userID, imageURLString: imageURLString)
             completion(.success(obj))
         }
     }
@@ -201,55 +209,192 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-    
-    func setOrder(orderID: String) {
-        let db = Firestore.firestore()
+    func saveImage(dataImage: Data) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
         guard let userID = Auth.auth().currentUser?.uid else {
             assertionFailure("Ошибка доступа к пользователю")
             return
         }
-        
-        let cost1: Float = 1500
-        let cost2: Float = 1000
-        db.collection("users").document(userID).collection("orders").document(orderID).setData([
-            "date": Date(),
-            "totalCost": 6500,
-            "items":
-            ["goPro": ["price": cost1, "count": 3],
-             "sony": ["price": cost2, "count": 2],
-             ]
-        ])
-    }
-    
-    func setNewCount(newCount: Int, itemTitle: String) {
-    }
-    
-    
-    func getOrder(orderID: String, completion: @escaping (Result<Order, Error>) -> Void) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else {
-            assertionFailure("Ошибка доступа к пользователю")
-            return
-        }
-        
-        db.collection("users").document(userID).collection("orders").document(orderID).getDocument() { (document, error) in
-            if let error = error {
-                completion(.failure(error))
+        let imageRef = storageRef.child("images/\(userID)")
+        imageRef.putData(dataImage, metadata: nil) { [weak self] (metadata, error) in
+            guard let _ = metadata else {
                 return
             }
+            imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    return
+                }
+                self?.saveImageURL(userID: userID, url: downloadURL)
+            }
+        }
+    }
+    
+    func saveImageURL(userID: String, url: URL) {
+        let db = Firestore.firestore()
+        db.collection("users").document(userID).updateData(["imageURL": String(describing: url)]) { error in
+            if let error = error{
+                print("Error update imageURL: \(error)")
+                return
+            }
+            print("ImageURL has been seted")
+        }
+    }
+    
+    
+    //    func setOrder(orderID: String) {
+    //        let db = Firestore.firestore()
+    //        guard let userID = Auth.auth().currentUser?.uid else {
+    //            assertionFailure("Ошибка доступа к пользователю")
+    //            return
+    //        }
+    //
+    //        let cost1: Float = 1500
+    //        let cost2: Float = 1000
+    //        db.collection("users").document(userID).collection("orders").document(orderID).setData([
+    //            "date": Date(),
+    //            "totalCost": 6500,
+    //            "items":
+    //                ["goPro": ["price": cost1, "count": 3],
+    //                 "sony": ["price": cost2, "count": 2],
+    //            ]
+    //        ])
+    //    }
+
+    
+    func removeFromBasket(itemID: String) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).collection("basket").document(itemID).delete { error in
+            if let error = error {
+                print("Failed to delete: \(error)")
+            }
+        }
+    }
+    
+    func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        db.collection("users").document(userID).collection("basket")
+            .addSnapshotListener { documentSnapshot, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                } else {
+                    let items = documentSnapshot?.documents.map { (document) -> BasketItem in
+                        let item = BasketItem(dictionary: document.data(), itemID: document.documentID)
+                        return item
+                    }
+                    completion(.success(items ?? []))
+                }
+        }
+    }
+    
+    func putOrder(order: Order) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: order.date)
+        
+        let orderID = "С \(dateString) на \(String(order.countOfDay)) сут."
+        for item in order.items {
             
-            var items = [BasketItem]()
-            if let dict = document?.get("items") as? Dictionary<String, Dictionary<String,Any>> {
-                for element in dict {
-                    let item = BasketItem(title: element.key, price: element.value["price"] as? Float ?? 0, count: element.value["count"] as? Int ?? 0)
-                    items.append(item)
+            db.collection("users").document(userID).collection(orderID).addDocument(data: [
+                "name": item.name,
+                "cost": item.cost,
+                "imageURL": item.imageURL,
+                "manufacturer": item.manufacturer,
+                "count": item.count
+            ])
+            db.collection("users").document(userID).collection("basket").document(item.itemID).delete { error in
+                if let error = error {
+                    print("Failed to delete: \(error)")
                 }
             }
             
-            let date = document?.get("date") as? Date ?? Date()
-            let totalCost = document?.get("totalCost") as? Float ?? 0
-            let order = Order(orderID: orderID, date: date, items: items, totalCost: totalCost)
-            completion(.success(order))
+        }
+        
+        var array = [String]()
+        
+        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
+            if let data = snapshot?.data() {
+                if let data = data["orders"] as? Array<String> {
+                    array = data
+                    print("array=data\(array)")
+                }
+                array.append(orderID)
+                self?.updateOrdersTitle(array: array)
+            }
+        }
+    }
+    
+    func updateOrdersTitle(array: [String]) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).updateData(["orders" : array]) { error in
+            if let error = error {
+                print("Failed to update orderID: \(error)")
+            }
+        }
+    }
+    
+    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        var array = [String]()
+        
+        var orders = [PreviousOrder]()
+        
+        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
+            print("wait 1")
+            if let data = snapshot?.data() {
+                if let data = data["orders"] as? Array<String> {
+                    array = data
+                    print("array=data\(array)")
+                }
+                for orderTitle in array {
+                    print("wait 2")
+                    db.collection("users").document(userID).collection(orderTitle).addSnapshotListener { documentSnapshot, error in
+                        
+                        if let error = error {
+                            completion(.failure(error))
+                            return
+                        } else {
+                            let items = documentSnapshot?.documents.map { (document) -> BasketItem in
+                                let item = BasketItem(dictionary: document.data(), itemID: document.documentID)
+                                return item
+                            }
+                            let order = PreviousOrder(items: items ?? [], header: orderTitle)
+                            orders.append(order)
+                            if orderTitle == array[array.count - 1] {
+                                print("wait 3")
+                                print("orders: \(orders)")
+                                completion(.success(orders))
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

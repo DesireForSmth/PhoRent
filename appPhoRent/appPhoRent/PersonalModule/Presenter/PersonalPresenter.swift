@@ -7,9 +7,15 @@
 //
 
 import Foundation
+//import FirebaseStorage
+//
+//
+//////
+//import FirebaseAuth
+//import FirebaseFirestore
 
 protocol PersonalViewProtocol: class {
-    func updateFields(name: String, email: String, phone: String)
+    func updateFields(name: String, email: String, phone: String, imageURL: URL?)
     func updatePhoneLabel(phone: String)
     func showAlert()
     func closeAlert()
@@ -20,7 +26,7 @@ protocol PersonalPresenterProtocol: class {
     init(view: PersonalViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
     
     static var imageFileName: String { get }
-    
+    func setInfo()
     func setPhone(phone: String)
     func needDownload() -> Bool
     func checkPhone(phone: String?)
@@ -42,7 +48,7 @@ class PersonalPresenter: PersonalPresenterProtocol {
         self.view = view
         self.router = router
         self.networkService = networkService
-        setInfo()
+        //        setInfo()
     }
     
     func setInfo() {
@@ -57,8 +63,8 @@ class PersonalPresenter: PersonalPresenterProtocol {
                     UserManager.shared.currentUser = personData
                     if let data = UserManager.shared.currentUser {
                         let phone = data.phone ?? ""
-                        self.view?.updateFields(name: data.name, email: data.email, phone: phone)
-                        self.view?.closeAlert()
+                        self.view?.updateFields(name: data.name, email: data.email, phone: phone, imageURL: self.getImageUrl())
+                        //                        self.view?.closeAlert()
                     }
                 }
             }
@@ -85,12 +91,10 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func needDownload() -> Bool {
-        guard let data = UserManager.shared.currentUser else { return true}
-        let phone = data.phone ?? ""
-
-        view?.updateFields(name: data.name, email: data.email, phone: phone)
+        guard let _ = UserManager.shared.currentUser else { return true}
+//        let phone = data.phone ?? ""
+        //        view?.updateFields(name: data.name, email: data.email, phone: phone, imageURL: getImageUrl())
         return false
-        
     }
     
     func checkPhone(phone: String?){
@@ -104,34 +108,37 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     func showAboutUs() {
-        //        if let n = networkService as? NetworkService {
-        //            n.setOrder(orderID: "1")
-        //        }
         router?.showAboutUs()
     }
     
     // MARK: - For FileManager
+    //
+    //    private func filePath(for key: String) -> URL? {
+    //        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+    //
+    //        return url?.appendingPathComponent(key + ".jpeg")
+    //    }
     
-    private func filePath(for key: String) -> URL? {
-        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        return url?.appendingPathComponent(key + ".jpeg")
-    }
+    //    func saveImage(dataImage: Data) {
+    //
+    //        guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
+    //        do {
+    //            try dataImage.write(to: url)
+    //        } catch {
+    //            print(error)
+    //        }
+    //    }
     
     func saveImage(dataImage: Data) {
-        
-        guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
-        do {
-            try dataImage.write(to: url)
-        } catch {
-            print(error)
-        }
+        networkService.saveImage(dataImage: dataImage)
     }
     
     func getImageUrl() -> URL? {
-        guard let url = filePath(for: PersonalPresenter.imageFileName) else {
-            return nil
-        }
-        return url
+        return URL(string: UserManager.shared.currentUser?.imageURLString ?? "")
+        
+        //        guard let url = filePath(for: PersonalPresenter.imageFileName) else {
+        //            return nil
+        //        }
+        //        return url
     }
 }
