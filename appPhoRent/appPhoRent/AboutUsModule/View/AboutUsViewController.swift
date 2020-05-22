@@ -17,6 +17,8 @@ class AboutUsViewController: UIViewController {
     var schemeColorButton: UIButton!
     var logOutButton: UIButton!
     
+    var showOrdersButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +29,10 @@ class AboutUsViewController: UIViewController {
 
 // MARK: - Button Actions
 extension AboutUsViewController {
+    
+    @objc func showOrderAction(_ sender: UIButton) {
+        presenter.showOrders()
+    }
     
     @objc func logOutAction(_ sender: UIButton) {
         presenter.logOut()
@@ -59,6 +65,15 @@ extension AboutUsViewController {
         secondLabel.textAlignment = .center
         secondLabel.textColor = CustomColors.textLabel
         
+        showOrdersButton = UIButton(type: .system)
+        showOrdersButton.setTitle("Прошлые заказы", for: .normal)
+        showOrdersButton.setTitleColor(CustomColors.textButton, for: .normal)
+        showOrdersButton.backgroundColor = CustomColors.backgroundButton
+        showOrdersButton.layer.borderColor = UIColor.systemGray.cgColor
+        showOrdersButton.layer.borderWidth = 0.5
+        
+        showOrdersButton.addTarget(self, action: #selector(showOrderAction), for: .touchUpInside)
+        
         schemeColorButton = UIButton(type: .system)
         schemeColorButton.setTitle("Сменить тему", for: .normal)
         schemeColorButton.setTitleColor(CustomColors.textButton, for: .normal)
@@ -82,7 +97,7 @@ extension AboutUsViewController {
         view.addSubview(secondLabel)
         view.addSubview(schemeColorButton)
         view.addSubview(logOutButton)
-        
+        view.addSubview(showOrdersButton)
     }
     
     private func createConstraints() {
@@ -90,6 +105,7 @@ extension AboutUsViewController {
         secondLabel.translatesAutoresizingMaskIntoConstraints = false
         logOutButton.translatesAutoresizingMaskIntoConstraints = false
         schemeColorButton.translatesAutoresizingMaskIntoConstraints = false
+        showOrdersButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             firstLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constraints.top),
@@ -102,7 +118,14 @@ extension AboutUsViewController {
             secondLabel.topAnchor.constraint(equalTo: firstLabel.bottomAnchor, constant: Constraints.top),
             secondLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constraints.leading),
             secondLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: Constraints.trailing),
-            secondLabel.bottomAnchor.constraint(equalTo: schemeColorButton.topAnchor, constant: Constraints.bottom)
+            secondLabel.bottomAnchor.constraint(equalTo: showOrdersButton.topAnchor, constant: Constraints.bottom)
+        ])
+        
+        NSLayoutConstraint.activate([
+            showOrdersButton.bottomAnchor.constraint(equalTo: schemeColorButton.topAnchor, constant: Constraints.bottom),
+            showOrdersButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            showOrdersButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            showOrdersButton.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([

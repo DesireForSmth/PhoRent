@@ -42,7 +42,7 @@ class BasketViewController: UIViewController {
 //    }
     
     @objc func orderAction(_ sender: Any) {
-        
+        presenter.putOrder()
     }
     
     @objc func changeDateAction(_ sender: Any) {

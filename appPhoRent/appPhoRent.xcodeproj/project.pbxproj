@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282F5DB124780BC4004ACE52 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB024780BC4004ACE52 /* OrdersPresenter.swift */; };
+		282F5DB324780C92004ACE52 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB224780C92004ACE52 /* OrdersViewController.swift */; };
+		282F5DB524781717004ACE52 /* PreviousOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB424781717004ACE52 /* PreviousOrder.swift */; };
+		282F5DB824782DF4004ACE52 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB624782DF4004ACE52 /* OrdersTableViewCell.swift */; };
+		282F5DB924782DF4004ACE52 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282F5DB724782DF4004ACE52 /* OrdersTableViewCell.xib */; };
 		285658E1246AFE2A00053F56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E0246AFE2A00053F56 /* DataManager.swift */; };
 		285658E4246D776600053F56 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E2246D776600053F56 /* SplashScreenViewController.swift */; };
 		285658E5246D776600053F56 /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285658E3246D776600053F56 /* SplashScreenViewController.xib */; };
@@ -72,6 +77,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282F5DB024780BC4004ACE52 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
+		282F5DB224780C92004ACE52 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		282F5DB424781717004ACE52 /* PreviousOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrder.swift; sourceTree = "<group>"; };
+		282F5DB624782DF4004ACE52 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
+		282F5DB724782DF4004ACE52 /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
 		285658E0246AFE2A00053F56 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		285658E2246D776600053F56 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		285658E3246D776600053F56 /* SplashScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
@@ -158,6 +168,42 @@
 				7DEBEFDC9C93AE054BF93693 /* Pods_appPhoRent.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		282F5DBA24783B66004ACE52 /* PreviousOrdersModule */ = {
+			isa = PBXGroup;
+			children = (
+				282F5DBD24783BAC004ACE52 /* Presenter */,
+				282F5DBC24783BA7004ACE52 /* View */,
+				282F5DBB24783B98004ACE52 /* Model */,
+			);
+			path = PreviousOrdersModule;
+			sourceTree = "<group>";
+		};
+		282F5DBB24783B98004ACE52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				282F5DB424781717004ACE52 /* PreviousOrder.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		282F5DBC24783BA7004ACE52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				282F5DB224780C92004ACE52 /* OrdersViewController.swift */,
+				282F5DB624782DF4004ACE52 /* OrdersTableViewCell.swift */,
+				282F5DB724782DF4004ACE52 /* OrdersTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		282F5DBD24783BAC004ACE52 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				282F5DB024780BC4004ACE52 /* OrdersPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		285658EA246DD58700053F56 /* SplashScreenModule */ = {
@@ -468,6 +514,7 @@
 				285658E0246AFE2A00053F56 /* DataManager.swift */,
 				7D5BAAE72433D056003F3D41 /* ModuleBuilder.swift */,
 				7D09ECA0243A18E6004EA0EB /* Router.swift */,
+				282F5DBA24783B66004ACE52 /* PreviousOrdersModule */,
 				285658EA246DD58700053F56 /* SplashScreenModule */,
 				286566E8246721CD000071B7 /* BasketModule */,
 				7DB291E2245C57FF009732A8 /* CategoryModule */,
@@ -638,6 +685,7 @@
 			files = (
 				7D0B1986242AD3F10058593F /* LaunchScreen.storyboard in Resources */,
 				7D9E8B27245F1A4B006B57C1 /* ItemCellViewController.xib in Resources */,
+				282F5DB924782DF4004ACE52 /* OrdersTableViewCell.xib in Resources */,
 				7D0B1990242AD8440058593F /* GoogleService-Info.plist in Resources */,
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
@@ -712,6 +760,7 @@
 				6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */,
 				7DD3DE4224581607009A99E7 /* PasswordDropViewController.swift in Sources */,
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
+				282F5DB324780C92004ACE52 /* OrdersViewController.swift in Sources */,
 				7D454137245B621000A7F4A0 /* Item.swift in Sources */,
 				6C719B36244C72CC00EB5B41 /* RangePresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
@@ -719,12 +768,14 @@
 				286566EB24672212000071B7 /* BasketPresenter.swift in Sources */,
 				28B1B934243F97B6002732A5 /* PersonalData.swift in Sources */,
 				7D9E8B26245F1A4B006B57C1 /* ItemCellViewController.swift in Sources */,
+				282F5DB124780BC4004ACE52 /* OrdersPresenter.swift in Sources */,
 				7DD3DE3F24581464009A99E7 /* PasswordDropPresenter.swift in Sources */,
 				7D3C44F4246D789C006E83C0 /* FiltersViewController.swift in Sources */,
 				286566EE24683248000071B7 /* BasketViewController.swift in Sources */,
 				28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */,
 				7D45413D245B6D9000A7F4A0 /* CategoryPresenter.swift in Sources */,
 				7D0B1981242AD3EE0058593F /* appPhoRent.xcdatamodeld in Sources */,
+				282F5DB824782DF4004ACE52 /* OrdersTableViewCell.swift in Sources */,
 				285658E4246D776600053F56 /* SplashScreenViewController.swift in Sources */,
 				286566E52466BD98000071B7 /* CustomColors.swift in Sources */,
 				28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */,
@@ -735,6 +786,7 @@
 				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D45413A245B6D6600A7F4A0 /* CategoryViewController.swift in Sources */,
+				282F5DB524781717004ACE52 /* PreviousOrder.swift in Sources */,
 				285658E7246D77CE00053F56 /* SplashScreenPresenter.swift in Sources */,
 				6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */,
 				286566F524683CED000071B7 /* BasketTableViewCell.swift in Sources */,
@@ -895,7 +947,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48QNPJLFDY;
+				DEVELOPMENT_TEAM = 8B9T24ATN5;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -917,7 +969,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48QNPJLFDY;
+				DEVELOPMENT_TEAM = 8B9T24ATN5;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (

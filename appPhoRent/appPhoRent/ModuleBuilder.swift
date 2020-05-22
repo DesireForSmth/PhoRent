@@ -16,6 +16,7 @@ protocol AssemblyBuilderProtocol {
     func createSignUpModule(router: RouterProtocol) -> UIViewController
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController
     func createAboutUsModule(router: RouterProtocol) -> UIViewController
+    func createOrdersModule(router: RouterProtocol) -> UIViewController
     func createCategoryModule(router: RouterProtocol, category: Category) -> UIViewController
     func createSplashScreen(router: RouterProtocol) -> UIViewController
     //func createFiltersModule(router: RouterProtocol, category: Category, networkService: NetworkService) -> UIViewController
@@ -90,6 +91,15 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
         view.presenter = presenter
         return view
     }
+    
+    func createOrdersModule(router: RouterProtocol) -> UIViewController {
+        let view = OrdersViewController()
+        let networkService = NetworkService()
+        let presenter = OrdersPresenter(view: view, router: router, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
+    
     
     func createPasswordDropModule(router: RouterProtocol) -> UIViewController {
         let networkService = NetworkService()

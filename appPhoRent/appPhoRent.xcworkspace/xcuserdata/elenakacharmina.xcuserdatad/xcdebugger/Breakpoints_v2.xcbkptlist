@@ -30,8 +30,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "NetworkService"
             landmarkType = "3">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "appPhoRent/ModuleBuilder.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "createLoginModule(router:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "appPhoRent/Router.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "destroyInitialModule()"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "appPhoRent/Router.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "initialViewController()"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "appPhoRent/Router.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "initialViewController()"
             landmarkType = "7">
          </BreakpointContent>

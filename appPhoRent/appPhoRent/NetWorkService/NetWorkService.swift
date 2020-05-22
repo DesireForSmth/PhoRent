@@ -22,10 +22,13 @@ protocol NetWorkServiceProtocol {
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
+    
+    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String)
     func saveImage(dataImage: Data)
+    func putOrder(order: Order)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -257,22 +260,7 @@ class NetworkService: NetWorkServiceProtocol {
     //            ]
     //        ])
     //    }
-    
-    //    func setNewCount(newCount: Int, itemID: String) {
-    //        let db = Firestore.firestore()
-    //        guard let userID = Auth.auth().currentUser?.uid else {
-    //            assertionFailure("Ошибка доступа к пользователю")
-    //            return
-    //        }
-    //        db.collection("users").document(userID).collection("basket").document(itemID).updateData(["count": newCount]) {
-    //            error in
-    //            if let error = error {
-    //                print("Error updating document: \(error)")
-    //            } else {
-    //                print("Document successfully updated!")
-    //            }
-    //        }
-    //    }
+
     
     func removeFromBasket(itemID: String) {
         let db = Firestore.firestore()
@@ -306,6 +294,106 @@ class NetworkService: NetWorkServiceProtocol {
                     }
                     completion(.success(items ?? []))
                 }
+        }
+    }
+    
+    func putOrder(order: Order) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: order.date)
+        
+        let orderID = "С \(dateString) на \(String(order.countOfDay)) сут."
+        for item in order.items {
+            
+            db.collection("users").document(userID).collection(orderID).addDocument(data: [
+                "name": item.name,
+                "cost": item.cost,
+                "imageURL": item.imageURL,
+                "manufacturer": item.manufacturer,
+                "count": item.count
+            ])
+            db.collection("users").document(userID).collection("basket").document(item.itemID).delete { error in
+                if let error = error {
+                    print("Failed to delete: \(error)")
+                }
+            }
+            
+        }
+        
+        var array = [String]()
+        
+        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
+            if let data = snapshot?.data() {
+                if let data = data["orders"] as? Array<String> {
+                    array = data
+                    print("array=data\(array)")
+                }
+                array.append(orderID)
+                self?.updateOrdersTitle(array: array)
+            }
+        }
+    }
+    
+    func updateOrdersTitle(array: [String]) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        db.collection("users").document(userID).updateData(["orders" : array]) { error in
+            if let error = error {
+                print("Failed to update orderID: \(error)")
+            }
+        }
+    }
+    
+    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void) {
+        let db = Firestore.firestore()
+        guard let userID = Auth.auth().currentUser?.uid else {
+            assertionFailure("Ошибка доступа к пользователю")
+            return
+        }
+        
+        var array = [String]()
+        
+        var orders = [PreviousOrder]()
+        
+        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
+            print("wait 1")
+            if let data = snapshot?.data() {
+                if let data = data["orders"] as? Array<String> {
+                    array = data
+                    print("array=data\(array)")
+                }
+                for orderTitle in array {
+                    print("wait 2")
+                    db.collection("users").document(userID).collection(orderTitle).addSnapshotListener { documentSnapshot, error in
+                        
+                        if let error = error {
+                            completion(.failure(error))
+                            return
+                        } else {
+                            let items = documentSnapshot?.documents.map { (document) -> BasketItem in
+                                let item = BasketItem(dictionary: document.data(), itemID: document.documentID)
+                                return item
+                            }
+                            let order = PreviousOrder(items: items ?? [], header: orderTitle)
+                            orders.append(order)
+                            if orderTitle == array[array.count - 1] {
+                                print("wait 3")
+                                print("orders: \(orders)")
+                                completion(.success(orders))
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -27,6 +27,8 @@ protocol RouterProtocol: RouterMain {
     func changeSchemeColor()
     
     func showIntro()
+    
+    func showOrders()
 }
 
 class Router: RouterProtocol {
@@ -118,6 +120,13 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let aboutUsViewController = assemblyBuilder?.createAboutUsModule(router: self) else { return }
             navigationController.pushViewController(aboutUsViewController, animated: true)
+        }
+    }
+    
+    func showOrders() {
+        if let navigationController = navigationController {
+            guard let ordersViewController = assemblyBuilder?.createOrdersModule(router: self) else { return }
+            navigationController.pushViewController(ordersViewController, animated: true)
         }
     }
     

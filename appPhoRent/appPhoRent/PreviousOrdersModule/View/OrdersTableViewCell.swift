@@ -1,35 +1,33 @@
 //
-//  BasketTableViewCell.swift
+//  OrdersTableViewCell.swift
 //  appPhoRent
 //
-//  Created by Elena Kacharmina on 10.05.2020.
+//  Created by Elena Kacharmina on 22.05.2020.
 //  Copyright © 2020 Александр Сетров. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
-protocol BasketTableViewCellDelegate {
-    func deleteRow(sender: UIButton)
-}
-
-class BasketTableViewCell: UITableViewCell {
-    
-    var delegate: BasketTableViewCellDelegate?
+class OrdersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemImageView: UIImageView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
     
-    @IBAction func deleteAction(_ sender: UIButton) {
-        delegate?.deleteRow(sender: sender)
-    }
+    @IBOutlet weak var countLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
+
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        
+//        // Configure the view for the selected state
+//    }
+    
     
     func fillCell(name: String, cost: String, count: Int, imageURL: String) {
         backgroundColor = CustomColors.background
@@ -41,5 +39,5 @@ class BasketTableViewCell: UITableViewCell {
         itemImageView.kf.setImage(with: url)
         countLabel.text = "Количество: \(count)"
     }
-
+    
 }

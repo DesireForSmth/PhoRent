@@ -29,6 +29,7 @@ protocol BasketPresenterProtocol: class {
     func updateDate(newDate: Date)
     func updateCountOfDay(newCount: Int)
     func getDate() -> Date
+    func putOrder()
     var currentOrder: Order? {get}
 }
 
@@ -122,6 +123,16 @@ class BasketPresenter: BasketPresenterProtocol {
                 items[index].imageURL)
         } else {
             return ("error", "error", 0, "")
+        }
+    }
+    
+    func putOrder() {
+        if let order = currentOrder, order.items.count != 0 {
+            networkService.putOrder(order: order)
+            currentOrder = nil
+            setOrder(items: [])
+        } else {
+        
         }
     }
 }
