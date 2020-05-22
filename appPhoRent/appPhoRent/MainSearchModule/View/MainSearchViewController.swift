@@ -14,6 +14,8 @@ class MainSearchViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     var presenter: MainSearchPresenterProtocol!
     var categories: [Category]?
     
@@ -24,7 +26,7 @@ class MainSearchViewController: UIViewController {
         }
         presenter.getCategories()
         tableView.register(UINib(nibName: "MainSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 60
+        tableView.rowHeight = 100
         navBar.topItem?.title = "Search"
         navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
@@ -32,6 +34,8 @@ class MainSearchViewController: UIViewController {
 }
 
 extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.categories?.count ?? 0
     }

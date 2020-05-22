@@ -118,7 +118,7 @@
 		7D09ECA8243A40BE004EA0EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		7D09ECA9243A40BE004EA0EB /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		7D09ECB2243A4D4D004EA0EB /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
-		7D0B1973242AD3EE0058593F /* appPhoRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appPhoRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D0B1973242AD3EE0058593F /* PhoRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D0B1976242AD3EE0058593F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D0B1978242AD3EE0058593F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7D0B197D242AD3EE0058593F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 		7D0B1974242AD3EE0058593F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D0B1973242AD3EE0058593F /* appPhoRent.app */,
+				7D0B1973242AD3EE0058593F /* PhoRent.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 			);
 			name = appPhoRent;
 			productName = appPhoRent;
-			productReference = 7D0B1973242AD3EE0058593F /* appPhoRent.app */;
+			productReference = 7D0B1973242AD3EE0058593F /* PhoRent.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -947,15 +947,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B9T24ATN5;
+				DEVELOPMENT_TEAM = 48QNPJLFDY;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent1;
+				PRODUCT_NAME = PhoRent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -969,15 +969,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B9T24ATN5;
+				DEVELOPMENT_TEAM = 48QNPJLFDY;
 				INFOPLIST_FILE = appPhoRent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appPhoRent1;
+				PRODUCT_NAME = PhoRent;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
