@@ -32,7 +32,7 @@ class CategoryViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 80
+        tableView.rowHeight = 115
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -100,9 +100,11 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
-            cell.itemID = item.ID
+            cell.stepperCount.minimumValue = 1
+            cell.stepperCount.maximumValue = Double(item.count)
+            cell.countLabel.text = String(1)
             cell.buttonAction = { sender in
-                self.presenter.addItemInBasket(itemID: item.ID)
+                self.presenter.addItemInBasket(itemID: item.ID, count: Int(cell.stepperCount.value))
             }
         }
         return cell

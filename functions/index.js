@@ -38,7 +38,7 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
               item = doc.data();
               let docID = doc.id;
               console.log(docID);
-              item.count += 1;
+              item.count += elementCount;
               console.log(item);
               admin.firestore().collection('users').doc(uid).collection('basket').doc(docID)
         .update({ count: item.count} ).then(() => {

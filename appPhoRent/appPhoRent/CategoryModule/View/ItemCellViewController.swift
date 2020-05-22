@@ -14,7 +14,9 @@ class ItemCellViewController: UITableViewCell {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemCost: UILabel!
     @IBOutlet weak var addItemInBasket: UIButton!
-    var itemID: String?
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var stepperCount: UIStepper!
+    
     var button: UIButton!
     var buttonAction: ((Any) -> Void)?
     
@@ -22,6 +24,9 @@ class ItemCellViewController: UITableViewCell {
         self.buttonAction?(sender)
     }
     
+    @IBAction func countStepper(_ sender: UIStepper) {
+        countLabel.text = String(Int(sender.value))
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
