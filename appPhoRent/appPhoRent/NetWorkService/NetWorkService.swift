@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFunctions
+import FirebaseStorage
 
 protocol NetWorkServiceProtocol {
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void)
@@ -22,8 +23,9 @@ protocol NetWorkServiceProtocol {
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
-    func setNewCount(newCount: Int, itemID: String)
+    //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String)
+    func saveImage(dataImage: Data)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -182,7 +184,8 @@ class NetworkService: NetWorkServiceProtocol {
             let name = document?.get("username") as? String ?? ""
             let email = document?.get("email") as? String ?? ""
             let phone = document?.get("phone") as? String
-            let obj = PersonalData(name: name, email: email, phone: phone, userID: userID)
+            let imageURLString = document?.get("imageURL") as? String
+            let obj = PersonalData(name: name, email: email, phone: phone, userID: userID, imageURLString: imageURLString)
             completion(.success(obj))
         }
     }
@@ -202,41 +205,74 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-    
-    func setOrder(orderID: String) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else {
-            assertionFailure("Ошибка доступа к пользователю")
-            return
-        }
+    func saveImage(dataImage: Data) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
         
-        let cost1: Float = 1500
-        let cost2: Float = 1000
-        db.collection("users").document(userID).collection("orders").document(orderID).setData([
-            "date": Date(),
-            "totalCost": 6500,
-            "items":
-                ["goPro": ["price": cost1, "count": 3],
-                 "sony": ["price": cost2, "count": 2],
-            ]
-        ])
-    }
-    
-    func setNewCount(newCount: Int, itemID: String) {
-        let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
             assertionFailure("Ошибка доступа к пользователю")
             return
         }
-        db.collection("users").document(userID).collection("basket").document(itemID).updateData(["count": newCount]) {
-            error in
-            if let error = error {
-                print("Error updating document: \(error)")
-            } else {
-                print("Document successfully updated!")
+        let imageRef = storageRef.child("images/\(userID)")
+        imageRef.putData(dataImage, metadata: nil) { [weak self] (metadata, error) in
+            guard let _ = metadata else {
+                return
+            }
+            imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    return
+                }
+                self?.saveImageURL(userID: userID, url: downloadURL)
             }
         }
     }
+    
+    func saveImageURL(userID: String, url: URL) {
+        let db = Firestore.firestore()
+        db.collection("users").document(userID).updateData(["imageURL": String(describing: url)]) { error in
+            if let error = error{
+                print("Error update imageURL: \(error)")
+                return
+            }
+            print("ImageURL has been seted")
+        }
+    }
+    
+    
+    //    func setOrder(orderID: String) {
+    //        let db = Firestore.firestore()
+    //        guard let userID = Auth.auth().currentUser?.uid else {
+    //            assertionFailure("Ошибка доступа к пользователю")
+    //            return
+    //        }
+    //
+    //        let cost1: Float = 1500
+    //        let cost2: Float = 1000
+    //        db.collection("users").document(userID).collection("orders").document(orderID).setData([
+    //            "date": Date(),
+    //            "totalCost": 6500,
+    //            "items":
+    //                ["goPro": ["price": cost1, "count": 3],
+    //                 "sony": ["price": cost2, "count": 2],
+    //            ]
+    //        ])
+    //    }
+    
+    //    func setNewCount(newCount: Int, itemID: String) {
+    //        let db = Firestore.firestore()
+    //        guard let userID = Auth.auth().currentUser?.uid else {
+    //            assertionFailure("Ошибка доступа к пользователю")
+    //            return
+    //        }
+    //        db.collection("users").document(userID).collection("basket").document(itemID).updateData(["count": newCount]) {
+    //            error in
+    //            if let error = error {
+    //                print("Error updating document: \(error)")
+    //            } else {
+    //                print("Document successfully updated!")
+    //            }
+    //        }
+    //    }
     
     func removeFromBasket(itemID: String) {
         let db = Firestore.firestore()

@@ -29,6 +29,8 @@ class SignUpViewController: UIViewController {
         usernameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        emailTextField.keyboardType = .emailAddress
         errorLabel.alpha = 0
     }
     

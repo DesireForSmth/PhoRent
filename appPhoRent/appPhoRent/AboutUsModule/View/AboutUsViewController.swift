@@ -53,7 +53,7 @@ extension AboutUsViewController {
         firstLabel.textColor = CustomColors.textLabelSecond
         
         secondLabel = UILabel()
-        secondLabel.text = "Какая-то информация"
+        secondLabel.text = "- приложение для аренды фототехники"
         secondLabel.font = UIFont.systemFont(ofSize: 20)
         secondLabel.numberOfLines = 0
         secondLabel.textAlignment = .center

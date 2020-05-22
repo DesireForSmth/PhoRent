@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-nt-RXj">
-                    <rect key="frame" x="100" y="670" width="214" height="100"/>
+                    <rect key="frame" x="100" y="633" width="214" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAV-sv-HLi">
                             <rect key="frame" x="0.0" y="0.0" width="214" height="40"/>
@@ -44,31 +44,31 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhoRent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U42-nn-1x9">
-                    <rect key="frame" x="111" y="259" width="192" height="60"/>
+                    <rect key="frame" x="111" y="273" width="192" height="60"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- это не вьетнамская еда," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1x-Pp-1e2">
-                    <rect key="frame" x="45" y="336" width="324.5" height="33.5"/>
+                    <rect key="frame" x="45" y="350" width="324.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="а приложение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdA-Lf-MIk">
-                    <rect key="frame" x="117.5" y="385.5" width="179.5" height="33.5"/>
+                    <rect key="frame" x="117.5" y="399.5" width="179.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="для аренды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5Z-h3-XFS">
-                    <rect key="frame" x="133.5" y="435" width="147.5" height="33.5"/>
+                    <rect key="frame" x="133.5" y="449" width="147.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="штучек для фоток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPU-C2-adt">
-                    <rect key="frame" x="94" y="484.5" width="226.5" height="33.5"/>
+                    <rect key="frame" x="94" y="498.5" width="226.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -84,9 +84,9 @@
                 <constraint firstItem="pPU-C2-adt" firstAttribute="centerX" secondItem="t5Z-h3-XFS" secondAttribute="centerX" id="IwX-jX-QgW"/>
                 <constraint firstItem="t5Z-h3-XFS" firstAttribute="centerX" secondItem="bdA-Lf-MIk" secondAttribute="centerX" id="KLW-aU-EAE"/>
                 <constraint firstItem="bdA-Lf-MIk" firstAttribute="top" secondItem="I1x-Pp-1e2" secondAttribute="bottom" constant="16" id="NcO-py-cwH"/>
-                <constraint firstItem="xOH-9E-mPt" firstAttribute="bottom" secondItem="qEH-nt-RXj" secondAttribute="bottom" constant="92" id="Qwn-vr-RR9"/>
+                <constraint firstItem="xOH-9E-mPt" firstAttribute="centerY" secondItem="qEH-nt-RXj" secondAttribute="top" constant="-180" id="Qwn-vr-RR9"/>
                 <constraint firstItem="I1x-Pp-1e2" firstAttribute="top" secondItem="U42-nn-1x9" secondAttribute="bottom" constant="17" id="Tzv-qD-BRk"/>
-                <constraint firstItem="U42-nn-1x9" firstAttribute="top" secondItem="xOH-9E-mPt" secondAttribute="top" constant="215" id="ajo-HH-JM9"/>
+                <constraint firstItem="U42-nn-1x9" firstAttribute="top" secondItem="xOH-9E-mPt" secondAttribute="centerY" constant="-180" id="ajo-HH-JM9"/>
                 <constraint firstItem="t5Z-h3-XFS" firstAttribute="top" secondItem="bdA-Lf-MIk" secondAttribute="bottom" constant="16" id="kqI-Ka-OgD"/>
                 <constraint firstItem="bdA-Lf-MIk" firstAttribute="centerX" secondItem="I1x-Pp-1e2" secondAttribute="centerX" id="kwR-ai-52K"/>
             </constraints>

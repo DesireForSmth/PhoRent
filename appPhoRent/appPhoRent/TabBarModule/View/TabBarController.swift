@@ -75,6 +75,7 @@ class TabBarController: UITabBarController {
         let tabBarList = [firstNavigationController, secondNavigationController, thirdNavigationController]
         
         viewControllers = tabBarList
+        selectedIndex = 1
     }
 }
 

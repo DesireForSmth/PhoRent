@@ -36,10 +36,10 @@ class BasketViewController: UIViewController {
         presenter.prepareData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //        presenter.prepareData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        //        presenter.prepareData()
+//    }
     
     @objc func orderAction(_ sender: Any) {
         
@@ -117,6 +117,7 @@ extension BasketViewController {
         
         tableView = UITableView()
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundColor = CustomColors.background
         
         tableView.delegate = self
         tableView.dataSource = self

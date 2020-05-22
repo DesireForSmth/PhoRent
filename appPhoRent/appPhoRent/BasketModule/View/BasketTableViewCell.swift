@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 
 protocol BasketTableViewCellDelegate {
-//    func updateCount(sender: UIStepper)
     func deleteRow(sender: UIButton)
 }
 
@@ -23,40 +22,24 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    
     @IBAction func deleteAction(_ sender: UIButton) {
         delegate?.deleteRow(sender: sender)
     }
-    
-    //    @IBOutlet weak var stepperOutlet: UIStepper!
-//
-//    @IBAction func stepperAction(_ sender: UIStepper) {
-//        countLabel.text = "Количество: " + Int(sender.value).description
-//        delegate?.updateCount(sender: sender)
-//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func fillCell(name: String, cost: String, count: Int, imageURL: String) {
-        
-//        let itemImage = item.imageURL
-//        cell.itemName.text = item.name
-//        cell.itemCost.text = "\(item.cost)"
-//        let url = URL(string: itemImage)
-//        let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
-//        cell.itemImage.kf.setImage(with: resource)
-        
-        
+        backgroundColor = CustomColors.background
         
         titleLabel.text = name
         priceLabel.text = cost
-//        itemImageView.image = UIImage(systemName: "house")
         
         itemImageView.image = UIImage()
         let url = URL(string: imageURL)
         itemImageView.kf.setImage(with: url)
-//        stepperOutlet.value = Double(count)
         countLabel.text = "Количество: \(count)"
     }
 
