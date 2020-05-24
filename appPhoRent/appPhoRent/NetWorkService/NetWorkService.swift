@@ -120,7 +120,7 @@ class NetworkService: NetWorkServiceProtocol {
     
     func getItems(categoryID: String, completion: @escaping (Result<[Item]?, Error>) -> Void) {
         let db = Firestore.firestore()
-        db.collection("categories").document(categoryID).collection("items").getDocuments() { (querySnapshot, error) in
+        db.collection("categories").document(categoryID).collection("items").whereField("count", isGreaterThan: 0).getDocuments() { (querySnapshot, error) in
             if let error = error {
                 completion(.failure(error))
                 return
