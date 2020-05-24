@@ -41,7 +41,6 @@ class PasswordDropPresenter: PasswordDropViewPresenterProtocol {
     }
     
     func passwordDrop(email: String?) {
-        if isValidEmail(email ?? "") {
         networkService.passwordDrop(email: email) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -52,9 +51,6 @@ class PasswordDropPresenter: PasswordDropViewPresenterProtocol {
                 self.view?.failure(error: error)
             }
         }
-        } else {
-            view?.showWrongFormat()
-        }
     }
     
     
@@ -64,12 +60,7 @@ class PasswordDropPresenter: PasswordDropViewPresenterProtocol {
     }
     
     
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
+    
 }
 
 extension PasswordDropPresenter {

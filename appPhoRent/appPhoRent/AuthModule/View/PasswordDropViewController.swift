@@ -17,7 +17,6 @@ class PasswordDropViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
-        
         emailTextField.keyboardType = .emailAddress
     }
 
@@ -31,8 +30,13 @@ class PasswordDropViewController: UIViewController {
     }
     
     func dropPassword() {
-        showAlertLoading()
-        presenter.passwordDrop(email: emailTextField.text)
+        let email = emailTextField.text?.trimmingCharacters(in: .whitespaces)
+        if (isValidEmail(email ?? "")) {
+            showAlertLoading()
+            presenter.passwordDrop(email: email)
+        } else {
+            showWrongFormat()
+        }
     }
 }
 
@@ -44,6 +48,13 @@ extension PasswordDropViewController: UITextFieldDelegate{
 }
 
 extension PasswordDropViewController: PasswordDropViewProtocol {
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
     
     func showAuthError(){
         let alert = UIAlertController(title: "Оповещение", message: "На вашу почту отправлены инструкции по сбросу пароля", preferredStyle: .alert)
@@ -72,12 +83,15 @@ extension PasswordDropViewController: PasswordDropViewProtocol {
     }
     
     func showErrorAlert() {
+        print("works")
+        
         let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Попробовать снова", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     func showWrongFormat() {
+        //closeAlertLoading()
         let alert = UIAlertController(title: nil, message: "Неверный формат почты", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)

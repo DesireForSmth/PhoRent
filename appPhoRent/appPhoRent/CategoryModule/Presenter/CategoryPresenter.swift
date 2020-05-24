@@ -13,10 +13,12 @@ protocol CategoryViewProtocol: class {
     func success()
     func failure(error: Error)
     func setItems(items: [Item]?)
-    func showAlert()
-    func closeAlert()
+    
+    
     func successAddingItem(message: String)
     func failAddingItem(error: Error)
+    func showAlertLoading()
+    func closeAlertLoading()
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -43,6 +45,7 @@ protocol CategoryViewPresenterProtocol: class {
     func setCostRange(minCost: CGFloat, maxCost: CGFloat)
     func getCostRange()
     func addItemInBasket(itemID: String, count: Int)
+    
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
@@ -55,6 +58,10 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     let networkService: NetWorkServiceProtocol!
     var checkManufacturers: Set<String>
     var costRange: Dictionary<String, CGFloat>
+    
+    func needDownload() -> Bool {
+        return self.items == nil
+    }
     
     func getCostRange() {
         if let minCost = self.getMinCost(), let maxCost = self.getMaxCost() {
@@ -138,17 +145,21 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     
     public func getItems() {
         guard let categoryID = self.category?.ID else {
+            
             assertionFailure("Проблема с доступом к категории")
             return
         }
+        
         networkService.getItems(categoryID: categoryID) { [weak self] result in
         guard let self = self else { return }
         DispatchQueue.main.async {
+            
             switch result {
             case .success(let items):
                 self.items = items
                 self.shownItems = items
                 self.view?.setItems(items: self.shownItems)
+                
                 self.view?.success()
             case .failure(let error):
                 self.view?.failure(error: error)
@@ -199,16 +210,12 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     }
     
     func getMinCost() -> Int? {
-        guard (self.items != nil) else { print ("shit"); return nil }
+        guard (self.items != nil) else { return nil }
         if let minCostItem = self.items?.min(by: {a, b in a.cost < b.cost}) {
             let minCost = minCostItem.cost
             
             return (minCost)
-        } else { print ("shit"); return (nil) }
-    }
-    
-    func needDownload() -> Bool {
-        return self.items == nil
+        } else { return (nil) }
     }
    
 }

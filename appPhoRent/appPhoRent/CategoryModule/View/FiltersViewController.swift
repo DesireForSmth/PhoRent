@@ -175,11 +175,11 @@ extension FiltersViewController: RangeSeekSliderDelegate {
     }
 
     func didStartTouches(in slider: RangeSeekSlider) {
-        print("did start touches")
+        
     }
 
     func didEndTouches(in slider: RangeSeekSlider) {
-        print("did end touches")
+        
     }
 }
 

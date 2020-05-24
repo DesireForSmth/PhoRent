@@ -41,14 +41,12 @@ class OrdersPresenter: OrdersPresenterProtocol {
     func prepareData() {
         ////        view?.showAlert()
         networkService.getPreviousOrders() { [weak self] result in
-            print("getPreviousOrders")
+            
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let items):
-                    print("getPreviousOrders items \(items)")
-                    //                    self.setOrder(items: items)
-                    //                    self.view?.closeAlert()
+                    
                     self.setTable(orders: items)
                 case .failure(let error):
                     print("error previous")

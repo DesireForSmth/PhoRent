@@ -27,6 +27,17 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if presenter.needDownload() {
+            //showAlertLoading()
+        }
+        
+        let title = UILabel()
+        title.text = self.presenter.getCategoryName()
+        title.font = .systemFont(ofSize: 17, weight: .medium)
+        navigationItem.titleView = title
+        
+        self.presenter.getItems()
+        
         let filterButton = UIButton(type: .custom)
         filterButton.setImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
         filterButton.addTarget(self, action: #selector(showFiltersPopover), for: .touchUpInside)
@@ -38,27 +49,28 @@ class CategoryViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        presenter.getItems()
+        
+        
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 116
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         
-        let title = UILabel()
-        title.text = self.presenter.getCategoryName()
-        title.font = .systemFont(ofSize: 17, weight: .medium)
-        navigationItem.titleView = title
+        
         
         
         //self.navigationController?.navigationBar.topItem?.title = self.presenter.getCategoryName()
         //self.navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
+        
     }
 
     // MARK: showFilterPopover
+    
     
     @objc func showFiltersPopover() {
         if filtersAreAvialable {
@@ -131,6 +143,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CategoryViewController {
+    
+    
+    
     func showSuccessAlert() {
         let alert = UIAlertController(title: "Выполнено", message: "Вы добавили товар в заказ!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -147,36 +162,9 @@ extension CategoryViewController {
 // MARK: viewProtocol confirmation
 
 extension CategoryViewController: CategoryViewProtocol {
-    func successAddingItem(message: String) {
-        showSuccessAlert()
-        print(message)
-    }
     
-    func failAddingItem(error: Error) {
-        showFailureAlert()
-        print(error.localizedDescription)
-    }
-    
-    
-    func success() {
-        
-        tableView.reloadData()
-        if self.items?.count != 0 {
-            if !updated {
-                presenter.getManufacturers()
-                presenter.getCostRange()
-                updated = !updated
-            }
-            self.filtersAreAvialable = true
-        }
-    }
-    
-    func failure(error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func showAlert() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+    func showAlertLoading() {
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
@@ -186,8 +174,39 @@ extension CategoryViewController: CategoryViewProtocol {
         
         present(alert, animated: true, completion: nil)
     }
-    func closeAlert() {
-        dismiss(animated: true, completion: nil)
+    
+    func closeAlertLoading() {
+        if !(self.presentedViewController?.isBeingDismissed ?? true) {
+            dismiss(animated: true, completion: nil)}
+    }
+    
+    func successAddingItem(message: String) {
+        showSuccessAlert()
+        
+    }
+    
+    func failAddingItem(error: Error) {
+        showFailureAlert()
+        print(error.localizedDescription)
+    }
+    
+    
+    func success() {
+        tableView.reloadData()
+        closeAlertLoading()
+        if self.items?.count != 0 {
+            if !updated {
+                presenter.getManufacturers()
+                presenter.getCostRange()
+                updated = !updated
+            }
+            self.filtersAreAvialable = true
+            closeAlertLoading()
+        }
+    }
+    
+    func failure(error: Error) {
+        print(error.localizedDescription)
     }
     
     func setItems(items: [Item]?) {

@@ -41,7 +41,7 @@ class ManufacturerTableViewCell: UITableViewCell {
         if let presenter = self.presenter {
             checkbox.imageView?.isHidden = !presenter.containsManufacturer(name: self.manufacturerNameLabel.text!)
         } else {
-            print("LoL")
+            
             checkbox.imageView?.isHidden = true
         }
     }
