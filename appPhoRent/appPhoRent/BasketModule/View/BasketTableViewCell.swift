@@ -35,6 +35,8 @@ class BasketTableViewCell: UITableViewCell {
         backgroundColor = CustomColors.backgroundCell
         
         titleLabel.text = name
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
         priceLabel.text = cost
         
         itemImageView.image = UIImage()
