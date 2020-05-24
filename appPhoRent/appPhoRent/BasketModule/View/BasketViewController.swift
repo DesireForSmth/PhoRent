@@ -54,7 +54,9 @@ class BasketViewController: UIViewController {
             datePicker = UIDatePicker()
             if let picker = datePicker {
                 picker.datePickerMode = UIDatePicker.Mode.date
-                picker.minimumDate = presenter.getDate()
+//                picker.minimumDate = presenter.getDate()
+                picker.minimumDate = Date()
+                picker.setDate(presenter.getDate(), animated: false)
                 
                 picker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -290,6 +292,6 @@ extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 116
+        return 136
     }
 }

@@ -19,7 +19,6 @@ class PasswordDropViewController: UIViewController {
         emailTextField.delegate = self
         
         emailTextField.keyboardType = .emailAddress
-        // Do any additional setup after loading the view.
     }
 
     
@@ -30,17 +29,6 @@ class PasswordDropViewController: UIViewController {
     @IBAction func passwordDropAction(_ sender: Any) {
         presenter.passwordDrop(email: emailTextField.text)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension PasswordDropViewController: UITextFieldDelegate{
@@ -62,6 +50,12 @@ extension PasswordDropViewController: PasswordDropViewProtocol {
     func showErrorAlert() {
         let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Попробовать снова", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showWrongFormat() {
+        let alert = UIAlertController(title: nil, message: "Неверный формат почты", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

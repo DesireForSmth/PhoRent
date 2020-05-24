@@ -279,13 +279,14 @@ extension PersonalViewController {
         NSLayoutConstraint.activate([
             emailImageView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
             emailImageView.widthAnchor.constraint(equalToConstant: 30),
-            emailImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+//            emailImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+            emailImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             emailImageView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             emailValueLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
-            emailValueLabel.leadingAnchor.constraint(equalTo: emailImageView.trailingAnchor, constant: Constraints.leading),
+            emailValueLabel.leadingAnchor.constraint(equalTo: emailImageView.trailingAnchor, constant: 32),
             emailValueLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: Constraints.trailing),
             emailValueLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
@@ -293,13 +294,14 @@ extension PersonalViewController {
         NSLayoutConstraint.activate([
             phoneImageView.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
             phoneImageView.widthAnchor.constraint(equalToConstant: 30),
-            phoneImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+//            phoneImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+            phoneImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             phoneImageView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
             phoneValueLabel.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
-            phoneValueLabel.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: Constraints.leading),
+            phoneValueLabel.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 32),
             phoneValueLabel.widthAnchor.constraint(equalToConstant: 180),
             phoneValueLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
