@@ -30,10 +30,6 @@
 		28B1B938243F97D0002732A5 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B937243F97D0002732A5 /* PersonalViewController.swift */; };
 		28B1B93E243F9877002732A5 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93D243F9877002732A5 /* TabBarPresenter.swift */; };
 		28B1B940243F9881002732A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1B93F243F9881002732A5 /* TabBarController.swift */; };
-		6C719B36244C72CC00EB5B41 /* RangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B35244C72CC00EB5B41 /* RangePresenter.swift */; };
-		6C719B39244CA25300EB5B41 /* RangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B37244CA25200EB5B41 /* RangeViewController.swift */; };
-		6C719B3A244CA25300EB5B41 /* RangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C719B38244CA25300EB5B41 /* RangeViewController.xib */; };
-		6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */; };
 		6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC52C824507E3200D769A3 /* MainSearchTableViewCell.swift */; };
 		6CCC52CB24507E3200D769A3 /* MainSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCC52C924507E3200D769A3 /* MainSearchTableViewCell.xib */; };
 		6CCC52CE2450B62100D769A3 /* NetWorkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC52CD2450B62100D769A3 /* NetWorkService.swift */; };
@@ -101,10 +97,6 @@
 		28B1B93D243F9877002732A5 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		28B1B93F243F9881002732A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F641008C30B731C7C0C4DB3 /* Pods-appPhoRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appPhoRent.debug.xcconfig"; path = "Target Support Files/Pods-appPhoRent/Pods-appPhoRent.debug.xcconfig"; sourceTree = "<group>"; };
-		6C719B35244C72CC00EB5B41 /* RangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangePresenter.swift; sourceTree = "<group>"; };
-		6C719B37244CA25200EB5B41 /* RangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewController.swift; sourceTree = "<group>"; };
-		6C719B38244CA25300EB5B41 /* RangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeViewController.xib; sourceTree = "<group>"; };
-		6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeCollectionViewCell.swift; sourceTree = "<group>"; };
 		6CCC52C824507E3200D769A3 /* MainSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchTableViewCell.swift; sourceTree = "<group>"; };
 		6CCC52C924507E3200D769A3 /* MainSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchTableViewCell.xib; sourceTree = "<group>"; };
 		6CCC52CD2450B62100D769A3 /* NetWorkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkService.swift; sourceTree = "<group>"; };
@@ -362,41 +354,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6C719B31244C60BF00EB5B41 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6C719B32244C71C900EB5B41 /* RangeModule */ = {
-			isa = PBXGroup;
-			children = (
-				6C719B31244C60BF00EB5B41 /* Model */,
-				6C719B33244C722700EB5B41 /* View */,
-				6C719B34244C723100EB5B41 /* Presenter */,
-			);
-			path = RangeModule;
-			sourceTree = "<group>";
-		};
-		6C719B33244C722700EB5B41 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6C719B3B244CACD900EB5B41 /* RangeCollectionViewCell.swift */,
-				6C719B37244CA25200EB5B41 /* RangeViewController.swift */,
-				6C719B38244CA25300EB5B41 /* RangeViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6C719B34244C723100EB5B41 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				6C719B35244C72CC00EB5B41 /* RangePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		6C7B3BE2246038D3002F86B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,7 +477,6 @@
 				7DB291E2245C57FF009732A8 /* CategoryModule */,
 				6CCC52CC2450B60900D769A3 /* NetWorkService */,
 				6CD29CE7244F230500770217 /* MainSearchModule */,
-				6C719B32244C71C900EB5B41 /* RangeModule */,
 				28B1B941243F9888002732A5 /* TabBarModule */,
 				28B1B939243F97F8002732A5 /* PersonalModule */,
 				28B1B930243F976B002732A5 /* AboutUsModule */,
@@ -690,7 +646,6 @@
 				7D09ECAB243A40BE004EA0EB /* IntroViewController.xib in Resources */,
 				7D0B1983242AD3F10058593F /* Assets.xcassets in Resources */,
 				7DD3DE452458278D009A99E7 /* PasswordDropViewController.xib in Resources */,
-				6C719B3A244CA25300EB5B41 /* RangeViewController.xib in Resources */,
 				7D0B197E242AD3EE0058593F /* Main.storyboard in Resources */,
 				7D3C44F9246D863B006E83C0 /* ManufacturerTableViewCell.xib in Resources */,
 				7D87C1F42434C9B40060C670 /* LoginViewController.xib in Resources */,
@@ -756,13 +711,11 @@
 				7D09ECA7243A364B004EA0EB /* LoginPresenter.swift in Sources */,
 				285658E1246AFE2A00053F56 /* DataManager.swift in Sources */,
 				7D87C1F32434C9B40060C670 /* LoginViewController.swift in Sources */,
-				6C719B39244CA25300EB5B41 /* RangeViewController.swift in Sources */,
 				6CCC52CA24507E3200D769A3 /* MainSearchTableViewCell.swift in Sources */,
 				7DD3DE4224581607009A99E7 /* PasswordDropViewController.swift in Sources */,
 				7D87C2022434CF9E0060C670 /* IntroPresenter.swift in Sources */,
 				282F5DB324780C92004ACE52 /* OrdersViewController.swift in Sources */,
 				7D454137245B621000A7F4A0 /* Item.swift in Sources */,
-				6C719B36244C72CC00EB5B41 /* RangePresenter.swift in Sources */,
 				7D09ECB3243A4D4D004EA0EB /* SignUpPresenter.swift in Sources */,
 				6CD29CFE244F2C1800770217 /* MainSearchPresenter.swift in Sources */,
 				286566EB24672212000071B7 /* BasketPresenter.swift in Sources */,
@@ -788,7 +741,6 @@
 				7D45413A245B6D6600A7F4A0 /* CategoryViewController.swift in Sources */,
 				282F5DB524781717004ACE52 /* PreviousOrder.swift in Sources */,
 				285658E7246D77CE00053F56 /* SplashScreenPresenter.swift in Sources */,
-				6C719B3C244CACD900EB5B41 /* RangeCollectionViewCell.swift in Sources */,
 				286566F524683CED000071B7 /* BasketTableViewCell.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,
 				6CD29CF8244F25B300770217 /* Category.swift in Sources */,

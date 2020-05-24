@@ -14,40 +14,11 @@ class TabBarController: UITabBarController {
     let networkSevice = NetworkService()
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
-        let firstViewController = PersonalViewController()
-        let firstNavController = UINavigationController(rootViewController: firstViewController)
-        let firstPresenterVC = PersonalPresenter(view: firstViewController, router: self.presenter.router1!)
-        firstViewController.presenter = firstPresenterVC
-        
-        let secondViewController = PersonalViewController()
-        let secondNavController = UINavigationController(rootViewController: secondViewController)
-        let secondPresenterVC = PersonalPresenter(view: secondViewController, router: self.presenter.router1!)
-        secondViewController.presenter = secondPresenterVC
-        */
-        
-        /*
-        let firstViewController = PersonalViewController()
-        //let firstNavController = UINavigationController(rootViewController: firstViewController)
-        let firstPresenterVC = PersonalPresenter(view: firstViewController, router: self.presenter.router!)
-        firstViewController.presenter = firstPresenterVC
-        firstViewController.view.backgroundColor = .white
-        
-        let secondViewController = MainSearchViewController()
-        let secondPresenterVC = MainSearchPresenter(view: secondViewController, router: self.presenter.router!, networkService: networkSevice)
-        secondViewController.presenter = secondPresenterVC
-        secondViewController.view.backgroundColor = .blue
-        
-        let thirdViewController = UIViewController()
-        */
         
         
         let firstViewController = PersonalViewController()
         let firstNavigationController = UINavigationController(rootViewController: firstViewController)
         let firstAssemblyBuilder = AssemblyModuleBuilder()
-        print(firstNavigationController)
-        print(firstViewController)
-        print(self.presenter.getScene())
         
         
         let firstRouter = Router(navigationController: firstNavigationController, assemblyBuilder: firstAssemblyBuilder, sceneDelegate: self.presenter.getScene())
@@ -71,7 +42,6 @@ class TabBarController: UITabBarController {
         firstNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), selectedImage: UIImage(systemName: "person.fill"))
         secondNavigationController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         
-//        secondNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         thirdNavigationController.tabBarItem = UITabBarItem(title: "Корзина", image: UIImage(systemName: "cart.fill"), selectedImage: UIImage(systemName: "cart.fill"))
         
         let tabBarList = [firstNavigationController, secondNavigationController, thirdNavigationController]

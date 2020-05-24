@@ -16,7 +16,7 @@ class CategoryViewController: UIViewController {
     
     var updated = false
     
-    @IBOutlet weak var filtersButton: UIBarButtonItem!
+    var filtersButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,8 +27,14 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let filterButton = UIButton(type: .custom)
+        filterButton.setImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
+        filterButton.addTarget(self, action: #selector(showFiltersPopover), for: .touchUpInside)
+        filtersButton = UIBarButtonItem(customView: filterButton)
+        
         view.backgroundColor = CustomColors.background
         tableView.backgroundColor = CustomColors.background
+        navigationItem.rightBarButtonItem = self.filtersButton
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,14 +46,21 @@ class CategoryViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
-        self.navigationBar.topItem?.title = presenter.getCategoryName()
-        self.navigationController?.isNavigationBarHidden = true
+        
+        let title = UILabel()
+        title.text = self.presenter.getCategoryName()
+        title.font = .systemFont(ofSize: 17, weight: .medium)
+        navigationItem.titleView = title
+        
+        
+        //self.navigationController?.navigationBar.topItem?.title = self.presenter.getCategoryName()
+        //self.navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
     }
 
     // MARK: showFilterPopover
     
-    func showFiltersPopover() {
+    @objc func showFiltersPopover() {
         if filtersAreAvialable {
             let popVC = FiltersViewController()
             popVC.modalPresentationStyle = .popover
@@ -65,14 +78,9 @@ class CategoryViewController: UIViewController {
         }
     }
     
-    @IBAction func backTapped(_ sender: UIBarButtonItem) {
-        self.presenter.pop()
-    }
     @IBAction func filtersTapped(_ sender: UIBarButtonItem) {
         self.showFiltersPopover()
     }
-    
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {

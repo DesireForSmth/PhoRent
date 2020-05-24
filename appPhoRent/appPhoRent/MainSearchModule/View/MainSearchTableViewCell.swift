@@ -18,7 +18,8 @@ class MainSearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = CustomColors.background
+        backgroundColor = CustomColors.backgroundCell
+        categoryName.textColor = .black
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {

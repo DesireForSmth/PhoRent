@@ -11,7 +11,7 @@ import Kingfisher
 
 class MainSearchViewController: UIViewController {
     
-    @IBOutlet weak var navBar: UINavigationBar!
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -20,17 +20,28 @@ class MainSearchViewController: UIViewController {
     var categories: [Category]?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         if presenter.needDownload(){
             showAlert()
         }
+        //self.navBar.translatesAutoresizingMaskIntoConstraints = false
+        let backButton = UIButton()
+        
+        backButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        
+        let backBarButton = UIBarButtonItem(customView: backButton)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButton
+        self.view.backgroundColor = CustomColors.background
+        self.navigationController?.navigationBar.topItem?.title = "Поиск"
         view.backgroundColor = CustomColors.background
         tableView.backgroundColor = CustomColors.background
+        navigationItem.backBarButtonItem?.title = ""
         presenter.getCategories()
         tableView.register(UINib(nibName: "MainSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 100
-        navBar.topItem?.title = "Search"
-        navigationController?.isNavigationBarHidden = true
+        
+        
         tableView.tableFooterView = UIView(frame: .zero)
     }
 }
