@@ -25,6 +25,8 @@ class OrdersViewController: UIViewController {
     }
     
     func setupUI() {
+        view.backgroundColor = CustomColors.background
+        
         tableView = UITableView()
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = CustomColors.background
@@ -42,7 +44,7 @@ class OrdersViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constraints.top),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),

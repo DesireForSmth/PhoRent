@@ -170,7 +170,6 @@ extension PersonalViewController {
     
     private func setupUI() {
         view.backgroundColor = CustomColors.background
-        secondView.backgroundColor = CustomColors.background
         
         let button: UIButton = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "gear"), for: .normal)
@@ -232,9 +231,8 @@ extension PersonalViewController {
         
         changePhoneButton = UIButton(type: .system)
         changePhoneButton.setImage(UIImage(systemName: "pencil"), for: .normal)
-        
-        
-        changePhoneButton.backgroundColor = CustomColors.background
+        changePhoneButton.backgroundColor = .clear
+        changePhoneButton.isOpaque = false
         changePhoneButton.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
         changePhoneButton.addTarget(self, action: #selector(changePhoneAction), for: .touchUpInside)

@@ -21,7 +21,6 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         createConstraints()
     }
@@ -42,8 +41,6 @@ extension AboutUsViewController {
         presenter.changeSchemeColor()
     }
 }
-
-
 
 // MARK: - Create UI
 
@@ -91,7 +88,6 @@ extension AboutUsViewController {
         logOutButton.layer.borderWidth = 0.5
         
         logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
-          
         
         view.addSubview(firstLabel)
         view.addSubview(secondLabel)

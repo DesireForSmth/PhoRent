@@ -17,6 +17,10 @@ protocol BasketViewProtocol: class {
     func updateDateLabel(newDate: String)
     func updateTotal(newTotalCost: Int)
     func updateTable()
+    
+    func showAlert(message: String)
+    
+    func clearData()
 }
 
 protocol BasketPresenterProtocol: class {
@@ -131,8 +135,11 @@ class BasketPresenter: BasketPresenterProtocol {
             networkService.putOrder(order: order)
             currentOrder = nil
             setOrder(items: [])
+            view?.showAlert(message: "Заказ оформлен")
+            
+            view?.clearData()
         } else {
-        
+            view?.showAlert(message: "Корзина пуста!")
         }
     }
 }

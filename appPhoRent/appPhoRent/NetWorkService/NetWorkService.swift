@@ -25,7 +25,7 @@ protocol NetWorkServiceProtocol {
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
     
     func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
-    func addItemInBasket(itemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
+    func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
     //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String)
     func saveImage(dataImage: Data)
@@ -33,8 +33,6 @@ protocol NetWorkServiceProtocol {
 }
 
 class NetworkService: NetWorkServiceProtocol {
-    
-    
     
     func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -155,6 +153,8 @@ class NetworkService: NetWorkServiceProtocol {
             completion(.success(obj))
         }
     }
+    
+  
     
     func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()

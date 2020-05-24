@@ -9,9 +9,7 @@
 import Foundation
 
 protocol AboutUsViewProtocol: class {
-    
 }
-
 
 protocol AboutUsPresenterProtocol: class {
     init(view: AboutUsViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
