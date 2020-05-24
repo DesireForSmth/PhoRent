@@ -42,7 +42,7 @@ class CategoryViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 115
+        tableView.rowHeight = 116
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -111,7 +111,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if let item = items?[indexPath.item] {
             let itemImage = item.imageURL
             cell.itemName.text = item.name
-            cell.itemCost.text = "\(item.cost) р."
+            cell.itemCost.text = "\(item.cost) р./сут."
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
