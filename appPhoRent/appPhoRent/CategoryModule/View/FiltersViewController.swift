@@ -54,6 +54,8 @@ class FiltersViewController: UIViewController {
     
     var items: [Item]?
     
+    // MARK: viewDidLoad
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -82,34 +84,11 @@ class FiltersViewController: UIViewController {
 }
 
 extension FiltersViewController {
+    
+    // MARK: setup constraints
+    
     func setupView() {
         
-        
-        /*
-        self.scrollView.addSubview(containerView)
-        
-        self.containerView.addSubview(closeBtn)
-        
-        self.closeBtn.translatesAutoresizingMaskIntoConstraints = false
-        self.closeBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
-        self.closeBtn.addTarget(self, action: #selector(self.closeSelf), for: .touchUpInside)
-        self.closeBtn.leftAnchor.constraint(equalTo: self.containerView.leftAnchor, constant: 10).isActive = true
-        self.closeBtn.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 10).isActive = true
-        self.closeBtn.imageView?.contentMode = .scaleToFill
-        self.closeBtn.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        self.closeBtn.imageView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        self.closeBtn.imageView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        self.containerView.addSubview(textLabel)
-        
-        self.textLabel.text = "Фильтры"
-        self.textLabel.font = UIFont.systemFont(ofSize: 17)
-        
-        self.textLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.textLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -15).isActive = true
-        self.textLabel.centerYAnchor.constraint(equalTo: self.closeBtn.centerYAnchor, constant: 0).isActive = true
-        */
-       
         self.view.addSubview(self.closeBtn)
         
         self.closeBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -122,6 +101,8 @@ extension FiltersViewController {
         self.closeBtn.imageView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
         self.closeBtn.imageView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
+        
+        
         self.view.addSubview(textLabel)
         
         self.textLabel.text = "Фильтры"
@@ -130,6 +111,8 @@ extension FiltersViewController {
         self.textLabel.translatesAutoresizingMaskIntoConstraints = false
         self.textLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15).isActive = true
         self.textLabel.centerYAnchor.constraint(equalTo: self.closeBtn.centerYAnchor, constant: 0).isActive = true
+        
+        
         
         self.view.addSubview(scrollView)
         
@@ -183,6 +166,8 @@ extension FiltersViewController {
     }
 }
 
+// MARK: rangeSlider protocol
+
 extension FiltersViewController: RangeSeekSliderDelegate {
 
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
@@ -201,6 +186,8 @@ extension FiltersViewController: RangeSeekSliderDelegate {
 extension FiltersViewController: UIViewControllerTransitioningDelegate {
     
 }
+
+// MARK: tableView funcs
 
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

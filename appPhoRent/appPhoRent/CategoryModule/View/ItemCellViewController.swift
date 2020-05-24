@@ -40,6 +40,9 @@ class ItemCellViewController: UITableViewCell {
 }
 
 extension ItemCellViewController {
+    
+    // MARK: constraints setup
+    
     func setUp(){
         self.addItemInBasket.translatesAutoresizingMaskIntoConstraints = false
         self.addItemInBasket.topAnchor.constraint(equalTo: self.stepperCount.topAnchor, constant: 0).isActive = true

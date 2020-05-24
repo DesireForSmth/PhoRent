@@ -22,7 +22,7 @@ class CategoryViewController: UIViewController {
 
     private var filtersAreAvialable = false
     
-    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,8 @@ class CategoryViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
     }
 
+    // MARK: showFilterPopover
+    
     func showFiltersPopover() {
         if filtersAreAvialable {
             let popVC = FiltersViewController()
@@ -85,6 +87,8 @@ class CategoryViewController: UIViewController {
 
 }
 
+// MARK: tableView extensions
+
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -96,7 +100,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if let item = items?[indexPath.item] {
             let itemImage = item.imageURL
             cell.itemName.text = item.name
-            cell.itemCost.text = "\(item.cost)"
+            cell.itemCost.text = "\(item.cost) р."
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
@@ -125,6 +129,8 @@ extension CategoryViewController {
     }
 }
 
+// MARK: viewProtocol confirmation
+
 extension CategoryViewController: CategoryViewProtocol {
     func successAddingItem(message: String) {
         showSuccessAlert()
@@ -140,7 +146,6 @@ extension CategoryViewController: CategoryViewProtocol {
     func success() {
         
         tableView.reloadData()
-        //tableView.reloadSections(IndexSet(integersIn: 0...0), with: UITableView.RowAnimation.top)
         if self.items?.count != 0 {
             if !updated {
                 presenter.getManufacturers()

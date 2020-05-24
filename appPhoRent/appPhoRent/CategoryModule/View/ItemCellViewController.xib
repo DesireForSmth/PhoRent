@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Item Name" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymW-fP-INa">
-                        <rect key="frame" x="159" y="0.0" width="221" height="26.5"/>
+                        <rect key="frame" x="129" y="0.0" width="251" height="26.5"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                     <constraint firstItem="fAw-FO-o49" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="18" id="mhe-Hs-wBn"/>
                     <constraint firstAttribute="trailing" secondItem="ymW-fP-INa" secondAttribute="trailing" constant="20" id="szb-U1-CqC"/>
                     <constraint firstAttribute="trailing" secondItem="H1R-Aj-W5Z" secondAttribute="trailing" constant="194" id="tG8-Kb-SNd"/>
-                    <constraint firstItem="ymW-fP-INa" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="38" id="uTG-bT-si4"/>
+                    <constraint firstItem="ymW-fP-INa" firstAttribute="leading" secondItem="dkd-dg-sgi" secondAttribute="trailing" constant="8" id="uTG-bT-si4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
