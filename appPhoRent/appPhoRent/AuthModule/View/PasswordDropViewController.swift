@@ -27,12 +27,20 @@ class PasswordDropViewController: UIViewController {
     }
     
     @IBAction func passwordDropAction(_ sender: Any) {
+        dropPassword()
+    }
+    
+    func dropPassword() {
+        showAlertLoading()
         presenter.passwordDrop(email: emailTextField.text)
     }
 }
 
 extension PasswordDropViewController: UITextFieldDelegate{
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dropPassword()
+        return true
+    }
 }
 
 extension PasswordDropViewController: PasswordDropViewProtocol {
@@ -45,6 +53,22 @@ extension PasswordDropViewController: PasswordDropViewProtocol {
         }
         ))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertLoading() {
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func closeAlertLoading() {
+        dismiss(animated: true, completion: nil)
     }
     
     func showErrorAlert() {
@@ -60,10 +84,12 @@ extension PasswordDropViewController: PasswordDropViewProtocol {
     }
     
     func success() {
+        closeAlertLoading()
         showAuthError()
     }
     
     func failure(error: Error) {
+        closeAlertLoading()
         showErrorAlert()
     }
     

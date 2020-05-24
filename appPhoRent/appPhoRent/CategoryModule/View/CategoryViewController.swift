@@ -16,19 +16,25 @@ class CategoryViewController: UIViewController {
     
     var updated = false
     
-    @IBOutlet weak var filtersButton: UIBarButtonItem!
+    var filtersButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     
     private var filtersAreAvialable = false
     
-    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let filterButton = UIButton(type: .custom)
+        filterButton.setImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
+        filterButton.addTarget(self, action: #selector(showFiltersPopover), for: .touchUpInside)
+        filtersButton = UIBarButtonItem(customView: filterButton)
+        
         view.backgroundColor = CustomColors.background
         tableView.backgroundColor = CustomColors.background
+        navigationItem.rightBarButtonItem = self.filtersButton
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -36,16 +42,25 @@ class CategoryViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         tableView.register(UINib(nibName: "ItemCellViewController", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 115
+        tableView.rowHeight = 116
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
-        self.navigationBar.topItem?.title = presenter.getCategoryName()
-        self.navigationController?.isNavigationBarHidden = true
+        
+        let title = UILabel()
+        title.text = self.presenter.getCategoryName()
+        title.font = .systemFont(ofSize: 17, weight: .medium)
+        navigationItem.titleView = title
+        
+        
+        //self.navigationController?.navigationBar.topItem?.title = self.presenter.getCategoryName()
+        //self.navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
     }
+
+    // MARK: showFilterPopover
     
-    func showFiltersPopover() {
+    @objc func showFiltersPopover() {
         if filtersAreAvialable {
             let popVC = FiltersViewController()
             popVC.modalPresentationStyle = .popover
@@ -63,14 +78,9 @@ class CategoryViewController: UIViewController {
         }
     }
     
-    @IBAction func backTapped(_ sender: UIBarButtonItem) {
-        self.presenter.pop()
-    }
     @IBAction func filtersTapped(_ sender: UIBarButtonItem) {
         self.showFiltersPopover()
     }
-    
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -89,6 +99,8 @@ class CategoryViewController: UIViewController {
     
 }
 
+// MARK: tableView extensions
+
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items?.count ?? 0
@@ -99,7 +111,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if let item = items?[indexPath.item] {
             let itemImage = item.imageURL
             cell.itemName.text = item.name
-            cell.itemCost.text = "\(item.cost)"
+            cell.itemCost.text = "\(item.cost) р./сут."
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
@@ -132,6 +144,8 @@ extension CategoryViewController {
     }
 }
 
+// MARK: viewProtocol confirmation
+
 extension CategoryViewController: CategoryViewProtocol {
     func successAddingItem(message: String) {
         showSuccessAlert()
@@ -147,7 +161,6 @@ extension CategoryViewController: CategoryViewProtocol {
     func success() {
         
         tableView.reloadData()
-        //tableView.reloadSections(IndexSet(integersIn: 0...0), with: UITableView.RowAnimation.top)
         if self.items?.count != 0 {
             if !updated {
                 presenter.getManufacturers()

@@ -2,15 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainSearchViewController" customModule="appPhoRent" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainSearchViewController" customModule="PhoRent" customModuleProvider="target">
             <connections>
-                <outlet property="navBar" destination="LsW-8L-NvN" id="5iC-20-IZl"/>
                 <outlet property="tableView" destination="Gq7-Nm-poJ" id="h4W-ye-xGP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,14 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-8L-NvN">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                    <items>
-                        <navigationItem title="Title" id="2ec-j9-cpr"/>
-                    </items>
-                </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gq7-Nm-poJ">
-                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="3dO-XC-1m2"/>
                         <outlet property="delegate" destination="-1" id="fDw-Wj-h49"/>
@@ -35,21 +28,13 @@
                 </tableView>
             </subviews>
             <constraints>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0aM-Nq-97L"/>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8f9-g2-uFR"/>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9yS-Hn-6TY"/>
-                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="U9A-MR-wnx"/>
+                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ach-yg-Fiq"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="UgB-vc-jj7"/>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XzG-eI-8BX"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gA8-uX-bOF"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="lAF-B7-j65"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mOD-6W-Pfh"/>
-                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="oTv-b7-0kV"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qhl-aA-rHc"/>
                 <constraint firstItem="Gq7-Nm-poJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="t8v-sn-YP9"/>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="thJ-fd-aDb"/>
-                <constraint firstItem="LsW-8L-NvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wfD-Mf-Scl"/>
-                <constraint firstItem="Gq7-Nm-poJ" firstAttribute="top" secondItem="LsW-8L-NvN" secondAttribute="bottom" id="yNo-xY-xpj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140.57971014492756" y="106.47321428571428"/>

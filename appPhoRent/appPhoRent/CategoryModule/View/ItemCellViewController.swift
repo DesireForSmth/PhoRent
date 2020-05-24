@@ -36,10 +36,31 @@ class ItemCellViewController: UITableViewCell {
         countLabel].forEach {
             $0?.textColor = .black
         }
+        self.setUp()
+        // Initialization code
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //        // Configure the view for the selected state
 //    }
+}
+
+extension ItemCellViewController {
+    
+    // MARK: constraints setup
+    
+    func setUp(){
+        self.addItemInBasket.translatesAutoresizingMaskIntoConstraints = false
+        self.addItemInBasket.topAnchor.constraint(equalTo: self.stepperCount.topAnchor, constant: 0).isActive = true
+        self.addItemInBasket.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true
+        
+        self.itemCost.translatesAutoresizingMaskIntoConstraints = false
+        self.itemCost.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true
+        self.itemCost.centerYAnchor.constraint(equalTo: self.countLabel.centerYAnchor, constant: 0).isActive = true
+        
+        self.stepperCount.translatesAutoresizingMaskIntoConstraints = false
+        self.stepperCount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+        self.stepperCount.leftAnchor.constraint(equalTo: self.itemImage.rightAnchor, constant: 10).isActive = true
+    }
 }

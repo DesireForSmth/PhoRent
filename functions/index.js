@@ -24,7 +24,7 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
         admin.firestore().collection('users').doc(uid).collection('basket').where('name', '==', item.name)
         .get().then(snapshotQuery => { 
           if (snapshotQuery.empty) {
-            item.count = 1;
+            item.count = elementCount;
             admin.firestore().collection('users').doc(uid).collection('basket').doc()
         .set(item).then(() => {
           console.log(item);

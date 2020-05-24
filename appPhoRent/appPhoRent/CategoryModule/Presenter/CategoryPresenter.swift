@@ -86,6 +86,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         view?.success()
     }
     
+    // MARK: filter func
+    
     func filterItems() {
         self.shownItems = []
         
@@ -97,6 +99,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             }
         }
     }
+    
+    // MARK: init
     
     required init(view: CategoryViewProtocol, router: RouterProtocol, category: Category, networkService: NetWorkServiceProtocol) {
         self.category = category
@@ -130,6 +134,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         return name
     }
     
+    // MARK: items loading
+    
     public func getItems() {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
@@ -151,6 +157,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         }
     }
     
+    // MARK: order assembling
+    
     func addItemInBasket(itemID: String, count: Int) {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
@@ -167,8 +175,9 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
                 }
             }
         }
-        }
+    }
         
+    
     
     func getMaxCurCost() -> CGFloat? {
         let cost = self.costRange["maxCost"]
