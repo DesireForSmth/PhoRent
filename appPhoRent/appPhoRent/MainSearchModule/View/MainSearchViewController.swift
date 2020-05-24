@@ -24,6 +24,8 @@ class MainSearchViewController: UIViewController {
         if presenter.needDownload(){
             showAlert()
         }
+        view.backgroundColor = CustomColors.background
+        tableView.backgroundColor = CustomColors.background
         presenter.getCategories()
         tableView.register(UINib(nibName: "MainSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 100
@@ -52,11 +54,16 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            guard let category = presenter.categories?[indexPath.row] else {
-                assertionFailure("Категория не найдена!")
-                return
-            }
-            self.presenter.cellPicked(category: category)
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let category = presenter.categories?[indexPath.row] else {
+            assertionFailure("Категория не найдена!")
+            return
+        }
+        self.presenter.cellPicked(category: category)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 116
     }
 }
 

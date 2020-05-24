@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class CategoryViewController: UIViewController {
-
+    
     var presenter: CategoryViewPresenterProtocol!
     var items: [Item]?
     
@@ -19,13 +19,17 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var filtersButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     private var filtersAreAvialable = false
     
     // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = CustomColors.background
+        tableView.backgroundColor = CustomColors.background
+        
         tableView.delegate = self
         tableView.dataSource = self
         presenter.getItems()
@@ -72,26 +76,25 @@ class CategoryViewController: UIViewController {
     
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-
+        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-
+            
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
                 
                 self.presenter.pop()
-                default:
-                    break
+            default:
+                break
             }
         }
     }
-
+    
 }
 
 // MARK: tableView extensions
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.items?.count ?? 0
     }
     
@@ -112,6 +115,10 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

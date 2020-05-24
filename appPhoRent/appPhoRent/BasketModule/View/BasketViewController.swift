@@ -27,6 +27,8 @@ class BasketViewController: UIViewController {
     var countDayLabel: UILabel!
     var dayStepper: UIStepper!
     
+    let countDayString = "Количество дней аренды: "
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.topItem?.title = "Корзина"
@@ -35,11 +37,6 @@ class BasketViewController: UIViewController {
         
         presenter.prepareData()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        //        presenter.prepareData()
-//    }
     
     @objc func orderAction(_ sender: Any) {
         presenter.putOrder()
@@ -77,7 +74,6 @@ class BasketViewController: UIViewController {
     
     @objc func dateChanged(_ sender: UIDatePicker) {
         presenter.updateDate(newDate: sender.date)
-        removeDatePicker()
     }
     
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -97,10 +93,13 @@ class BasketViewController: UIViewController {
     }
     
     @objc func stepperChanged(_ sender: UIStepper) {
-        countDayLabel.text = "Количество дней аренды: " + Int(sender.value).description
+        countDayLabel.text = countDayString + Int(sender.value).description
         presenter.updateCountOfDay(newCount: Int(sender.value))
     }
 }
+
+
+// MARK: - BasketTableViewCellDelegate
 
 extension BasketViewController: BasketTableViewCellDelegate {
     
@@ -110,6 +109,9 @@ extension BasketViewController: BasketTableViewCellDelegate {
         }
     }
 }
+
+
+// MARK: - UI
 
 extension BasketViewController {
     private func setupUI() {
@@ -148,7 +150,7 @@ extension BasketViewController {
         orderButton.addTarget(self, action: #selector(orderAction), for: .touchUpInside)
         
         countDayLabel = UILabel()
-        countDayLabel.text = "Количество дней аренды: 1"
+        countDayLabel.text = countDayString + "1"
         countDayLabel.textColor = CustomColors.textLabel
         countDayLabel.backgroundColor = CustomColors.backgroundButton
         
@@ -177,7 +179,7 @@ extension BasketViewController {
         dayStepper.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constraints.top),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: Constraints.bottom),
@@ -213,6 +215,8 @@ extension BasketViewController {
         ])
     }
 }
+
+// MARK: - BasketViewProtocol
 
 extension BasketViewController: BasketViewProtocol {
     func updateDateLabel(newDate: String) {
@@ -254,7 +258,20 @@ extension BasketViewController: BasketViewProtocol {
     func closeAlert() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func clearData() {
+        countDayLabel.text = countDayString + "1"
+        presenter.updateDate(newDate: Date())
+    }
 }
+
+// MARK: - UITableViewDelegate
 
 extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -32,7 +32,8 @@ class BasketTableViewCell: UITableViewCell {
     }
     
     func fillCell(name: String, cost: String, count: Int, imageURL: String) {
-        backgroundColor = CustomColors.background
+        backgroundColor = CustomColors.backgroundCell
+        
         titleLabel.text = name
         priceLabel.text = cost
         
@@ -40,6 +41,11 @@ class BasketTableViewCell: UITableViewCell {
         let url = URL(string: imageURL)
         itemImageView.kf.setImage(with: url)
         countLabel.text = "Количество: \(count)"
+        
+        [titleLabel,
+        priceLabel,
+        countLabel].forEach {
+            $0?.textColor = .black
+        }
     }
-
 }

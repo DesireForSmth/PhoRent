@@ -34,8 +34,6 @@ protocol NetWorkServiceProtocol {
 
 class NetworkService: NetWorkServiceProtocol {
     
-    
-    
     func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
@@ -155,6 +153,8 @@ class NetworkService: NetWorkServiceProtocol {
             completion(.success(obj))
         }
     }
+    
+  
     
     func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()
