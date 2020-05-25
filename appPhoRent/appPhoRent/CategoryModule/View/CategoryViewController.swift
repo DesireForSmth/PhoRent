@@ -27,6 +27,8 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         if presenter.needDownload() {
             //showAlertLoading()
         }
@@ -67,6 +69,7 @@ class CategoryViewController: UIViewController {
         //self.navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
         
+        tableView.allowsSelection = false
     }
 
     // MARK: showFilterPopover
