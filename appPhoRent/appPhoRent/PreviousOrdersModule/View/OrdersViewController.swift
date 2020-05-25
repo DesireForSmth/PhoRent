@@ -20,11 +20,20 @@ class OrdersViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         createConstraints()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         presenter.prepareData()
     }
     
     func setupUI() {
+        let title = UILabel()
+        title.text = "Предыдущие заказы"
+        title.font = .systemFont(ofSize: 17, weight: .medium)
+        
+        navigationItem.titleView = title
+        
         view.backgroundColor = CustomColors.background
         
         tableView = UITableView()
@@ -88,5 +97,25 @@ extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
 extension OrdersViewController: OrdersViewProtocol {
     func updateTable() {
         tableView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func closeAlert() {
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -238,7 +238,7 @@ class NetworkService: NetWorkServiceProtocol {
                 print("Error update imageURL: \(error)")
                 return
             }
-            print("ImageURL has been seted")
+            print("ImageURL has been setted")
         }
     }
     
@@ -366,14 +366,14 @@ class NetworkService: NetWorkServiceProtocol {
         var orders = [PreviousOrder]()
         
         db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
-            print("wait 1")
+//            print("wait 1")
             if let data = snapshot?.data() {
                 if let data = data["orders"] as? Array<String> {
                     array = data
-                    print("array=data\(array)")
+//                    print("array=data\(array)")
                 }
                 for orderTitle in array {
-                    print("wait 2")
+//                    print("wait 2")
                     db.collection("users").document(userID).collection(orderTitle).addSnapshotListener { documentSnapshot, error in
                         
                         if let error = error {
@@ -387,8 +387,8 @@ class NetworkService: NetWorkServiceProtocol {
                             let order = PreviousOrder(items: items ?? [], header: orderTitle)
                             orders.append(order)
                             if orderTitle == array[array.count - 1] {
-                                print("wait 3")
-                                print("orders: \(orders)")
+//                                print("wait 3")
+//                                print("orders: \(orders)")
                                 completion(.success(orders))
                             }
                         }

@@ -9,6 +9,10 @@
 import Foundation
 protocol OrdersViewProtocol: class {
     func updateTable()
+    func showAlert()
+    func closeAlert()
+    
+    func failure(error: Error)
 }
 
 
@@ -39,20 +43,16 @@ class OrdersPresenter: OrdersPresenterProtocol {
     
     
     func prepareData() {
-        ////        view?.showAlert()
+        view?.showAlert()
         networkService.getPreviousOrders() { [weak self] result in
-            print("getPreviousOrders")
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let items):
-                    print("getPreviousOrders items \(items)")
-                    //                    self.setOrder(items: items)
-                    //                    self.view?.closeAlert()
                     self.setTable(orders: items)
+                    self.view?.closeAlert()
                 case .failure(let error):
-                    print("error previous")
-                    //                    self.view?.failure(error: error)
+                    self.view?.failure(error: error)
                 }
             }
         }
@@ -62,15 +62,8 @@ class OrdersPresenter: OrdersPresenterProtocol {
     func setTable(orders: [PreviousOrder]) {
         
         self.orders = orders
-        
-        //        if currentOrder != nil {
-        //            currentOrder?.items = items
-        //        } else {
-        //            currentOrder = Order(orderID: "", date: Date(), countOfDay: 1, items: items)
-        //        }
+
         view?.updateTable()
-        //        view?.updateTotal(newTotalCost: countTotal(items: currentOrder?.items))
-        //        updateDate(newDate: currentOrder?.date ?? Date())
     }
     
     func getSectionTitle(section: Int) -> String? {
