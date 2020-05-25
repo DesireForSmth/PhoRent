@@ -19,19 +19,15 @@ class OrdersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        
-//        // Configure the view for the selected state
-//    }
-    
+    }    
     
     func fillCell(name: String, cost: String, count: Int, imageURL: String) {
         backgroundColor = CustomColors.backgroundCell
         titleLabel.text = name
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
         priceLabel.text = cost
+        
         
         itemImageView.image = UIImage()
         let url = URL(string: imageURL)
