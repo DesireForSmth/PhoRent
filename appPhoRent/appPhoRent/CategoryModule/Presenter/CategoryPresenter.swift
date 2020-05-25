@@ -44,11 +44,13 @@ protocol CategoryViewPresenterProtocol: class {
     func containsManufacturer(name: String) -> Bool
     func setCostRange(minCost: CGFloat, maxCost: CGFloat)
     func getCostRange()
-    func addItemInBasket(itemID: String, count: Int)
+    func addItemInBasket(itemID: String, count: Int, itemIndex: Int)
+    func reloadDataAfterAdd()
     
 }
 
 class CategoryPresenter: CategoryViewPresenterProtocol {
+    
     let view: CategoryViewProtocol?
     var router: RouterProtocol?
     var category: Category?
@@ -158,7 +160,6 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             case .success(let items):
                 self.items = items
                 self.shownItems = items
-                //self.view?.closeAlert()
                 self.view?.setItems(items: self.shownItems)
                 
                 self.view?.success()
@@ -171,7 +172,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     
     // MARK: order assembling
     
-    func addItemInBasket(itemID: String, count: Int) {
+    func addItemInBasket(itemID: String, count: Int, itemIndex: Int) {
         guard let categoryID = self.category?.ID else {
             assertionFailure("Проблема с доступом к категории")
             return
@@ -181,6 +182,8 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result{
                 case .success(let message):
+                    self.items?[itemIndex].count -= count
+                    self.reloadDataAfterAdd()
                     self.view?.successAddingItem(message: message)
                 case . failure(let error):
                     self.view?.failAddingItem(error: error)
@@ -219,4 +222,10 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         } else { return (nil) }
     }
    
+    func reloadDataAfterAdd() {
+        self.shownItems = []
+        self.shownItems = self.items?.filter {$0.count > 0}
+        self.view?.setItems(items: self.shownItems)
+        self.view?.success()
+    }
 }

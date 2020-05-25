@@ -121,17 +121,19 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCellViewController
         if let item = items?[indexPath.item] {
+            let itemIndex = indexPath.item
             let itemImage = item.imageURL
             cell.itemName.text = item.name
             cell.itemCost.text = "\(item.cost) р./сут."
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
             cell.itemImage.kf.setImage(with: resource)
+            cell.stepperCount.value = 1
             cell.stepperCount.minimumValue = 1
             cell.stepperCount.maximumValue = Double(item.count)
             cell.countLabel.text = String(1)
             cell.buttonAction = { sender in
-                self.presenter.addItemInBasket(itemID: item.ID, count: Int(cell.stepperCount.value))
+                self.presenter.addItemInBasket(itemID: item.ID, count: Int(cell.stepperCount.value), itemIndex: itemIndex)
             }
         }
         return cell
