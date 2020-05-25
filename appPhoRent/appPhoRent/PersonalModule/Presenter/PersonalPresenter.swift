@@ -7,12 +7,6 @@
 //
 
 import Foundation
-//import FirebaseStorage
-//
-//
-//////
-//import FirebaseAuth
-//import FirebaseFirestore
 
 protocol PersonalViewProtocol: class {
     func updateFields(name: String, email: String, phone: String, imageURL: URL?)
@@ -112,33 +106,47 @@ class PersonalPresenter: PersonalPresenterProtocol {
     }
     
     // MARK: - For FileManager
-    //
-    //    private func filePath(for key: String) -> URL? {
-    //        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-    //
-    //        return url?.appendingPathComponent(key + ".jpeg")
-    //    }
     
-    //    func saveImage(dataImage: Data) {
-    //
-    //        guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
-    //        do {
-    //            try dataImage.write(to: url)
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
+//        private func filePath(for key: String) -> URL? {
+//            let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+//
+//            return url?.appendingPathComponent(key + ".jpeg")
+//        }
+//
+//        func saveImageFileManager(dataImage: Data) {
+//
+//            guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
+//            do {
+//                try dataImage.write(to: url)
+//            } catch {
+//                print(error)
+//            }
+//        }
     
     func saveImage(dataImage: Data) {
+//        saveImageFileManager(dataImage: dataImage)
         networkService.saveImage(dataImage: dataImage)
     }
     
     func getImageUrl() -> URL? {
         return URL(string: UserManager.shared.currentUser?.imageURLString ?? "")
-        
-        //        guard let url = filePath(for: PersonalPresenter.imageFileName) else {
-        //            return nil
-        //        }
-        //        return url
     }
+    
+//    func getImageUrlFileManager() -> URL? {
+//        guard let url = filePath(for: PersonalPresenter.imageFileName) else {
+//            return nil
+//        }
+//        return url
+//    }
+//
+//    func deleteImageFileManager(dataImage: Data) {
+//
+//        guard let url = filePath(for: PersonalPresenter.imageFileName) else { return }
+//        do {
+//            try fileManager.removeItem(at: url)
+//            print("File deleted")
+//        } catch {
+//            print("error of deleted")
+//        }
+//    }
 }

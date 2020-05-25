@@ -47,6 +47,13 @@ extension AboutUsViewController {
 extension AboutUsViewController {
     private func setupUI() {
         
+        let title = UILabel()
+        title.text = "Настройки"
+        title.font = .systemFont(ofSize: 17, weight: .medium)
+        
+        navigationItem.titleView = title
+        
+        
         view.backgroundColor = CustomColors.background
         
         firstLabel = UILabel()
@@ -63,11 +70,11 @@ extension AboutUsViewController {
         secondLabel.textColor = CustomColors.textLabel
         
         showOrdersButton = UIButton(type: .system)
-        showOrdersButton.setTitle("Прошлые заказы", for: .normal)
+        showOrdersButton.setTitle("Предыдущие заказы", for: .normal)
         showOrdersButton.setTitleColor(CustomColors.textButton, for: .normal)
         showOrdersButton.backgroundColor = CustomColors.backgroundButton
-        showOrdersButton.layer.borderColor = UIColor.systemGray.cgColor
-        showOrdersButton.layer.borderWidth = 0.5
+//        showOrdersButton.layer.borderColor = UIColor.systemGray.cgColor
+//        showOrdersButton.layer.borderWidth = 0.5
         
         showOrdersButton.addTarget(self, action: #selector(showOrderAction), for: .touchUpInside)
         
@@ -75,8 +82,8 @@ extension AboutUsViewController {
         schemeColorButton.setTitle("Сменить тему", for: .normal)
         schemeColorButton.setTitleColor(CustomColors.textButton, for: .normal)
         schemeColorButton.backgroundColor = CustomColors.backgroundButton
-        schemeColorButton.layer.borderColor = UIColor.systemGray.cgColor
-        schemeColorButton.layer.borderWidth = 0.5
+//        schemeColorButton.layer.borderColor = UIColor.systemGray.cgColor
+//        schemeColorButton.layer.borderWidth = 0.5
         
         schemeColorButton.addTarget(self, action: #selector(schemeColorAction), for: .touchUpInside)
         
@@ -84,8 +91,8 @@ extension AboutUsViewController {
         logOutButton.setTitle("Выйти из аккаунта", for: .normal)
         logOutButton.setTitleColor(.systemRed, for: .normal)
         logOutButton.backgroundColor = CustomColors.backgroundButton
-        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
-        logOutButton.layer.borderWidth = 0.5
+//        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
+//        logOutButton.layer.borderWidth = 0.5
         
         logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
         
