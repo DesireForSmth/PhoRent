@@ -21,13 +21,11 @@ protocol NetWorkServiceProtocol {
     func passwordDrop(email: String?, completion: @escaping (Result<String, Error>) -> Void)
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
-
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
-    
     func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
     //    func setNewCount(newCount: Int, itemID: String)
-    func removeFromBasket(itemID: String)
+    func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     func saveImage(dataImage: Data)
     func putOrder(order: Order)
 }
@@ -172,7 +170,21 @@ class NetworkService: NetWorkServiceProtocol {
         completion(.success("Done"))
     }
     
-    
+    func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let functions = Functions.functions()
+        functions.httpsCallable("deleteItemFromBasket").call(["itemID": itemID, "categoryID": categoryID, "dbItemID": dbItemID]) { (result, error) in
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    let code = FunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                    completion(.failure(error))
+                    return
+                }
+            }
+        }
+        completion(.success("Done"))
+    }
     
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {
         let db = Firestore.firestore()
@@ -263,18 +275,6 @@ class NetworkService: NetWorkServiceProtocol {
     //    }
 
     
-    func removeFromBasket(itemID: String) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else {
-            assertionFailure("Ошибка доступа к пользователю")
-            return
-        }
-        db.collection("users").document(userID).collection("basket").document(itemID).delete { error in
-            if let error = error {
-                print("Failed to delete: \(error)")
-            }
-        }
-    }
     
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void) {
         let db = Firestore.firestore()

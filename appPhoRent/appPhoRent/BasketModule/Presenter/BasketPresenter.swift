@@ -95,10 +95,20 @@ class BasketPresenter: BasketPresenterProtocol {
     func removeFromBasket(index: Int) {
         if let item = currentOrder?.items[index] {
             currentOrder?.items.remove(at: index)
-            networkService.removeFromBasket(itemID: item.itemID)
-            let total = countTotal(items: currentOrder!.items)
-            view?.updateTotal(newTotalCost: total)
-            view?.updateTable()
+            networkService.removeFromBasket(itemID: item.itemID, dbItemID: item.dbItemID, categoryID: item.categoryID){ [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let message):
+                        let total = self.countTotal(items: self.currentOrder!.items)
+                        self.view?.updateTotal(newTotalCost: total)
+                        self.view?.updateTable()
+                        print(message)
+                    case . failure(let error):
+                        self.view?.failure(error: error)
+                    }
+                }
+            }
         }
     }
     

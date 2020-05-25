@@ -15,6 +15,8 @@ struct BasketItem: Codable {
     let imageURL: String
     let manufacturer: String
     var count: Int
+    let categoryID: String
+    let dbItemID: String
     
 }
 
@@ -25,7 +27,8 @@ extension BasketItem {
         imageURL = dictionary["imageURL"] as? String ?? ""
         manufacturer = dictionary["manufacturer"] as? String ?? ""
         count = dictionary["count"] as? Int ?? 1
-        
+        categoryID = dictionary["categoryID"] as? String ?? ""
+        dbItemID = dictionary["itemID"] as? String ?? ""
         self.itemID = itemID
     }
 }

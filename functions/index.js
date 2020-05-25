@@ -8,23 +8,26 @@ admin.initializeApp();
 
 //add new item
 exports.addItemInBasket = functions.https.onCall((data, context) => {
+  let itemID = data.id;
   admin.firestore().collection('categories').doc(data.category)
-  .collection('items').doc(data.id).get().then(snapshot => {
+  .collection('items').doc(itemID).get().then(snapshot => {
     var item = snapshot.data();
     console.log(item);
+    let categoryID = data.category;
     let elementCount = data.count;
     let dbElementCount = item.count;
-    console.log(elementCount, dbElementCount);
-    console.log(data.id, data.category);
     if (dbElementCount >= elementCount) {
       let newElementCount = dbElementCount - elementCount;
-      admin.firestore().collection('categories').doc(data.category)
+      admin.firestore().collection('categories').doc(categoryID)
       .collection('items').doc(data.id).update({ count: newElementCount}).then(() => {
         let uid = context.auth.uid;
         admin.firestore().collection('users').doc(uid).collection('basket').where('name', '==', item.name)
         .get().then(snapshotQuery => { 
           if (snapshotQuery.empty) {
+            item.itemID = itemID;
             item.count = elementCount;
+            item.categoryID = categoryID;
+            console.log(item);
             admin.firestore().collection('users').doc(uid).collection('basket').doc()
         .set(item).then(() => {
           console.log(item);
@@ -68,3 +71,40 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
     });
   });
 
+  //delete item from basket
+  exports.deleteItemFromBasket = functions.https.onCall((data, context) => {
+    let itemID = data.itemID;
+    let uid = context.auth.uid;
+    let categoryID = data.categoryID;
+    let dbItemID = data.dbItemID;
+    admin.firestore().collection('users').doc(uid)
+    .collection('basket').doc(itemID).get().then(doc => {
+      let item = doc.data()
+      let itemCount = item.count;
+      admin.firestore().collection('users').doc(uid)
+      .collection('basket').doc(itemID).delete().then(() => {
+        admin.firestore().collection('categories').doc(categoryID)
+        .collection('items').doc(dbItemID).get().then(snapshot => {
+          item = snapshot.data();
+          console.log(item);
+          let newCount = item.count + itemCount;
+          admin.firestore().collection('categories').doc(categoryID)
+          .collection('items').doc(dbItemID).update({ count: newCount}).then(() => {
+            console.log('deletion was succeed!');
+            return Promise.resolve();
+          }).catch(err => {
+            return Promise.reject(err);
+            });
+            return Promise.resolve();
+        }).catch(err => {
+          return Promise.reject(err);
+          });
+          return Promise.resolve();
+      }).catch(err => {
+        return Promise.reject(err);
+        });
+        return Promise.resolve();
+    }).catch(err => {
+      return Promise.reject(err);
+  });
+});
