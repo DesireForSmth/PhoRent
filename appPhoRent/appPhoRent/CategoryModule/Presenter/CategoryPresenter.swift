@@ -158,6 +158,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
             case .success(let items):
                 self.items = items
                 self.shownItems = items
+                //self.view?.closeAlert()
                 self.view?.setItems(items: self.shownItems)
                 
                 self.view?.success()
