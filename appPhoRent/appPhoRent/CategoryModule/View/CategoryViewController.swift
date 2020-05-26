@@ -14,6 +14,8 @@ class CategoryViewController: UIViewController {
     var presenter: CategoryViewPresenterProtocol!
     var items: [Item]?
     
+    private var alertLabel = UILabel()
+    
     var updated = false
     
     var filtersButton: UIBarButtonItem!
@@ -32,7 +34,7 @@ class CategoryViewController: UIViewController {
         if presenter.needDownload() {
             //showAlertLoading()
         }
-        
+        alertLabel.isHidden = true
         let title = UILabel()
         title.text = self.presenter.getCategoryName()
         title.font = .systemFont(ofSize: 17, weight: .medium)
@@ -149,7 +151,29 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CategoryViewController {
     
+    func setNoItems() {
+        self.view.addSubview(self.alertLabel)
+        self.alertLabel.isHidden = false
+        self.tableView.isHidden = true
+        self.alertLabel.text = "Таких товаров нет"
+        self.alertLabel.numberOfLines = 3
+        
+        self.alertLabel.font = UIFont.systemFont(ofSize: 40)
+        self.alertLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.alertLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 10).isActive = true
+        self.alertLabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
+    }
     
+    func setNoInternetConnection() {
+        self.view.addSubview(self.alertLabel)
+        self.alertLabel.isHidden = false
+        self.tableView.isHidden = true
+        self.alertLabel.text = "Нет соединения с интернетом"
+        self.alertLabel.font = UIFont.systemFont(ofSize: 17)
+        self.alertLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.alertLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 15).isActive = true
+        self.alertLabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
+    }
     
     func showSuccessAlert() {
         let alert = UIAlertController(title: "Выполнено", message: "Вы добавили товар в заказ!", preferredStyle: .alert)
@@ -200,6 +224,8 @@ extension CategoryViewController: CategoryViewProtocol {
         tableView.reloadData()
         closeAlertLoading()
         if self.items?.count != 0 {
+            tableView.isHidden = false
+            alertLabel.isHidden = true
             if !updated {
                 presenter.getManufacturers()
                 presenter.getCostRange()
@@ -207,6 +233,9 @@ extension CategoryViewController: CategoryViewProtocol {
             }
             self.filtersAreAvialable = true
             closeAlertLoading()
+        }
+        else {
+            setNoItems()
         }
     }
     

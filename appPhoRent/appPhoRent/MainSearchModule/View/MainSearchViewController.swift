@@ -14,7 +14,7 @@ class MainSearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
+    private var alertlabel = UILabel()
     
     var presenter: MainSearchPresenterProtocol!
     var categories: [Category]?
@@ -29,7 +29,7 @@ class MainSearchViewController: UIViewController {
         let backButton = UIButton()
         
         backButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        
+       // setNoInternetConnection()
         let backBarButton = UIBarButtonItem(customView: backButton)
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButton
         self.view.backgroundColor = CustomColors.background
@@ -43,6 +43,18 @@ class MainSearchViewController: UIViewController {
         
         
         tableView.tableFooterView = UIView(frame: .zero)
+    }
+}
+
+extension MainSearchViewController {
+    func setNoInternetConnection() {
+        self.view.addSubview(self.alertlabel)
+        self.tableView.isHidden = true
+        self.alertlabel.text = "Нет соединения с интернетом"
+        self.alertlabel.font = UIFont.systemFont(ofSize: 17)
+        self.alertlabel.translatesAutoresizingMaskIntoConstraints = false
+        self.alertlabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 15).isActive = true
+        self.alertlabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
     }
 }
 
