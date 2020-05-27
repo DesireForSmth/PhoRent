@@ -94,7 +94,7 @@ class NetworkService: NetWorkServiceProtocol {
     
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void) {
         let db = Firestore.firestore()
-        db.collection("categories").getDocuments() { (querySnapshot, error) in
+        db.collection("categories").addSnapshotListener() { (querySnapshot, error) in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -159,9 +159,6 @@ class NetworkService: NetWorkServiceProtocol {
         functions.httpsCallable("addItemInBasket").call(["id": itemID, "category": categoryID, "count": count]) { (result, error) in
             if let error = error as NSError? {
                 if error.domain == FunctionsErrorDomain {
-                    let code = FunctionsErrorCode(rawValue: error.code)
-                    let message = error.localizedDescription
-                    let details = error.userInfo[FunctionsErrorDetailsKey]
                     completion(.failure(error))
                     return
                 }
@@ -175,9 +172,6 @@ class NetworkService: NetWorkServiceProtocol {
         functions.httpsCallable("deleteItemFromBasket").call(["itemID": itemID, "categoryID": categoryID, "dbItemID": dbItemID]) { (result, error) in
             if let error = error as NSError? {
                 if error.domain == FunctionsErrorDomain {
-                    let code = FunctionsErrorCode(rawValue: error.code)
-                    let message = error.localizedDescription
-                    let details = error.userInfo[FunctionsErrorDetailsKey]
                     completion(.failure(error))
                     return
                 }

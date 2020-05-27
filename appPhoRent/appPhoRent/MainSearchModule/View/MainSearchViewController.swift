@@ -25,7 +25,7 @@ class MainSearchViewController: UIViewController {
         if presenter.needDownload(){
             showAlert()
         }
-        //self.navBar.translatesAutoresizingMaskIntoConstraints = false
+        
         let backButton = UIButton()
         alertlabel.isHidden = true
         backButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
@@ -96,7 +96,6 @@ extension MainSearchViewController: MainSearchViewProtocol{
     }
     
     func failure(error: Error) {
-        print(error.localizedDescription)
         setNoInternetConnection()
     }
     func setCategories(categories: [Category]?) {

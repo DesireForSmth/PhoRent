@@ -28,14 +28,9 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        if presenter.needDownload() {
-            //showAlertLoading()
-        }
         alertLabel.isHidden = true
         let title = UILabel()
+        
         title.text = self.presenter.getCategoryName()
         title.font = .systemFont(ofSize: 17, weight: .medium)
         navigationItem.titleView = title
@@ -64,11 +59,6 @@ class CategoryViewController: UIViewController {
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         
-        
-        
-        
-        //self.navigationController?.navigationBar.topItem?.title = self.presenter.getCategoryName()
-        //self.navigationController?.isNavigationBarHidden = true
         tableView.tableFooterView = UIView(frame: .zero)
         
         tableView.allowsSelection = false
@@ -216,7 +206,6 @@ extension CategoryViewController: CategoryViewProtocol {
     
     func failAddingItem(error: Error) {
         showFailureAlert()
-        print(error.localizedDescription)
     }
     
     
@@ -240,7 +229,6 @@ extension CategoryViewController: CategoryViewProtocol {
     }
     
     func failure(error: Error) {
-        print(error.localizedDescription)
     }
     
     func setItems(items: [Item]?) {
