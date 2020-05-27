@@ -46,12 +46,12 @@ class MainSearchPresenter: MainSearchPresenterProtocol {
                 switch result {
                 case .success(let categories):
                     self.categories = categories
-                    self.view?.closeAlert()
                     self.view?.setCategories(categories: self.categories)
                     self.view?.success()
                 case .failure(let error):
                     self.view?.failure(error: error)
                 }
+                self.view?.closeAlert()
             }
         }
     }

@@ -27,9 +27,8 @@ class MainSearchViewController: UIViewController {
         }
         //self.navBar.translatesAutoresizingMaskIntoConstraints = false
         let backButton = UIButton()
-        
+        alertlabel.isHidden = true
         backButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-       // setNoInternetConnection()
         let backBarButton = UIBarButtonItem(customView: backButton)
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButton
         self.view.backgroundColor = CustomColors.background
@@ -98,6 +97,7 @@ extension MainSearchViewController: MainSearchViewProtocol{
     
     func failure(error: Error) {
         print(error.localizedDescription)
+        setNoInternetConnection()
     }
     func setCategories(categories: [Category]?) {
         self.categories = categories
