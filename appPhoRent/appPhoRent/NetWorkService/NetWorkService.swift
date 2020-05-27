@@ -27,7 +27,8 @@ protocol NetWorkServiceProtocol {
     //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     func saveImage(dataImage: Data)
-    func putOrder(order: Order)
+//    func putOrder(order: Order)
+    func putOrder(order: Order, completion: @escaping (Result<String, Error>) -> Void)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -247,29 +248,7 @@ class NetworkService: NetWorkServiceProtocol {
             print("ImageURL has been setted")
         }
     }
-    
-    
-    //    func setOrder(orderID: String) {
-    //        let db = Firestore.firestore()
-    //        guard let userID = Auth.auth().currentUser?.uid else {
-    //            assertionFailure("Ошибка доступа к пользователю")
-    //            return
-    //        }
-    //
-    //        let cost1: Float = 1500
-    //        let cost2: Float = 1000
-    //        db.collection("users").document(userID).collection("orders").document(orderID).setData([
-    //            "date": Date(),
-    //            "totalCost": 6500,
-    //            "items":
-    //                ["goPro": ["price": cost1, "count": 3],
-    //                 "sony": ["price": cost2, "count": 2],
-    //            ]
-    //        ])
-    //    }
 
-    
-    
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
@@ -292,7 +271,7 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-    func putOrder(order: Order) {
+    func putOrder (order: Order, completion: @escaping (Result<String, Error>) -> Void) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
             assertionFailure("Ошибка доступа к пользователю")
@@ -304,6 +283,7 @@ class NetworkService: NetWorkServiceProtocol {
         let dateString = dateFormatter.string(from: order.date)
         
         let orderID = "С \(dateString) на \(String(order.countOfDay)) сут."
+        let lastItem = order.items[order.items.count - 1].itemID
         for item in order.items {
             
             db.collection("users").document(userID).collection(orderID).addDocument(data: [
@@ -312,13 +292,21 @@ class NetworkService: NetWorkServiceProtocol {
                 "imageURL": item.imageURL,
                 "manufacturer": item.manufacturer,
                 "count": item.count
-            ])
+            ]){ err in
+                if let err = err {
+                    completion(.failure(err))
+                    print("error write document: \(err)")
+                } else {
+                    if item.itemID == lastItem {
+                        completion(.success("success write document"))
+                    }
+                }
+            }
             db.collection("users").document(userID).collection("basket").document(item.itemID).delete { error in
                 if let error = error {
                     print("Failed to delete: \(error)")
                 }
             }
-            
         }
         
         var array = [String]()
@@ -327,7 +315,6 @@ class NetworkService: NetWorkServiceProtocol {
             if let data = snapshot?.data() {
                 if let data = data["orders"] as? Array<String> {
                     array = data
-                    print("array=data\(array)")
                 }
                 array.append(orderID)
                 self?.updateOrdersTitle(array: array)
@@ -359,15 +346,15 @@ class NetworkService: NetWorkServiceProtocol {
         
         var orders = [PreviousOrder]()
         
-        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
-//            print("wait 1")
+        db.collection("users").document(userID).getDocument { (snapshot, error) in
             if let data = snapshot?.data() {
                 if let data = data["orders"] as? Array<String> {
                     array = data
-//                    print("array=data\(array)")
+                }
+                if array.count == 0 {
+                    completion(.success(orders))
                 }
                 for orderTitle in array {
-//                    print("wait 2")
                     db.collection("users").document(userID).collection(orderTitle).addSnapshotListener { documentSnapshot, error in
                         
                         if let error = error {
@@ -381,8 +368,6 @@ class NetworkService: NetWorkServiceProtocol {
                             let order = PreviousOrder(items: items ?? [], header: orderTitle)
                             orders.append(order)
                             if orderTitle == array[array.count - 1] {
-//                                print("wait 3")
-//                                print("orders: \(orders)")
                                 completion(.success(orders))
                             }
                         }

@@ -43,6 +43,7 @@ class BasketPresenter: BasketPresenterProtocol {
     var router: RouterProtocol!
     let networkService: NetWorkServiceProtocol!
     
+    var isPutOrderProcess = false
     var currentOrder: Order?
     
     required init(view: BasketViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol) {
@@ -59,7 +60,6 @@ class BasketPresenter: BasketPresenterProtocol {
                 switch result {
                 case .success(let items):
                     self.setOrder(items: items)
-                    self.view?.closeAlert()
                 case .failure(let error):
                     self.view?.failure(error: error)
                 }
@@ -73,9 +73,12 @@ class BasketPresenter: BasketPresenterProtocol {
         } else {
             currentOrder = Order(orderID: "", date: Date(), countOfDay: 1, items: items)
         }
-        view?.updateTable()
-        view?.updateTotal(newTotalCost: countTotal(items: currentOrder?.items))
-        updateDate(newDate: currentOrder?.date ?? Date())
+        if !isPutOrderProcess {
+            view?.closeAlert()
+            view?.updateTable()
+            view?.updateTotal(newTotalCost: countTotal(items: currentOrder?.items))
+            updateDate(newDate: currentOrder?.date ?? Date())
+        }
     }
     
     func countTotal(items: [BasketItem]?) -> Int {
@@ -142,14 +145,34 @@ class BasketPresenter: BasketPresenterProtocol {
     
     func putOrder() {
         if let order = currentOrder, order.items.count != 0 {
-            networkService.putOrder(order: order)
-            currentOrder = nil
-            setOrder(items: [])
-            view?.showAlert(message: "Заказ оформлен")
+            isPutOrderProcess = true
+            networkService.putOrder(order: order) { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                        print("Error: ")
+                        print(error.localizedDescription)
+                    case .success(let message):
+                        print(message)
+                        self.putOrderDone()
+                    }
+                }
+            }
             
-            view?.clearData()
+            view?.showAlert()
+            
         } else {
             view?.showAlert(message: "Корзина пуста!")
         }
+    }
+    
+    func putOrderDone() {
+        isPutOrderProcess = false
+        currentOrder = nil
+        setOrder(items: [])
+        view?.clearData()
+        
+        view?.showAlert(message: "Заказ оформлен")
     }
 }
