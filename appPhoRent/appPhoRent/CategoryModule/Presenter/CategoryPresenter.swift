@@ -11,14 +11,14 @@ import FirebaseFirestore
 
 protocol CategoryViewProtocol: class {
     func success()
-    func failure(error: Error)
+    func failure()
     func setItems(items: [Item]?)
     
     
-    func successAddingItem(message: String)
-    func failAddingItem(error: Error)
-    func showAlertLoading()
-    func closeAlertLoading()
+    func showAlert(message: String)
+    func showAlert()
+    func closeAlert()
+    
 }
 
 protocol CategoryViewPresenterProtocol: class {
@@ -164,7 +164,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
                 
                 self.view?.success()
             case .failure(let error):
-                self.view?.failure(error: error)
+                self.view?.failure()
                 }
             }
         }
@@ -184,12 +184,18 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
                 case .success(let message):
                     self.items?[itemIndex].count -= count
                     self.reloadDataAfterAdd()
-                    self.view?.successAddingItem(message: message)
-                case . failure(let error):
-                    self.view?.failAddingItem(error: error)
+                    self.addItemDone(message: message)
+                case .failure(let error):
+                    self.addItemDone(message: "Не удалось добавить товар в корзину!")
                 }
             }
         }
+        view?.showAlert()
+    }
+    
+    func addItemDone(message: String) {
+        view?.closeAlert()
+        view?.showAlert(message: message)
     }
         
     

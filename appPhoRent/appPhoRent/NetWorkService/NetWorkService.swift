@@ -165,7 +165,7 @@ class NetworkService: NetWorkServiceProtocol {
                 }
             }
         }
-        completion(.success("Done"))
+        completion(.success("Товар успешно добавлен в корзину!"))
     }
     
     func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void) {

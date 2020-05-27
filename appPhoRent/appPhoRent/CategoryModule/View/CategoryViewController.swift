@@ -164,54 +164,38 @@ extension CategoryViewController {
         self.alertLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 15).isActive = true
         self.alertLabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
     }
-    
-    func showSuccessAlert() {
-        let alert = UIAlertController(title: "Выполнено", message: "Вы добавили товар в заказ!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func showFailureAlert() {
-        let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так! Попробуйте повторить заказ.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ну ошибка и ошибка", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 // MARK: viewProtocol confirmation
 
 extension CategoryViewController: CategoryViewProtocol {
     
-    func showAlertLoading() {
+    func showAlert() {
         let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
-        
         alert.view.addSubview(loadingIndicator)
-        
         present(alert, animated: true, completion: nil)
     }
     
-    func closeAlertLoading() {
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func closeAlert() {
         if !(self.presentedViewController?.isBeingDismissed ?? true) {
             dismiss(animated: true, completion: nil)}
     }
     
-    func successAddingItem(message: String) {
-        showSuccessAlert()
-        
-    }
-    
-    func failAddingItem(error: Error) {
-        showFailureAlert()
-    }
     
     
     func success() {
         tableView.reloadData()
-        closeAlertLoading()
         if self.items?.count != 0 {
             tableView.isHidden = false
             alertLabel.isHidden = true
@@ -221,14 +205,14 @@ extension CategoryViewController: CategoryViewProtocol {
                 updated = !updated
             }
             self.filtersAreAvialable = true
-            closeAlertLoading()
         }
         else {
             setNoItems()
         }
     }
     
-    func failure(error: Error) {
+    func failure() {
+        
     }
     
     func setItems(items: [Item]?) {
