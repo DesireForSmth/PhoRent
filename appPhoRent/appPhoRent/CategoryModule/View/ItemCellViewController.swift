@@ -36,14 +36,16 @@ class ItemCellViewController: UITableViewCell {
         countLabel].forEach {
             $0?.textColor = .black
         }
+        
+        stepperCount.backgroundColor = CustomColors.backgroundButton
+        stepperCount.layer.cornerRadius = 8
+        
+        addItemInBasket.backgroundColor = CustomColors.backgroundButton
+        addItemInBasket.setTitleColor(CustomColors.textButton, for: .normal)
+        addItemInBasket.layer.cornerRadius = 13
+        
         self.setUp()
-        // Initialization code
     }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        // Configure the view for the selected state
-//    }
 }
 
 extension ItemCellViewController {
@@ -52,8 +54,9 @@ extension ItemCellViewController {
     
     func setUp(){
         self.addItemInBasket.translatesAutoresizingMaskIntoConstraints = false
-        self.addItemInBasket.topAnchor.constraint(equalTo: self.stepperCount.topAnchor, constant: 0).isActive = true
+        self.addItemInBasket.centerYAnchor.constraint(equalTo: self.stepperCount.centerYAnchor).isActive = true
         self.addItemInBasket.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true
+        self.addItemInBasket.widthAnchor.constraint(equalToConstant: 130).isActive = true
         
         self.itemCost.translatesAutoresizingMaskIntoConstraints = false
         self.itemCost.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true

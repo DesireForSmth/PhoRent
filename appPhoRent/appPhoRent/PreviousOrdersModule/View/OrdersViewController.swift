@@ -43,6 +43,8 @@ class OrdersViewController: UIViewController {
         tableView.estimatedSectionHeaderHeight = 66
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         
+//        tableView.sectionHeaderHeight = 60
+        
         
         tableView.delegate = self
         tableView.dataSource = self

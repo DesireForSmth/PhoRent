@@ -15,10 +15,8 @@ class PersonalViewController: UIViewController {
     var secondView = UIView()
     var avatarImageView: UIImageView!
     var nameLabel: UILabel!
-    //    var emailLabel: UILabel!
     var emailImageView: UIImageView!
     var emailValueLabel: UILabel!
-    //    var phoneLabel: UILabel!
     var phoneImageView: UIImageView!
     var phoneValueLabel: UILabel!
     var changePhoneButton: UIButton!
@@ -201,11 +199,6 @@ extension PersonalViewController {
         emailImageView.contentMode = .scaleAspectFit
         emailImageView.tintColor = CustomColors.textLabel
         
-        //        emailLabel = UILabel()
-        //        emailLabel.text = "Email"
-        //        emailLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        //        emailLabel.textAlignment = .right
-        
         emailValueLabel = UILabel()
         emailValueLabel.numberOfLines = 0
         emailValueLabel.font = emailValueLabel.font.withSize(20)
@@ -213,11 +206,6 @@ extension PersonalViewController {
         phoneImageView = UIImageView(image: UIImage(systemName: "phone"))
         phoneImageView.contentMode = .scaleAspectFit
         phoneImageView.tintColor = CustomColors.textLabel
-        
-        //        phoneLabel = UILabel()
-        //        phoneLabel.text = "Телефон"
-        //        phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        //        phoneLabel.textAlignment = .right
         
         phoneValueLabel = UILabel()
         phoneValueLabel.numberOfLines = 0
@@ -231,6 +219,7 @@ extension PersonalViewController {
         
         changePhoneButton = UIButton(type: .system)
         changePhoneButton.setImage(UIImage(systemName: "pencil"), for: .normal)
+        changePhoneButton.tintColor = CustomColors.backgroundButton
         changePhoneButton.backgroundColor = .clear
         changePhoneButton.isOpaque = false
         changePhoneButton.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)

@@ -53,14 +53,13 @@ extension AboutUsViewController {
         
         navigationItem.titleView = title
         
-        
         view.backgroundColor = CustomColors.background
         
         firstLabel = UILabel()
         firstLabel.text = "PhoRent"
         firstLabel.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         firstLabel.textAlignment = .center
-        firstLabel.textColor = CustomColors.textLabelSecond
+        firstLabel.textColor = CustomColors.backgroundButton
         
         secondLabel = UILabel()
         secondLabel.text = "- приложение для аренды фототехники"
@@ -73,8 +72,7 @@ extension AboutUsViewController {
         showOrdersButton.setTitle("Предыдущие заказы", for: .normal)
         showOrdersButton.setTitleColor(CustomColors.textButton, for: .normal)
         showOrdersButton.backgroundColor = CustomColors.backgroundButton
-//        showOrdersButton.layer.borderColor = UIColor.systemGray.cgColor
-//        showOrdersButton.layer.borderWidth = 0.5
+        showOrdersButton.layer.cornerRadius = 25
         
         showOrdersButton.addTarget(self, action: #selector(showOrderAction), for: .touchUpInside)
         
@@ -82,17 +80,17 @@ extension AboutUsViewController {
         schemeColorButton.setTitle("Сменить тему", for: .normal)
         schemeColorButton.setTitleColor(CustomColors.textButton, for: .normal)
         schemeColorButton.backgroundColor = CustomColors.backgroundButton
-//        schemeColorButton.layer.borderColor = UIColor.systemGray.cgColor
-//        schemeColorButton.layer.borderWidth = 0.5
+        schemeColorButton.layer.cornerRadius = 25
         
         schemeColorButton.addTarget(self, action: #selector(schemeColorAction), for: .touchUpInside)
         
         logOutButton = UIButton(type: .system)
         logOutButton.setTitle("Выйти из аккаунта", for: .normal)
         logOutButton.setTitleColor(.systemRed, for: .normal)
-        logOutButton.backgroundColor = CustomColors.backgroundButton
-//        logOutButton.layer.borderColor = UIColor.systemGray.cgColor
-//        logOutButton.layer.borderWidth = 0.5
+        logOutButton.backgroundColor = CustomColors.backgroundButtonOut
+        logOutButton.layer.cornerRadius = 25
+        logOutButton.layer.borderColor = UIColor.red.cgColor
+        logOutButton.layer.borderWidth = 1.5
         
         logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
         
@@ -126,23 +124,23 @@ extension AboutUsViewController {
         
         NSLayoutConstraint.activate([
             showOrdersButton.bottomAnchor.constraint(equalTo: schemeColorButton.topAnchor, constant: Constraints.bottom),
-            showOrdersButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            showOrdersButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            showOrdersButton.heightAnchor.constraint(equalToConstant: 40)
+            showOrdersButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            showOrdersButton.widthAnchor.constraint(equalToConstant: 250),
+            showOrdersButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
             schemeColorButton.bottomAnchor.constraint(equalTo: logOutButton.topAnchor, constant: Constraints.bottom),
-            schemeColorButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schemeColorButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            schemeColorButton.heightAnchor.constraint(equalToConstant: 40)
+            schemeColorButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            schemeColorButton.widthAnchor.constraint(equalToConstant: 250),
+            schemeColorButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
             logOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
-            logOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            logOutButton.heightAnchor.constraint(equalToConstant: 40)
+            logOutButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            logOutButton.widthAnchor.constraint(equalToConstant: 250),
+            logOutButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

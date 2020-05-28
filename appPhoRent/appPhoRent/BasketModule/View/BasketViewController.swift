@@ -126,36 +126,40 @@ extension BasketViewController {
         tableView.register(UINib.init(nibName: customIdentifier, bundle: nil), forCellReuseIdentifier: customIdentifier)
         tableView.allowsSelection = false
         
-        dateLabel = UILabel()
-        dateLabel.textAlignment = .center
+        dateLabel = LabelWithInsets()
         dateLabel.textColor = CustomColors.textLabel
-        dateLabel.backgroundColor = CustomColors.backgroundButton
+        dateLabel.backgroundColor = CustomColors.backgroundLabel
         
         changeDateButton = UIButton(type: .system)
         changeDateButton.setImage(UIImage(systemName: "calendar"), for: .normal)
-        changeDateButton.backgroundColor = CustomColors.background
+        changeDateButton.tintColor = CustomColors.backgroundButton
         changeDateButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 0)
         changeDateButton.addTarget(self, action: #selector(changeDateAction), for: .touchUpInside)
         
         totalLabel = UILabel()
         totalLabel.text = "Итого: "
+        totalLabel.textAlignment = .center
         totalLabel.textColor = CustomColors.textLabel
-        totalLabel.backgroundColor = CustomColors.backgroundButton
+        totalLabel.backgroundColor = CustomColors.backgroundLabel
         
         orderButton = UIButton(type: .system)
         orderButton.setTitle("Оформить заказ", for: .normal)
-        orderButton.setTitleColor(CustomColors.textLabel, for: .normal)
+        orderButton.setTitleColor(CustomColors.textButton, for: .normal)
+        
+        orderButton.layer.cornerRadius = 25
         orderButton.backgroundColor = CustomColors.backgroundButton
         orderButton.addTarget(self, action: #selector(orderAction), for: .touchUpInside)
         
-        countDayLabel = UILabel()
+        countDayLabel = LabelWithInsets()
         countDayLabel.text = countDayString + "1"
         countDayLabel.textColor = CustomColors.textLabel
-        countDayLabel.backgroundColor = CustomColors.backgroundButton
+        countDayLabel.backgroundColor = CustomColors.backgroundLabel
         
         dayStepper = UIStepper()
         dayStepper.minimumValue = 1
         dayStepper.maximumValue = 30
+        dayStepper.backgroundColor = CustomColors.backgroundButton
+        dayStepper.layer.cornerRadius = 8
         dayStepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         
         [tableView,
@@ -184,8 +188,10 @@ extension BasketViewController {
             tableView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: Constraints.bottom),
             
             orderButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
-            orderButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            orderButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            //            orderButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            //            orderButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            orderButton.widthAnchor.constraint(equalToConstant: 250),
+            orderButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             orderButton.heightAnchor.constraint(equalToConstant: 50),
             
             totalLabel.bottomAnchor.constraint(equalTo: orderButton.topAnchor, constant: Constraints.bottom),
@@ -283,5 +289,12 @@ extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+}
+
+class LabelWithInsets: UILabel {
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
+        super.drawText(in: rect.inset(by: insets))
     }
 }
