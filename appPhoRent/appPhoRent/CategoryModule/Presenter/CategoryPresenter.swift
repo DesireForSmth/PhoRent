@@ -17,7 +17,7 @@ protocol CategoryViewProtocol: class {
     
     func showAlert(message: String)
     func showAlert()
-    func closeAlert()
+    func closeAlert(completionMessage: String?)
     
 }
 
@@ -194,8 +194,7 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     }
     
     func addItemDone(message: String) {
-        view?.closeAlert()
-        view?.showAlert(message: message)
+        view?.closeAlert(completionMessage: message)
     }
         
     

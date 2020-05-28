@@ -19,7 +19,7 @@ protocol BasketViewProtocol: class {
     func updateTable()
     
     func showAlert(message: String)
-    
+    func closeAlert(completionMessage: String?)
     func clearData()
 }
 
@@ -106,13 +106,18 @@ class BasketPresenter: BasketPresenterProtocol {
                         let total = self.countTotal(items: self.currentOrder!.items)
                         self.view?.updateTotal(newTotalCost: total)
                         self.view?.updateTable()
-                        print(message)
-                    case . failure(let error):
-                        self.view?.failure(error: error)
+                        self.removeItemDone(message: message)
+                    case .failure(let error):
+                        self.removeItemDone(message: "Не удалось удалить товар из корзины!")
                     }
                 }
             }
+            view?.showAlert()
         }
+    }
+    
+    func removeItemDone(message: String) {
+        view?.closeAlert(completionMessage: message)
     }
     
     func updateDate(newDate: Date) {

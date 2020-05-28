@@ -178,7 +178,7 @@ class NetworkService: NetWorkServiceProtocol {
                 }
             }
         }
-        completion(.success("Done"))
+        completion(.success("Товар удален из корзины!"))
     }
     
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void) {

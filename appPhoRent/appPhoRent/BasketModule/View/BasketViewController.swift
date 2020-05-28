@@ -267,6 +267,16 @@ extension BasketViewController: BasketViewProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func closeAlert(completionMessage: String?) {
+        if !(self.presentedViewController?.isBeingDismissed ?? true) {
+            dismiss(animated: true) {
+                if let competionMessage = completionMessage {
+                    self.showAlert(message: competionMessage)
+                }
+            }
+        }
+    }
+    
     func clearData() {
         countDayLabel.text = countDayString + "1"
         presenter.updateDate(newDate: Date())
