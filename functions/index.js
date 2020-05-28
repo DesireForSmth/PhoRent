@@ -12,7 +12,6 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
   admin.firestore().collection('categories').doc(data.category)
   .collection('items').doc(itemID).get().then(snapshot => {
     var item = snapshot.data();
-    console.log(item);
     let categoryID = data.category;
     let elementCount = data.count;
     let dbElementCount = item.count;
@@ -27,10 +26,8 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
             item.itemID = itemID;
             item.count = elementCount;
             item.categoryID = categoryID;
-            console.log(item);
             admin.firestore().collection('users').doc(uid).collection('basket').doc()
         .set(item).then(() => {
-          console.log(item);
           return Promise.resolve();
         }).catch(err => {
           return Promise.reject(err);
@@ -40,12 +37,9 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
             snapshotQuery.forEach(doc => {
               item = doc.data();
               let docID = doc.id;
-              console.log(docID);
               item.count += elementCount;
-              console.log(item);
               admin.firestore().collection('users').doc(uid).collection('basket').doc(docID)
         .update({ count: item.count} ).then(() => {
-          console.log(item);
           return Promise.resolve();
             }).catch(err => {
               return Promise.reject(err);
@@ -86,11 +80,9 @@ exports.addItemInBasket = functions.https.onCall((data, context) => {
         admin.firestore().collection('categories').doc(categoryID)
         .collection('items').doc(dbItemID).get().then(snapshot => {
           item = snapshot.data();
-          console.log(item);
           let newCount = item.count + itemCount;
           admin.firestore().collection('categories').doc(categoryID)
           .collection('items').doc(dbItemID).update({ count: newCount}).then(() => {
-            console.log('deletion was succeed!');
             return Promise.resolve();
           }).catch(err => {
             return Promise.reject(err);
