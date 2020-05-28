@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BasketViewProtocol: class {
-    func showAlert()
+    func showAlert(smallMessage: String)
     func closeAlert()
     
     //    func success(totalCost: Int, date: Date)
@@ -53,7 +53,7 @@ class BasketPresenter: BasketPresenterProtocol {
     }
     
     func prepareData() {
-        view?.showAlert()
+        view?.showAlert(smallMessage: "Загрузка...")
         networkService.getOrder() { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -71,13 +71,13 @@ class BasketPresenter: BasketPresenterProtocol {
         if currentOrder != nil {
             currentOrder?.items = items
         } else {
-            currentOrder = Order(orderID: "", date: Date(), countOfDay: 1, items: items)
+            currentOrder = Order(orderID: "", date: "", countOfDay: 1, status: "В корзине", items: items)
         }
         if !isPutOrderProcess {
             view?.closeAlert()
             view?.updateTable()
             view?.updateTotal(newTotalCost: countTotal(items: currentOrder?.items))
-            updateDate(newDate: currentOrder?.date ?? Date())
+            updateDate(newDate: getDate())
         }
     }
     
@@ -116,15 +116,21 @@ class BasketPresenter: BasketPresenterProtocol {
     }
     
     func updateDate(newDate: Date) {
-        currentOrder?.date = newDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let dateString = dateFormatter.string(from: newDate)
+        currentOrder?.date = dateString
         view?.updateDateLabel(newDate: dateString)
     }
     
     func getDate() -> Date {
-        return currentOrder?.date ?? Date()
+        if let date = currentOrder?.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            return dateFormatter.date(from: date) ?? Date()
+        } else {
+            return Date()
+        }
     }
     
     func getNumberOfRow() -> Int {
@@ -134,10 +140,9 @@ class BasketPresenter: BasketPresenterProtocol {
     func getItem(at index: Int) -> (String, String, Int, String) {
         if let items = currentOrder?.items, index < items.count {
             return (items[index].name,
-                    //                    String(format: "%.0f", items[index].cost) + " руб./сут.",
-                String(items[index].cost) + " руб./сут.",
-                items[index].count,
-                items[index].imageURL)
+                    String(items[index].cost) + " руб./сут.",
+                    items[index].count,
+                    items[index].imageURL)
         } else {
             return ("error", "error", 0, "")
         }
@@ -159,9 +164,7 @@ class BasketPresenter: BasketPresenterProtocol {
                     }
                 }
             }
-            
-            view?.showAlert()
-            
+            view?.showAlert(smallMessage: "Отправка заказа...")
         } else {
             view?.showAlert(message: "Корзина пуста!")
         }

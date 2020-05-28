@@ -54,14 +54,12 @@ class BasketViewController: UIViewController {
             datePicker = UIDatePicker()
             if let picker = datePicker {
                 picker.datePickerMode = UIDatePicker.Mode.date
-//                picker.minimumDate = presenter.getDate()
                 picker.minimumDate = Date()
                 picker.setDate(presenter.getDate(), animated: false)
                 
                 picker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
                 view.addGestureRecognizer(tapGesture)
-                // picker.backgroundColor = UIColor.blackColor()
                 self.view.addSubview(picker)
                 picker.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
@@ -111,7 +109,6 @@ extension BasketViewController: BasketTableViewCellDelegate {
         }
     }
 }
-
 
 // MARK: - UI
 
@@ -206,7 +203,6 @@ extension BasketViewController {
             changeDateButton.widthAnchor.constraint(equalToConstant: 66),
             changeDateButton.heightAnchor.constraint(equalToConstant: 66),
             
-            
             countDayLabel.bottomAnchor.constraint(equalTo: totalLabel.topAnchor, constant: Constraints.bottom),
             countDayLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             countDayLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -232,21 +228,15 @@ extension BasketViewController: BasketViewProtocol {
     func updateTable() {
         tableView.reloadData()
     }
-    
-    
-    //    func success(totalCost: Int, date: Date) {
-    //        totalLabel.text = "Итого: " + String(totalCost)
-    //        tableView.reloadData()
-    //    }
-    //
+
     func failure(error: Error) {
         print(error.localizedDescription)
     }
     
-    func showAlert() {
+    func showAlert(smallMessage: String) {
         
         
-        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: smallMessage, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium

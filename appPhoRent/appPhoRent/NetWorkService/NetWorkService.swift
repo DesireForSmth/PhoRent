@@ -22,13 +22,13 @@ protocol NetWorkServiceProtocol {
     func getPersonalInfo(completion: @escaping (Result<PersonalData, Error>) -> Void)
     func setPhone(phone: String, completion: @escaping (Result<String, Error>) -> Void)
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void)
-    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void)
+    func getPreviousOrders(completion: @escaping (Result<[Order], Error>) -> Void)
     func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void)
-    //    func setNewCount(newCount: Int, itemID: String)
     func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     func saveImage(dataImage: Data)
-//    func putOrder(order: Order)
     func putOrder(order: Order, completion: @escaping (Result<String, Error>) -> Void)
+    
+    func fillPreviousItem(categoryID: String, itemID: String, completion: @escaping (Result<(String, Int, String,String), Error>) -> Void)
 }
 
 class NetworkService: NetWorkServiceProtocol {
@@ -153,7 +153,7 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-  
+    
     
     func addItemInBasket(itemID: String, categoryID: String, count: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let functions = Functions.functions()
@@ -254,7 +254,7 @@ class NetworkService: NetWorkServiceProtocol {
             print("ImageURL has been setted")
         }
     }
-
+    
     func getOrder(completion: @escaping (Result<[BasketItem], Error>) -> Void) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
@@ -284,46 +284,35 @@ class NetworkService: NetWorkServiceProtocol {
             return
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let dateString = dateFormatter.string(from: order.date)
-        
-        let orderID = "С \(dateString) на \(String(order.countOfDay)) сут."
-        let lastItem = order.items[order.items.count - 1].itemID
+        var items = Array<Dictionary<String, Any>>()
+        var newItem = Dictionary<String, Any>()
         for item in order.items {
-            
-            db.collection("users").document(userID).collection(orderID).addDocument(data: [
-                "name": item.name,
-                "cost": item.cost,
-                "imageURL": item.imageURL,
-                "manufacturer": item.manufacturer,
-                "count": item.count
-            ]){ err in
-                if let err = err {
-                    completion(.failure(err))
-                    print("error write document: \(err)")
-                } else {
-                    if item.itemID == lastItem {
-                        completion(.success("success write document"))
-                    }
-                }
+            newItem = [:]
+            newItem["categoryID"] = item.categoryID
+            newItem["itemID"] = item.dbItemID
+            newItem["count"] = item.count
+            items.append(newItem)
+        }
+        
+        
+        db.collection("users").document(userID).collection("orders").addDocument(data: [
+            "items": items,
+            "status": "В работе",
+            "startDate": order.date,
+            "countOfDay": order.countOfDay
+        ]) { err in
+            if let err = err {
+                completion(.failure(err))
+                print("error write document: \(err)")
+            } else {
+                completion(.success("success write document"))
             }
+        }
+        for item in order.items {
             db.collection("users").document(userID).collection("basket").document(item.itemID).delete { error in
                 if let error = error {
                     print("Failed to delete: \(error)")
                 }
-            }
-        }
-        
-        var array = [String]()
-        
-        db.collection("users").document(userID).getDocument { [weak self](snapshot, error) in
-            if let data = snapshot?.data() {
-                if let data = data["orders"] as? Array<String> {
-                    array = data
-                }
-                array.append(orderID)
-                self?.updateOrdersTitle(array: array)
             }
         }
     }
@@ -341,44 +330,52 @@ class NetworkService: NetWorkServiceProtocol {
         }
     }
     
-    func getPreviousOrders(completion: @escaping (Result<[PreviousOrder], Error>) -> Void) {
+    func getPreviousOrders(completion: @escaping (Result<[Order], Error>) -> Void) {
         let db = Firestore.firestore()
         guard let userID = Auth.auth().currentUser?.uid else {
             assertionFailure("Ошибка доступа к пользователю")
             return
         }
         
-        var array = [String]()
-        
-        var orders = [PreviousOrder]()
-        
-        db.collection("users").document(userID).getDocument { (snapshot, error) in
-            if let data = snapshot?.data() {
-                if let data = data["orders"] as? Array<String> {
-                    array = data
-                }
-                if array.count == 0 {
-                    completion(.success(orders))
-                }
-                for orderTitle in array {
-                    db.collection("users").document(userID).collection(orderTitle).addSnapshotListener { documentSnapshot, error in
-                        
-                        if let error = error {
-                            completion(.failure(error))
-                            return
-                        } else {
-                            let items = documentSnapshot?.documents.map { (document) -> BasketItem in
-                                let item = BasketItem(dictionary: document.data(), itemID: document.documentID)
-                                return item
-                            }
-                            let order = PreviousOrder(items: items ?? [], header: orderTitle)
-                            orders.append(order)
-                            if orderTitle == array[array.count - 1] {
-                                completion(.success(orders))
-                            }
-                        }
+        db.collection("users").document(userID).collection("orders").addSnapshotListener { documentSnapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            } else {
+                let orders = documentSnapshot?.documents.map { (document) -> Order in
+                    var order = Order(orderID: "", date: document.data()["startDate"] as? String ?? "", countOfDay: document.data()["countOfDay"] as? Int ?? 1, status: document.data()["status"] as? String ?? "", items: [])
+                    var itemsInOrder: BasketItem?
+                    let arrayItems = document.data()["items"] as? Array<Dictionary<String, Any>> ?? []
+                    
+                    for element in arrayItems {
+                        itemsInOrder = BasketItem(dictionary: element, itemID: "")
+                        order.items.append(itemsInOrder!)
                     }
+                    return order
                 }
+                completion(.success(orders ?? []))
+            }
+        }
+    }
+    
+    func fillPreviousItem(categoryID: String, itemID: String, completion: @escaping (Result<(String, Int, String,String), Error>) -> Void) {
+        let db = Firestore.firestore()
+        var name = ""
+        var cost = 1000
+        var imageURL = ""
+        var manufacturer = ""
+        db.collection("categories").document(categoryID ).collection("items").document(itemID).getDocument { (docSnap, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            } else {
+                if let data = docSnap?.data() {
+                    name = data["name"] as? String ?? ""
+                    cost = data["cost"] as? Int ?? 1000
+                    imageURL = data["imageURL"] as? String ?? ""
+                    manufacturer = data["manufacturer"] as? String ?? ""
+                }
+                completion(.success((name, cost, imageURL, manufacturer)))
             }
         }
     }

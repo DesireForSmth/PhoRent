@@ -28,8 +28,6 @@ class OrdersTableViewCell: UITableViewCell {
         titleLabel.lineBreakMode = .byWordWrapping
         priceLabel.text = cost
         
-        
-        itemImageView.image = UIImage()
         let url = URL(string: imageURL)
         itemImageView.kf.setImage(with: url)
         countLabel.text = "Количество: \(count)"
@@ -39,6 +37,10 @@ class OrdersTableViewCell: UITableViewCell {
         countLabel].forEach {
             $0?.textColor = .black
         }
+    }
+    
+    override func prepareForReuse() {
+        itemImageView.image = UIImage()
     }
     
 }
