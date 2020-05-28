@@ -187,9 +187,14 @@ extension CategoryViewController: CategoryViewProtocol {
     }
     
     
-    func closeAlert() {
+    func closeAlert(completionMessage: String?) {
         if !(self.presentedViewController?.isBeingDismissed ?? true) {
-            dismiss(animated: true, completion: nil)}
+            dismiss(animated: true) {
+                if let competionMessage = completionMessage {
+                    self.showAlert(message: competionMessage)
+                }
+            }
+        }
     }
     
     
