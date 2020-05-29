@@ -112,7 +112,7 @@ class BasketPresenter: BasketPresenterProtocol {
                     }
                 }
             }
-            view?.showAlert()
+            view?.showAlert(smallMessage: "Подождите...")
         }
     }
     
