@@ -10,14 +10,13 @@ import Foundation
 
 struct BasketItem: Codable {
     let itemID: String
-    let name: String
-    let cost: Int
-    let imageURL: String
-    let manufacturer: String
+    var name: String
+    var cost: Int
+    var imageURL: String
+    var manufacturer: String
     var count: Int
     let categoryID: String
-    let dbItemID: String
-    
+    var dbItemID: String
 }
 
 extension BasketItem {
@@ -34,10 +33,9 @@ extension BasketItem {
 }
 
 struct Order {
-    ///------
     let orderID: String
-    var date: Date
+    var date: String
     var countOfDay: Int
+    var status: String
     var items: [BasketItem]
-//    var totalCost: Int
 }

@@ -16,6 +16,8 @@ class OrdersViewController: UIViewController {
     
     var tableView: UITableView!
     
+    var emptyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -40,45 +42,60 @@ class OrdersViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = CustomColors.background
         
+        tableView.estimatedSectionHeaderHeight = 66
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib.init(nibName: customIdentifier, bundle: nil), forCellReuseIdentifier: customIdentifier)
         tableView.allowsSelection = false
+        
+        emptyLabel = UILabel()
+        emptyLabel.text = "У вас нет оформленных заказов"
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = CustomColors.textLabel
+        emptyLabel.backgroundColor = CustomColors.background
+        
         view.addSubview(tableView)
+        view.addSubview(emptyLabel)
     }
     
     
     private func createConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            emptyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
 }
 
 extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.getCountOfSection()
+        let number = presenter.getCountOfSection()
+        if number == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        return number
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter.getSectionTitle(section: section)
-    }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: customIdentifier, for: indexPath)
         
         if let customTableViewCell = tableViewCell as? OrdersTableViewCell {
-            //            customTableViewCell.delegate = self
             let (name, cost, count, imageURL) = presenter.getItem(at: indexPath)
             customTableViewCell.fillCell(name: name, cost: cost, count: count, imageURL: imageURL)
         }
@@ -91,6 +108,26 @@ extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let label = UILabel()
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.backgroundColor = CustomColors.background
+        label.text = presenter.getSectionTitle(section: section)
+        
+        headerView.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: headerView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+        ])
+        return headerView
     }
 }
 

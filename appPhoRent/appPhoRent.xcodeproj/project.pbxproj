@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		282F5DB124780BC4004ACE52 /* OrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB024780BC4004ACE52 /* OrdersPresenter.swift */; };
 		282F5DB324780C92004ACE52 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB224780C92004ACE52 /* OrdersViewController.swift */; };
-		282F5DB524781717004ACE52 /* PreviousOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB424781717004ACE52 /* PreviousOrder.swift */; };
 		282F5DB824782DF4004ACE52 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282F5DB624782DF4004ACE52 /* OrdersTableViewCell.swift */; };
 		282F5DB924782DF4004ACE52 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282F5DB724782DF4004ACE52 /* OrdersTableViewCell.xib */; };
 		285658E1246AFE2A00053F56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285658E0246AFE2A00053F56 /* DataManager.swift */; };
@@ -75,7 +74,6 @@
 /* Begin PBXFileReference section */
 		282F5DB024780BC4004ACE52 /* OrdersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
 		282F5DB224780C92004ACE52 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		282F5DB424781717004ACE52 /* PreviousOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOrder.swift; sourceTree = "<group>"; };
 		282F5DB624782DF4004ACE52 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		282F5DB724782DF4004ACE52 /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
 		285658E0246AFE2A00053F56 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		282F5DBB24783B98004ACE52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				282F5DB424781717004ACE52 /* PreviousOrder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -739,7 +736,6 @@
 				28B1B92A243F9732002732A5 /* Constraints.swift in Sources */,
 				7D09ECA1243A18E6004EA0EB /* Router.swift in Sources */,
 				7D45413A245B6D6600A7F4A0 /* CategoryViewController.swift in Sources */,
-				282F5DB524781717004ACE52 /* PreviousOrder.swift in Sources */,
 				285658E7246D77CE00053F56 /* SplashScreenPresenter.swift in Sources */,
 				286566F524683CED000071B7 /* BasketTableViewCell.swift in Sources */,
 				7D5BAAE22433BCC8003F3D41 /* User.swift in Sources */,

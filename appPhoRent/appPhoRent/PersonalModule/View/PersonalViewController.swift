@@ -15,14 +15,14 @@ class PersonalViewController: UIViewController {
     var secondView = UIView()
     var avatarImageView: UIImageView!
     var nameLabel: UILabel!
-    //    var emailLabel: UILabel!
     var emailImageView: UIImageView!
     var emailValueLabel: UILabel!
-    //    var phoneLabel: UILabel!
     var phoneImageView: UIImageView!
     var phoneValueLabel: UILabel!
     var changePhoneButton: UIButton!
     var aboutUsButton: UIButton!
+    
+    var outerView: UIView!
     
     var imagePicker: UIImagePickerController!
     
@@ -184,10 +184,20 @@ extension PersonalViewController {
         avatarImageView.layer.cornerRadius = 70
         avatarImageView.layer.masksToBounds = true
         
+        outerView = UIView(frame: CGRect(x: 0, y: 0, width: 140, height: 140))
+        outerView.clipsToBounds = false
+        outerView.layer.shadowColor = UIColor.gray.cgColor
+        outerView.layer.shadowOpacity = 1
+        outerView.layer.shadowOffset = CGSize(width: -2.0, height: 2.0)
+        outerView.layer.shadowRadius = 3
+        outerView.layer.shadowPath = UIBezierPath(roundedRect: outerView.bounds, cornerRadius: 70).cgPath
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        outerView.addSubview(avatarImageView)
         
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -201,11 +211,6 @@ extension PersonalViewController {
         emailImageView.contentMode = .scaleAspectFit
         emailImageView.tintColor = CustomColors.textLabel
         
-        //        emailLabel = UILabel()
-        //        emailLabel.text = "Email"
-        //        emailLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        //        emailLabel.textAlignment = .right
-        
         emailValueLabel = UILabel()
         emailValueLabel.numberOfLines = 0
         emailValueLabel.font = emailValueLabel.font.withSize(20)
@@ -213,11 +218,6 @@ extension PersonalViewController {
         phoneImageView = UIImageView(image: UIImage(systemName: "phone"))
         phoneImageView.contentMode = .scaleAspectFit
         phoneImageView.tintColor = CustomColors.textLabel
-        
-        //        phoneLabel = UILabel()
-        //        phoneLabel.text = "Телефон"
-        //        phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        //        phoneLabel.textAlignment = .right
         
         phoneValueLabel = UILabel()
         phoneValueLabel.numberOfLines = 0
@@ -231,6 +231,7 @@ extension PersonalViewController {
         
         changePhoneButton = UIButton(type: .system)
         changePhoneButton.setImage(UIImage(systemName: "pencil"), for: .normal)
+        changePhoneButton.tintColor = CustomColors.backgroundButton
         changePhoneButton.backgroundColor = .clear
         changePhoneButton.isOpaque = false
         changePhoneButton.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
@@ -241,7 +242,7 @@ extension PersonalViewController {
         
         view.addSubview(secondView)
         
-        [avatarImageView,
+        [outerView,
          nameLabel,
          emailImageView,
          emailValueLabel,
@@ -254,6 +255,7 @@ extension PersonalViewController {
     
     private func createConstraints() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        outerView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         emailImageView.translatesAutoresizingMaskIntoConstraints = false
         emailValueLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -268,6 +270,12 @@ extension PersonalViewController {
             avatarImageView.widthAnchor.constraint(equalToConstant: 140),
             avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
         ])
+        NSLayoutConstraint.activate([
+            outerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constraints.top),
+            outerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constraints.leading),
+            outerView.widthAnchor.constraint(equalToConstant: 140),
+            outerView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
+        ])
         
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
@@ -279,7 +287,6 @@ extension PersonalViewController {
         NSLayoutConstraint.activate([
             emailImageView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 100),
             emailImageView.widthAnchor.constraint(equalToConstant: 30),
-//            emailImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
             emailImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             emailImageView.heightAnchor.constraint(equalToConstant: 30)
         ])
@@ -294,7 +301,6 @@ extension PersonalViewController {
         NSLayoutConstraint.activate([
             phoneImageView.topAnchor.constraint(equalTo: emailValueLabel.bottomAnchor, constant: 40),
             phoneImageView.widthAnchor.constraint(equalToConstant: 30),
-//            phoneImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
             phoneImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             phoneImageView.heightAnchor.constraint(equalToConstant: 30)
         ])

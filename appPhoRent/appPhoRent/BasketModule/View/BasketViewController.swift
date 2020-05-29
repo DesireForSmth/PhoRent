@@ -16,6 +16,8 @@ class BasketViewController: UIViewController {
     var indicatorView: UIActivityIndicatorView!
     
     var tableView: UITableView!
+    
+    var emptyLabel: UILabel!
     var totalLabel: UILabel!
     var orderButton: UIButton!
     
@@ -54,14 +56,12 @@ class BasketViewController: UIViewController {
             datePicker = UIDatePicker()
             if let picker = datePicker {
                 picker.datePickerMode = UIDatePicker.Mode.date
-//                picker.minimumDate = presenter.getDate()
                 picker.minimumDate = Date()
                 picker.setDate(presenter.getDate(), animated: false)
                 
                 picker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
                 view.addGestureRecognizer(tapGesture)
-                // picker.backgroundColor = UIColor.blackColor()
                 self.view.addSubview(picker)
                 picker.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
@@ -112,7 +112,6 @@ extension BasketViewController: BasketTableViewCellDelegate {
     }
 }
 
-
 // MARK: - UI
 
 extension BasketViewController {
@@ -129,39 +128,57 @@ extension BasketViewController {
         tableView.register(UINib.init(nibName: customIdentifier, bundle: nil), forCellReuseIdentifier: customIdentifier)
         tableView.allowsSelection = false
         
-        dateLabel = UILabel()
-        dateLabel.textAlignment = .center
+        dateLabel = LabelWithInsets()
         dateLabel.textColor = CustomColors.textLabel
-        dateLabel.backgroundColor = CustomColors.backgroundButton
+        dateLabel.backgroundColor = CustomColors.backgroundLabel
+        
+        emptyLabel = UILabel()
+        emptyLabel.text = "В корзине пусто"
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = CustomColors.textLabel
+        emptyLabel.backgroundColor = CustomColors.background
         
         changeDateButton = UIButton(type: .system)
         changeDateButton.setImage(UIImage(systemName: "calendar"), for: .normal)
-        changeDateButton.backgroundColor = CustomColors.background
+        changeDateButton.tintColor = CustomColors.backgroundButton
         changeDateButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 0)
         changeDateButton.addTarget(self, action: #selector(changeDateAction), for: .touchUpInside)
         
         totalLabel = UILabel()
         totalLabel.text = "Итого: "
+        totalLabel.textAlignment = .center
         totalLabel.textColor = CustomColors.textLabel
-        totalLabel.backgroundColor = CustomColors.backgroundButton
+        totalLabel.backgroundColor = CustomColors.backgroundLabel
         
         orderButton = UIButton(type: .system)
         orderButton.setTitle("Оформить заказ", for: .normal)
-        orderButton.setTitleColor(CustomColors.textLabel, for: .normal)
+        orderButton.setTitleColor(CustomColors.textButton, for: .normal)
+        
+        orderButton.layer.cornerRadius = 25
         orderButton.backgroundColor = CustomColors.backgroundButton
+        
+        orderButton.layer.shadowColor = UIColor.gray.cgColor
+        orderButton.layer.shadowOffset = CGSize(width: -2.0, height: 2.0)
+        orderButton.layer.shadowOpacity = 1.0
+        orderButton.layer.shadowRadius = 3.0
+        orderButton.layer.masksToBounds = false
+        
         orderButton.addTarget(self, action: #selector(orderAction), for: .touchUpInside)
         
-        countDayLabel = UILabel()
+        countDayLabel = LabelWithInsets()
         countDayLabel.text = countDayString + "1"
         countDayLabel.textColor = CustomColors.textLabel
-        countDayLabel.backgroundColor = CustomColors.backgroundButton
+        countDayLabel.backgroundColor = CustomColors.backgroundLabel
         
         dayStepper = UIStepper()
         dayStepper.minimumValue = 1
         dayStepper.maximumValue = 30
+        dayStepper.backgroundColor = CustomColors.backgroundButton
+        dayStepper.layer.cornerRadius = 8
         dayStepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         
         [tableView,
+         emptyLabel,
          totalLabel,
          orderButton,
          changeDateButton,
@@ -172,6 +189,7 @@ extension BasketViewController {
     
     private func createConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
         orderButton.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -186,9 +204,13 @@ extension BasketViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: Constraints.bottom),
             
+            emptyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
             orderButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
-            orderButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            orderButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            orderButton.widthAnchor.constraint(equalToConstant: 250),
+            orderButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             orderButton.heightAnchor.constraint(equalToConstant: 50),
             
             totalLabel.bottomAnchor.constraint(equalTo: orderButton.topAnchor, constant: Constraints.bottom),
@@ -205,7 +227,6 @@ extension BasketViewController {
             changeDateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
             changeDateButton.widthAnchor.constraint(equalToConstant: 66),
             changeDateButton.heightAnchor.constraint(equalToConstant: 66),
-            
             
             countDayLabel.bottomAnchor.constraint(equalTo: totalLabel.topAnchor, constant: Constraints.bottom),
             countDayLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -232,21 +253,15 @@ extension BasketViewController: BasketViewProtocol {
     func updateTable() {
         tableView.reloadData()
     }
-    
-    
-    //    func success(totalCost: Int, date: Date) {
-    //        totalLabel.text = "Итого: " + String(totalCost)
-    //        tableView.reloadData()
-    //    }
-    //
+
     func failure(error: Error) {
         print(error.localizedDescription)
     }
     
-    func showAlert() {
+    func showAlert(smallMessage: String) {
         
         
-        let alert = UIAlertController(title: nil, message: "Загрузка...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: smallMessage, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
@@ -298,10 +313,23 @@ extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getNumberOfRow()
+        let number = presenter.getNumberOfRow()
+        if number == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        return number
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+}
+
+class LabelWithInsets: UILabel {
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
+        super.drawText(in: rect.inset(by: insets))
     }
 }
