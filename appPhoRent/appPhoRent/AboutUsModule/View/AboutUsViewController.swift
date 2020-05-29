@@ -94,6 +94,16 @@ extension AboutUsViewController {
         
         logOutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
         
+        [showOrdersButton,
+         schemeColorButton,
+         logOutButton].forEach { button in
+            button?.layer.shadowColor = UIColor.gray.cgColor
+            button?.layer.shadowOffset = CGSize(width: -2.0, height: 2.0)
+            button?.layer.shadowOpacity = 1.0
+            button?.layer.shadowRadius = 3.0
+            button?.layer.masksToBounds = false
+        }
+        
         view.addSubview(firstLabel)
         view.addSubview(secondLabel)
         view.addSubview(schemeColorButton)

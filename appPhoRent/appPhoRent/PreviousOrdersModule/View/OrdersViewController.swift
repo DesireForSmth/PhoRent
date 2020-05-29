@@ -16,6 +16,8 @@ class OrdersViewController: UIViewController {
     
     var tableView: UITableView!
     
+    var emptyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -43,26 +45,36 @@ class OrdersViewController: UIViewController {
         tableView.estimatedSectionHeaderHeight = 66
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         
-//        tableView.sectionHeaderHeight = 60
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib.init(nibName: customIdentifier, bundle: nil), forCellReuseIdentifier: customIdentifier)
         tableView.allowsSelection = false
+        
+        emptyLabel = UILabel()
+        emptyLabel.text = "У вас нет оформленных заказов"
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = CustomColors.textLabel
+        emptyLabel.backgroundColor = CustomColors.background
+        
         view.addSubview(tableView)
+        view.addSubview(emptyLabel)
     }
     
     
     private func createConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            emptyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
 }
@@ -70,7 +82,13 @@ class OrdersViewController: UIViewController {
 extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.getCountOfSection()
+        let number = presenter.getCountOfSection()
+        if number == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        return number
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

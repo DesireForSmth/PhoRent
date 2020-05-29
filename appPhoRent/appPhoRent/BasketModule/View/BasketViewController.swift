@@ -16,6 +16,8 @@ class BasketViewController: UIViewController {
     var indicatorView: UIActivityIndicatorView!
     
     var tableView: UITableView!
+    
+    var emptyLabel: UILabel!
     var totalLabel: UILabel!
     var orderButton: UIButton!
     
@@ -130,6 +132,12 @@ extension BasketViewController {
         dateLabel.textColor = CustomColors.textLabel
         dateLabel.backgroundColor = CustomColors.backgroundLabel
         
+        emptyLabel = UILabel()
+        emptyLabel.text = "В корзине пусто"
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = CustomColors.textLabel
+        emptyLabel.backgroundColor = CustomColors.background
+        
         changeDateButton = UIButton(type: .system)
         changeDateButton.setImage(UIImage(systemName: "calendar"), for: .normal)
         changeDateButton.tintColor = CustomColors.backgroundButton
@@ -148,6 +156,13 @@ extension BasketViewController {
         
         orderButton.layer.cornerRadius = 25
         orderButton.backgroundColor = CustomColors.backgroundButton
+        
+        orderButton.layer.shadowColor = UIColor.gray.cgColor
+        orderButton.layer.shadowOffset = CGSize(width: -2.0, height: 2.0)
+        orderButton.layer.shadowOpacity = 1.0
+        orderButton.layer.shadowRadius = 3.0
+        orderButton.layer.masksToBounds = false
+        
         orderButton.addTarget(self, action: #selector(orderAction), for: .touchUpInside)
         
         countDayLabel = LabelWithInsets()
@@ -163,6 +178,7 @@ extension BasketViewController {
         dayStepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         
         [tableView,
+         emptyLabel,
          totalLabel,
          orderButton,
          changeDateButton,
@@ -173,6 +189,7 @@ extension BasketViewController {
     
     private func createConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
         orderButton.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -187,9 +204,11 @@ extension BasketViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: Constraints.bottom),
             
+            emptyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
             orderButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constraints.bottom),
-            //            orderButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            //            orderButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             orderButton.widthAnchor.constraint(equalToConstant: 250),
             orderButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             orderButton.heightAnchor.constraint(equalToConstant: 50),
@@ -284,7 +303,13 @@ extension BasketViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getNumberOfRow()
+        let number = presenter.getNumberOfRow()
+        if number == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        return number
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
