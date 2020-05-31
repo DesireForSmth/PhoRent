@@ -218,6 +218,7 @@ extension CategoryViewController: CategoryViewProtocol {
     
     func failure() {
         setNoInternetConnection()
+        self.filtersAreAvialable = false
     }
     
     func setItems(items: [Item]?) {

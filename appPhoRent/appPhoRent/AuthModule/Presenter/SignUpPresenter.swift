@@ -11,6 +11,9 @@ import Foundation
 protocol SignUpViewProtocol: class {
     func success()
     func failure(error: Error)
+    func showNoInternetConnection()
+    func showAlertLoading()
+    func closeAlertLoading()
 }
 
 class SignUpView: SignUpViewProtocol {
@@ -20,6 +23,14 @@ class SignUpView: SignUpViewProtocol {
     func failure(error: Error) {
     }
     
+    func showNoInternetConnection() {
+    }
+    
+    func showAlertLoading() {
+    }
+    
+    func closeAlertLoading() {
+    }
 }
 
 protocol SignUpViewPreseneterProtocol: class {
@@ -41,18 +52,22 @@ class SignUpPresenter: SignUpViewPreseneterProtocol {
     }
     
     func signUp(username: String, email: String, password: String) {
-        networkService.signUp(username: username, email: email, password: password) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let helloString):
-                self.view?.success()
-                print(helloString)
-            case .failure(let error):
-                self.view?.failure(error: error)
+        if networkService.isConnectedToNetwork() {
+            view?.showAlertLoading()
+            networkService.signUp(username: username, email: email, password: password) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let helloString):
+                    self.view?.success()
+                    print(helloString)
+                case .failure(let error):
+                    self.view?.failure(error: error)
+                }
             }
+        } else {
+            view?.showNoInternetConnection()
         }
     }
-    
     
     func pop() {
         router?.popToRoot()

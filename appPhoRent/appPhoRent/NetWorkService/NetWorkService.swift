@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFunctions
 import FirebaseStorage
+import SystemConfiguration
 
 protocol NetWorkServiceProtocol {
     func getCategories(completion: @escaping (Result<[Category]?, Error>) -> Void)
@@ -27,11 +28,28 @@ protocol NetWorkServiceProtocol {
     func removeFromBasket(itemID: String, dbItemID: String, categoryID: String, completion: @escaping (Result<String, Error>) -> Void)
     func saveImage(dataImage: Data)
     func putOrder(order: Order, completion: @escaping (Result<String, Error>) -> Void)
-    
     func fillPreviousItem(categoryID: String, itemID: String, completion: @escaping (Result<(String, Int, String,String), Error>) -> Void)
+    func isConnectedToNetwork() -> Bool
 }
 
 class NetworkService: NetWorkServiceProtocol {
+    
+  func isConnectedToNetwork() -> Bool {
+      var zeroAddress = sockaddr_in()
+      zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+      zeroAddress.sin_family = sa_family_t(AF_INET)
+      guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+          $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+              zeroSockAddress in SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)}
+      } ) else {
+          return false
+      }
+      var flags : SCNetworkReachabilityFlags = []
+      if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {return false}
+      let isReachable = flags.contains(.reachable)
+      let needsConnection = flags.contains(.connectionRequired)
+      return (isReachable && !needsConnection)
+  }
     
     func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in

@@ -242,6 +242,12 @@ extension BasketViewController {
 // MARK: - BasketViewProtocol
 
 extension BasketViewController: BasketViewProtocol {
+    func showNoInternetConnection() {
+        let alert = UIAlertController(title: "Ошибка", message: "Нет соединения с Интернетом", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать позже", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func updateDateLabel(newDate: String) {
         dateLabel.text = "Дата начала аренды: \(newDate)"
     }
@@ -346,3 +352,4 @@ class LabelWithInsets: UILabel {
         super.drawText(in: rect.inset(by: insets))
     }
 }
+

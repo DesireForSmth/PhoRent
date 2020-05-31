@@ -11,12 +11,21 @@ import Foundation
 protocol LoginViewProtocol: class {
     func success()
     func failure(error: Error)
+    func showNoInternetConnection()
+    func closeAlertLoading()
+    func showAlertLoading()
 }
 
 class LoginView: LoginViewProtocol {
     func success() {
     }
     func failure(error: Error) {
+    }
+    func showNoInternetConnection(){
+    }
+    func closeAlertLoading() {
+    }
+    func showAlertLoading() {
     }
 }
 
@@ -40,15 +49,21 @@ class LoginPresenter: LoginViewPreseneterProtocol {
     }
     
     func signIn(email: String, password: String) {
-        networkService.signIn(email: email, password: password) { [weak self] result in
-        guard let self = self else { return }
-            switch result {
-            case .success(let helloString):
-                self.view?.success()
-                print(helloString)
-            case .failure(let error):
-                self.view?.failure(error: error)
-                }
+        if networkService.isConnectedToNetwork() {
+            view?.showAlertLoading()
+            networkService.signIn(email: email, password: password) { [weak self] result in
+            guard let self = self else { return }
+                switch result {
+                case .success(let helloString):
+                    self.view?.success()
+                    print(helloString)
+                case .failure(let error):
+                    self.view?.failure(error: error)
+                    }
+            }
+        } else {
+            
+            view?.showNoInternetConnection()
         }
     }
     

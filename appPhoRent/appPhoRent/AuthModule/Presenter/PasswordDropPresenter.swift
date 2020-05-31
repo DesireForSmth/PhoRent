@@ -12,14 +12,18 @@ protocol PasswordDropViewProtocol: class {
     func showWrongFormat()
     func success()
     func failure(error: Error)
+    func showNoInternetConnection()
+    func showAlertLoading()
+    func closeAlertLoading()
 }
 
 class PasswordDropView: PasswordDropViewProtocol {
-    func success() {
-    }
-    func failure(error: Error) {
-    }
+    func success() {}
+    func failure(error: Error) {}
     func showWrongFormat() {}
+    func showNoInternetConnection() {}
+    func showAlertLoading() {}
+    func closeAlertLoading() {}
 }
 
 protocol PasswordDropViewPresenterProtocol: class {
@@ -41,18 +45,22 @@ class PasswordDropPresenter: PasswordDropViewPresenterProtocol {
     }
     
     func passwordDrop(email: String?) {
-        networkService.passwordDrop(email: email) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let helloString):
-                self.view?.success()
-                print(helloString)
-            case .failure(let error):
-                self.view?.failure(error: error)
+        if networkService.isConnectedToNetwork() {
+            view?.showAlertLoading()
+            networkService.passwordDrop(email: email) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let helloString):
+                    self.view?.success()
+                    print(helloString)
+                case .failure(let error):
+                    self.view?.failure(error: error)
+                }
             }
+        } else {
+            view?.showNoInternetConnection()
         }
     }
-    
     
     
     func pop() {

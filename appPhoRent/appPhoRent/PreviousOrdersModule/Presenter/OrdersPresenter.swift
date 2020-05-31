@@ -12,6 +12,7 @@ protocol OrdersViewProtocol: class {
     func showAlert()
     func closeAlert()
     func failure(error: Error)
+    func showNoInternetConnection()
 }
 
 protocol OrdersPresenterProtocol: class {
@@ -39,22 +40,26 @@ class OrdersPresenter: OrdersPresenterProtocol {
     }
     
     func prepareData() {
-        view?.showAlert()
-        networkService.getPreviousOrders() { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let orders):
-                    self.orders = orders
-                    if orders.count == 0 {
-                            self.setTable(orders: self.orders)
-                            self.view?.closeAlert()
+        if networkService.isConnectedToNetwork() {
+            view?.showAlert()
+            networkService.getPreviousOrders() { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let orders):
+                        self.orders = orders
+                        if orders.count == 0 {
+                                self.setTable(orders: self.orders)
+                                self.view?.closeAlert()
+                        }
+                        self.fillItems()
+                    case .failure(let error):
+                            self.view?.failure(error: error)
                     }
-                    self.fillItems()
-                case .failure(let error):
-                        self.view?.failure(error: error)
                 }
             }
+        } else {
+            view?.showNoInternetConnection()
         }
     }
     

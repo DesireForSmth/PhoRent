@@ -21,6 +21,7 @@ protocol BasketViewProtocol: class {
     func showAlert(message: String)
     func closeAlert(completionMessage: String?)
     func clearData()
+    func showNoInternetConnection()
 }
 
 protocol BasketPresenterProtocol: class {
@@ -157,23 +158,27 @@ class BasketPresenter: BasketPresenterProtocol {
     
     func putOrder() {
         if let order = currentOrder, order.items.count != 0 {
-            isPutOrderProcess = true
-            networkService.putOrder(order: order) { [weak self] result in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure(let error):
-                        print("Error: ")
-                        print(error.localizedDescription)
-                        self.view?.failure(error: error)
-                    case .success(let message):
-                        print(message)
-                        self.putOrderDone()
+            if networkService.isConnectedToNetwork(){
+                isPutOrderProcess = true
+                networkService.putOrder(order: order) { [weak self] result in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .failure(let error):
+                            print("Error: ")
+                            print(error.localizedDescription)
+                            self.view?.failure(error: error)
+                        case .success(let message):
+                            print(message)
+                            self.putOrderDone()
+                        }
                     }
                 }
+                view?.showAlert(smallMessage: "Отправка заказа...")
+            } else {
+                view?.showNoInternetConnection()
             }
-            view?.showAlert(smallMessage: "Отправка заказа...")
-        } else {
+            } else {
             view?.showAlert(message: "Корзина пуста!")
         }
     }

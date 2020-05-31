@@ -2,15 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="appPhoRent" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PhoRent" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="zfl-Qm-yya" id="2ev-OA-fo2"/>
-                <outlet property="errorLabel" destination="ypq-2d-EZC" id="I9f-OH-Kaa"/>
                 <outlet property="passwordTextField" destination="Shx-Az-bEl" id="qHj-HK-PpY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fI9-0c-qUc">
-                    <rect key="frame" x="40" y="144" width="334" height="250.5"/>
+                    <rect key="frame" x="40" y="144" width="334" height="210"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfl-Qm-yya">
                             <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -30,7 +29,7 @@
                                 <constraint firstAttribute="height" constant="40" id="P74-e5-9b9"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shx-Az-bEl">
                             <rect key="frame" x="0.0" y="60" width="334" height="40"/>
@@ -51,14 +50,8 @@
                                 <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="NSU-0T-Dia"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-2d-EZC">
-                            <rect key="frame" x="0.0" y="180" width="334" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4S-tk-WXY">
-                            <rect key="frame" x="0.0" y="220.5" width="334" height="30"/>
+                            <rect key="frame" x="0.0" y="180" width="334" height="30"/>
                             <state key="normal" title="Забыли пароль?"/>
                             <connections>
                                 <action selector="passwordDropAction:" destination="-1" eventType="touchUpInside" id="kyN-rs-sIm"/>
@@ -74,9 +67,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkl-8z-0of">
-                    <rect key="frame" x="20" y="64" width="45" height="30"/>
-                    <state key="normal" title="Назад"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkl-8z-0of">
+                    <rect key="frame" x="355" y="44" width="39" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="39" id="iK4-jL-FaC"/>
+                    </constraints>
+                    <state key="normal" image="multiply" catalog="system"/>
                     <connections>
                         <action selector="nextAction:" destination="-1" eventType="touchUpInside" id="zEA-Wr-0dx"/>
                     </connections>
@@ -87,13 +83,17 @@
                 <constraint firstItem="NOI-4t-eOh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="0HQ-su-OXc"/>
                 <constraint firstItem="fI9-0c-qUc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="631-qq-lNk"/>
                 <constraint firstItem="fI9-0c-qUc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="HTz-6T-WQI"/>
+                <constraint firstItem="fI9-0c-qUc" firstAttribute="top" secondItem="Gkl-8z-0of" secondAttribute="bottom" constant="45" id="MJh-Ae-Z57"/>
                 <constraint firstItem="NOI-4t-eOh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PnU-dJ-lQs"/>
+                <constraint firstItem="Gkl-8z-0of" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="UZA-Rt-QKi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fI9-0c-qUc" secondAttribute="trailing" constant="40" id="gR2-q4-NPk"/>
-                <constraint firstItem="Gkl-8z-0of" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="qxn-ar-jLu"/>
-                <constraint firstItem="Gkl-8z-0of" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="teP-PU-3fv"/>
+                <constraint firstItem="Gkl-8z-0of" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jOf-FK-HMB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="106"/>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
         </view>
     </objects>
+    <resources>
+        <image name="multiply" catalog="system" width="128" height="111"/>
+    </resources>
 </document>

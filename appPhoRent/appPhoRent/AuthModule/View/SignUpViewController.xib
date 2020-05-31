@@ -2,12 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="appPhoRent" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="PhoRent" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="4mY-tD-dVv" id="5mv-8h-sS8"/>
                 <outlet property="errorLabel" destination="pis-Q7-dYM" id="9r9-4n-HhY"/>
@@ -28,7 +28,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                             <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" textContentType="username"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mY-tD-dVv">
                             <rect key="frame" x="0.0" y="60" width="334" height="40"/>
@@ -65,15 +65,18 @@
                         <constraint firstItem="AD1-gj-uUf" firstAttribute="height" secondItem="KIk-oh-A1j" secondAttribute="height" id="yVA-Rb-Xpy"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создать учетную запись" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-oe-lua">
-                    <rect key="frame" x="84" y="81" width="246.5" height="26.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создать учетную запись" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-oe-lua">
+                    <rect key="frame" x="40" y="81" width="334" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J2-Xk-RgB">
-                    <rect key="frame" x="20" y="64" width="45" height="30"/>
-                    <state key="normal" title="Назад"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J2-Xk-RgB">
+                    <rect key="frame" x="355" y="44" width="39" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="39" id="veR-it-kwx"/>
+                    </constraints>
+                    <state key="normal" image="multiply" catalog="system"/>
                     <connections>
                         <action selector="exitAction:" destination="-1" eventType="touchUpInside" id="13z-r0-GNZ"/>
                     </connections>
@@ -81,16 +84,23 @@
             </subviews>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="5J2-Xk-RgB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5p6-Je-T8G"/>
                 <constraint firstItem="g9g-oe-lua" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="7kR-sN-Jaj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5J2-Xk-RgB" secondAttribute="trailing" constant="20" id="8sU-wd-zCp"/>
+                <constraint firstItem="5J2-Xk-RgB" firstAttribute="leading" secondItem="g9g-oe-lua" secondAttribute="trailing" constant="-19" id="BRB-f4-Bem"/>
+                <constraint firstItem="5J2-Xk-RgB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="T8o-0x-fi6"/>
                 <constraint firstItem="g9g-oe-lua" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aTU-2n-WYP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5J2-Xk-RgB" secondAttribute="trailing" constant="20" id="alF-zr-Mrf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iJU-ag-xCc" secondAttribute="trailing" constant="40" id="cgS-O9-Ukx"/>
-                <constraint firstItem="5J2-Xk-RgB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="nx4-6Y-yte"/>
+                <constraint firstItem="iJU-ag-xCc" firstAttribute="top" secondItem="5J2-Xk-RgB" secondAttribute="bottom" constant="45" id="orU-74-Q8p"/>
                 <constraint firstItem="iJU-ag-xCc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="tOq-Kx-zIv"/>
-                <constraint firstItem="5J2-Xk-RgB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tkT-Vb-roy"/>
                 <constraint firstItem="iJU-ag-xCc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="xEV-1g-rFo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="106"/>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
         </view>
     </objects>
+    <resources>
+        <image name="multiply" catalog="system" width="128" height="111"/>
+    </resources>
 </document>

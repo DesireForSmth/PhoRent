@@ -173,24 +173,29 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
     // MARK: order assembling
     
     func addItemInBasket(itemID: String, count: Int, itemIndex: Int) {
-        guard let categoryID = self.category?.ID else {
-            assertionFailure("Проблема с доступом к категории")
-            return
-        }
-        networkService.addItemInBasket(itemID: itemID, categoryID: categoryID, count: count) { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result{
-                case .success(let message):
-                    self.items?[itemIndex].count -= count
-                    self.reloadDataAfterAdd()
-                    self.addItemDone(message: message)
-                case .failure(let error):
-                    self.addItemDone(message: "Не удалось добавить товар в корзину!")
+        if networkService.isConnectedToNetwork() {
+            guard let categoryID = self.category?.ID else {
+                assertionFailure("Проблема с доступом к категории")
+                return
+            }
+            
+            networkService.addItemInBasket(itemID: itemID, categoryID: categoryID, count: count) { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let message):
+                        self.items?[itemIndex].count -= count
+                        self.reloadDataAfterAdd()
+                        self.addItemDone(message: message)
+                    case .failure(let error):
+                        self.addItemDone(message: "Не удалось добавить товар в корзину!")
+                    }
                 }
             }
+            view?.showAlert()
+        }else{
+            view?.failure()
         }
-        view?.showAlert()
     }
     
     func addItemDone(message: String) {

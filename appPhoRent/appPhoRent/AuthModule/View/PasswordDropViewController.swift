@@ -18,8 +18,13 @@ class PasswordDropViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         emailTextField.keyboardType = .emailAddress
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
 
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
     
     @IBAction func exitAction(_ sender: Any) {
         presenter.pop()
@@ -32,7 +37,6 @@ class PasswordDropViewController: UIViewController {
     func dropPassword() {
         let email = emailTextField.text?.trimmingCharacters(in: .whitespaces)
         if (isValidEmail(email ?? "")) {
-            showAlertLoading()
             presenter.passwordDrop(email: email)
         } else {
             showWrongFormat()
@@ -105,6 +109,12 @@ extension PasswordDropViewController: PasswordDropViewProtocol {
     func failure(error: Error) {
         closeAlertLoading()
         showErrorAlert()
+    }
+    
+    func showNoInternetConnection() {
+        let alert = UIAlertController(title: "Ошибка", message: "Нет соединения с Интернетом", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать позже", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)}))
+        present(alert, animated: true, completion: nil)
     }
     
 }

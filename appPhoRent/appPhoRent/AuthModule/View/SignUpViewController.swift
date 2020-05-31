@@ -29,27 +29,55 @@ class SignUpViewController: UIViewController {
         usernameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
         emailTextField.keyboardType = .emailAddress
         errorLabel.alpha = 0
     }
     
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
     
-    
-    @IBAction func signUpAction(_ sender: UIButton) {
-        
+    func signUp() {
         username = usernameTextField.text!
         email = emailTextField.text!
         password = passwordTextField.text!
-        
-        print(username)
-        print(email)
-        print(password)
+        guard validation(email: email, password: password) else {
+            self.validationError()
+            return
+        }
         if(!username.isEmpty && !email.isEmpty && !password.isEmpty){
             self.signUpUser(username: username, email: email, password: password)
         }else{
             showAlert()
         }
+    }
+    
+    func validationError() {
+        let alert = UIAlertController(title: "Ошибка", message: "неверный формат email или пароля", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать еще раз", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func isValidPassword(_ password: String) -> Bool{
+        let passwRegEx = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
+        let passwPred = NSPredicate(format: "SELF MATCHES %@", passwRegEx)
+        return passwPred.evaluate(with: password)
+    }
+    
+    func validation(email: String, password: String) -> Bool{
+        return isValidEmail(email) && isValidPassword(password)
+    }
+    
+    @IBAction func signUpAction(_ sender: UIButton) {
+        self.signUp()
     }
     
     
@@ -84,7 +112,6 @@ extension SignUpViewController{
     }
     
     func signUpUser(username: String, email: String, password: String) {
-        showAlertLoading()
         self.presenter.signUp(username: username, email: email, password: password)
     }
 }
@@ -99,17 +126,10 @@ extension SignUpViewController: UITextFieldDelegate {
             if (textField == emailTextField){
             let nextField = passwordTextField!
             nextField.becomeFirstResponder()
+            } else {
+                self.signUp()
             }
         }
-        
-        username = usernameTextField.text!
-        email = emailTextField.text!
-        password = passwordTextField.text!
-        
-        print(username)
-        print(email)
-        print(password)
-        
         return true
     }
     
@@ -125,5 +145,10 @@ extension SignUpViewController: SignUpViewProtocol {
         //presenter.pop()
     }
     
+    func showNoInternetConnection() {
+        let alert = UIAlertController(title: "Ошибка", message: "Нет соединения с Интернетом", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать позже", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)}))
+        present(alert, animated: true, completion: nil)
+    }
     
 }

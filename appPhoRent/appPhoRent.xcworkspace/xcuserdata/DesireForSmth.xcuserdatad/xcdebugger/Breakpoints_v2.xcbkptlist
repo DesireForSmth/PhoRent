@@ -206,8 +206,8 @@
             filePath = "appPhoRent/AuthModule/View/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "signIn(email:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -494,8 +494,8 @@
             filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "init(view:router:networkService:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +510,8 @@
             filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "init(view:router:networkService:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "PasswordDropPresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -542,8 +542,8 @@
             filePath = "appPhoRent/AuthModule/Presenter/PasswordDropPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "passwordDrop(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +558,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "showAlertLoading()"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +574,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "PasswordDropViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -590,8 +590,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "PasswordDropViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -750,22 +750,6 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "NetWorkServiceProtocol"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DD45A001-E723-4B4F-97F1-27BFBA1BBCC9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "NetWorkServiceProtocol"
@@ -775,23 +759,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32645DDF-DBCD-4115-BDE4-C997A7981BAC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "NetWorkServiceProtocol"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4FB3AFEB-ACAF-42C7-A0D4-328236C1E8D7"
+            uuid = "DD45A001-E723-4B4F-97F1-27BFBA1BBCC9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -807,7 +775,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E42F96D4-B8FB-4911-8734-7F2137189962"
+            uuid = "32645DDF-DBCD-4115-BDE4-C997A7981BAC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -823,7 +791,23 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2AC3420F-108F-4A17-AEDF-051D77D47295"
+            uuid = "4FB3AFEB-ACAF-42C7-A0D4-328236C1E8D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "NetWorkServiceProtocol"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E42F96D4-B8FB-4911-8734-7F2137189962"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -839,7 +823,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F582494C-0401-4BBB-B91C-309538C43C62"
+            uuid = "2AC3420F-108F-4A17-AEDF-051D77D47295"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -855,7 +839,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9CC81A52-8C08-4FFA-AC16-7A4092E460FF"
+            uuid = "F582494C-0401-4BBB-B91C-309538C43C62"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -871,7 +855,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61066181-5B87-4A82-941C-A9085107211F"
+            uuid = "9CC81A52-8C08-4FFA-AC16-7A4092E460FF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -887,7 +871,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3025A827-FA92-4B7A-8414-EA922D078562"
+            uuid = "61066181-5B87-4A82-941C-A9085107211F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -903,7 +887,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE7432DB-D0D9-449D-9E29-F272A025F1CF"
+            uuid = "3025A827-FA92-4B7A-8414-EA922D078562"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -919,7 +903,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E386F39F-22F7-4727-8119-FCD7A8315CCB"
+            uuid = "FE7432DB-D0D9-449D-9E29-F272A025F1CF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -942,41 +926,11 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "unknown"
             landmarkType = "0">
             <Locations>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 20813624a3733f99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.deinit"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 14826f169a24ed6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.__deallocating_deinit"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
                <Location
                   uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 95776c296cc87977"
                   shouldBeEnabled = "Yes"
@@ -1007,26 +961,8 @@
                   endingLineNumber = "33"
                   offsetFromSymbolStart = "16">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "NetworkService"
-            landmarkType = "3">
-            <Locations>
                <Location
-                  uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 20813624a3733f99"
+                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 20813624a3733f99"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1041,7 +977,7 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 14826f169a24ed6c"
+                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 14826f169a24ed6c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1055,6 +991,24 @@
                   endingLineNumber = "0"
                   offsetFromSymbolStart = "16">
                </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "NetworkService"
+            landmarkType = "3">
+            <Locations>
                <Location
                   uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 95776c296cc87977"
                   shouldBeEnabled = "Yes"
@@ -1085,6 +1039,36 @@
                   endingLineNumber = "33"
                   offsetFromSymbolStart = "16">
                </Location>
+               <Location
+                  uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 20813624a3733f99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.deinit"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 14826f169a24ed6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.__deallocating_deinit"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1098,9 +1082,9 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "signIn(email:password:completion:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "isConnectedToNetwork()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1114,8 +1098,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "NetworkService"
             landmarkType = "3">
          </BreakpointContent>
@@ -1130,8 +1114,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1178,8 +1162,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1194,8 +1178,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,8 +1194,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1226,8 +1210,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,8 +1226,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,8 +1242,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "NetworkService"
             landmarkType = "3">
          </BreakpointContent>
@@ -1274,8 +1258,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,8 +1274,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1338,8 +1322,8 @@
             filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1354,8 +1338,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "dropPassword()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1370,8 +1354,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "dropPassword()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,8 +1370,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "passwordDropAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,8 +1386,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1418,8 +1402,8 @@
             filePath = "appPhoRent/AuthModule/View/PasswordDropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "showWrongFormat()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1580,7 +1564,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
             endingLineNumber = "181"
-            landmarkName = "closeAlertLoading()"
+            landmarkName = "showAlert()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1596,7 +1580,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
-            landmarkName = "closeAlertLoading()"
+            landmarkName = "showAlert(message:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1662,6 +1646,582 @@
             endingLineNumber = "26"
             landmarkName = "NetWorkServiceProtocol"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BCF6A56-8671-4CBA-B7A5-68FA3854B676"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/MainSearchModule/View/MainSearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "827E55B6-AA74-4896-A281-E1A1A8C690C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "init(view:router:networkService:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "827E55B6-AA74-4896-A281-E1A1A8C690C2 - 2fc09d7b17f81632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.MainSearchPresenter.__allocating_init(view: PhoRent.MainSearchViewProtocol, router: PhoRent.RouterProtocol, networkService: PhoRent.NetWorkServiceProtocol) -&gt; PhoRent.MainSearchPresenter"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  uuid = "827E55B6-AA74-4896-A281-E1A1A8C690C2 - 58677bb7fff8e1e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.MainSearchPresenter.init(view: PhoRent.MainSearchViewProtocol, router: PhoRent.RouterProtocol, networkService: PhoRent.NetWorkServiceProtocol) -&gt; PhoRent.MainSearchPresenter"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2289BA4C-E62C-4E14-B895-7FCB53AFEC84"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init(view:router:networkService:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DCD3964-8759-431D-8FC6-4063A0A354B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "init(view:router:networkService:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "631F81B7-88BD-4F2B-8676-6C449D93FB68"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/MainSearchModule/Presenter/MainSearchPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "init(view:router:networkService:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E2F5BF3-D687-4AE6-A80C-B83F631C8FA8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2B458D2-5A56-4391-A115-6EC18B12FDE5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F2B458D2-5A56-4391-A115-6EC18B12FDE5 - e3965027aed27c7e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.getCategories(completion: (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;PhoRent.Category&gt;&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  uuid = "F2B458D2-5A56-4391-A115-6EC18B12FDE5 - 3cb23e5d3e8cb92a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.getCategories(completion: (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;PhoRent.Category&gt;&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "343">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE5905FF-D214-4E10-BF5A-336E6202370E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35D643EB-D347-4DE7-9DB0-C342EE49A06B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA737FE3-C63D-46B0-BD68-F43568C4E5E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5932E8D-91CE-4968-B096-0335DF36A4D4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D6EF704-7273-4F07-942F-F7CBD07817CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF398036-096F-45F7-AC57-5A5DBB1751B9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "getCategories(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86FCE162-7BC7-4310-B4AF-025B69303918"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0FC746E-9DB4-4CB9-89BB-92952D1F191A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EBC41614-C183-48FA-9F17-EB68F0582023"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F741CC3-D5BC-447A-A9FC-8606F0D34981"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "644653C1-1020-45C6-8D36-512A83B581BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "768F4DF6-7B8D-4E53-A936-C7987F39A737"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "403FF9D7-3BF4-4CF0-B56D-5D91257A8C25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C37D460A-8098-4A3B-BE9C-3197B7CFE0E6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA8C534C-B665-44C2-9743-1CF72DB51683"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BB8B6A5-E419-4971-ADEA-0C769D4ABD9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E9BF42AF-2EB0-4CE6-BB1A-140173B19AB3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DCA20B99-CC5D-4DFA-B7E5-F324920E5868"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "647B4850-8D8C-4894-9FCF-17B9BF6E4BDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EA170DC-920E-489F-A535-F9DCFA835FF9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "134CB33B-1A8E-47ED-97E2-2D460096B902"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A31821E0-9FF1-40EC-9715-E13D8A107CE1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65159CA2-131F-4442-AB9B-6D41A812B95A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D914A19F-93F7-43E6-9718-64DDF3AD7E0B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "431BD4B5-A4A7-4823-88EF-DC79EDDA2009"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/View/TabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

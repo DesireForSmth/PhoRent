@@ -49,6 +49,7 @@ class TabBarController: UITabBarController {
         viewControllers = tabBarList
         selectedIndex = 1
     }
+    
 }
 
 extension TabBarController: TabBarViewProtocol {

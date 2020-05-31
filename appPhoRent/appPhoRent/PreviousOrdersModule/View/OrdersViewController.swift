@@ -164,6 +164,12 @@ extension OrdersViewController: OrdersViewProtocol {
         present(alert, animated: true, completion: nil)
     }
     
+    func showNoInternetConnection() {
+        let alert = UIAlertController(title: "Ошибка", message: "Нет соединения с Интернетом", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать позже", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)}))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func closeAlert(completion: (() -> ())? ) {
         dismiss(animated: true) {
             if let completion = completion {

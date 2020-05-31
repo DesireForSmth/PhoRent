@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     
     var email: String = ""
     var password: String = ""
@@ -28,14 +27,20 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         super.viewDidLoad()
-        errorLabel.alpha = 0
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
         emailTextField.keyboardType = .emailAddress
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func signInAction(_ sender: UIButton) {
-        
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func signIn() {
         email = emailTextField.text!
         password = passwordTextField.text!
         
@@ -47,6 +52,10 @@ class LoginViewController: UIViewController {
         } else {
             showAlert()
         }
+    }
+    
+    @IBAction func signInAction(_ sender: UIButton) {
+        self.signIn()
     }
     
     /*
@@ -92,7 +101,6 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     
     func signInUser(email: String, password: String) {
-        showAlertLoading()
         presenter.signIn(email: email, password: password)
     }
     
@@ -100,11 +108,9 @@ extension LoginViewController: UITextFieldDelegate {
         if (textField == emailTextField) {
             let nextField = passwordTextField!
             nextField.becomeFirstResponder()
+        } else {
+            self.signIn()
         }
-        
-        email = emailTextField.text!
-        password = passwordTextField.text!
-        
         return true
     }
     
@@ -121,4 +127,9 @@ extension LoginViewController: LoginViewProtocol {
         showAuthError()
     }
     
+    func showNoInternetConnection() {
+        let alert = UIAlertController(title: "Ошибка", message: "Нет соединения с Интернетом", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Попробовать позже", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)}))
+        present(alert, animated: true, completion: nil)
+    }
 }
