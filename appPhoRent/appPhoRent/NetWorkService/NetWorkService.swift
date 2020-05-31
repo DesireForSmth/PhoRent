@@ -305,21 +305,9 @@ class NetworkService: NetWorkServiceProtocol {
         for item in order.items {
             db.collection("users").document(userID).collection("basket").document(item.itemID).delete { error in
                 if let error = error {
+                    completion(.failure(error))
                     print("Failed to delete: \(error)")
                 }
-            }
-        }
-    }
-    
-    func updateOrdersTitle(array: [String]) {
-        let db = Firestore.firestore()
-        guard let userID = Auth.auth().currentUser?.uid else {
-            assertionFailure("Ошибка доступа к пользователю")
-            return
-        }
-        db.collection("users").document(userID).updateData(["orders" : array]) { error in
-            if let error = error {
-                print("Failed to update orderID: \(error)")
             }
         }
     }

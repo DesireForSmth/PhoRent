@@ -11,10 +11,8 @@ protocol OrdersViewProtocol: class {
     func updateTable()
     func showAlert()
     func closeAlert()
-    
     func failure(error: Error)
 }
-
 
 protocol OrdersPresenterProtocol: class {
     init(view: OrdersViewProtocol, router: RouterProtocol, networkService: NetWorkServiceProtocol)
@@ -49,15 +47,12 @@ class OrdersPresenter: OrdersPresenterProtocol {
                 case .success(let orders):
                     self.orders = orders
                     if orders.count == 0 {
-                        DispatchQueue.main.async {
                             self.setTable(orders: self.orders)
                             self.view?.closeAlert()
-                        }
                     }
                     self.fillItems()
                 case .failure(let error):
-                    self.view?.failure(error: error)
-                    self.view?.closeAlert()
+                        self.view?.failure(error: error)
                 }
             }
         }
@@ -88,15 +83,15 @@ class OrdersPresenter: OrdersPresenterProtocol {
                             }
                         }
                     case .failure(let error):
-                        self.view?.failure(error: error)
-                        self.view?.closeAlert()
+                        DispatchQueue.main.async {
+                            self.view?.failure(error: error)
+                        }
                     }
                 })
             }
         }
         
     }
-    
     
     func setTable(orders: [Order]) {
         self.orders = orders
@@ -126,7 +121,6 @@ class OrdersPresenter: OrdersPresenterProtocol {
         if indexPath.section < orders.count, indexPath.row < orders[indexPath.section].items.count  {
             let item = orders[indexPath.section].items[indexPath.row]
             return (item.name,
-                    //                    String(format: "%.0f", items[index].cost) + " руб./сут.",
                 String(item.cost) + " руб./сут.",
                 item.count,
                 item.imageURL)

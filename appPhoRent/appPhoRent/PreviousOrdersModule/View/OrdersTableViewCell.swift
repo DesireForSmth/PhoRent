@@ -38,9 +38,4 @@ class OrdersTableViewCell: UITableViewCell {
             $0?.textColor = .black
         }
     }
-    
-    override func prepareForReuse() {
-        itemImageView.image = UIImage()
-    }
-    
 }

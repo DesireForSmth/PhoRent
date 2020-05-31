@@ -151,16 +151,208 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5FD611AB-D48F-4651-A99A-42D0B8D551C6"
+            uuid = "4C348D0E-9EB5-4A21-8084-217FFFC90CFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/View/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "failure(error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F2B3C52-63EC-43AF-B950-B957E65E1D47"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "signIn(email:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5F2B3C52-63EC-43AF-B950-B957E65E1D47 - 89217ef72a2d8689"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.LoginPresenter.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  uuid = "5F2B3C52-63EC-43AF-B950-B957E65E1D47 - 60136553286b356b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in PhoRent.LoginPresenter.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "209">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA3168D8-C97A-4C6E-9916-35F1F745A3E2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "signIn(email:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EA3168D8-C97A-4C6E-9916-35F1F745A3E2 - 60136553286b356b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in PhoRent.LoginPresenter.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "EA3168D8-C97A-4C6E-9916-35F1F745A3E2 - 60136553286b356b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in PhoRent.LoginPresenter.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/AuthModule/Presenter/LoginPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5393B35-ABFC-4F27-BD16-F29D057A4E79"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/AuthModule/View/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "showAuthError()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77890220-59BD-4BC8-A6DC-56B409223DD3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "appPhoRent/PreviousOrdersModule/Presenter/OrdersPresenter.swift"
+            filePath = "appPhoRent/PreviousOrdersModule/View/OrdersTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "fillItems()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "fillCell(name:cost:count:imageURL:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9A1BC46-0F6C-466D-BB4E-B3F84EB83435"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/BasketModule/View/BasketViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "failure(error:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9A1BC46-0F6C-466D-BB4E-B3F84EB83435 - 9b937ec5893610f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.BasketViewController.failure(error: Swift.Error) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/BasketModule/View/BasketViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "398">
+               </Location>
+               <Location
+                  uuid = "D9A1BC46-0F6C-466D-BB4E-B3F84EB83435 - 75434a38acf3c203"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in PhoRent.BasketViewController.failure(error: Swift.Error) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elenakacharmina/Desktop/Technopark/Master/PhoRent/appPhoRent/appPhoRent/BasketModule/View/BasketViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "73">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B3378E8-72C0-4888-AAC0-96DBCA94104A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/NetWorkService/NetWorkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "putOrder(order:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

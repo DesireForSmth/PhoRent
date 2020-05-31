@@ -59,8 +59,10 @@ class BasketPresenter: BasketPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let items):
+                    print("Before setOrder")
                     self.setOrder(items: items)
                 case .failure(let error):
+                    print("fail yes")
                     self.view?.failure(error: error)
                 }
             }
@@ -163,6 +165,7 @@ class BasketPresenter: BasketPresenterProtocol {
                     case .failure(let error):
                         print("Error: ")
                         print(error.localizedDescription)
+                        self.view?.failure(error: error)
                     case .success(let message):
                         print(message)
                         self.putOrderDone()
