@@ -98,6 +98,7 @@ extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
         if let customTableViewCell = tableViewCell as? OrdersTableViewCell {
             let (name, cost, count, imageURL) = presenter.getItem(at: indexPath)
             customTableViewCell.fillCell(name: name, cost: cost, count: count, imageURL: imageURL)
+            return customTableViewCell
         }
         return UITableViewCell()
     }
@@ -138,6 +139,17 @@ extension OrdersViewController: OrdersViewProtocol {
     
     func failure(error: Error) {
         print(error.localizedDescription)
+        let showError =  { [weak self] in
+            guard let self = self else { return }
+            self.showAlert(message: "Нет соединения с интернетом")
+        }
+        closeAlert(completion: showError)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert() {
@@ -150,6 +162,14 @@ extension OrdersViewController: OrdersViewProtocol {
         alert.view.addSubview(loadingIndicator)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func closeAlert(completion: (() -> ())? ) {
+        dismiss(animated: true) {
+            if let completion = completion {
+                completion()
+            }
+        }
     }
     
     func closeAlert() {

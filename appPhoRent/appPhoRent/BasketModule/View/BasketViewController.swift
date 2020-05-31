@@ -256,6 +256,11 @@ extension BasketViewController: BasketViewProtocol {
 
     func failure(error: Error) {
         print(error.localizedDescription)
+        let showError =  { [weak self] in
+            guard let self = self else { return }
+            self.showAlert(message: "Нет соединения с интернетом")
+        }
+        closeAlert(completion: showError)
     }
     
     func showAlert(smallMessage: String) {
@@ -274,6 +279,14 @@ extension BasketViewController: BasketViewProtocol {
     
     func closeAlert() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func closeAlert(completion: (() -> ())? ) {
+        dismiss(animated: true) {
+            if let completion = completion {
+                completion()
+            }
+        }
     }
     
     func showAlert(message: String) {
