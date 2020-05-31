@@ -46,11 +46,14 @@ class MainSearchViewController: UIViewController {
 }
 
 extension MainSearchViewController {
+    
     func setNoInternetConnection() {
         self.view.addSubview(self.alertlabel)
+        self.alertlabel.isHidden = false
         self.tableView.isHidden = true
         self.alertlabel.text = "Нет соединения с интернетом"
-        self.alertlabel.font = UIFont.systemFont(ofSize: 17)
+        self.alertlabel.textAlignment = .center
+        
         self.alertlabel.translatesAutoresizingMaskIntoConstraints = false
         self.alertlabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 15).isActive = true
         self.alertlabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
