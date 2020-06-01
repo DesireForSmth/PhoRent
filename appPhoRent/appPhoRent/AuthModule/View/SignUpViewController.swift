@@ -44,6 +44,10 @@ class SignUpViewController: UIViewController {
         email = emailTextField.text!
         password = passwordTextField.text!
         guard validation(email: email, password: password) else {
+            print(isValidEmail(email))
+            print(isValidPassword(password))
+            print(email)
+            print(password)
             self.validationError()
             return
         }
@@ -67,7 +71,8 @@ class SignUpViewController: UIViewController {
     }
     
     func isValidPassword(_ password: String) -> Bool{
-        let passwRegEx = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
+        print(password)
+        let passwRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         let passwPred = NSPredicate(format: "SELF MATCHES %@", passwRegEx)
         return passwPred.evaluate(with: password)
     }
