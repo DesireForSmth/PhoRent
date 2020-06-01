@@ -150,7 +150,7 @@ extension CategoryViewController {
         self.alertLabel.textAlignment = .center
         
         self.alertLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.alertLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 10).isActive = true
+        self.alertLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 10).isActive = true
         self.alertLabel.centerXAnchor.constraint(equalToSystemSpacingAfter: self.view.centerXAnchor, multiplier: 0).isActive = true
     }
     
