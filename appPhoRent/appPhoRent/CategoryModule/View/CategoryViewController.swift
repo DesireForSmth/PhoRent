@@ -122,7 +122,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.itemCost.text = "\(item.cost) р./сут."
             let url = URL(string: itemImage)
             let resource = ImageResource(downloadURL: url!, cacheKey: itemImage)
-            cell.itemImage.kf.setImage(with: resource)
+            let image = UIImage(named: "delivery")
+            cell.itemImage.kf.setImage(with: resource, placeholder: image)
             cell.stepperCount.value = 1
             cell.stepperCount.minimumValue = 1
             cell.stepperCount.maximumValue = Double(item.count)
