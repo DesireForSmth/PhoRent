@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
     
     func isValidPassword(_ password: String) -> Bool{
         print(password)
-        let passwRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        let passwRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[_d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&_#]{8,}"
         let passwPred = NSPredicate(format: "SELF MATCHES %@", passwRegEx)
         return passwPred.evaluate(with: password)
     }
