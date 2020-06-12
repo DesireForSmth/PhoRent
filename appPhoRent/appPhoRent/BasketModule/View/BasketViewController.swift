@@ -107,7 +107,15 @@ extension BasketViewController: BasketTableViewCellDelegate {
     
     func deleteRow(sender: UIButton) {
         if let indexPath = tableView?.indexPath(for: ((sender.superview?.superview) as! BasketTableViewCell)) {
-            presenter.removeFromBasket(index: indexPath.row)
+            let alert = UIAlertController(title: nil, message: "Удалить товар из корзины?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { [weak self]
+            _ in
+                self?.presenter.removeFromBasket(index: indexPath.row)
+            }))
+            alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+
+            self.present(alert, animated: true, completion: nil)
+//            presenter.removeFromBasket(index: indexPath.row)
         }
     }
 }

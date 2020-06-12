@@ -66,7 +66,7 @@ extension ItemCellViewController {
         self.stepperCount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         self.stepperCount.leftAnchor.constraint(equalTo: self.itemImage.rightAnchor, constant: 10).isActive = true
         
-        self.countLabel.font = UIFont.systemFont(ofSize: 12)
+        self.countLabel.font = UIFont.systemFont(ofSize: 17)
         self.countLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 }
