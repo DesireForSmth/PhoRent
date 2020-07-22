@@ -53,6 +53,7 @@ extension ItemCellViewController {
     // MARK: constraints setup
     
     func setUp(){
+        
         self.addItemInBasket.translatesAutoresizingMaskIntoConstraints = false
         self.addItemInBasket.centerYAnchor.constraint(equalTo: self.stepperCount.centerYAnchor).isActive = true
         self.addItemInBasket.rightAnchor.constraint(equalTo: self.itemName.rightAnchor, constant: 0).isActive = true

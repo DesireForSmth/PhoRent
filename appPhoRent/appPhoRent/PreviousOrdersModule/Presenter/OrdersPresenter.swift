@@ -20,6 +20,7 @@ protocol OrdersPresenterProtocol: class {
     func prepareData()
     func getItem(at indexPath: IndexPath) -> (String, String, Int, String)
     func getSectionTitle(section: Int) -> String?
+    func getSectionFooter(section: Int) -> String?
     func getCountOfSection() -> Int
     func getCountOfRow(at section: Int) -> Int
 }
@@ -105,7 +106,12 @@ class OrdersPresenter: OrdersPresenterProtocol {
     
     func getSectionTitle(section: Int) -> String? {
         let dateString = orders[section].date
-        let title = "\nЗаказ с \(dateString) на \(orders[section].countOfDay) сут.\nСтатус: \(orders[section].status)"
+        let title = "С \(dateString) на \(orders[section].countOfDay) сут."
+        return title
+    }
+    
+    func getSectionFooter(section: Int) -> String? {
+        let title = "\(orders[section].status)"
         return title
     }
     

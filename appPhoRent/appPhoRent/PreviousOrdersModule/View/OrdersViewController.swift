@@ -42,13 +42,15 @@ class OrdersViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = CustomColors.background
         
-        tableView.estimatedSectionHeaderHeight = 66
+        tableView.estimatedSectionHeaderHeight = 100
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib.init(nibName: customIdentifier, bundle: nil), forCellReuseIdentifier: customIdentifier)
+        tableView.register(tableHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+        
         tableView.allowsSelection = false
         
         emptyLabel = UILabel()
@@ -111,25 +113,18 @@ extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
         return 136
     }
     
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        let label = UILabel()
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.backgroundColor = CustomColors.background
-        label.text = presenter.getSectionTitle(section: section)
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                    "sectionHeader") as! tableHeader
         
-        headerView.addSubview(label)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: headerView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-        ])
-        return headerView
+        view.dateLabel.text = presenter.getSectionTitle(section: section)
+        view.statusLabel.text = presenter.getSectionFooter(section: section)
+
+        return view
     }
+ 
 }
 
 extension OrdersViewController: OrdersViewProtocol {
@@ -180,5 +175,39 @@ extension OrdersViewController: OrdersViewProtocol {
     
     func closeAlert() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+class tableHeader: UITableViewHeaderFooterView {
+    
+    let dateLabel = UILabel()
+    let statusLabel = UILabel()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        configureContents()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureContents() {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(statusLabel)
+
+        
+        NSLayoutConstraint.activate([
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            
+            dateLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+        
+            statusLabel.trailingAnchor.constraint(equalTo:
+                   contentView.layoutMarginsGuide.trailingAnchor),
+            statusLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }

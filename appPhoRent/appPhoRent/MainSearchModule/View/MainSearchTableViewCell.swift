@@ -20,5 +20,6 @@ class MainSearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = CustomColors.backgroundCell
         categoryName.textColor = .black
+        categoryName.textAlignment = .right
     }
 }

@@ -928,70 +928,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 95776c296cc87977"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.__allocating_init() -&gt; PhoRent.NetworkService"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - b0a4011a7516428f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.init() -&gt; PhoRent.NetworkService"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 20813624a3733f99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.deinit"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "8B560EF0-639E-43EF-BDC5-C36091C9FEDB - 14826f169a24ed6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.__deallocating_deinit"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            landmarkName = "NetWorkServiceProtocol"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1006,8 +944,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "NetworkService"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "BEC3EB68-0268-4262-BE9C-097738036AF2 - 95776c296cc87977"
@@ -1035,8 +973,8 @@
                   urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
@@ -1084,8 +1022,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "isConnectedToNetwork()"
-            landmarkType = "7">
+            landmarkName = "NetworkService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1102,6 +1040,68 @@
             endingLineNumber = "35"
             landmarkName = "NetworkService"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "3E60A184-C0F0-4047-B9E9-DD46ACCBBDC9 - 95776c296cc87977"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.__allocating_init() -&gt; PhoRent.NetworkService"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  uuid = "3E60A184-C0F0-4047-B9E9-DD46ACCBBDC9 - b0a4011a7516428f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.init() -&gt; PhoRent.NetworkService"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "3E60A184-C0F0-4047-B9E9-DD46ACCBBDC9 - 20813624a3733f99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.deinit"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "3E60A184-C0F0-4047-B9E9-DD46ACCBBDC9 - 14826f169a24ed6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.__deallocating_deinit"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1118,38 +1118,6 @@
             endingLineNumber = "54"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B3A421CB-4399-4FDC-9796-BCD2FDBE5E5F - 8425a80f594d8762"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.signIn(email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "62">
-               </Location>
-               <Location
-                  uuid = "B3A421CB-4399-4FDC-9796-BCD2FDBE5E5F - 7ad3720cd53f3367"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.signIn(email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "177">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1166,6 +1134,38 @@
             endingLineNumber = "55"
             landmarkName = "signIn(email:password:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28C57437-18C2-4422-A4E9-2BC671497E34 - 8425a80f594d8762"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.signIn(email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "62">
+               </Location>
+               <Location
+                  uuid = "28C57437-18C2-4422-A4E9-2BC671497E34 - 7ad3720cd53f3367"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.signIn(email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "177">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1228,8 +1228,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "signUp(username:email:password:completion:)"
-            landmarkType = "7">
+            landmarkName = "NetworkService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1244,8 +1244,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "NetworkService"
-            landmarkType = "3">
+            landmarkName = "signIn(email:password:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1278,38 +1278,6 @@
             endingLineNumber = "66"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6EB2EDD0-CA0D-472C-8C0D-DB4FFFC0A0D7 - b2ddd5066299a8af"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.signUp(username: Swift.String, email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "6EB2EDD0-CA0D-472C-8C0D-DB4FFFC0A0D7 - a9102c10ba3890de"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.signUp(username: Swift.String, email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "414">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1326,6 +1294,38 @@
             endingLineNumber = "67"
             landmarkName = "signUp(username:email:password:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA612E50-63D8-47BF-818D-CC5E30ECB554 - b2ddd5066299a8af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhoRent.NetworkService.signUp(username: Swift.String, email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "BA612E50-63D8-47BF-818D-CC5E30ECB554 - a9102c10ba3890de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.signUp(username: Swift.String, email: Swift.String, password: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhoRent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "414">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1772,8 +1772,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "getCategories(completion:)"
-            landmarkType = "7">
+            landmarkName = "NetworkService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1790,38 +1790,6 @@
             endingLineNumber = "115"
             landmarkName = "getCategories(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F2B458D2-5A56-4391-A115-6EC18B12FDE5 - e3965027aed27c7e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhoRent.NetworkService.getCategories(completion: (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;PhoRent.Category&gt;&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "87">
-               </Location>
-               <Location
-                  uuid = "F2B458D2-5A56-4391-A115-6EC18B12FDE5 - 3cb23e5d3e8cb92a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PhoRent.NetworkService.getCategories(completion: (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;PhoRent.Category&gt;&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "PhoRent"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DesireForSmth/Projects/appPhoRent/appPhoRent/appPhoRent/NetWorkService/NetWorkService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "343">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2221,6 +2189,22 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "220C6352-BCD6-4861-91D1-CB71A726335A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "appPhoRent/TabBarModule/Presenter/TabBarPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getScene()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
